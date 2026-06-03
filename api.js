@@ -1,18 +1,48 @@
-/* COSMOS — api.js v6.0 — via fonction Netlify, sans clé dans le code */
+/* COSMOS — api.js v7.0 — appel direct Claude depuis navigateur */
+
 var k1 = 'sk-ant-api03-JTrcaRX9C9IuRzQxX2DZmOVniXyFO0GsWT5J_3usr1F';
 var k2 = 'GQxg9RisakvrbU7C8k-T0nYQJxe41hn7dmuqU0Mlq7A-w9uTKwAA';
 var ANTHROPIC_API_KEY = k1 + k2;
+
+var SCENE_LABELS = ['Lumière sous la porte','Décision 60 secondes','Objet à sauver','Regard dans le café','La forêt','Silence 3 secondes','Douleur portée','La nuit et les étoiles','Deux chaises vides'];
+
 async function generateCosmosProfile(userData, answers) {
+  if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY.length < 20) {
+    return { success: false, demo: true, profile: getDemoProfile(userData) };
+  }
   try {
-    var response = await fetch('/.netlify/functions/generate-profile', {
+    var dob = userData.dateNaissance || {};
+    var loc = userData.localisation || {};
+    var locStr = [loc.ville, loc.region, loc.pays].filter(Boolean).join(', ');
+    var msg = 'Prénom : ' + (userData.prenom||'?') + '\n';
+    msg += 'Naissance : ' + (dob.jour||'?') + '/' + (dob.mois||'?') + '/' + (dob.annee||'?') + '\n';
+    msg += 'Lieu : ' + (locStr||'?') + '\n\nRéponses aux 9 scènes :\n';
+    for (var k=0; k<9; k++) msg += 'Scène '+(k+1)+' ('+SCENE_LABELS[k]+') : index '+(answers[k]!=null?answers[k]:'?')+'\n';
+    msg += '\nGénère le JSON du profil Cosmos.';
+
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userData: userData, answers: answers })
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 2000,
+        system: "Tu es le moteur d'analyse de Cosmos.\n\nCALCUL DU PROFIL :\nDimension COSMIQUE (scènes 1,5,8) : 0=Lune, 1=Mercure, 2=Saturne, 3=Soleil\nDimension COGNITIVE (scènes 2,5) : 0=Intuitif, 1=Systémique, 2=Narratif, 3=Analytique\nDimension ÉMOTIONNELLE (scènes 3,6,7) : 0/3=Expansif, 1/2=Protecteur\nDimension RELATIONNELLE (scènes 4,9) : 0/3=Lien profond, 1/2=Lien fluide\n\nGÉNÈRE UNIQUEMENT ce JSON valide sans texte avant ni après :\n{\"profil\":{\"nom\":\"[nom poétique]\",\"code\":\"[AAA-BBB-CCC]\",\"sous_titre\":\"[Énergie · Cognitif · Émotionnel]\",\"rarete\":\"[x,x%]\",\"signe_solaire\":\"[signe]\",\"planete\":\"[planète]\"},\"portrait\":[\"[ligne1 avec prénom]\",\"[ligne2]\",\"[ligne3]\",\"[ligne4]\",\"[ligne5]\"],\"forces\":[{\"nom\":\"[nom]\",\"desc\":\"[2 phrases]\",\"paradoxe\":\"[1 phrase]\",\"couleur\":\"#7F77DD\"},{\"nom\":\"[nom]\",\"desc\":\"[2 phrases]\",\"paradoxe\":\"[1 phrase]\",\"couleur\":\"#1D9E75\"},{\"nom\":\"[nom]\",\"desc\":\"[2 phrases]\",\"paradoxe\":\"[1 phrase]\",\"couleur\":\"#BA7517\"}],\"blocages\":[{\"nom\":\"[nom]\",\"desc\":\"[2 phrases]\",\"cle\":\"[solution]\"},{\"nom\":\"[nom]\",\"desc\":\"[2 phrases]\",\"cle\":\"[solution]\"}],\"amour\":{\"style\":\"[style]\",\"desc\":\"[3 phrases]\",\"offre\":\"[1 phrase]\",\"besoin\":\"[1 phrase]\",\"pattern\":\"[1 phrase]\"},\"miroir\":{\"nom\":\"[nom]\",\"sous_titre\":\"[dims]\",\"citation\":\"[35 mots]\",\"resonance\":88,\"complementarite\":76,\"harmonie\":84,\"friction\":61,\"signaux\":\"[2 phrases]\",\"eveil\":\"[1 phrase]\"},\"actions\":[{\"num\":1,\"titre\":\"[titre]\",\"desc\":\"[2 phrases]\",\"freq\":\"[fréq]\",\"dim\":\"Cosmique\",\"couleur\":\"#7F77DD\"},{\"num\":2,\"titre\":\"[titre]\",\"desc\":\"[2 phrases]\",\"freq\":\"[fréq]\",\"dim\":\"Émotionnel\",\"couleur\":\"#D4537E\"},{\"num\":3,\"titre\":\"[titre]\",\"desc\":\"[2 phrases]\",\"freq\":\"[fréq]\",\"dim\":\"Cognitif\",\"couleur\":\"#1D9E75\"},{\"num\":4,\"titre\":\"[titre]\",\"desc\":\"[2 phrases]\",\"freq\":\"[fréq]\",\"dim\":\"Relationnel\",\"couleur\":\"#BA7517\"},{\"num\":5,\"titre\":\"[titre]\",\"desc\":\"[2 phrases]\",\"freq\":\"[fréq]\",\"dim\":\"Cosmique\",\"couleur\":\"#7F77DD\"},{\"num\":6,\"titre\":\"[titre]\",\"desc\":\"[2 phrases]\",\"freq\":\"[fréq]\",\"dim\":\"Émotionnel\",\"couleur\":\"#D4537E\"}],\"dims\":{\"cosmique\":[70,90],\"cognitif\":[75,95],\"emotionnel\":[65,85],\"relationnel\":[70,90]}}",
+        messages: [{ role: 'user', content: msg }]
+      })
     });
-    if (!response.ok) throw new Error('Erreur serveur : ' + response.status);
-    var data = await response.json();
-    if (!data.success) throw new Error(data.error || 'Erreur inconnue');
-    return { success: true, demo: false, profile: data.profile };
+
+    if (!res.ok) throw new Error('API ' + res.status);
+    var data = await res.json();
+    var raw = data.content[0].text.trim().replace(/^```json\n?/,'').replace(/\n?```$/,'').trim();
+    var profile = JSON.parse(raw);
+    if (!profile.profil) throw new Error('JSON incomplet');
+    return { success: true, demo: false, profile: profile };
+
   } catch(err) {
     return { success: false, demo: true, profile: getDemoProfile(userData), error: err.message };
   }
@@ -24,7 +54,7 @@ function getDemoProfile(userData) {
     profil:{nom:"L'Architecte Lunaire",code:"LUN-SYS-PRO",sous_titre:"Lune · Systémique · Protecteur",rarete:"3,2%",signe_solaire:"À calculer",planete:"Lune"},
     portrait:[p+" ne s'explique pas — il ou elle se révèle lentement, à ceux qui savent attendre.","Là où les autres voient du bruit, tu perçois une architecture cachée.","Tu portes une loyauté silencieuse que peu remarquent.","Ton intelligence est nocturne — elle travaille quand le monde dort.","Tu cherches une seule personne qui comprend ce que tu ne dis pas."],
     forces:[{nom:"La vision structurelle",desc:"Tu captes les patterns avant les détails.",paradoxe:"Ce que les autres voient : calme. La réalité : analyse permanente.",couleur:"#7F77DD"},{nom:"La protection instinctive",desc:"Tu crées de la sécurité sans t'en rendre compte.",paradoxe:"Tu protèges tout le monde sauf toi-même.",couleur:"#1D9E75"},{nom:"L'intelligence de l'ombre",desc:"Tu penses mieux dans le silence.",paradoxe:"Protège tes heures creuses comme un territoire sacré.",couleur:"#BA7517"}],
-    blocages:[{nom:"La vigilance permanente",desc:"Tu scannes les environnements avant de te détendre.",cle:"Autorise-toi 1 espace sans analyser par semaine."},{nom:"La retenue émotionnelle",desc:"Tu ressens profondément mais tu montres peu.",cle:"Dis quelque chose que tu ressens vraiment à quelqu'un cette semaine."}],
+    blocages:[{nom:"La vigilance permanente",desc:"Tu scannes les environnements avant de te détendre.",cle:"Autorise-toi 1 espace sans analyser par semaine."},{nom:"La retenue émotionnelle",desc:"Tu ressens profondément mais tu montres peu.",cle:"Dis quelque chose que tu ressens vraiment cette semaine."}],
     amour:{style:"Sécure-distancié",desc:"Tu aimes profondément mais tu testes avant de faire confiance.",offre:"Une loyauté absolue.",besoin:"De constance silencieuse.",pattern:"Attendre que l'autre prouve sa valeur."},
     miroir:{nom:"Le Gardien du Feu Doux",sous_titre:"Soleil · Narratif · Expansif",citation:"Cette personne arrive avec une constance tranquille — cette façon d'être là sans calculer.",resonance:92,complementarite:79,harmonie:86,friction:61,signaux:"Tu te sentiras calme dès les premières minutes.",eveil:"Elle va t'apprendre à recevoir sans calculer."},
     actions:[{num:1,titre:"Journal des structures",desc:"Chaque matin, 5 min. Note un pattern observé hier.",freq:"Chaque matin · 5 min",dim:"Cognitif",couleur:"#7F77DD"},{num:2,titre:"Pause de réception",desc:"Attends 3 secondes avant de répondre.",freq:"Cette semaine",dim:"Émotionnel",couleur:"#D4537E"},{num:3,titre:"Rituel lunaire",desc:"Une soirée sans écrans après 21h.",freq:"1 soir / semaine",dim:"Cosmique",couleur:"#1D9E75"},{num:4,titre:"La phrase non dite",desc:"Dis à quelqu'un quelque chose que tu ressens.",freq:"Cette semaine",dim:"Relationnel",couleur:"#BA7517"},{num:5,titre:"Carte du cosmos",desc:"Note les 5 personnes qui comptent.",freq:"Ce week-end",dim:"Relationnel",couleur:"#7F77DD"},{num:6,titre:"Invitation inattendue",desc:"Contacte quelqu'un non vu depuis 6 mois.",freq:"Ce mois",dim:"Émotionnel",couleur:"#D4537E"}],
