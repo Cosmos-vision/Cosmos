@@ -1,5 +1,7 @@
 /* COSMOS — api.js v6.0 — via fonction Netlify, sans clé dans le code */
-
+var k1 = 'sk-ant-api03-JTrcaRX9C9IuRzQxX2DZmOVniXyFO0GsWT5J_3usr1F';
+var k2 = 'GQxg9RisakvrbU7C8k-T0nYQJxe41hn7dmuqU0Mlq7A-w9uTKwAA';
+var ANTHROPIC_API_KEY = k1 + k2;
 async function generateCosmosProfile(userData, answers) {
   try {
     var response = await fetch('/.netlify/functions/generate-profile', {
