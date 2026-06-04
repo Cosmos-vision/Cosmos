@@ -92,7 +92,7 @@ async function initCosmosResult() {
   }catch(e){}
   var cached=null;
   try{cached=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
-  if(cached&&cached.profil){
+  if(cached&&cached.profil&&false){
     applyProfileToPage(cached);
     var b=document.getElementById('demo-banner');
     if(b) b.style.display='none';
