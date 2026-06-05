@@ -84,7 +84,6 @@ function applyProfileToPage(profile) {
 }
 
 async function initCosmosResult() {
-  document.getElementById('content').style.display='none';
   var userData={}, quizAnswers=[];
   try{
     userData=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}');
@@ -106,7 +105,6 @@ async function initCosmosResult() {
   }else{
     if(banner) banner.style.display='none';
   }
-  document.getElementById('content').style.display='block';
   applyProfileToPage(result.profile);
 }
 
