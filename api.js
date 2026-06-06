@@ -20,6 +20,7 @@ async function generateCosmosProfile(userData, answers) {
     var locStr = [loc.ville, loc.region, loc.pays].filter(Boolean).join(', ');
     var msg = 'Prénom : ' + (userData.prenom||'?') + '\n';
     msg += 'Naissance : ' + (dob.jour||'?') + '/' + (dob.mois||'?') + '/' + (dob.annee||'?') + '\n';
+    msg += 'Genre : ' + (userData.genre||'neutre') + '\n';
     msg += 'Lieu : ' + (locStr||'?') + '\n\nRéponses aux 9 scènes :\n';
     for (var k=0; k<9; k++) {
       msg += 'Scène '+(k+1)+' ('+SCENE_LABELS[k]+') : index '+(answers[k]!=null?answers[k]:'?')+'\n';
