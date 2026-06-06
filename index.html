@@ -1102,6 +1102,7 @@ document.getElementById('cosmos-form').addEventListener('submit', function(e) {
 
   var userData = {
     prenom: document.getElementById('prenom').value.trim(),
+    genre: document.getElementById('genre').value,
     email: document.getElementById('email').value.trim(),
     dateNaissance: {
       jour: parseInt(document.getElementById('dob-day').value),
