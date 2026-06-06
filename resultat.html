@@ -762,6 +762,14 @@ if(isPaid || window.location.search.includes('success=true')){
 
 /* Charger le profil via Claude API (ou démo) */
 if(window.CosmosAPI){
+  /* Cacher le contenu pendant le chargement */
+  var sections = ['portrait-lines','dim-pills','forces-section','actions-free','paywall'];
+  document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){
+    el.style.opacity='0';
+  });
+  document.getElementById('profile-name').textContent = 'Cosmos construit ton profil…';
+  document.getElementById('profile-code').textContent = '· · ·';
+  
   window.CosmosAPI.init();
 }
 
