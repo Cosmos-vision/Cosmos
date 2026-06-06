@@ -834,7 +834,7 @@
         </div>
         <div class="field">
   <label class="field-label">Genre <span class="opt">· optionnel</span></label>
-  <select id="genre" name="genre" class="loc-input">
+  <select id="genre" name="genre" required style="width:100%;background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem 1rem;color:#F0EEF8;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;-webkit-appearance:none;appearance:none">
     <option value="">Préfère ne pas préciser</option>
     <option value="homme">Homme</option>
     <option value="femme">Femme</option>
@@ -1081,16 +1081,16 @@ function validateForm() {
   var day = document.getElementById('dob-day').value;
   var month = document.getElementById('dob-month').value;
   var year = document.getElementById('dob-year').value;
-  var pays = document.getElementById('pays').value;
+  var pays = document.getElementById('pays').value; var genre = document.getElementById('genre').value;
 
   var emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   var dobValid = day && month && year && parseInt(year) >= 1920 && parseInt(year) <= 2010;
-  var ok = prenom.length >= 2 && emailValid && dobValid && pays;
+  var ok = prenom.length >= 2 && emailValid && dobValid && pays && genre;
 
   document.getElementById('cta-btn').disabled = !ok;
 }
 
-['prenom','email','dob-day','dob-month','dob-year','pays'].forEach(function(id) {
+['prenom','email','dob-day','dob-month','dob-year','pays','genre'].forEach(function(id) {
   var el = document.getElementById(id);
   if (el) el.addEventListener('input', validateForm);
   if (el) el.addEventListener('change', validateForm);
