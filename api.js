@@ -128,9 +128,10 @@ async function initCosmosResult() {
     applyProfileToPage(cached);
     var b=document.getElementById('demo-banner');
     if(b) b.style.display='none';
+    var c=document.getElementById('content');
+    if(c){c.style.visibility='visible';c.style.minHeight='auto';}
     return;
   }
-
   var result=await generateCosmosProfile(userData, quizAnswers);
   var banner=document.getElementById('demo-banner');
   if(result.demo){
