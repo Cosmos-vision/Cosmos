@@ -279,7 +279,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
         </div>
         <p class="profile-eyebrow">Ton profil Cosmos</p>
-        <h1 class="profile-name" id="profile-name">Cosmos construit ton profil personnalisé, veuillez patienter quelques secondes...</h1>
+        <h1 class="profile-name" id="profile-name">✨ Cosmos construit ton profil personnalisé, veuillez patienter environ 30 secondes…</h1>
         <p class="profile-code" id="profile-code">. . .</p>
         <div class="dim-pills" id="dim-pills" style="opacity:0">
           <span class="dim-pill" style="background:rgba(127,119,221,.2);color:#AFA9EC">Lune 82%</span>
@@ -767,7 +767,7 @@ if(window.CosmosAPI){
   document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){
     el.style.opacity='0';
   });
-  document.getElementById('profile-name').textContent = '✨ Cosmos construit ton profil personnalisé, veuillez patienter…';
+  document.getElementById('profile-name').textContent = '✨ Cosmos construit ton profil personnalisé, veuillez patienter environ 30 secondes…';
   document.getElementById('profile-code').textContent = '· · ·';
   
   window.CosmosAPI.init();
