@@ -141,6 +141,8 @@ async function initCosmosResult() {
   } else {
     if(banner) banner.style.display='none';
   }
+  document.getElementById('content').style.visibility='visible';
+  document.getElementById('content').style.minHeight='auto';
   applyProfileToPage(result.profile);
 }
 
