@@ -142,6 +142,10 @@ async function initCosmosResult() {
   } else {
     if(banner) banner.style.display='none';
   }
+  document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){
+  el.style.opacity='1';
+  el.style.transition='opacity 0.5s ease';
+});
   applyProfileToPage(result.profile);
 }
 
