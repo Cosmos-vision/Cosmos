@@ -3,6 +3,8 @@
 var k1 = 'sk-ant-api03-JTrcaRX9C9IuRzQxX2DZmOVniXyFO0GsWT5J_3usr1F';
 var k2 = 'GQxg9RisakvrbU7C8k-T0nYQJxe41hn7dmuqU0Mlq7A-w9uTKwAA';
 var ANTHROPIC_API_KEY = k1 + k2;
+var b1 = 'xsmtpsib-dddc0f97d230f98d8602ce535c1ad70a17440e34e641';
+var b2 = 'c4bd6845c67a8ffa8aa4-xaP08YI5S0h9hxLD';
 
 var SCENE_LABELS = [
   'Lumière sous la porte','Décision 60 secondes','Objet à sauver',
@@ -149,5 +151,27 @@ async function initCosmosResult() {
 });
   applyProfileToPage(result.profile);
 }
-
+async function sendBrevoEmail(email, prenom) {
+  try {
+    var profile = {};
+    try{ profile = JSON.parse(sessionStorage.getItem('cosmos_profile')||'{}'); }catch(e){}
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key':b1 + b2
+      },
+      body: JSON.stringify({
+        templateId: 1,
+        to: [{ email: email, name: prenom }],
+        params: {
+          profil_nom: (profile.profil||{}).nom || 'Ton profil Cosmos',
+          profil_code: (profile.profil||{}).code || ''
+        }
+      })
+    });
+  } catch(e) {
+    console.error('Brevo error:', e);
+  }
+}
 window.CosmosAPI={init:initCosmosResult, apply:applyProfileToPage, getDemo:getDemoProfile};
