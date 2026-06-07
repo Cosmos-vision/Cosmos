@@ -166,7 +166,8 @@ async function sendBrevoEmail(email, prenom) {
         to: [{ email: email, name: prenom }],
         params: {
           profil_nom: (profile.profil||{}).nom || 'Ton profil Cosmos',
-          profil_code: (profile.profil||{}).code || ''
+          profil_code: (profile.profil||{}).code || '',
+  prenom: prenom
         }
       })
     });
