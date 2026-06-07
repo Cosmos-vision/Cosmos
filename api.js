@@ -97,8 +97,57 @@ function getDemoProfile(userData) {
 function applyProfileToPage(profile) {
   if(!profile) return;
   var p=profile, el;
-  el=document.getElementById('profile-name');
-  if(el) el.textContent=p.profil.nom;
+  el=document.getElementById('share-profile-name'); if(el) el.textContent=p.profil.nom;
+
+/* ══ SECTIONS PAYANTES ══ */
+
+/* BLOCAGES */
+if(p.blocages && p.blocages.length) {
+  var blocHTML = p.blocages.map(function(b){
+    return '<div class="blocage-card">'
+      +'<p class="blocage-name">'+b.nom+'</p>'
+      +'<p class="blocage-desc">'+b.desc+'</p>'
+      +'<span class="blocage-key">'+b.cle+'</span>'
+      +'</div>';
+  }).join('');
+  var blocWrap = document.querySelector('.paid-section .forces-section + div, #paid-section [class*="blocage"]');
+  var blocContainer = document.getElementById('blocages-container');
+  if(blocContainer) blocContainer.innerHTML = blocHTML;
+}
+
+/* AMOUR */
+if(p.amour) {
+  var a = p.amour;
+  var elStyle = document.getElementById('love-style-text');
+  var elDesc = document.getElementById('love-desc-text');
+  var elOffre = document.getElementById('love-offre');
+  var elBesoin = document.getElementById('love-besoin');
+  var elPattern = document.getElementById('love-pattern');
+  if(elStyle) elStyle.textContent = a.style;
+  if(elDesc) elDesc.textContent = a.desc;
+  if(elOffre) elOffre.textContent = a.offre;
+  if(elBesoin) elBesoin.textContent = a.besoin;
+  if(elPattern) elPattern.textContent = a.pattern;
+}
+
+/* MIROIR */
+if(p.miroir) {
+  var m = p.miroir;
+  var elMName = document.getElementById('mirror-name');
+  var elMSub = document.getElementById('mirror-sub');
+  var elMQuote = document.getElementById('mirror-quote');
+  if(elMName) elMName.textContent = m.nom;
+  if(elMSub) elMSub.textContent = m.sous_titre;
+  if(elMQuote) elMQuote.textContent = m.citation;
+  var fills = document.querySelectorAll('.compat-fill');
+  var vals = [m.resonance, m.complementarite, m.harmonie, m.friction];
+  fills.forEach(function(f, i){ if(vals[i]) f.setAttribute('data-w', vals[i]); });
+}
+
+/* 3e FORCE */
+if(p.forces && p.forces[2]) {
+  var f3 = p.
+  
   el=document.getElementById('profile-code');
   if(el) el.textContent=p.profil.code.replace(/-/g,' · ');
   el=document.getElementById('dim-pills');
