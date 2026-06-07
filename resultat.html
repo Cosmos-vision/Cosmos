@@ -748,6 +748,9 @@ function unlockPaidContent(){
     animateCompat();
     animateShareRadar();
   }, 300);
+  if(userData && userData.email) {
+    sendBrevoEmail(userData.email, userData.prenom || 'toi');
+  }
 
   /* Scroll vers le nouveau contenu */
   setTimeout(function(){
