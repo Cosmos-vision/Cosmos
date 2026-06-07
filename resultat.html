@@ -390,7 +390,47 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
         </div>
       </div>
-
+      
+        <!-- CARTE DE PARTAGE -->
+        <div class="share-section">
+          <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
+          <div class="share-card-visual" id="share-card">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="360" cy="30" r="70" fill="rgba(127,119,221,0.06)"/>
+              <circle cx="40" cy="130" r="50" fill="rgba(212,83,126,0.05)"/>
+              <circle cx="200" cy="80" r="1.5" fill="white" opacity=".3"/>
+              <circle cx="60" cy="40" r="1" fill="white" opacity=".5"/>
+              <circle cx="320" cy="120" r="1" fill="white" opacity=".4"/>
+              <circle cx="100" cy="20" r="1" fill="white" opacity=".6"/>
+              <circle cx="280" cy="50" r="1.5" fill="#AFA9EC" opacity=".3"/>
+            </svg>
+            <div style="position:relative;z-index:2">
+              <p class="share-logo">COSMOS<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
+              <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
+              <svg viewBox="0 0 100 100" width="70" height="70" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+                <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+                <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
+                <circle id="sr-top"    cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
+                <circle id="sr-right"  cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
+                <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
+                <circle id="sr-left"   cx="50" cy="50" r="2.5" fill="#FAC775"/>
+              </svg>
+              <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:8px">
+                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">Lune 82%</span>
+                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">Systémique 91%</span>
+                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">Protecteur 74%</span>
+              </div>
+              <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-app.com</p>
+            </div>
+          </div>
+          <div class="share-btns">
+            <button class="share-btn share-btn-ig" onclick="shareIG()">Partager sur Instagram Stories</button>
+            <button class="share-btn share-btn-fb" onclick="shareFB()">Partager sur Facebook</button>
+            <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyCode()">Copier mon code LUN · SYS · PRO</button>
+          </div>
+        </div>
+      
       <!-- ══ MUR DE PAIEMENT ══ -->
       <div class="paywall" id="paywall">
         <h2 class="paywall-title">Ton analyse complète t'attend</h2>
@@ -548,46 +588,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
               <p class="action-desc">Contacte une personne que tu n'as pas vue depuis plus de 6 mois et que tu apprécies. Pas un message — un vrai appel ou une rencontre. L'Architecte Lunaire s'isole trop facilement.</p>
               <p class="action-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Ce mois · 1 fois</p>
             </div>
-          </div>
-        </div>
-
-        <!-- CARTE DE PARTAGE -->
-        <div class="share-section">
-          <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
-          <div class="share-card-visual" id="share-card">
-            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="360" cy="30" r="70" fill="rgba(127,119,221,0.06)"/>
-              <circle cx="40" cy="130" r="50" fill="rgba(212,83,126,0.05)"/>
-              <circle cx="200" cy="80" r="1.5" fill="white" opacity=".3"/>
-              <circle cx="60" cy="40" r="1" fill="white" opacity=".5"/>
-              <circle cx="320" cy="120" r="1" fill="white" opacity=".4"/>
-              <circle cx="100" cy="20" r="1" fill="white" opacity=".6"/>
-              <circle cx="280" cy="50" r="1.5" fill="#AFA9EC" opacity=".3"/>
-            </svg>
-            <div style="position:relative;z-index:2">
-              <p class="share-logo">COSMOS<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
-              <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
-              <svg viewBox="0 0 100 100" width="70" height="70" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-                <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-                <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
-                <circle id="sr-top"    cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
-                <circle id="sr-right"  cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
-                <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
-                <circle id="sr-left"   cx="50" cy="50" r="2.5" fill="#FAC775"/>
-              </svg>
-              <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:8px">
-                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">Lune 82%</span>
-                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">Systémique 91%</span>
-                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">Protecteur 74%</span>
-              </div>
-              <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-app.com</p>
-            </div>
-          </div>
-          <div class="share-btns">
-            <button class="share-btn share-btn-ig" onclick="shareIG()">Partager sur Instagram Stories</button>
-            <button class="share-btn share-btn-fb" onclick="shareFB()">Partager sur Facebook</button>
-            <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyCode()">Copier mon code LUN · SYS · PRO</button>
           </div>
         </div>
 
