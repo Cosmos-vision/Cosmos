@@ -270,6 +270,9 @@ async function initCosmosResult() {
     }
   } else {
     if(banner) banner.style.display='none';
+    if(userData && userData.email) {
+  registerBrevoContact(userData.email, userData.prenom || '');
+}
   }
   document.querySelectorAll('.portrait-block,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section').forEach(function(el){
     el.style.opacity='1';
@@ -302,5 +305,23 @@ async function sendBrevoEmail(email, prenom) {
     console.error('Brevo error:', e);
   }
 }
-
+async function registerBrevoContact(email, prenom) {
+  try {
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': b1 + b2
+      },
+      body: JSON.stringify({
+        email: email,
+        attributes: { FIRSTNAME: prenom },
+        listIds: [2],
+        updateEnabled: true
+      })
+    });
+  } catch(e) {
+    console.error('Brevo contact error:', e);
+  }
+}
 window.CosmosAPI={init:initCosmosResult, apply:applyProfileToPage, getDemo:getDemoProfile};
