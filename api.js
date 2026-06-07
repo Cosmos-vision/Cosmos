@@ -141,6 +141,20 @@ function applyProfileToPage(profile) {
       forceCards[1].querySelector('.force-paradox').textContent = p.forces[1].paradoxe;
     }
   }
+  /* ACTIONS GRATUITES */
+  if(p.actions && p.actions.length >= 2) {
+    var actionCards = document.querySelectorAll('.actions-free .action-card');
+    if(actionCards[0]) {
+      actionCards[0].querySelector('.action-title').textContent = p.actions[0].titre;
+      actionCards[0].querySelector('.action-desc').textContent = p.actions[0].desc;
+      actionCards[0].querySelector('.action-freq').textContent = p.actions[0].freq;
+    }
+    if(actionCards[1]) {
+      actionCards[1].querySelector('.action-title').textContent = p.actions[1].titre;
+      actionCards[1].querySelector('.action-desc').textContent = p.actions[1].desc;
+      actionCards[1].querySelector('.action-freq').textContent = p.actions[1].freq;
+    }
+  }
   el=document.getElementById('share-profile-name');
   if(el) el.textContent=p.profil.nom;
 
