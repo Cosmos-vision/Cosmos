@@ -168,6 +168,18 @@ if(p.dims && p.profil) {
     if(el) el.textContent=p.profil.nom;
     el=document.getElementById('share-code');
     if(el) el.textContent=p.profil.code.replace(/-/g,' · ')+' · cosmos-vision.com';
+  
+  /* PILLS CARTE PARTAGE */
+  if(p.dims && p.profil) {
+    var sharePills = document.querySelector('#share-card div[style*="flex"]');
+    if(sharePills) {
+      var pts=(p.profil.sous_titre||'').split('·').map(function(s){return s.trim();});
+      sharePills.innerHTML=
+        '<span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">'+pts[0]+' '+p.dims.cosmique[0]+'%</span>'+
+        '<span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">'+pts[1]+' '+p.dims.cognitif[0]+'%</span>'+
+        '<span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">'+pts[2]+' '+p.dims.emotionnel[0]+'%</span>';
+    }
+  }
 
   /* ══ SECTIONS PAYANTES ══ */
 
