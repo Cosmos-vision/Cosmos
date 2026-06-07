@@ -750,6 +750,7 @@ function unlockPaidContent(){
   }, 300);
   if(userData && userData.email) {
     sendBrevoEmail(userData.email, userData.prenom || 'toi');
+    registerBrevoContact(userData.email, userData.prenom || '', 4);
   }
 
   /* Scroll vers le nouveau contenu */
