@@ -807,8 +807,10 @@ function shareIG(){
   alert('📸 Pour partager sur Instagram :\n\n1. Fais une capture d\'écran de ta carte de profil\n2. Ouvre Instagram → ton profil → "+" → Story\n3. Choisis ta capture et partage !\n\nTon profil : ' + nom + '\n' + code);
 }
 function shareFB(){
-  var url=encodeURIComponent(window.location.href);
-  var text=encodeURIComponent('J\'ai découvert mon profil Cosmos : L\'Architecte Lunaire (LUN·SYS·PRO). Et toi ? cosmos-app.com');
+  var nom = document.getElementById('profile-name').textContent || 'Mon profil Cosmos';
+  var code = document.getElementById('share-code').textContent || '';
+  var text = encodeURIComponent('Je viens de découvrir mon profil Cosmos : ' + nom + ' (' + code + '). Et toi, quel est le tien ? 🌟');
+  var url = encodeURIComponent('https://cosmos-vision.com');
   window.open('https://www.facebook.com/sharer/sharer.php?u='+url+'&quote='+text,'_blank');
 }
 function copyCode(){
