@@ -306,8 +306,11 @@ async function sendBrevoEmail(email, prenom) {
     console.error('Brevo error:', e);
   }
 }
-async function registerBrevoContact(email, prenom, listId) {   listId = listId || 3;
+async function registerBrevoContact(email, prenom, listId, commentaire) {
+  listId = listId || 3;
   try {
+    var attrs = { FIRSTNAME: prenom };
+    if(commentaire) attrs.COMMENTAIRE = commentaire;
     await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
@@ -316,7 +319,7 @@ async function registerBrevoContact(email, prenom, listId) {   listId = listId |
       },
       body: JSON.stringify({
         email: email,
-        attributes: { FIRSTNAME: prenom },
+        attributes: attrs,
         listIds: [listId],
         updateEnabled: true
       })
