@@ -1,4 +1,4 @@
-/* COSMOS — api.js v8.0 — appel direct Claude */
+/* COSMOS — api.js v9.0 — appel direct Claude */
 
 var k1 = 'sk-ant-api03-JTrcaRX9C9IuRzQxX2DZmOVniXyFO0GsWT5J_3usr1F';
 var k2 = 'GQxg9RisakvrbU7C8k-T0nYQJxe41hn7dmuqU0Mlq7A-w9uTKwAA';
@@ -28,13 +28,13 @@ async function generateCosmosProfile(userData, answers) {
       msg += 'Scène '+(k+1)+' ('+SCENE_LABELS[k]+') : index '+(answers[k]!=null?answers[k]:'?')+'\n';
     }
     var appro = {};
-try{ appro = JSON.parse(sessionStorage.getItem('cosmos_appro')||'{}'); }catch(e){}
-if(appro.answers && appro.answers.length > 0) {
-  msg += '\nRÉPONSES APPROFONDISSEMENT :\n';
-  var qlabels = ['Style amoureux','Réaction blessure','Rêves récurrents','Solitude incompréhension','Changement affectif'];
-  for(var j=0;j<5;j++) msg += qlabels[j]+' : index '+(appro.answers[j]!=null?appro.answers[j]:'?')+'\n';
-}
-msg += '\nGénère le JSON du profil Cosmos.';
+    try{ appro = JSON.parse(sessionStorage.getItem('cosmos_appro')||'{}'); }catch(e){}
+    if(appro.answers && appro.answers.length > 0) {
+      msg += '\nRÉPONSES APPROFONDISSEMENT :\n';
+      var qlabels = ['Style amoureux','Réaction blessure','Rêves récurrents','Solitude incompréhension','Changement affectif'];
+      for(var j=0;j<5;j++) msg += qlabels[j]+' : index '+(appro.answers[j]!=null?appro.answers[j]:'?')+'\n';
+    }
+    msg += '\nGénère le JSON du profil Cosmos.';
 
     var res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -83,12 +83,12 @@ function getDemoProfile(userData) {
     amour:{style:"Sécure-distancié",desc:"Tu aimes profondément mais tu testes avant de faire confiance. Tu as besoin qu'on reste. Quand tu choisis quelqu'un, c'est avec une intensité rare.",offre:"Une loyauté absolue et une présence calme.",besoin:"De constance silencieuse — quelqu'un qui est là encore et encore.",pattern:"Attendre que l'autre prouve sa valeur avant de s'engager."},
     miroir:{nom:"Le Gardien du Feu Doux",sous_titre:"Soleil · Narratif · Expansif",citation:"Cette personne arrive avec une constance tranquille — cette façon d'être là sans calculer, sans condition.",resonance:92,complementarite:79,harmonie:86,friction:61,signaux:"Tu te sentiras calme dès les premières minutes. Le silence entre vous sera plein.",eveil:"Elle va t'apprendre à recevoir sans calculer."},
     actions:[
-      {num:1,titre:"Journal des structures",desc:"Chaque matin, 5 min. Note un pattern observé hier dans une conversation.",freq:"Chaque matin · 5 min",dim:"Cognitif",couleur:"#7F77DD"},
-      {num:2,titre:"Pause de réception",desc:"Attends 3 secondes avant de répondre. Laisse l'attention des autres t'atteindre.",freq:"Cette semaine · Continu",dim:"Émotionnel",couleur:"#D4537E"},
-      {num:3,titre:"Rituel lunaire",desc:"Une soirée sans écrans après 21h. Ton énergie se régénère dans le silence.",freq:"1 soir / semaine",dim:"Cosmique",couleur:"#1D9E75"},
-      {num:4,titre:"La phrase non dite",desc:"Dis à quelqu'un cette semaine quelque chose que tu ressens vraiment.",freq:"Cette semaine · 1 fois",dim:"Relationnel",couleur:"#BA7517"},
-      {num:5,titre:"Carte du cosmos",desc:"Note les 5 personnes qui comptent et ce qu'elles t'apportent que tu ne leur as pas dit.",freq:"Ce week-end · 20 min",dim:"Relationnel",couleur:"#7F77DD"},
-      {num:6,titre:"Invitation inattendue",desc:"Contacte quelqu'un non vu depuis 6 mois. Un vrai appel, pas un message.",freq:"Ce mois · 1 fois",dim:"Émotionnel",couleur:"#D4537E"}
+      {num:1,titre:"Journal des structures",desc:"Chaque matin, 5 min. Note un pattern observé hier.",freq:"Chaque matin · 5 min",dim:"Cognitif",couleur:"#7F77DD"},
+      {num:2,titre:"Pause de réception",desc:"Attends 3 secondes avant de répondre.",freq:"Cette semaine · Continu",dim:"Émotionnel",couleur:"#D4537E"},
+      {num:3,titre:"Rituel lunaire",desc:"Une soirée sans écrans après 21h.",freq:"1 soir / semaine",dim:"Cosmique",couleur:"#1D9E75"},
+      {num:4,titre:"La phrase non dite",desc:"Dis à quelqu'un quelque chose que tu ressens vraiment.",freq:"Cette semaine · 1 fois",dim:"Relationnel",couleur:"#BA7517"},
+      {num:5,titre:"Carte du cosmos",desc:"Note les 5 personnes qui comptent.",freq:"Ce week-end · 20 min",dim:"Relationnel",couleur:"#7F77DD"},
+      {num:6,titre:"Invitation inattendue",desc:"Contacte quelqu'un non vu depuis 6 mois.",freq:"Ce mois · 1 fois",dim:"Émotionnel",couleur:"#D4537E"}
     ],
     dims:{cosmique:[78,86],cognitif:[87,95],emotionnel:[70,78],relationnel:[84,92]}
   };
@@ -97,57 +97,10 @@ function getDemoProfile(userData) {
 function applyProfileToPage(profile) {
   if(!profile) return;
   var p=profile, el;
-  el=document.getElementById('share-profile-name'); if(el) el.textContent=p.profil.nom;
 
-/* ══ SECTIONS PAYANTES ══ */
-
-/* BLOCAGES */
-if(p.blocages && p.blocages.length) {
-  var blocHTML = p.blocages.map(function(b){
-    return '<div class="blocage-card">'
-      +'<p class="blocage-name">'+b.nom+'</p>'
-      +'<p class="blocage-desc">'+b.desc+'</p>'
-      +'<span class="blocage-key">'+b.cle+'</span>'
-      +'</div>';
-  }).join('');
-  var blocWrap = document.querySelector('.paid-section .forces-section + div, #paid-section [class*="blocage"]');
-  var blocContainer = document.getElementById('blocages-container');
-  if(blocContainer) blocContainer.innerHTML = blocHTML;
-}
-
-/* AMOUR */
-if(p.amour) {
-  var a = p.amour;
-  var elStyle = document.getElementById('love-style-text');
-  var elDesc = document.getElementById('love-desc-text');
-  var elOffre = document.getElementById('love-offre');
-  var elBesoin = document.getElementById('love-besoin');
-  var elPattern = document.getElementById('love-pattern');
-  if(elStyle) elStyle.textContent = a.style;
-  if(elDesc) elDesc.textContent = a.desc;
-  if(elOffre) elOffre.textContent = a.offre;
-  if(elBesoin) elBesoin.textContent = a.besoin;
-  if(elPattern) elPattern.textContent = a.pattern;
-}
-
-/* MIROIR */
-if(p.miroir) {
-  var m = p.miroir;
-  var elMName = document.getElementById('mirror-name');
-  var elMSub = document.getElementById('mirror-sub');
-  var elMQuote = document.getElementById('mirror-quote');
-  if(elMName) elMName.textContent = m.nom;
-  if(elMSub) elMSub.textContent = m.sous_titre;
-  if(elMQuote) elMQuote.textContent = m.citation;
-  var fills = document.querySelectorAll('.compat-fill');
-  var vals = [m.resonance, m.complementarite, m.harmonie, m.friction];
-  fills.forEach(function(f, i){ if(vals[i]) f.setAttribute('data-w', vals[i]); });
-}
-
-/* 3e FORCE */
-if(p.forces && p.forces[2]) {
-  var f3 = p.
-  
+  /* ══ PROFIL DE BASE ══ */
+  el=document.getElementById('profile-name');
+  if(el) el.textContent=p.profil.nom;
   el=document.getElementById('profile-code');
   if(el) el.textContent=p.profil.code.replace(/-/g,' · ');
   el=document.getElementById('dim-pills');
@@ -170,6 +123,64 @@ if(p.forces && p.forces[2]) {
   }
   el=document.getElementById('share-profile-name');
   if(el) el.textContent=p.profil.nom;
+
+  /* ══ SECTIONS PAYANTES ══ */
+
+  /* 3e FORCE */
+  if(p.forces && p.forces[2]) {
+    var f3 = p.forces[2];
+    var elF3Name = document.getElementById('force3-name');
+    var elF3Desc = document.getElementById('force3-desc');
+    var elF3Para = document.getElementById('force3-paradox');
+    if(elF3Name) elF3Name.textContent = f3.nom;
+    if(elF3Desc) elF3Desc.textContent = f3.desc;
+    if(elF3Para) elF3Para.textContent = f3.paradoxe;
+  }
+
+  /* BLOCAGES */
+  if(p.blocages && p.blocages.length) {
+    var blocContainer = document.getElementById('blocages-container');
+    if(blocContainer) {
+      blocContainer.innerHTML = '<p class="sec-label" style="margin-bottom:0.75rem">Tes 2 blocages inconscients</p>'
+        + p.blocages.map(function(b){
+          return '<div class="blocage-card">'
+            +'<p class="blocage-name">'+b.nom+'</p>'
+            +'<p class="blocage-desc">'+b.desc+'</p>'
+            +'<span class="blocage-key">'+b.cle+'</span>'
+            +'</div>';
+        }).join('');
+    }
+  }
+
+  /* AMOUR */
+  if(p.amour) {
+    var a = p.amour;
+    var elStyle = document.getElementById('love-style-text');
+    var elDesc = document.getElementById('love-desc-text');
+    var elOffre = document.getElementById('love-offre');
+    var elBesoin = document.getElementById('love-besoin');
+    var elPattern = document.getElementById('love-pattern');
+    if(elStyle) elStyle.textContent = a.style;
+    if(elDesc) elDesc.textContent = a.desc;
+    if(elOffre) elOffre.textContent = a.offre;
+    if(elBesoin) elBesoin.textContent = a.besoin;
+    if(elPattern) elPattern.textContent = a.pattern;
+  }
+
+  /* MIROIR */
+  if(p.miroir) {
+    var m = p.miroir;
+    var elMName = document.getElementById('mirror-name');
+    var elMSub = document.getElementById('mirror-sub');
+    var elMQuote = document.getElementById('mirror-quote');
+    if(elMName) elMName.textContent = m.nom;
+    if(elMSub) elMSub.textContent = m.sous_titre;
+    if(elMQuote) elMQuote.textContent = m.citation;
+    var fills = document.querySelectorAll('.compat-fill');
+    var vals = [m.resonance, m.complementarite, m.harmonie, m.friction];
+    fills.forEach(function(f, i){ if(vals[i]) f.setAttribute('data-w', vals[i]); });
+  }
+
   try{ sessionStorage.setItem('cosmos_profile', JSON.stringify(profile)); }catch(e){}
 }
 
@@ -187,10 +198,12 @@ async function initCosmosResult() {
     applyProfileToPage(cached);
     var b=document.getElementById('demo-banner');
     if(b) b.style.display='none';
-    var c=document.getElementById('content');
-    if(c){c.style.visibility='visible';c.style.minHeight='auto';}
+    document.querySelectorAll('.portrait-block,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section').forEach(function(el){
+      el.style.opacity='1';
+    });
     return;
   }
+
   var result=await generateCosmosProfile(userData, quizAnswers);
   var banner=document.getElementById('demo-banner');
   if(result.demo){
@@ -202,11 +215,12 @@ async function initCosmosResult() {
     if(banner) banner.style.display='none';
   }
   document.querySelectorAll('.portrait-block,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section').forEach(function(el){
-  el.style.opacity='1';
-  el.style.transition='opacity 0.5s ease';
-});
+    el.style.opacity='1';
+    el.style.transition='opacity 0.5s ease';
+  });
   applyProfileToPage(result.profile);
 }
+
 async function sendBrevoEmail(email, prenom) {
   try {
     var profile = {};
@@ -215,7 +229,7 @@ async function sendBrevoEmail(email, prenom) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'api-key':b1 + b2
+        'api-key': b1 + b2
       },
       body: JSON.stringify({
         templateId: 1,
@@ -223,7 +237,7 @@ async function sendBrevoEmail(email, prenom) {
         params: {
           profil_nom: (profile.profil||{}).nom || 'Ton profil Cosmos',
           profil_code: (profile.profil||{}).code || '',
-  prenom: prenom
+          prenom: prenom
         }
       })
     });
@@ -231,4 +245,5 @@ async function sendBrevoEmail(email, prenom) {
     console.error('Brevo error:', e);
   }
 }
+
 window.CosmosAPI={init:initCosmosResult, apply:applyProfileToPage, getDemo:getDemoProfile};
