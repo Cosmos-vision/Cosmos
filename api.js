@@ -306,7 +306,7 @@ async function sendBrevoEmail(email, prenom) {
     console.error('Brevo error:', e);
   }
 }
-async function registerBrevoContact(email, prenom) {
+async function registerBrevoContact(email, prenom, listId) {   listId = listId || 3;
   try {
     await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
@@ -317,7 +317,7 @@ async function registerBrevoContact(email, prenom) {
       body: JSON.stringify({
         email: email,
         attributes: { FIRSTNAME: prenom },
-        listIds: [3],
+        listIds: [listId],
         updateEnabled: true
       })
     });
