@@ -788,7 +788,7 @@ function shareFB(){
   window.open('https://www.facebook.com/sharer/sharer.php?u='+url+'&quote='+text,'_blank');
 }
 function copyCode(){
-  var code='LUN · SYS · PRO · cosmos-app.com';
+  var code = document.getElementById('share-code').textContent;
   if(navigator.clipboard){
     navigator.clipboard.writeText(code).then(function(){
       var btn=document.getElementById('copy-btn');
