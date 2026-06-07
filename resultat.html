@@ -827,11 +827,12 @@ function copyCode(){
 
 function registerChapter2() {
   var btn = document.getElementById('chapter2-btn');
+  var commentaire = document.getElementById('feedback-text').value;
   btn.textContent = '✓ Tu seras notifié·e !';
   btn.style.background = 'var(--teal)';
   btn.disabled = true;
   if(userData && userData.email) {
-    registerBrevoContact(userData.email, userData.prenom || '', 5);
+    registerBrevoContact(userData.email, userData.prenom || '', 5, commentaire);
   }
 }
 </script>
