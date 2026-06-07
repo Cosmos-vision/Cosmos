@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmos — Approfondissement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:#07060f; --deep:#0d0b1a; --surface:#131128; --muted:#1e1b35;
+    --border:rgba(255,255,255,0.07); --purple:#7F77DD; --purple-light:#AFA9EC;
+    --rose:#D4537E; --teal:#1D9E75; --amber:#BA7517;
+    --text:#F0EEF8; --text-muted:#8B87B0; --text-faint:#4A4870;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--void);color:var(--text);font-family:'DM Sans',sans-serif;
+    font-weight:300;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  #cosmos-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
+
+  nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid var(--border);backdrop-filter:blur(12px);
+    background:rgba(7,6,15,0.6);position:sticky;top:0;z-index:100}
+  .logo{font-family:'DM Sans',sans-serif;font-weight:300;font-size:1rem;
+    letter-spacing:0.25em;text-transform:uppercase;color:var(--text);
+    text-decoration:none;display:flex;align-items:center;gap:6px}
+  .logo-dot{width:5px;height:5px;border-radius:50%;background:var(--purple);
+    animation:pulse 3s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
+
+  .progress-wrap{padding:0 1.5rem;background:rgba(7,6,15,0.4);backdrop-filter:blur(8px)}
+  .progress-inner{max-width:580px;margin:0 auto;padding:0.75rem 0;
+    display:flex;align-items:center;gap:12px}
+  .progress-track{flex:1;height:2px;background:rgba(255,255,255,0.06);
+    border-radius:2px;overflow:hidden}
+  .progress-fill{height:100%;background:var(--rose);border-radius:2px;
+    transition:width 0.5s cubic-bezier(0.4,0,0.2,1)}
+  .progress-label{font-size:0.65rem;color:#AFA9EC;letter-spacing:0.1em;white-space:nowrap}
+
+  .dots-wrap{display:flex;gap:5px;justify-content:center;padding:0.6rem 0}
+  .scene-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.12);
+    transition:all 0.3s ease}
+  .scene-dot.done{background:var(--rose)}
+  .scene-dot.active{background:rgba(212,83,126,0.8);width:16px;border-radius:2px}
+
+  .main{flex:1;display:flex;align-items:flex-start;justify-content:center;
+    padding:2rem 1.5rem 5rem}
+  .scene-card{width:100%;max-width:580px;animation:sceneIn 0.45s cubic-bezier(0.4,0,0.2,1) both}
+  @keyframes sceneIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+  .appro-badge{font-size:0.62rem;padding:3px 10px;border-radius:20px;
+    background:rgba(212,83,126,0.2);color:var(--rose);
+    border:0.5px solid rgba(212,83,126,0.3);display:inline-block;
+    margin-bottom:1rem;letter-spacing:0.08em;text-transform:uppercase}
+
+  .scene-num{font-size:0.62rem;color:#AFA9EC;letter-spacing:0.15em;
+    text-transform:uppercase;margin-bottom:0.6rem}
+  .scene-title{font-family:'Cormorant Garamond',serif;
+    font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:300;
+    line-height:1.25;color:var(--text);margin-bottom:0.9rem}
+  .scene-desc{font-size:0.88rem;color:#C8C4E8;line-height:1.8;
+    margin-bottom:1.75rem;border-left:1.5px solid rgba(212,83,126,0.3);
+    padding-left:1rem}
+
+  .options{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem}
+  .opt-btn{width:100%;background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);border-radius:12px;
+    padding:1rem 1.1rem;display:flex;align-items:center;gap:12px;
+    cursor:pointer;text-align:left;
+    transition:background 0.18s,border-color 0.18s,transform 0.1s;
+    -webkit-tap-highlight-color:transparent}
+  .opt-btn:hover{background:rgba(212,83,126,0.08);border-color:rgba(212,83,126,0.3)}
+  .opt-btn:active{transform:scale(0.99)}
+  .opt-btn.selected{background:rgba(212,83,126,0.14);border-color:var(--rose)}
+  .opt-btn.selected .opt-check{background:var(--rose);border-color:var(--rose)}
+  .opt-btn.selected .opt-check svg{opacity:1}
+  .opt-btn.selected .opt-text{color:var(--text)}
+  .opt-check{width:20px;height:20px;border-radius:50%;
+    border:1.5px solid rgba(255,255,255,0.18);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    transition:all 0.18s;background:transparent}
+  .opt-check svg{width:10px;height:8px;opacity:0;transition:opacity 0.15s}
+  .opt-text{font-size:0.85rem;color:#C8C4E8;line-height:1.5;transition:color 0.18s}
+
+  .nav-btns{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .btn-back{background:transparent;border:1px solid rgba(255,255,255,0.1);
+    border-radius:100px;padding:0.65rem 1.25rem;color:#AFA9EC;
+    font-family:'DM Sans',sans-serif;font-size:0.8rem;cursor:pointer;transition:all 0.18s}
+  .btn-back:hover{border-color:rgba(255,255,255,0.25);color:var(--text)}
+  .btn-next{background:var(--rose);border:none;border-radius:100px;
+    padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;
+    font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.18s;
+    opacity:0.35;pointer-events:none}
+  .btn-next.ready{opacity:1;pointer-events:auto}
+  .btn-next.ready:hover{background:#B83D68;transform:translateY(-1px)}
+
+  /* INTRO SCREEN */
+  .intro-screen{text-align:center;padding:2rem 0}
+  .intro-orb{width:80px;height:80px;border-radius:50%;
+    background:rgba(212,83,126,0.12);border:1.5px solid var(--rose);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 1.5rem;animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .intro-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;
+    font-weight:300;margin-bottom:0.75rem;color:var(--text)}
+  .intro-sub{font-size:0.88rem;color:#C8C4E8;line-height:1.75;
+    margin-bottom:2rem;max-width:440px;margin-left:auto;margin-right:auto}
+  .intro-note{font-size:0.75rem;color:var(--text-faint);margin-bottom:2rem;
+    font-style:italic}
+  .btn-start{background:var(--rose);border:none;border-radius:100px;
+    padding:0.85rem 2.5rem;color:white;font-family:'DM Sans',sans-serif;
+    font-size:0.9rem;font-weight:500;cursor:pointer;transition:all 0.2s}
+  .btn-start:hover{background:#B83D68;transform:translateY(-1px)}
+
+  /* LOADING */
+  .loading-screen{display:none;flex-direction:column;align-items:center;
+    justify-content:center;min-height:60vh;text-align:center;padding:2rem}
+  .loading-screen.visible{display:flex}
+  .loading-orb{width:80px;height:80px;border-radius:50%;background:var(--muted);
+    border:1.5px solid var(--rose);display:flex;align-items:center;
+    justify-content:center;margin-bottom:1.5rem;position:relative;
+    animation:float 3s ease-in-out infinite}
+  .loading-orb::before{content:'';position:absolute;width:100px;height:100px;
+    border-radius:50%;border:1px solid rgba(212,83,126,0.2);
+    animation:spin 8s linear infinite}
+  @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  .loading-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;
+    font-weight:300;margin-bottom:0.5rem;color:var(--text)}
+  .loading-sub{font-size:0.8rem;color:#AFA9EC;letter-spacing:0.05em}
+  .loading-dots{display:flex;gap:6px;justify-content:center;margin-top:1rem}
+  .loading-dots span{width:5px;height:5px;border-radius:50%;
+    background:var(--rose);opacity:0.3;animation:dotPulse 1.4s ease-in-out infinite}
+  .loading-dots span:nth-child(2){animation-delay:0.2s}
+  .loading-dots span:nth-child(3){animation-delay:0.4s}
+  @keyframes dotPulse{0%,80%,100%{opacity:0.3;transform:scale(0.8)}40%{opacity:1;transform:scale(1)}}
+
+  @media(max-width:480px){
+    .main{padding:1.5rem 1rem 5rem}
+    nav{padding:0.9rem 1rem}
+  }
+</style>
+</head>
+<body>
+<canvas id="cosmos-canvas"></canvas>
+
+<div class="page">
+  <nav>
+    <a href="index.html" class="logo">COSMOS<span class="logo-dot"></span></a>
+    <span style="font-size:0.7rem;color:#AFA9EC;letter-spacing:0.06em" id="nav-label">Approfondissement</span>
+  </nav>
+
+  <div class="progress-wrap">
+    <div class="progress-inner">
+      <div class="progress-track">
+        <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+      </div>
+      <span class="progress-label" id="prog-label">1 / 5</span>
+    </div>
+  </div>
+
+  <div class="dots-wrap" id="dots-wrap"></div>
+
+  <div class="main">
+
+    <!-- INTRO -->
+    <div class="scene-card" id="intro-screen">
+      <div class="intro-screen">
+        <div class="intro-orb">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+               stroke="#D4537E" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <h1 class="intro-title">Allons plus loin.</h1>
+        <p class="intro-sub">Ces 5 questions explorent des dimensions que les 9 scènes n'ont pas pu toucher — ton rapport à l'amour, tes patterns inconscients, ce que tu portes sans le montrer.</p>
+        <p class="intro-note">5 questions · 3 minutes · Optionnel mais précieux</p>
+        <button class="btn-start" onclick="startAppro()">Continuer mon exploration</button>
+        <br><br>
+        <button onclick="skipAppro()" style="background:transparent;border:none;color:var(--text-faint);font-family:'DM Sans',sans-serif;font-size:0.8rem;cursor:pointer;text-decoration:underline">Passer cette étape</button>
+      </div>
+    </div>
+
+    <!-- QUESTIONS -->
+    <div class="scene-card" id="scene-card" style="display:none"></div>
+
+    <!-- LOADING -->
+    <div class="loading-screen" id="loading-screen">
+      <div class="loading-orb">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+             stroke="#D4537E" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </div>
+      <h2 class="loading-title">Cosmos affine ton profil…</h2>
+      <p class="loading-sub">Intégration des dimensions profondes</p>
+      <div class="loading-dots"><span></span><span></span><span></span></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ÉTOILES */
+(function(){
+  var c=document.getElementById('cosmos-canvas'),ctx=c.getContext('2d'),stars=[],W,H;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  function make(n){stars=[];for(var i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.1+0.2,a:Math.random()*0.6+0.1,sp:Math.random()*0.003+0.001,ph:Math.random()*Math.PI*2,col:Math.random()>0.93?'rose':Math.random()>0.87?'purple':'white'});}
+  function draw(t){ctx.clearRect(0,0,W,H);stars.forEach(function(s){var al=(Math.sin(t*s.sp+s.ph)+1)/2*s.a;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);if(s.col==='rose')ctx.fillStyle='rgba(212,83,126,'+al+')';else if(s.col==='purple')ctx.fillStyle='rgba(175,169,236,'+al+')';else ctx.fillStyle='rgba(255,255,255,'+al+')';ctx.fill();});requestAnimationFrame(draw);}
+  resize();make(160);window.addEventListener('resize',function(){resize();make(160);});requestAnimationFrame(draw);
+})();
+
+var APPRO = [
+  {
+    title: 'Dans une relation, ce qui te manque le plus.',
+    desc: 'Imagine une relation où tout va bien — sauf une chose. Cette chose-là, c\'est celle dont tu as le plus besoin. Qu\'est-ce que c\'est ?',
+    opts: [
+      'La tendresse physique — le contact, la proximité, être touché',
+      'Les conversations profondes — être vraiment compris, pas juste écouté',
+      'La stabilité rassurante — savoir que l\'autre sera là demain',
+      'L\'admiration mutuelle — sentir que tu comptes vraiment pour l\'autre'
+    ]
+  },
+  {
+    title: 'Quand quelque chose te blesse vraiment.',
+    desc: 'Pas une petite friction — une vraie blessure. Quelqu\'un que tu aimes t\'a fait du mal sans le vouloir. Dans les premières heures, qu\'est-ce que tu fais avec cette douleur ?',
+    opts: [
+      'Tu te retires en silence — tu as besoin d\'être seul pour traiter',
+      'Tu en parles immédiatement — garder ça pour toi est insupportable',
+      'Tu minimises et continues — la montrer te semble une faiblesse',
+      'Tu cherches une distraction — le mouvement t\'aide à ne pas te noyer'
+    ]
+  },
+  {
+    title: 'Dans tes rêves, tu reviens souvent…',
+    desc: 'Pas ce que tu rêves en ce moment — plutôt une atmosphère, un type de rêve qui revient dans ta vie. Qu\'est-ce qui te semble le plus familier ?',
+    opts: [
+      'Des maisons inconnues que tu explores — pièces cachées, couloirs sans fin',
+      'Le vol ou la chute — liberté vertigineuse ou perte de contrôle',
+      'Être poursuivi ou en fuite — une menace floue que tu ne vois pas',
+      'Des lieux connus devenus étranges — le familier qui ne l\'est plus'
+    ]
+  },
+  {
+    title: 'Quand personne ne te comprend vraiment.',
+    desc: 'Ce moment où tu réalises que même les gens proches ne saisissent pas quelque chose d\'essentiel en toi. Comment cette solitude-là se manifeste ?',
+    opts: [
+      'Tu te refermes — le silence devient ta protection naturelle',
+      'Tu expliques encore et encore — jusqu\'à l\'épuisement',
+      'Tu acceptes et passes à autre chose — c\'est dans l\'ordre des choses',
+      'Tu ressens une solitude profonde mais la gardes absolument pour toi'
+    ]
+  },
+  {
+    title: 'Ce que tu voudrais vraiment changer.',
+    desc: 'Dans ta vie affective — pas ce que tu devrais changer selon les autres, mais ce que toi, au fond, tu sais que tu aimerais être différent.',
+    opts: [
+      'Oser montrer ta vulnérabilité sans avoir peur de ce que ça va provoquer',
+      'Arrêter d\'analyser et simplement ressentir sans chercher à comprendre',
+      'Faire confiance plus vite, sans attendre que l\'autre prouve sa valeur',
+      'Aimer sans calculer — donner sans mesurer ce que tu reçois en retour'
+    ]
+  }
+];
+
+var currentQ = 0;
+var answers = new Array(5).fill(null);
+var started = false;
+
+function startAppro() {
+  document.getElementById('intro-screen').style.display = 'none';
+  document.getElementById('scene-card').style.display = 'block';
+  started = true;
+  renderQ(0);
+}
+
+function skipAppro() {
+  finishAppro(true);
+}
+
+function renderDots() {
+  var wrap = document.getElementById('dots-wrap');
+  wrap.innerHTML = '';
+  if (!started) return;
+  for (var i = 0; i < 5; i++) {
+    var d = document.createElement('div');
+    d.className = 'scene-dot' + (i < currentQ ? ' done' : i === currentQ ? ' active' : '');
+    wrap.appendChild(d);
+  }
+}
+
+function renderQ(index) {
+  var q = APPRO[index];
+  var selected = answers[index];
+
+  document.getElementById('prog-fill').style.width = Math.round((index/5)*100) + '%';
+  document.getElementById('prog-label').textContent = (index+1) + ' / 5';
+  renderDots();
+
+  var optsHTML = q.opts.map(function(opt, i) {
+    var isSel = selected === i;
+    return '<button class="opt-btn' + (isSel ? ' selected' : '') + '" data-idx="' + i + '" type="button">'
+      + '<span class="opt-check"><svg viewBox="0 0 10 8" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 4L3.5 6.5L9 1"/></svg></span>'
+      + '<span class="opt-text">' + opt + '</span>'
+      + '</button>';
+  }).join('');
+
+  var backHTML = index > 0
+    ? '<button class="btn-back" id="btn-back" type="button">← Précédent</button>'
+    : '<span></span>';
+
+  var nextLabel = index === 4 ? 'Voir mon profil →' : 'Suivant →';
+  var nextReady = selected !== null ? ' ready' : '';
+
+  var html = '<div class="appro-badge">Approfondissement</div>'
+    + '<p class="scene-num">Question ' + (index+1) + ' sur 5</p>'
+    + '<h2 class="scene-title">' + q.title + '</h2>'
+    + '<p class="scene-desc">' + q.desc + '</p>'
+    + '<div class="options">' + optsHTML + '</div>'
+    + '<div class="nav-btns">' + backHTML
+    + '<button class="btn-next' + nextReady + '" id="btn-next" type="button">' + nextLabel + '</button>'
+    + '</div>';
+
+  var card = document.getElementById('scene-card');
+  card.style.animation = 'none';
+  card.offsetHeight;
+  card.style.animation = '';
+  card.innerHTML = html;
+
+  card.querySelectorAll('.opt-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var idx = parseInt(this.getAttribute('data-idx'));
+      answers[currentQ] = idx;
+      card.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('selected'); });
+      this.classList.add('selected');
+      var nextBtn = document.getElementById('btn-next');
+      if (nextBtn) nextBtn.classList.add('ready');
+    });
+  });
+
+  var nextBtn = document.getElementById('btn-next');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      if (answers[currentQ] === null) return;
+      if (currentQ < 4) {
+        currentQ++;
+        renderQ(currentQ);
+        window.scrollTo({top:0,behavior:'smooth'});
+      } else {
+        finishAppro(false);
+      }
+    });
+  }
+
+  var backBtn = document.getElementById('btn-back');
+  if (backBtn) {
+    backBtn.addEventListener('click', function() {
+      if (currentQ > 0) {
+        currentQ--;
+        renderQ(currentQ);
+        window.scrollTo({top:0,behavior:'smooth'});
+      }
+    });
+  }
+}
+
+function finishAppro(skipped) {
+  document.getElementById('scene-card').style.display = 'none';
+  document.getElementById('intro-screen').style.display = 'none';
+  document.getElementById('loading-screen').classList.add('visible');
+  document.getElementById('prog-fill').style.width = '100%';
+
+  /* Sauvegarder les réponses d'approfondissement */
+  try {
+    sessionStorage.setItem('cosmos_appro', JSON.stringify({
+      answers: skipped ? [] : answers,
+      skipped: skipped
+    }));
+  } catch(e) {}
+
+  setTimeout(function() {
+    window.location.href = 'resultat.html';
+  }, 3000);
+}
+</script>
+</body>
+</html>
