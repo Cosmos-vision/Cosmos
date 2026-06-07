@@ -155,6 +155,15 @@ function applyProfileToPage(profile) {
       actionCards[1].querySelector('.action-freq').textContent = p.actions[1].freq;
     }
   }
+  /* LÉGENDE RADAR */
+if(p.dims && p.profil) {
+  var parts2=(p.profil.sous_titre||'').split('·').map(function(s){return s.trim();});
+  var legItems = document.querySelectorAll('.radar-leg-item');
+  if(legItems[0]) legItems[0].innerHTML='<div class="radar-leg-dot" style="background:#AFA9EC"></div>Cosmique · '+parts2[0]+' '+p.dims.cosmique[0]+'%';
+  if(legItems[1]) legItems[1].innerHTML='<div class="radar-leg-dot" style="background:#9FE1CB"></div>Cognitif · '+parts2[1]+' '+p.dims.cognitif[0]+'%';
+  if(legItems[2]) legItems[2].innerHTML='<div class="radar-leg-dot" style="background:#F4C0D1"></div>Émotionnel · '+parts2[2]+' '+p.dims.emotionnel[0]+'%';
+  if(legItems[3]) legItems[3].innerHTML='<div class="radar-leg-dot" style="background:#FAC775"></div>Relationnel · Lien '+p.dims.relationnel[0]+'%';
+}
   el=document.getElementById('share-profile-name');
   if(el) el.textContent=p.profil.nom;
 
