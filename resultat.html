@@ -591,6 +591,24 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
         </div>
 
+        <!-- FEEDBACK + CHAPITRE II -->
+<div style="background:var(--deep);border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center">
+  <p class="sec-label" style="margin-bottom:0.75rem">Ton avis compte</p>
+  <p style="font-size:0.85rem;color:#C8C4E8;margin-bottom:1rem">Cette analyse t'a-t-elle aidé à mieux te comprendre ?</p>
+  <div style="display:flex;gap:10px;justify-content:center;margin-bottom:1.5rem">
+    <button onclick="sendFeedback(1)" style="font-size:1.5rem;background:none;border:none;cursor:pointer">⭐</button>
+    <button onclick="sendFeedback(2)" style="font-size:1.5rem;background:none;border:none;cursor:pointer">⭐</button>
+    <button onclick="sendFeedback(3)" style="font-size:1.5rem;background:none;border:none;cursor:pointer">⭐</button>
+    <button onclick="sendFeedback(4)" style="font-size:1.5rem;background:none;border:none;cursor:pointer">⭐</button>
+    <button onclick="sendFeedback(5)" style="font-size:1.5rem;background:none;border:none;cursor:pointer">⭐</button>
+  </div>
+  <p style="font-size:0.85rem;color:#C8C4E8;margin-bottom:0.75rem">Intéressé·e par le <strong>Chapitre II — Tes patterns amoureux</strong> ?</p>
+  <p style="font-size:0.75rem;color:var(--text-faint);margin-bottom:1rem">Sois notifié·e en avant-première dès sa sortie.</p>
+  <button onclick="registerChapter2()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer" id="chapter2-btn">
+    Je veux être notifié·e
+  </button>
+</div>
+        
         <!-- CHAPITRE SUIVANT -->
         <div class="next-chapter">
           <div class="nc-icon">
@@ -796,6 +814,23 @@ function copyCode(){
       btn.textContent='✓ Copié !';
       setTimeout(function(){btn.textContent='Copier mon code';},2000);
     });
+  }
+}
+
+  function sendFeedback(note) {
+  var stars = document.querySelectorAll('[onclick^="sendFeedback"]');
+  stars.forEach(function(s, i) {
+    s.textContent = i < note ? '⭐' : '☆';
+  });
+}
+
+function registerChapter2() {
+  var btn = document.getElementById('chapter2-btn');
+  btn.textContent = '✓ Tu seras notifié·e !';
+  btn.style.background = 'var(--teal)';
+  btn.disabled = true;
+  if(userData && userData.email) {
+    registerBrevoContact(userData.email, userData.prenom || '', 5);
   }
 }
 </script>
