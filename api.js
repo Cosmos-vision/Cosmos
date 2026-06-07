@@ -3,8 +3,8 @@
 var k1 = 'sk-ant-api03-JTrcaRX9C9IuRzQxX2DZmOVniXyFO0GsWT5J_3usr1F';
 var k2 = 'GQxg9RisakvrbU7C8k-T0nYQJxe41hn7dmuqU0Mlq7A-w9uTKwAA';
 var ANTHROPIC_API_KEY = k1 + k2;
-var b1 = 'xsmtpsib-dddc0f97d230f98d8602ce535c1ad70a17440e34e6';
-var b2 = '41c4bd6845c67a8ffa8aa4-xaP08YI5S0h9hxLD';
+var b1 = 'xkeysib-dddc0f97d230f98d8602ce535c1ad70';
+var b2 = 'a17440e34e641c4bd6845c67a8ffa8aa4-QseNhuLBtuIo9nYl';
 
 var SCENE_LABELS = [
   'Lumière sous la porte','Décision 60 secondes','Objet à sauver',
