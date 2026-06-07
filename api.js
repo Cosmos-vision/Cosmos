@@ -165,7 +165,9 @@ if(p.dims && p.profil) {
   if(legItems[3]) legItems[3].innerHTML='<div class="radar-leg-dot" style="background:#FAC775"></div>Relationnel · Lien '+p.dims.relationnel[0]+'%';
 }
   el=document.getElementById('share-profile-name');
-  if(el) el.textContent=p.profil.nom;
+    if(el) el.textContent=p.profil.nom;
+    el=document.getElementById('share-code');
+    if(el) el.textContent=p.profil.code.replace(/-/g,' · ')+' · cosmos-vision.com';
 
   /* ══ SECTIONS PAYANTES ══ */
 
