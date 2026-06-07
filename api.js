@@ -298,7 +298,8 @@ async function sendBrevoEmail(email, prenom) {
           profil_nom: (profile.profil||{}).nom || 'Ton profil Cosmos',
           profil_code: (profile.profil||{}).code || '',
           prenom: prenom
-        }
+        },
+        tags: ['payant']
       })
     });
   } catch(e) {
@@ -316,7 +317,7 @@ async function registerBrevoContact(email, prenom) {
       body: JSON.stringify({
         email: email,
         attributes: { FIRSTNAME: prenom },
-        listIds: [2],
+        listIds: [3],
         updateEnabled: true
       })
     });
