@@ -27,7 +27,14 @@ async function generateCosmosProfile(userData, answers) {
     for (var k=0; k<9; k++) {
       msg += 'Scène '+(k+1)+' ('+SCENE_LABELS[k]+') : index '+(answers[k]!=null?answers[k]:'?')+'\n';
     }
-    msg += '\nGénère le JSON du profil Cosmos.';
+    var appro = {};
+try{ appro = JSON.parse(sessionStorage.getItem('cosmos_appro')||'{}'); }catch(e){}
+if(appro.answers && appro.answers.length > 0) {
+  msg += '\nRÉPONSES APPROFONDISSEMENT :\n';
+  var qlabels = ['Style amoureux','Réaction blessure','Rêves récurrents','Solitude incompréhension','Changement affectif'];
+  for(var j=0;j<5;j++) msg += qlabels[j]+' : index '+(appro.answers[j]!=null?appro.answers[j]:'?')+'\n';
+}
+msg += '\nGénère le JSON du profil Cosmos.';
 
     var res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
