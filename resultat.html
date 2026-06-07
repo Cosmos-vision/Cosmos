@@ -363,7 +363,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FAC775" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 3"/></svg>
           </div>
           <div>
-            <p class="force-name">L'intelligence de l'ombre</p>
+            <p class="force-name" id="force3-name">L'intelligence de l'ombre</p>
             <p class="force-desc">Tu penses mieux dans le silence et la nuit. Tes meilleures idées viennent quand le monde dort, dans les espaces vides.</p>
             <p class="force-paradox" style="background:rgba(186,117,23,0.08)">Recommandation : protège tes heures creuses comme un territoire sacré.</p>
           </div>
@@ -440,15 +440,15 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FAC775" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 3"/></svg>
             </div>
             <div>
-              <p class="force-name">L'intelligence de l'ombre</p>
-              <p class="force-desc">Tu penses mieux dans le silence, la nuit, l'espace vide. Là où les autres s'agitent pour remplir le calme, toi tu t'y installes. Tes meilleures idées viennent dans les marges.</p>
-              <p class="force-paradox" style="background:rgba(186,117,23,0.08)">Recommandation : protège tes heures creuses comme un territoire sacré. C'est là que tu es le plus toi-même.</p>
+              <p class="force-name" id="force3-name">L'intelligence de l'ombre</p>
+              <p class="force-desc" id="force3-desc">Tu penses mieux dans le silence, la nuit, l'espace vide. Là où les autres s'agitent pour remplir le calme, toi tu t'y installes. Tes meilleures idées viennent dans les marges.</p>
+              <p class="force-paradox" id="force3-paradox" style="background:rgba(186,117,23,0.08)">Recommandation : protège tes heures creuses comme un territoire sacré. C'est là que tu es le plus toi-même.</p>
             </div>
           </div>
         </div>
 
         <!-- BLOCAGES -->
-        <div style="margin-bottom:1.25rem">
+        <div style="margin-bottom:1.25rem" id="blocages-container">
           <p class="sec-label" style="margin-bottom:0.75rem">Tes 2 blocages inconscients</p>
           <div class="blocage-card">
             <p class="blocage-name">La vigilance permanente</p>
@@ -465,20 +465,20 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         <!-- PORTRAIT AMOUREUX -->
         <div class="love-card">
           <p class="sec-label">Ton portrait amoureux</p>
-          <p class="love-style">Style d'attachement · Sécure-distancié</p>
+          <p class="love-style" id="love-style-text">Style d'attachement · Sécure-distancié</p>
           <h3 class="love-title">Tu aimes profondément, mais tu testes avant de faire confiance.</h3>
-          <p class="love-desc">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste. Tu peux être seul sans souffrir, mais quand tu choisis quelqu'un, c'est avec une intensité rare. Ce que les autres vivent comme de la froideur n'est souvent que ta façon de te protéger le temps de vérifier que c'est sûr.</p>
+          <p class="love-desc" id="love-desc-text">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste. Tu peux être seul sans souffrir, mais quand tu choisis quelqu'un, c'est avec une intensité rare. Ce que les autres vivent comme de la froideur n'est souvent que ta façon de te protéger le temps de vérifier que c'est sûr.</p>
           <div class="love-row">
             <span class="love-row-label">Tu offres</span>
-            <span class="love-row-val">Une loyauté absolue, une présence calme, une sécurité sans bruit.</span>
+            <span class="love-row-val" id="love-offre">Une loyauté absolue, une présence calme, une sécurité sans bruit.</span>
           </div>
           <div class="love-row">
             <span class="love-row-label">Tu as besoin</span>
-            <span class="love-row-val">De constance silencieuse — quelqu'un qui est là, encore et encore, sans que tu aies à le demander.</span>
+            <span class="love-row-val" id="love-besoin">De constance silencieuse — quelqu'un qui est là, encore et encore, sans que tu aies à le demander.</span>
           </div>
           <div class="love-row">
             <span class="love-row-label">À dépasser</span>
-            <span class="love-row-val">Attendre que l'autre prouve sa valeur avant de t'engager émotionnellement.</span>
+            <span class="love-row-val" id="love-pattern">Attendre que l'autre prouve sa valeur avant de s'engager émotionnellement.</span>
           </div>
         </div>
 
@@ -488,11 +488,11 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <div class="mirror-head">
             <div class="mirror-orb">🌞</div>
             <div>
-              <p class="mirror-name">Le Gardien du Feu Doux</p>
-              <p class="mirror-sub">Soleil · Narratif · Architecture expansive</p>
+              <p class="mirror-name" id="mirror-name">Le Gardien du Feu Doux</p>
+              <p class="mirror-sub" id="mirror-sub">Soleil · Narratif · Architecture expansive</p>
             </div>
           </div>
-          <p class="mirror-quote">"Cette personne n'arrive pas dans ta vie avec des grands gestes. Elle arrive avec une constance tranquille — cette façon d'être là, encore et encore, sans calculer, sans condition. Et un jour tu réalises que tu respires différemment quand elle est dans la pièce."</p>
+          <p class="mirror-quote" id="mirror-quote">"Cette personne n'arrive pas dans ta vie avec des grands gestes. Elle arrive avec une constance tranquille — cette façon d'être là, encore et encore, sans calculer, sans condition. Et un jour tu réalises que tu respires différemment quand elle est dans la pièce."</p>
           <div class="compat-row">
             <span class="compat-label">Résonance émotionnelle</span>
             <div class="compat-track"><div class="compat-fill" style="background:var(--rose)" data-w="92"></div></div>
