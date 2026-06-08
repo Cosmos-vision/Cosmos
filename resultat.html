@@ -825,6 +825,11 @@ function unlockPaidContent(){
   document.querySelectorAll('.force-locked').forEach(function(el){
     el.classList.remove('force-locked');
   });
+  document.querySelectorAll('[style*="blur"]').forEach(function(el){
+    el.style.filter='none';
+    el.style.userSelect='auto';
+    el.style.pointerEvents='auto';
+  });
   /* Afficher la section payante */
   document.getElementById('paid-section').classList.add('unlocked');
   /* Cacher le banner démo */
