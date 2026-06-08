@@ -20,8 +20,6 @@ body{background:var(--void);color:var(--text);font-family:'DM Sans',sans-serif;
   font-weight:300;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #cosmos-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
 .page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
-
-/* NAV */
 nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;
   border-bottom:1px solid var(--border);backdrop-filter:blur(12px);
   background:rgba(7,6,15,0.6);position:sticky;top:0;z-index:100}
@@ -31,245 +29,137 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .logo-dot{width:5px;height:5px;border-radius:50%;background:var(--purple);
   animation:pulse 3s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
-
-/* MAIN */
-.main{flex:1;padding:2rem 1.5rem 5rem;display:flex;flex-direction:column;
-  align-items:center;gap:0}
+.main{flex:1;padding:2rem 1.5rem 5rem;display:flex;flex-direction:column;align-items:center;gap:0}
 .content{width:100%;max-width:580px}
-
-/* SECTION LABELS */
 .sec-label{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;
   color:#AFA9EC;margin-bottom:0.75rem;font-weight:500}
-
-/* ── HERO PROFIL (gratuit) ── */
 .profile-hero{text-align:center;padding:2.5rem 0 2rem;position:relative}
 .profile-orb-wrap{display:flex;justify-content:center;margin-bottom:1.5rem}
 .profile-orb{width:90px;height:90px;border-radius:50%;background:var(--muted);
   border:1.5px solid var(--purple);display:flex;align-items:center;justify-content:center;
   position:relative;animation:float 6s ease-in-out infinite}
 .profile-orb::before{content:'';position:absolute;width:114px;height:114px;
-  border-radius:50%;border:1px solid rgba(127,119,221,0.2);
-  animation:spinRing 20s linear infinite}
+  border-radius:50%;border:1px solid rgba(127,119,221,0.2);animation:spinRing 20s linear infinite}
 .profile-orb::after{content:'';position:absolute;width:140px;height:140px;
-  border-radius:50%;border:1px solid rgba(127,119,221,0.08);
-  animation:spinRing 35s linear infinite reverse}
+  border-radius:50%;border:1px solid rgba(127,119,221,0.08);animation:spinRing 35s linear infinite reverse}
 .orb-inner{width:60px;height:60px;border-radius:50%;
   background:rgba(127,119,221,0.12);border:1px solid rgba(175,169,236,0.3);
   display:flex;align-items:center;justify-content:center}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes spinRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.profile-eyebrow{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--text-faint);margin-bottom:0.5rem}
-.profile-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,2.8rem);
-  font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.5rem}
-.profile-code{font-size:0.65rem;color:var(--text-faint);letter-spacing:0.2em;
-  text-transform:uppercase;margin-bottom:1rem}
+.profile-eyebrow{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.5rem}
+.profile-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.5rem}
+.profile-code{font-size:0.65rem;color:var(--text-faint);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem}
 .dim-pills{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:1.25rem}
-.dim-pill{font-size:0.65rem;padding:3px 10px;border-radius:20px;font-weight:400;
-  letter-spacing:0.04em}
-
-/* PORTRAIT (gratuit) */
+.dim-pill{font-size:0.65rem;padding:3px 10px;border-radius:20px;font-weight:400;letter-spacing:0.04em}
 .portrait-block{background:var(--deep);border:1px solid var(--border);
   border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
 .portrait-block::before{content:'';position:absolute;top:0;left:50%;
   transform:translateX(-50%);width:160px;height:1px;
   background:linear-gradient(to right,transparent,var(--purple),transparent)}
-.portrait-line{font-family:'Cormorant Garamond',serif;font-size:1.05rem;
-  color:#C8C4E8;line-height:1.85;font-style:italic}
+.portrait-line{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#C8C4E8;line-height:1.85;font-style:italic}
 .portrait-line+.portrait-line{margin-top:0.75rem}
 .portrait-accent{color:var(--purple-light);font-style:normal}
-
-/* RADAR (gratuit) */
-.radar-wrap{background:var(--deep);border:1px solid var(--border);
-  border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center}
-.radar-title{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--text-faint);margin-bottom:1rem}
+.radar-wrap{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center}
+.radar-title{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:1rem}
 #radar-svg{width:100%;max-width:260px;display:block;margin:0 auto}
 .radar-legend{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:1rem}
 .radar-leg-item{display:flex;align-items:center;gap:6px;font-size:0.7rem;color:var(--text-muted)}
 .radar-leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-
-/* FORCES (gratuit — 2 sur 3 visibles) */
 .forces-section{margin-bottom:1.25rem}
 .force-card{background:var(--deep);border:1px solid var(--border);
-  border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px;
-  display:flex;gap:12px;align-items:flex-start}
-.force-icon{width:36px;height:36px;border-radius:50%;display:flex;
-  align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+  border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.force-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
 .force-name{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:3px}
 .force-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6}
-.force-paradox{font-size:0.72rem;color: #AFA9EC;margin-top:5px;
-  padding:4px 8px;border-radius:6px;font-style:italic}
+.force-paradox{font-size:0.72rem;color:#AFA9EC;margin-top:5px;padding:4px 8px;border-radius:6px;font-style:italic}
 .force-locked{filter:blur(5px);user-select:none;pointer-events:none}
-
-/* ACTIONS GRATUITES */
 .actions-free{margin-bottom:1.25rem}
-.action-card{background:var(--deep);border:1px solid var(--border);
-  border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;
-  display:flex;gap:12px;align-items:flex-start}
-.action-num{width:24px;height:24px;border-radius:50%;display:flex;
-  align-items:center;justify-content:center;font-size:11px;
-  font-weight:500;flex-shrink:0;margin-top:1px}
+.action-card{background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.action-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px}
 .action-title{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:3px}
 .action-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6}
-.action-freq{font-size:0.65rem;color:var(--text-faint);margin-top:4px;
-  text-transform:uppercase;letter-spacing:0.06em}
-
-/* ── MUR DE PAIEMENT ── */
-.paywall{background:var(--deep);border:1px solid rgba(127,119,221,0.3);
-  border-radius:16px;padding:1.75rem;margin-bottom:1.25rem;
-  position:relative;overflow:hidden;text-align:center}
-.paywall::before{content:'';position:absolute;top:0;left:50%;
-  transform:translateX(-50%);width:200px;height:1px;
-  background:linear-gradient(to right,transparent,var(--purple),transparent)}
-.paywall-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;
-  font-weight:300;margin-bottom:0.5rem}
-.paywall-sub{font-size:0.78rem;color:var(--text-muted);line-height:1.6;
-  margin-bottom:1.25rem}
-.paywall-list{display:flex;flex-direction:column;gap:6px;
-  margin-bottom:1.5rem;text-align:left}
-.paywall-item{display:flex;align-items:center;gap:8px;
-  font-size:0.78rem;color:var(--text-muted)}
-.paywall-item svg{width:14px;height:14px;stroke:var(--purple-light);
-  fill:none;stroke-width:2;flex-shrink:0}
-.paywall-price{font-size:2rem;font-weight:300;color:var(--text);
-  font-family:'Cormorant Garamond',serif;margin-bottom:0.25rem}
+.action-freq{font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em}
+.paywall{background:var(--deep);border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.75rem;margin-bottom:1.25rem;position:relative;overflow:hidden;text-align:center}
+.paywall::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
+.paywall-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;margin-bottom:0.5rem}
+.paywall-sub{font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.25rem}
+.paywall-list{display:flex;flex-direction:column;gap:6px;margin-bottom:1.5rem;text-align:left}
+.paywall-item{display:flex;align-items:center;gap:8px;font-size:0.78rem;color:var(--text-muted)}
+.paywall-item svg{width:14px;height:14px;stroke:var(--purple-light);fill:none;stroke-width:2;flex-shrink:0}
+.paywall-price{font-size:2rem;font-weight:300;color:var(--text);font-family:'Cormorant Garamond',serif;margin-bottom:0.25rem}
 .paywall-price-note{font-size:0.7rem;color:var(--text-faint);margin-bottom:1.25rem}
-.pay-btn{width:100%;background:var(--purple);border:none;border-radius:100px;
-  padding:1rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;
-  font-weight:500;cursor:pointer;transition:all 0.2s;margin-bottom:0.6rem}
+.pay-btn{width:100%;background:var(--purple);border:none;border-radius:100px;padding:1rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;transition:all 0.2s;margin-bottom:0.6rem}
 .pay-btn:hover{background:#6B62CC;transform:translateY(-1px)}
-.pay-btn:active{transform:translateY(0)}
 .pay-note{font-size:0.65rem;color:var(--text-faint);letter-spacing:0.04em}
-
-/* ── SECTION PAYANTE (cachée par défaut) ── */
 .paid-section{display:none}
 .paid-section.unlocked{display:block}
-
-/* BLOCAGES */
-.blocage-card{background:var(--deep);border:1px solid var(--border);
-  border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px}
+.blocage-card{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px}
 .blocage-name{font-size:0.85rem;font-weight:500;color:var(--rose);margin-bottom:4px}
 .blocage-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:6px}
-.blocage-key{font-size:0.75rem;color:var(--teal);padding:5px 9px;
-  background:rgba(29,158,117,0.08);border-radius:6px;
-  border-left:2px solid var(--teal);display:block}
-
-/* PORTRAIT AMOUREUX */
-.love-card{background:var(--deep);border:1px solid rgba(212,83,126,0.25);
-  border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
-.love-style{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--rose);margin-bottom:0.5rem}
-.love-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;
-  font-weight:300;margin-bottom:0.75rem}
+.blocage-key{font-size:0.75rem;color:var(--teal);padding:5px 9px;background:rgba(29,158,117,0.08);border-radius:6px;border-left:2px solid var(--teal);display:block}
+.love-card{background:var(--deep);border:1px solid rgba(212,83,126,0.25);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.love-style{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rose);margin-bottom:0.5rem}
+.love-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;margin-bottom:0.75rem}
 .love-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.75;margin-bottom:1rem}
 .love-row{display:flex;gap:8px;margin-bottom:6px;align-items:flex-start}
-.love-row-label{font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;
-  color:var(--text-faint);min-width:90px;flex-shrink:0;padding-top:1px}
+.love-row-label{font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);min-width:90px;flex-shrink:0;padding-top:1px}
 .love-row-val{font-size:0.8rem;color:var(--text-muted);line-height:1.5}
-
-/* AME MIROIR */
-.mirror-card{background:linear-gradient(135deg,rgba(212,83,126,0.06) 0%,rgba(7,6,15,0) 60%);
-  border:1px solid rgba(212,83,126,0.2);border-radius:16px;
-  padding:1.5rem;margin-bottom:1.25rem}
+.mirror-card{background:linear-gradient(135deg,rgba(212,83,126,0.06) 0%,rgba(7,6,15,0) 60%);border:1px solid rgba(212,83,126,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
 .mirror-head{display:flex;gap:14px;align-items:center;margin-bottom:1rem}
-.mirror-orb{width:48px;height:48px;border-radius:50%;
-  background:rgba(212,83,126,0.12);border:1px solid rgba(212,83,126,0.4);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
-.mirror-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;
-  font-weight:300;color:var(--text)}
+.mirror-orb{width:48px;height:48px;border-radius:50%;background:rgba(212,83,126,0.12);border:1px solid rgba(212,83,126,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
+.mirror-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--text)}
 .mirror-sub{font-size:0.65rem;color:rgba(212,83,126,0.7);margin-top:2px}
-.mirror-quote{font-family:'Cormorant Garamond',serif;font-size:0.95rem;
-  font-style:italic;color:var(--text-muted);line-height:1.75;
-  border-left:2px solid rgba(212,83,126,0.3);padding-left:1rem;margin-bottom:1rem}
+.mirror-quote{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-style:italic;color:var(--text-muted);line-height:1.75;border-left:2px solid rgba(212,83,126,0.3);padding-left:1rem;margin-bottom:1rem}
 .compat-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
 .compat-label{font-size:0.7rem;color:rgba(212,83,126,0.7);width:110px;flex-shrink:0}
-.compat-track{flex:1;height:3px;background:rgba(255,255,255,0.06);
-  border-radius:2px;overflow:hidden}
-.compat-fill{height:100%;border-radius:2px;width:0;
-  transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
-.compat-pct{font-size:0.7rem;font-weight:500;width:28px;text-align:right;
-  color:rgba(212,83,126,0.8)}
-.mirror-signals{background:rgba(255,255,255,0.03);border-radius:10px;
-  padding:0.9rem;margin-top:0.75rem;font-size:0.78rem;
-  color:var(--text-muted);line-height:1.65}
-.mirror-signals-label{font-size:0.62rem;color:rgba(212,83,126,0.6);
-  text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px}
-
-/* ACTIONS COMPLÈTES */
-.action-card-full{border-radius:12px;padding:1rem 1.25rem;
-  margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
-
-/* CARTE DE PARTAGE */
+.compat-track{flex:1;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+.compat-fill{height:100%;border-radius:2px;width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.compat-pct{font-size:0.7rem;font-weight:500;width:28px;text-align:right;color:rgba(212,83,126,0.8)}
+.mirror-signals{background:rgba(255,255,255,0.03);border-radius:10px;padding:0.9rem;margin-top:0.75rem;font-size:0.78rem;color:var(--text-muted);line-height:1.65}
+.mirror-signals-label{font-size:0.62rem;color:rgba(212,83,126,0.6);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px}
+.action-card-full{border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
 .share-section{margin-bottom:1.25rem}
-.share-card-visual{background:var(--deep);border:1px solid var(--border);
-  border-radius:16px;padding:1.5rem;text-align:center;
-  position:relative;overflow:hidden;margin-bottom:1rem}
-.share-card-visual::before{content:'';position:absolute;top:0;left:50%;
-  transform:translateX(-50%);width:160px;height:1px;
-  background:linear-gradient(to right,transparent,var(--purple),transparent)}
-.share-logo{font-family:'DM Sans',sans-serif;font-weight:300;font-size:1.2rem;
-  letter-spacing:0.22em;text-transform:uppercase;color:var(--text);margin-bottom:3px}
-.share-profile-name{font-family:'Cormorant Garamond',serif;font-size:1rem;
-  font-style:italic;color:var(--purple-light);margin-bottom:10px}
-.share-code{font-size:0.58rem;color:var(--text-faint);letter-spacing:0.15em;
-  text-transform:uppercase;margin-top:10px}
+.share-card-visual{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.5rem;text-align:center;position:relative;overflow:hidden;margin-bottom:1rem}
+.share-card-visual::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
+.share-logo{font-family:'DM Sans',sans-serif;font-weight:300;font-size:1.2rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);margin-bottom:3px}
+.share-profile-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--purple-light);margin-bottom:10px}
+.share-code{font-size:0.58rem;color:var(--text-faint);letter-spacing:0.15em;text-transform:uppercase;margin-top:10px}
 .share-btns{display:flex;flex-direction:column;gap:8px}
-.share-btn{width:100%;border:none;border-radius:100px;padding:0.8rem;
-  font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;
-  cursor:pointer;transition:all 0.18s}
+.share-btn{width:100%;border:none;border-radius:100px;padding:0.8rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;transition:all 0.18s}
 .share-btn-ig{background:var(--purple);color:white}
 .share-btn-ig:hover{background:#6B62CC}
 .share-btn-fb{background:#1877F2;color:white}
 .share-btn-fb:hover{background:#1260CC}
-.share-btn-copy{background:transparent;color:var(--text-muted);
-  border:1px solid var(--border)}
+.share-btn-copy{background:transparent;color:var(--text-muted);border:1px solid var(--border)}
 .share-btn-copy:hover{border-color:rgba(255,255,255,0.2);color:var(--text)}
-
-/* NEXT CHAPTER */
-.next-chapter{background:var(--deep);border:1px solid var(--border);
-  border-radius:14px;padding:1rem 1.25rem;
-  display:flex;align-items:center;gap:12px;margin-bottom:2rem}
-.nc-icon{width:36px;height:36px;border-radius:50%;
-  background:var(--muted);display:flex;align-items:center;
-  justify-content:center;flex-shrink:0}
+.next-chapter{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;display:flex;align-items:center;gap:12px;margin-bottom:2rem}
+.nc-icon{width:36px;height:36px;border-radius:50%;background:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .nc-title{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:2px}
 .nc-sub{font-size:0.72rem;color:var(--text-faint)}
-
-/* DEMO BANNER */
-.demo-banner{background:rgba(186,117,23,0.1);border:1px solid rgba(186,117,23,0.25);
-  border-radius:10px;padding:0.75rem 1rem;margin-bottom:1.25rem;
-  font-size:0.75rem;color:var(--amber);line-height:1.5;text-align:center}
-
-@media(max-width:480px){
-  .main{padding:1.5rem 1rem 5rem}
-  nav{padding:0.9rem 1rem}
-}
+.demo-banner{background:rgba(186,117,23,0.1);border:1px solid rgba(186,117,23,0.25);border-radius:10px;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:0.75rem;color:var(--amber);line-height:1.5;text-align:center}
+@media(max-width:480px){.main{padding:1.5rem 1rem 5rem}nav{padding:0.9rem 1rem}}
 </style>
 </head>
 <body>
 <canvas id="cosmos-canvas"></canvas>
-
 <div class="page">
   <nav>
     <a href="index.html" class="logo">COSMOS<span class="logo-dot"></span></a>
     <span style="font-size:0.7rem;color:var(--text-faint);letter-spacing:0.06em" id="nav-name"></span>
   </nav>
-
   <div class="main">
     <div class="content" id="content">
 
       <!-- DEMO BANNER -->
       <div class="demo-banner" id="demo-banner" style="background:rgba(127,119,221,0.15);border-color:rgba(127,119,221,0.3);color:#AFA9EC">✨ Ton profil unique est en cours de création…</div>
-      <!-- ══ SECTION GRATUITE ══ -->
 
       <!-- HERO -->
       <div class="profile-hero">
         <div class="profile-orb-wrap">
           <div class="profile-orb">
             <div class="orb-inner">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
-                   stroke="#AFA9EC" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="9"/>
                 <path d="M12 3c-2.5 3-4 5.5-4 9s1.5 6 4 9"/>
                 <path d="M12 3c2.5 3 4 5.5 4 9s-1.5 6-4 9"/>
@@ -294,37 +184,30 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         <p class="sec-label">Ton essence</p>
         <div id="portrait-lines">
           <p class="portrait-line">Tu ne t'expliques pas — tu <span class="portrait-accent">te révèles lentement</span>, à ceux qui savent attendre.</p>
-          <p class="portrait-line">Là où les autres voient du bruit, tu perçois une architecture cachée — tu lis les systèmes avant de lire les gens.</p>
-          <p class="portrait-line">Tu portes une <span class="portrait-accent">loyauté silencieuse</span> que peu remarquent, mais que tous ressentent le jour où ils en ont vraiment besoin.</p>
+          <p class="portrait-line">Là où les autres voient du bruit, tu perçois une architecture cachée.</p>
+          <p class="portrait-line">Tu portes une <span class="portrait-accent">loyauté silencieuse</span> que peu remarquent, mais que tous ressentent.</p>
         </div>
       </div>
 
       <!-- RADAR -->
       <div class="radar-wrap">
         <p class="radar-title">Tes 4 dimensions</p>
-        <svg id="radar-svg" viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg"
-             role="img" aria-label="Radar des 4 dimensions cosmique cognitif émotionnel relationnel">
-          <!-- Grilles -->
+        <svg id="radar-svg" viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Radar des 4 dimensions">
           <polygon points="110,18 202,110 110,202 18,110" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
           <polygon points="110,36 184,110 110,184 36,110" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
           <polygon points="110,54 166,110 110,166 54,110" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
           <polygon points="110,72 148,110 110,148 72,110" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-          <!-- Axes -->
           <line x1="110" y1="18" x2="110" y2="202" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
           <line x1="18" y1="110" x2="202" y2="110" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-          <!-- Forme (animée via JS) -->
-          <polygon id="radar-shape" points="110,110 110,110 110,110 110,110"
-            fill="rgba(127,119,221,0.18)" stroke="#7F77DD" stroke-width="1.5"/>
-          <!-- Points -->
-          <circle id="r-top"    cx="110" cy="110" r="4" fill="#AFA9EC"/>
-          <circle id="r-right"  cx="110" cy="110" r="4" fill="#9FE1CB"/>
+          <polygon id="radar-shape" points="110,110 110,110 110,110 110,110" fill="rgba(127,119,221,0.18)" stroke="#7F77DD" stroke-width="1.5"/>
+          <circle id="r-top" cx="110" cy="110" r="4" fill="#AFA9EC"/>
+          <circle id="r-right" cx="110" cy="110" r="4" fill="#9FE1CB"/>
           <circle id="r-bottom" cx="110" cy="110" r="4" fill="#F4C0D1"/>
-          <circle id="r-left"   cx="110" cy="110" r="4" fill="#FAC775"/>
-          <!-- Labels -->
+          <circle id="r-left" cx="110" cy="110" r="4" fill="#FAC775"/>
           <text x="110" y="10" text-anchor="middle" font-size="9" fill="#AFA9EC" font-family="DM Sans, sans-serif">Cosmique</text>
-          <text x="202" y="106" text-anchor="middle"  font-size="9" fill="#9FE1CB" font-family="DM Sans, sans-serif">Cog.</text>
+          <text x="202" y="106" text-anchor="middle" font-size="9" fill="#9FE1CB" font-family="DM Sans, sans-serif">Cog.</text>
           <text x="110" y="218" text-anchor="middle" font-size="9" fill="#F4C0D1" font-family="DM Sans, sans-serif">Émotionnel</text>
-          <text x="6"   y="113" text-anchor="start"  font-size="9" fill="#FAC775" font-family="DM Sans, sans-serif">Lien</text>
+          <text x="6" y="113" text-anchor="start" font-size="9" fill="#FAC775" font-family="DM Sans, sans-serif">Lien</text>
         </svg>
         <div class="radar-legend">
           <div class="radar-leg-item"><div class="radar-leg-dot" style="background:#AFA9EC"></div>Cosmique · Lune 82%</div>
@@ -342,9 +225,9 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
           </div>
           <div>
-            <p class="force-name">La vision structurelle</p>
-            <p class="force-desc">Tu captes les patterns avant les détails. Dans une conversation, tu vois la mécanique sous-jacente avant que quiconque l'ait nommée.</p>
-            <p class="force-paradox" style="background:rgba(127,119,221,0.08)">Ce que les autres voient : quelqu'un de calme. Ce qui se passe réellement : une analyse permanente.</p>
+            <p class="force-name" id="force1-name">La vision structurelle</p>
+            <p class="force-desc" id="force1-desc">Tu captes les patterns avant les détails.</p>
+            <p class="force-paradox" id="force1-paradox" style="background:rgba(127,119,221,0.08)">Ce que les autres voient : calme. La réalité : analyse permanente.</p>
           </div>
         </div>
         <div class="force-card">
@@ -352,9 +235,9 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9FE1CB" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div>
-            <p class="force-name">La protection instinctive</p>
-            <p class="force-desc">Tu crées de la sécurité autour de toi sans t'en rendre compte. Les gens se confient, s'apaisent en ta présence.</p>
-            <p class="force-paradox" style="background:rgba(29,158,117,0.08)">Ton paradoxe : tu protèges le monde entier, sauf toi-même.</p>
+            <p class="force-name" id="force2-name">La protection instinctive</p>
+            <p class="force-desc" id="force2-desc">Tu crées de la sécurité sans t'en rendre compte.</p>
+            <p class="force-paradox" id="force2-paradox" style="background:rgba(29,158,117,0.08)">Tu protèges tout le monde sauf toi-même.</p>
           </div>
         </div>
         <!-- Force 3 floue -->
@@ -363,9 +246,9 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FAC775" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 3"/></svg>
           </div>
           <div>
-            <p class="force-name" id="force3-name">L'intelligence de l'ombre</p>
-            <p class="force-desc" id="force3-desc">Tu penses mieux dans le silence et la nuit.</p>
-            <p class="force-paradox" id="force3-paradox" style="background:rgba(186,117,23,0.08)">Recommandation : protège tes heures creuses.</p>
+            <p class="force-name" id="force3-name">Force cachée</p>
+            <p class="force-desc" id="force3-desc">Cette force se révèle dans les moments de dépassement.</p>
+            <p class="force-paradox" id="force3-paradox" style="background:rgba(186,117,23,0.08)">Débloquer pour découvrir.</p>
           </div>
         </div>
         <!-- Force 4 floue -->
@@ -380,189 +263,151 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
         </div>
       </div>
-      
+
       <!-- BOUTON DÉBLOQUER FORCES -->
-<div style="text-align:center;margin-bottom:1.25rem">
-  <p style="font-size:0.78rem;color:#AFA9EC;margin-bottom:0.75rem">✦ 2 forces cachées supplémentaires + 2 blocages inconscients t'attendent</p>
-  <button onclick="handlePayment()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
-    Débloquer mes forces →
-  </button>
-</div>
-          <!-- ASTROLOGIE GRATUITE -->
-             <p class="sec-label" style="margin-bottom:0.75rem">Signe solaire & planète dominante</p>
-               <div class="portrait-block" id="astro-free" style="margin-bottom:1.25rem">
-             </div>
+      <div style="text-align:center;margin-bottom:1.25rem">
+        <p style="font-size:0.78rem;color:#AFA9EC;margin-bottom:0.75rem">✦ 2 forces cachées supplémentaires + 2 blocages inconscients t'attendent</p>
+        <button onclick="handlePayment()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
+          Débloquer mes forces →
+        </button>
+      </div>
 
-<!-- ASTROLOGIE FLOUE -->
-<div class="portrait-block force-locked" style="margin-bottom:0.75rem;filter:blur(4px);user-select:none;pointer-events:none" aria-hidden="true">
-  <p class="sec-label">✦ Signe solaire · Recommandations complètes</p>
-  <div style="display:flex;flex-direction:column;gap:8px">
-    <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
-      <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Vie émotionnelle</p>
-      <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Ta sensibilité est une boussole intérieure d'une précision rare. Apprends à l'écouter avant d'analyser.</p>
-    </div>
-    <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
-      <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Amour et relations</p>
-      <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Tu aimes avec une profondeur que peu comprennent. Choisis des partenaires capables de recevoir cette intensité.</p>
-    </div>
-    <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
-      <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Mental et clarté</p>
-      <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Ton esprit analytique est ton outil le plus puissant. Accorde-lui des pauses pour qu'il reste affûté.</p>
-    </div>
-    <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
-      <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Travail et ambition</p>
-      <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Tu es fait·e pour construire sur le long terme. Tes projets les plus ambitieux méritent ta patience naturelle.</p>
-    </div>
-  </div>
-</div>
+      <!-- ASTROLOGIE GRATUITE -->
+      <p class="sec-label" style="margin-bottom:0.75rem">Signe solaire & planète dominante</p>
+      <div class="portrait-block" id="astro-free" style="margin-bottom:1.25rem"></div>
 
-<!-- BOUTON DÉBLOQUER ASTROLOGIE -->
-<div style="text-align:center;margin-bottom:1.25rem">
-  <p style="font-size:0.78rem;color:#AFA9EC;margin-bottom:0.75rem">✦ 4 recommandations personnalisées selon ton signe t'attendent</p>
-  <button onclick="handlePayment()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
-    Débloquer mes recommandations →
-  </button>
-</div>
-      
-      <!-- ACTIONS GRATUITES (2/6) -->
+      <!-- ASTROLOGIE FLOUE -->
+      <div class="portrait-block force-locked" id="astro-locked" style="margin-bottom:0.75rem;filter:blur(4px);user-select:none;pointer-events:none" aria-hidden="true">
+        <p class="sec-label">✦ Signe solaire · Recommandations complètes</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
+            <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Vie émotionnelle</p>
+            <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Ta sensibilité est une boussole intérieure d'une précision rare. Apprends à l'écouter avant d'analyser.</p>
+          </div>
+          <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
+            <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Amour et relations</p>
+            <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Tu aimes avec une profondeur que peu comprennent. Choisis des partenaires capables de recevoir cette intensité.</p>
+          </div>
+          <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
+            <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Mental et clarté</p>
+            <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Ton esprit analytique est ton outil le plus puissant. Accorde-lui des pauses pour qu'il reste affûté.</p>
+          </div>
+          <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
+            <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Travail et ambition</p>
+            <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Tu es fait·e pour construire sur le long terme. Tes projets les plus ambitieux méritent ta patience naturelle.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOUTON DÉBLOQUER ASTROLOGIE -->
+      <div style="text-align:center;margin-bottom:1.25rem">
+        <p style="font-size:0.78rem;color:#AFA9EC;margin-bottom:0.75rem">✦ 4 recommandations personnalisées selon ton signe t'attendent</p>
+        <button onclick="handlePayment()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
+          Débloquer mes recommandations →
+        </button>
+      </div>
+
+      <!-- ACTIONS GRATUITES -->
       <div class="actions-free">
         <p class="sec-label" style="margin-bottom:0.75rem">Tes défis du mois — 2 actions gratuites</p>
         <div class="action-card">
           <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC">1</div>
           <div>
-            <p class="action-title">Le journal des structures</p>
-            <p class="action-desc">Chaque matin, 5 minutes. Note un pattern que tu as observé dans une conversation hier. Ton cerveau systémique a besoin de terrain d'expression quotidien.</p>
-            <p class="action-freq">Chaque matin · 5 min</p>
+            <p class="action-title" id="action1-title">Le journal des structures</p>
+            <p class="action-desc" id="action1-desc">Chaque matin, 5 minutes. Note un pattern que tu as observé hier.</p>
+            <p class="action-freq" id="action1-freq">Chaque matin · 5 min</p>
           </div>
         </div>
         <div class="action-card">
           <div class="action-num" style="background:rgba(29,158,117,0.2);color:#9FE1CB">2</div>
           <div>
-            <p class="action-title">La pause de réception</p>
-            <p class="action-desc">Cette semaine, avant de répondre à quelqu'un, attends 3 secondes de plus. Tu protèges tellement les autres que tu oublies parfois de recevoir leur attention.</p>
-            <p class="action-freq">Cette semaine · Continu</p>
+            <p class="action-title" id="action2-title">La pause de réception</p>
+            <p class="action-desc" id="action2-desc">Avant de répondre, attends 3 secondes de plus.</p>
+            <p class="action-freq" id="action2-freq">Cette semaine · Continu</p>
           </div>
         </div>
       </div>
-      
-        <!-- CARTE DE PARTAGE -->
-        <div class="share-section">
-          <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
-          <div class="share-card-visual" id="share-card">
-            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="360" cy="30" r="70" fill="rgba(127,119,221,0.06)"/>
-              <circle cx="40" cy="130" r="50" fill="rgba(212,83,126,0.05)"/>
-              <circle cx="200" cy="80" r="1.5" fill="white" opacity=".3"/>
-              <circle cx="60" cy="40" r="1" fill="white" opacity=".5"/>
-              <circle cx="320" cy="120" r="1" fill="white" opacity=".4"/>
-              <circle cx="100" cy="20" r="1" fill="white" opacity=".6"/>
-              <circle cx="280" cy="50" r="1.5" fill="#AFA9EC" opacity=".3"/>
+
+      <!-- CARTE DE PARTAGE -->
+      <div class="share-section">
+        <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
+        <div class="share-card-visual" id="share-card">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="360" cy="30" r="70" fill="rgba(127,119,221,0.06)"/>
+            <circle cx="40" cy="130" r="50" fill="rgba(212,83,126,0.05)"/>
+            <circle cx="200" cy="80" r="1.5" fill="white" opacity=".3"/>
+            <circle cx="60" cy="40" r="1" fill="white" opacity=".5"/>
+            <circle cx="320" cy="120" r="1" fill="white" opacity=".4"/>
+            <circle cx="100" cy="20" r="1" fill="white" opacity=".6"/>
+            <circle cx="280" cy="50" r="1.5" fill="#AFA9EC" opacity=".3"/>
+          </svg>
+          <div style="position:relative;z-index:2">
+            <p class="share-logo">COSMOS<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
+            <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
+            <svg viewBox="0 0 100 100" width="70" height="70" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+              <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+              <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
+              <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
+              <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
+              <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
+              <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
             </svg>
-            <div style="position:relative;z-index:2">
-              <p class="share-logo">COSMOS<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
-              <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
-              <svg viewBox="0 0 100 100" width="70" height="70" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-                <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-                <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
-                <circle id="sr-top"    cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
-                <circle id="sr-right"  cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
-                <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
-                <circle id="sr-left"   cx="50" cy="50" r="2.5" fill="#FAC775"/>
-              </svg>
-              <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:8px">
-                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">Lune 82%</span>
-                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">Systémique 91%</span>
-                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">Protecteur 74%</span>
-              </div>
-              <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-app.com</p>
+            <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:8px" id="share-pills">
+              <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">Lune 82%</span>
+              <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">Systémique 91%</span>
+              <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">Protecteur 74%</span>
             </div>
-          </div>
-          <div class="share-btns">
-            <button class="share-btn share-btn-ig" onclick="shareIG()">Partager sur Instagram Stories</button>
-            <button class="share-btn share-btn-fb" onclick="shareFB()">Partager sur Facebook</button>
-            <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyCode()">Copier mon code</button>
+            <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
           </div>
         </div>
-        
-      <!-- ══ MUR DE PAIEMENT ══ -->
+        <div class="share-btns">
+          <button class="share-btn share-btn-ig" onclick="shareIG()">Partager sur Instagram Stories</button>
+          <button class="share-btn share-btn-fb" onclick="shareFB()">Partager sur Facebook</button>
+          <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyCode()">Copier mon code</button>
+        </div>
+      </div>
+
+      <!-- PAYWALL -->
       <div class="paywall" id="paywall">
         <h2 class="paywall-title">Ton analyse complète t'attend</h2>
         <p class="paywall-sub">Ce que tu viens de voir n'est que la surface. Voici ce que l'analyse complète révèle :</p>
         <ul class="paywall-list">
-  <li class="paywall-item">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-    Portrait complet en 5 lignes percutantes
-  </li>
-  <li class="paywall-item">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-    2 forces cachées + 2 blocages inconscients
-  </li>
-  <li class="paywall-item">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-    ✦ 4 recommandations selon ton signe astrologique
-  </li>
-  <li class="paywall-item">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-    Ton portrait amoureux — style d'attachement profond
-  </li>
-  <li class="paywall-item">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-    Ton âme miroir — portrait + signaux de reconnaissance
-  </li>
-  <li class="paywall-item">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-    6 actions personnalisées du mois (4 de plus)
-  </li>
-  <li class="paywall-item">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-    Carte de profil partageable Instagram / Facebook
-  </li>
-</ul>
+          <li class="paywall-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Portrait complet en 5 lignes percutantes</li>
+          <li class="paywall-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>2 forces cachées + 2 blocages inconscients</li>
+          <li class="paywall-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>✦ 4 recommandations selon ton signe astrologique</li>
+          <li class="paywall-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ton portrait amoureux — style d'attachement profond</li>
+          <li class="paywall-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ton âme miroir — portrait + signaux de reconnaissance</li>
+          <li class="paywall-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>6 actions personnalisées du mois (4 de plus)</li>
+          <li class="paywall-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Carte de profil partageable Instagram / Facebook</li>
+        </ul>
         <p class="paywall-price">3,90€</p>
         <p class="paywall-price-note">Paiement unique · Accès permanent · Apple Pay / Google Pay acceptés</p>
-        <button class="pay-btn" id="pay-btn" onclick="handlePayment()">
-          Débloquer mon analyse complète
-        </button>
+        <button class="pay-btn" id="pay-btn" onclick="handlePayment()">Débloquer mon analyse complète</button>
         <p class="pay-note">Paiement sécurisé par Stripe · Aucune donnée bancaire stockée</p>
       </div>
 
-      <!-- ══ SECTION PAYANTE ══ -->
+      <!-- SECTION PAYANTE -->
       <div class="paid-section" id="paid-section">
-
-        <!-- 3e force -->
-        <div class="forces-section">
-          <p class="sec-label" style="margin-bottom:0.75rem">Force cachée · 3 sur 3</p>
-          <div class="force-card">
-            <div class="force-icon" style="background:rgba(186,117,23,0.15)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FAC775" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 3"/></svg>
-            </div>
-            <div>
-              <p class="force-name" id="force3-name">L'intelligence de l'ombre</p>
-              <p class="force-desc" id="force3-desc">Tu penses mieux dans le silence, la nuit, l'espace vide. Là où les autres s'agitent pour remplir le calme, toi tu t'y installes. Tes meilleures idées viennent dans les marges.</p>
-              <p class="force-paradox" id="force3-paradox" style="background:rgba(186,117,23,0.08)">Recommandation : protège tes heures creuses comme un territoire sacré. C'est là que tu es le plus toi-même.</p>
-            </div>
-          </div>
-        </div>
 
         <!-- ASTROLOGIE PAYANTE -->
         <div style="margin-bottom:1.25rem">
-           <p class="sec-label" style="margin-bottom:0.75rem">✦ Ton ciel natal — recommandations complètes</p>
-           <div id="astro-paid"></div>
-         </div>
-        
+          <p class="sec-label" style="margin-bottom:0.75rem">✦ Ton ciel natal — recommandations complètes</p>
+          <div id="astro-paid"></div>
+        </div>
+
         <!-- BLOCAGES -->
         <div style="margin-bottom:1.25rem" id="blocages-container">
           <p class="sec-label" style="margin-bottom:0.75rem">Tes 2 blocages inconscients</p>
           <div class="blocage-card">
             <p class="blocage-name">La vigilance permanente</p>
-            <p class="blocage-desc">Tu scannes les environnements et les personnes avant de te détendre — souvent sans t'en rendre compte. Cette hyper-vigilance te protège mais t'épuise aussi, et empêche parfois les connexions spontanées.</p>
-            <span class="blocage-key">Clé : autorise-toi 1 espace par semaine où tu n'as pas à analyser — juste être présent.</span>
+            <p class="blocage-desc">Tu scannes les environnements avant de te détendre. Cela t'épuise sans que tu le saches.</p>
+            <span class="blocage-key">Clé : autorise-toi 1 espace sans analyser par semaine.</span>
           </div>
           <div class="blocage-card">
             <p class="blocage-name">La retenue émotionnelle</p>
-            <p class="blocage-desc">Tu ressens profondément mais tu montres peu. Ce filtre est une force — mais il crée parfois une distance que les autres interprètent comme du désintérêt, alors que tu es intensément présent intérieurement.</p>
-            <span class="blocage-key">Clé : choisis 1 personne cette semaine à qui tu dis quelque chose que tu ressens vraiment.</span>
+            <p class="blocage-desc">Tu ressens profondément mais tu montres peu. Cela crée une distance involontaire.</p>
+            <span class="blocage-key">Clé : dis quelque chose que tu ressens vraiment à quelqu'un cette semaine.</span>
           </div>
         </div>
 
@@ -571,18 +416,18 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <p class="sec-label">Ton portrait amoureux</p>
           <p class="love-style" id="love-style-text">Style d'attachement · Sécure-distancié</p>
           <h3 class="love-title">Tu aimes profondément, mais tu testes avant de faire confiance.</h3>
-          <p class="love-desc" id="love-desc-text">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste. Tu peux être seul sans souffrir, mais quand tu choisis quelqu'un, c'est avec une intensité rare. Ce que les autres vivent comme de la froideur n'est souvent que ta façon de te protéger le temps de vérifier que c'est sûr.</p>
+          <p class="love-desc" id="love-desc-text">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste.</p>
           <div class="love-row">
             <span class="love-row-label">Tu offres</span>
-            <span class="love-row-val" id="love-offre">Une loyauté absolue, une présence calme, une sécurité sans bruit.</span>
+            <span class="love-row-val" id="love-offre">Une loyauté absolue et une présence calme.</span>
           </div>
           <div class="love-row">
             <span class="love-row-label">Tu as besoin</span>
-            <span class="love-row-val" id="love-besoin">De constance silencieuse — quelqu'un qui est là, encore et encore, sans que tu aies à le demander.</span>
+            <span class="love-row-val" id="love-besoin">De constance silencieuse — quelqu'un qui est là encore et encore.</span>
           </div>
           <div class="love-row">
             <span class="love-row-label">À dépasser</span>
-            <span class="love-row-val" id="love-pattern">Attendre que l'autre prouve sa valeur avant de s'engager émotionnellement.</span>
+            <span class="love-row-val" id="love-pattern">Attendre que l'autre prouve sa valeur avant de s'engager.</span>
           </div>
         </div>
 
@@ -596,7 +441,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
               <p class="mirror-sub" id="mirror-sub">Soleil · Narratif · Architecture expansive</p>
             </div>
           </div>
-          <p class="mirror-quote" id="mirror-quote">"Cette personne n'arrive pas dans ta vie avec des grands gestes. Elle arrive avec une constance tranquille — cette façon d'être là, encore et encore, sans calculer, sans condition. Et un jour tu réalises que tu respires différemment quand elle est dans la pièce."</p>
+          <p class="mirror-quote" id="mirror-quote">"Cette personne arrive avec une constance tranquille — cette façon d'être là sans calculer."</p>
           <div class="compat-row">
             <span class="compat-label">Résonance émotionnelle</span>
             <div class="compat-track"><div class="compat-fill" style="background:var(--rose)" data-w="92"></div></div>
@@ -624,60 +469,55 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <div class="action-card-full" style="background:var(--deep);border:1px solid var(--border);border-radius:12px;margin-bottom:8px">
             <div class="action-num" style="background:rgba(212,83,126,0.2);color:#F4C0D1;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">3</div>
             <div>
-              <p class="action-title">Le rituel lunaire</p>
-              <p class="action-desc">Choisis une soirée par semaine sans écrans après 21h. Ton énergie Lune se régénère dans le silence sensoriel. Pas optionnel — essentiel à ta clarté mentale.</p>
-              <p class="action-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">1 soir / semaine</p>
+              <p class="action-title" id="action3-title">Le rituel lunaire</p>
+              <p class="action-desc" id="action3-desc">Une soirée sans écrans après 21h. Ton énergie se régénère dans le silence.</p>
+              <p class="action-freq" id="action3-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">1 soir / semaine</p>
             </div>
           </div>
           <div class="action-card-full" style="background:var(--deep);border:1px solid var(--border);border-radius:12px;margin-bottom:8px">
             <div class="action-num" style="background:rgba(186,117,23,0.2);color:#FAC775;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">4</div>
             <div>
-              <p class="action-title">La phrase non dite</p>
-              <p class="action-desc">Identifie une chose importante que tu ressens en ce moment et que tu n'as dit à personne. Trouve une personne de confiance et dis-la cette semaine. Juste une.</p>
-              <p class="action-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Cette semaine · 1 fois</p>
+              <p class="action-title" id="action4-title">La phrase non dite</p>
+              <p class="action-desc" id="action4-desc">Dis à quelqu'un quelque chose que tu ressens vraiment.</p>
+              <p class="action-freq" id="action4-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Cette semaine · 1 fois</p>
             </div>
           </div>
           <div class="action-card-full" style="background:var(--deep);border:1px solid var(--border);border-radius:12px;margin-bottom:8px">
             <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">5</div>
             <div>
-              <p class="action-title">La carte de ton cosmos</p>
-              <p class="action-desc">Dessine ou note les 5 personnes qui comptent le plus. Pour chacune, une chose qu'elles t'apportent que tu ne leur as jamais dite. Garde cette carte.</p>
-              <p class="action-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Ce week-end · 20 min</p>
+              <p class="action-title" id="action5-title">La carte de ton cosmos</p>
+              <p class="action-desc" id="action5-desc">Note les 5 personnes qui comptent le plus.</p>
+              <p class="action-freq" id="action5-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Ce week-end · 20 min</p>
             </div>
           </div>
           <div class="action-card-full" style="background:var(--deep);border:1px solid var(--border);border-radius:12px;margin-bottom:8px">
             <div class="action-num" style="background:rgba(29,158,117,0.2);color:#9FE1CB;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">6</div>
             <div>
-              <p class="action-title">L'invitation inattendue</p>
-              <p class="action-desc">Contacte une personne que tu n'as pas vue depuis plus de 6 mois et que tu apprécies. Pas un message — un vrai appel ou une rencontre. L'Architecte Lunaire s'isole trop facilement.</p>
-              <p class="action-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Ce mois · 1 fois</p>
+              <p class="action-title" id="action6-title">L'invitation inattendue</p>
+              <p class="action-desc" id="action6-desc">Contacte quelqu'un non vu depuis 6 mois. Un vrai appel, pas un message.</p>
+              <p class="action-freq" id="action6-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Ce mois · 1 fois</p>
             </div>
           </div>
         </div>
 
         <!-- FEEDBACK + CHAPITRE II -->
-        
-<div style="background:var(--deep);border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center">
-  <p class="sec-label" style="margin-bottom:0.75rem">Ton avis compte</p>
-  <p style="font-size:0.85rem;color:#C8C4E8;margin-bottom:1rem">Cette analyse t'a-t-elle aidé à mieux te comprendre ?</p>
-  <div style="display:flex;gap:10px;justify-content:center;margin-bottom:1rem">
-    <button onclick="sendFeedback(1)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
-    <button onclick="sendFeedback(2)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
-    <button onclick="sendFeedback(3)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
-    <button onclick="sendFeedback(4)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
-    <button onclick="sendFeedback(5)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
-  </div>
-  <textarea id="feedback-text" placeholder="Un commentaire, une réflexion, quelque chose qui t'a touché·e..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.75rem;color:#C8C4E8;font-family:'DM Sans',sans-serif;font-size:0.82rem;line-height:1.6;resize:none;height:80px;margin-bottom:1.25rem;outline:none"></textarea>
-  <p style="font-size:0.85rem;color:#C8C4E8;margin-bottom:0.5rem">Intéressé·e par le <strong>Chapitre II — Tes patterns amoureux</strong> ?</p>
-  <p style="font-size:0.75rem;color:var(--text-faint);margin-bottom:1rem">Sois notifié·e en avant-première dès sa sortie.</p>
-  <button onclick="registerChapter2()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem" id="chapter2-btn">
-    Je veux être notifié·e
-  </button>
-  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.65rem 1.5rem;color:#AFA9EC;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;width:100%">
-    ↑ Revenir en haut
-  </button>
-</div>
-        
+        <div style="background:var(--deep);border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center">
+          <p class="sec-label" style="margin-bottom:0.75rem">Ton avis compte</p>
+          <p style="font-size:0.85rem;color:#C8C4E8;margin-bottom:1rem">Cette analyse t'a-t-elle aidé à mieux te comprendre ?</p>
+          <div style="display:flex;gap:10px;justify-content:center;margin-bottom:1rem">
+            <button onclick="sendFeedback(1)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+            <button onclick="sendFeedback(2)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+            <button onclick="sendFeedback(3)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+            <button onclick="sendFeedback(4)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+            <button onclick="sendFeedback(5)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+          </div>
+          <textarea id="feedback-text" placeholder="Un commentaire, une réflexion, quelque chose qui t'a touché·e..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.75rem;color:#C8C4E8;font-family:'DM Sans',sans-serif;font-size:0.82rem;line-height:1.6;resize:none;height:80px;margin-bottom:1.25rem;outline:none"></textarea>
+          <p style="font-size:0.85rem;color:#C8C4E8;margin-bottom:0.5rem">Intéressé·e par le <strong>Chapitre II — Tes patterns amoureux</strong> ?</p>
+          <p style="font-size:0.75rem;color:var(--text-faint);margin-bottom:1rem">Sois notifié·e en avant-première dès sa sortie.</p>
+          <button onclick="registerChapter2()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem" id="chapter2-btn">Je veux être notifié·e</button>
+          <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.65rem 1.5rem;color:#AFA9EC;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;width:100%">↑ Revenir en haut</button>
+        </div>
+
         <!-- CHAPITRE SUIVANT -->
         <div class="next-chapter">
           <div class="nc-icon">
@@ -690,14 +530,13 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         </div>
 
       </div><!-- /paid-section -->
-
     </div><!-- /content -->
   </div><!-- /main -->
 </div><!-- /page -->
 
 <script src="api.js"></script>
 <script>
-/* ══ ÉTOILES ══ */
+/* ÉTOILES */
 (function(){
   var c=document.getElementById('cosmos-canvas'),ctx=c.getContext('2d'),stars=[],W,H;
   function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
@@ -706,190 +545,134 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
   resize();make(160);window.addEventListener('resize',function(){resize();make(160);});requestAnimationFrame(draw);
 })();
 
-/* ══ DONNÉES UTILISATEUR ══ */
 var userData={}, quizData={answers:[]};
 try{ userData=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}'); }catch(e){}
 try{ quizData=JSON.parse(sessionStorage.getItem('cosmos_quiz')||'{}'); }catch(e){}
-if(userData.prenom){
-  document.getElementById('nav-name').textContent=userData.prenom;
-}
+if(userData.prenom){ document.getElementById('nav-name').textContent=userData.prenom; }
 
-/* ══ ANIMATION RADAR PRINCIPAL ══ */
-function animateRadar(){
-  var scores={top:82, right:91, bottom:74, left:88};
-  var cx=110,cy=110,maxR=92;
-  var current={top:0,right:0,bottom:0,left:0};
-  var target={
-    top:   cy-(scores.top/100*maxR),
-    right: cx+(scores.right/100*maxR),
-    bottom:cy+(scores.bottom/100*maxR),
-    left:  cx-(scores.left/100*maxR)
-  };
-  var start=null;
+/* ANIMATION RADAR */
+function animateRadar(scores){
+  scores = scores || {top:82,right:91,bottom:74,left:88};
+  var cx=110,cy=110,maxR=92,start=null;
   function step(ts){
     if(!start)start=ts;
     var p=Math.min((ts-start)/1200,1);
     var e=1-Math.pow(1-p,3);
-    var tTop=cy-(scores.top/100*maxR*e);
-    var tRight=cx+(scores.right/100*maxR*e);
-    var tBot=cy+(scores.bottom/100*maxR*e);
-    var tLeft=cx-(scores.left/100*maxR*e);
     var pts=cx+','+(cy-(scores.top/100*maxR*e))+' '+(cx+(scores.right/100*maxR*e))+','+cy+' '+cx+','+(cy+(scores.bottom/100*maxR*e))+' '+(cx-(scores.left/100*maxR*e))+','+cy;
     document.getElementById('radar-shape').setAttribute('points',pts);
-    document.getElementById('r-top').setAttribute('cy',tTop);
-    document.getElementById('r-right').setAttribute('cx',tRight);
-    document.getElementById('r-bottom').setAttribute('cy',tBot);
-    document.getElementById('r-left').setAttribute('cx',tLeft);
+    document.getElementById('r-top').setAttribute('cy',cy-(scores.top/100*maxR*e));
+    document.getElementById('r-right').setAttribute('cx',cx+(scores.right/100*maxR*e));
+    document.getElementById('r-bottom').setAttribute('cy',cy+(scores.bottom/100*maxR*e));
+    document.getElementById('r-left').setAttribute('cx',cx-(scores.left/100*maxR*e));
     if(p<1)requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
 }
 
-/* ══ ANIMATION RADAR CARTE PARTAGE ══ */
-function animateShareRadar(){
-  var cx=50,cy=50,maxR=42;
-  var s={top:82,right:91,bottom:74,left:88};
-  var start=null;
+function animateShareRadar(scores){
+  scores = scores || {top:82,right:91,bottom:74,left:88};
+  var cx=50,cy=50,maxR=42,start=null;
   function step(ts){
     if(!start)start=ts;
     var p=Math.min((ts-start)/1000,1);
     var e=1-Math.pow(1-p,3);
-    var pts=cx+','+(cy-(s.top/100*maxR*e))+' '+(cx+(s.right/100*maxR*e))+','+cy+' '+cx+','+(cy+(s.bottom/100*maxR*e))+' '+(cx-(s.left/100*maxR*e))+','+cy;
+    var pts=cx+','+(cy-(scores.top/100*maxR*e))+' '+(cx+(scores.right/100*maxR*e))+','+cy+' '+cx+','+(cy+(scores.bottom/100*maxR*e))+' '+(cx-(scores.left/100*maxR*e))+','+cy;
     document.getElementById('share-radar').setAttribute('points',pts);
-    document.getElementById('sr-top').setAttribute('cy',cy-(s.top/100*maxR*e));
-    document.getElementById('sr-right').setAttribute('cx',cx+(s.right/100*maxR*e));
-    document.getElementById('sr-bottom').setAttribute('cy',cy+(s.bottom/100*maxR*e));
-    document.getElementById('sr-left').setAttribute('cx',cx-(s.left/100*maxR*e));
+    document.getElementById('sr-top').setAttribute('cy',cy-(scores.top/100*maxR*e));
+    document.getElementById('sr-right').setAttribute('cx',cx+(scores.right/100*maxR*e));
+    document.getElementById('sr-bottom').setAttribute('cy',cy+(scores.bottom/100*maxR*e));
+    document.getElementById('sr-left').setAttribute('cx',cx-(scores.left/100*maxR*e));
     if(p<1)requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
 }
 
-/* ══ ANIMATION BARRES DE COMPATIBILITÉ ══ */
 function animateCompat(){
-  var fills=document.querySelectorAll('.compat-fill');
-  fills.forEach(function(f){
+  document.querySelectorAll('.compat-fill').forEach(function(f){
     var w=f.getAttribute('data-w');
     setTimeout(function(){f.style.width=w+'%';},200);
   });
 }
 
-/* Lancer les animations au chargement */
 setTimeout(animateRadar,300);
 
-/* ══ PAIEMENT STRIPE ══ */
+/* PAIEMENT */
 var isPaid=false;
 try{ isPaid=sessionStorage.getItem('cosmos_paid')==='true'; }catch(e){}
 
 function handlePayment(){
   var btn=document.getElementById('pay-btn');
-  btn.textContent='Redirection vers le paiement…';
-  btn.disabled=true;
-
-  /*
-  ═══════════════════════════════════════════════════
-  STRIPE INTEGRATION — À remplacer par ton vrai lien
-  ═══════════════════════════════════════════════════
-  Étapes :
-  1. Crée un compte sur stripe.com
-  2. Dashboard → Payment Links → Create a link
-  3. Produit : "Analyse Cosmos complète" · Prix : 3,90€
-  4. Remplace l'URL ci-dessous par ton vrai Payment Link
-  5. Configure le webhook pour détecter le succès
-     (ou utilise ?success=true en URL de retour)
-  ═══════════════════════════════════════════════════
-  */
+  if(btn){ btn.textContent='Redirection vers le paiement…'; btn.disabled=true; }
   var STRIPE_LINK = 'https://buy.stripe.com/dRmdR2bW8eTBfDUgepdUY01';
-
-  /* Pour la démo locale — simule le paiement */
   if(STRIPE_LINK.includes('TON_LIEN_ICI')){
-    setTimeout(function(){
-      unlockPaidContent();
-    }, 1500);
+    setTimeout(unlockPaidContent, 1500);
     return;
   }
-
-  /* En production — redirection Stripe */
-  window.location.href = STRIPE_LINK + '?client_reference_id=' +
-    encodeURIComponent(userData.email||'user');
+  window.location.href = STRIPE_LINK + '?client_reference_id=' + encodeURIComponent(userData.email||'user');
 }
 
-/* ══ DÉBLOCAGE DU CONTENU PAYANT ══ */
+/* DÉBLOCAGE */
 function unlockPaidContent(){
   try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){}
   isPaid=true;
-
-  /* Cacher le paywall */
   document.getElementById('paywall').style.display='none';
-  /* Cacher la force floue et afficher proprement */
-  document.querySelectorAll('.force-locked').forEach(function(el){
-    el.classList.remove('force-locked');
-  });
+  /* Retirer tous les flous */
+  document.querySelectorAll('.force-locked').forEach(function(el){ el.classList.remove('force-locked'); });
   document.querySelectorAll('[style*="blur"]').forEach(function(el){
     el.style.filter='none';
     el.style.userSelect='auto';
     el.style.pointerEvents='auto';
   });
-  /* Afficher la section payante */
+  /* Masquer les boutons débloquer */
+  document.querySelectorAll('[onclick="handlePayment()"]').forEach(function(btn){
+    if(btn.id !== 'pay-btn') btn.parentElement.style.display='none';
+  });
   document.getElementById('paid-section').classList.add('unlocked');
-  /* Réappliquer le profil pour les sections payantes */
-var cachedProfile = null;
-try{ cachedProfile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-if(cachedProfile && window.CosmosAPI) {
-  window.CosmosAPI.apply(cachedProfile);
-}
-  /* Cacher le banner démo */
   document.getElementById('demo-banner').style.display='none';
-
-  /* Animer les éléments payants */
+  /* Réappliquer le profil */
+  var cachedProfile=null;
+  try{ cachedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+  if(cachedProfile && window.CosmosAPI){ window.CosmosAPI.apply(cachedProfile); }
   setTimeout(function(){
     animateCompat();
-    animateShareRadar();
+    var p=cachedProfile;
+    if(p && p.dims){
+      animateShareRadar({top:p.dims.cosmique[0],right:p.dims.cognitif[0],bottom:p.dims.emotionnel[0],left:p.dims.relationnel[0]});
+    } else {
+      animateShareRadar();
+    }
   }, 300);
-  if(userData && userData.email) {
+  if(userData && userData.email){
     sendBrevoEmail(userData.email, userData.prenom || 'toi');
     registerBrevoContact(userData.email, userData.prenom || '', 4);
   }
-
-  /* Scroll vers le nouveau contenu */
-  setTimeout(function(){
-    document.getElementById('paid-section').scrollIntoView({behavior:'smooth',block:'start'});
-  }, 400);
+  setTimeout(function(){ document.getElementById('paid-section').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
 }
 
-/* Vérifier si déjà payé (retour de Stripe) */
-if(isPaid || window.location.search.includes('success=true')){
-  unlockPaidContent();
-}
+if(isPaid || window.location.search.includes('success=true')){ unlockPaidContent(); }
 
-/* Charger le profil via Claude API (ou démo) */
+/* CHARGEMENT PROFIL */
 if(window.CosmosAPI){
-  /* Cacher le contenu pendant le chargement */
-  var sections = ['portrait-lines','dim-pills','forces-section','actions-free','paywall'];
-  document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){
-    el.style.opacity='0';
-  });
+  document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){ el.style.opacity='0'; });
   document.getElementById('profile-name').textContent = '✨ Cosmos construit ton profil personnalisé, merci de patienter environ 30 secondes…';
   document.getElementById('profile-code').textContent = '· · ·';
-  
   window.CosmosAPI.init();
 }
 
-/* ══ PARTAGE ══ */
+/* PARTAGE */
 function shareIG(){
-  var nom = document.getElementById('profile-name').textContent || 'Mon profil Cosmos';
-  var code = document.getElementById('share-code').textContent || '';
-  alert('📸 Pour partager sur Instagram :\n\n1. Fais une capture d\'écran de ta carte de profil\n2. Ouvre Instagram → ton profil → "+" → Story\n3. Choisis ta capture et partage !\n\nTon profil : ' + nom + '\n' + code);
+  var nom=document.getElementById('profile-name').textContent||'Mon profil Cosmos';
+  var code=document.getElementById('share-code').textContent||'';
+  alert('📸 Pour partager sur Instagram :\n\n1. Fais une capture d\'écran de ta carte de profil\n2. Ouvre Instagram → ton profil → "+" → Story\n3. Choisis ta capture et partage !\n\nTon profil : '+nom+'\n'+code);
 }
 function shareFB(){
-  var nom = document.getElementById('profile-name').textContent || 'Mon profil Cosmos';
-  var code = document.getElementById('share-code').textContent || '';
-  var text = encodeURIComponent('Je viens de découvrir mon profil Cosmos : ' + nom + ' (' + code + '). Et toi, quel est le tien ? 🌟');
-  var url = encodeURIComponent('https://cosmos-vision.com');
-  window.open('https://www.facebook.com/sharer/sharer.php?u='+url+'&quote='+text,'_blank');
+  var nom=document.getElementById('profile-name').textContent||'Mon profil Cosmos';
+  var code=document.getElementById('share-code').textContent||'';
+  var text=encodeURIComponent('Je viens de découvrir mon profil Cosmos : '+nom+' ('+code+'). Et toi, quel est le tien ? 🌟');
+  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('https://cosmos-vision.com')+'&quote='+text,'_blank');
 }
 function copyCode(){
-  var code = document.getElementById('share-code').textContent;
+  var code=document.getElementById('share-code').textContent;
   if(navigator.clipboard){
     navigator.clipboard.writeText(code).then(function(){
       var btn=document.getElementById('copy-btn');
@@ -898,23 +681,17 @@ function copyCode(){
     });
   }
 }
-
-  function sendFeedback(note) {
-  var stars = document.querySelectorAll('[onclick^="sendFeedback"]');
-  stars.forEach(function(s, i) {
-    s.textContent = i < note ? '⭐' : '☆';
-  });
+function sendFeedback(note){
+  var stars=document.querySelectorAll('[onclick^="sendFeedback"]');
+  stars.forEach(function(s,i){ s.textContent=i<note?'⭐':'☆'; });
 }
-
-function registerChapter2() {
-  var btn = document.getElementById('chapter2-btn');
-  var commentaire = document.getElementById('feedback-text').value;
-  btn.textContent = '✓ Tu seras notifié·e !';
-  btn.style.background = 'var(--teal)';
-  btn.disabled = true;
-  if(userData && userData.email) {
-    registerBrevoContact(userData.email, userData.prenom || '', 5, commentaire);
-  }
+function registerChapter2(){
+  var btn=document.getElementById('chapter2-btn');
+  var commentaire=document.getElementById('feedback-text').value;
+  btn.textContent='✓ Tu seras notifié·e !';
+  btn.style.background='var(--teal)';
+  btn.disabled=true;
+  if(userData && userData.email){ registerBrevoContact(userData.email, userData.prenom||'', 5, commentaire); }
 }
 </script>
 </body>
