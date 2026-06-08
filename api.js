@@ -238,6 +238,33 @@ if(p.dims && p.profil) {
     fills.forEach(function(f, i){ if(vals[i]) f.setAttribute('data-w', vals[i]); });
   }
 
+/* ASTROLOGIE GRATUITE */
+if(p.astro) {
+  var astroFree = document.getElementById('astro-free');
+  if(astroFree) {
+    astroFree.innerHTML = 
+      '<p class="sec-label" style="margin-bottom:0.5rem">✦ ' + p.astro.signe + ' · ' + p.astro.planete + '</p>'
+      + '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1rem;color:#C8C4E8;font-style:italic;line-height:1.8;margin-bottom:1rem">' + p.astro.souffle + '</p>'
+      + '<div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">'
+      + '<p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">' + p.astro.gratuit.domaine + '</p>'
+      + '<p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">' + p.astro.gratuit.conseil + '</p>'
+      + '</div>';
+  }
+}
+
+/* ASTROLOGIE PAYANTE */
+if(p.astro && p.astro.payant) {
+  var astroPaid = document.getElementById('astro-paid');
+  if(astroPaid) {
+    astroPaid.innerHTML = p.astro.payant.map(function(item) {
+      return '<div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem;margin-bottom:8px">'
+        + '<p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">' + item.domaine + '</p>'
+        + '<p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">' + item.conseil + '</p>'
+        + '</div>';
+    }).join('');
+  }
+}
+  
   try{ sessionStorage.setItem('cosmos_profile', JSON.stringify(profile)); }catch(e){}
 }
 
