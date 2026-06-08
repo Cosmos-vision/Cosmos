@@ -193,7 +193,15 @@ if(p.dims && p.profil) {
     if(elF3Desc) elF3Desc.textContent = f3.desc;
     if(elF3Para) elF3Para.textContent = f3.paradoxe;
   }
-
+/* 4e FORCE */
+if(p.forces && p.forces.length >= 4) {
+  var f4 = p.forces[3];
+  var elF4Name = document.querySelector('.force-locked:last-of-type .force-name');
+  var elF4Desc = document.querySelector('.force-locked:last-of-type .force-desc');
+  if(elF4Name) elF4Name.textContent = f4.nom;
+  if(elF4Desc) elF4Desc.textContent = f4.desc;
+}
+  
   /* BLOCAGES */
   if(p.blocages && p.blocages.length) {
     var blocContainer = document.getElementById('blocages-container');
