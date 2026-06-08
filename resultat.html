@@ -370,6 +370,42 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         </div>
       </div>
 
+          <!-- ASTROLOGIE GRATUITE -->
+             <div class="portrait-block" id="astro-free" style="margin-bottom:1.25rem">
+             <p class="sec-label">Ton ciel natal</p>
+          </div>    
+
+<!-- ASTROLOGIE FLOUE -->
+<div class="portrait-block force-locked" style="margin-bottom:0.75rem;filter:blur(4px);user-select:none;pointer-events:none" aria-hidden="true">
+  <p class="sec-label">✦ Signe solaire · Recommandations complètes</p>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
+      <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Vie émotionnelle</p>
+      <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Ta sensibilité est une boussole intérieure d'une précision rare. Apprends à l'écouter avant d'analyser.</p>
+    </div>
+    <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
+      <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Amour et relations</p>
+      <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Tu aimes avec une profondeur que peu comprennent. Choisis des partenaires capables de recevoir cette intensité.</p>
+    </div>
+    <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
+      <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Mental et clarté</p>
+      <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Ton esprit analytique est ton outil le plus puissant. Accorde-lui des pauses pour qu'il reste affûté.</p>
+    </div>
+    <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">
+      <p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Travail et ambition</p>
+      <p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">Tu es fait·e pour construire sur le long terme. Tes projets les plus ambitieux méritent ta patience naturelle.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BOUTON DÉBLOQUER ASTROLOGIE -->
+<div style="text-align:center;margin-bottom:1.25rem">
+  <p style="font-size:0.78rem;color:#AFA9EC;margin-bottom:0.75rem">✦ 4 recommandations personnalisées selon ton signe t'attendent</p>
+  <button onclick="handlePayment()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
+    Débloquer mes recommandations →
+  </button>
+</div>
+      
       <!-- ACTIONS GRATUITES (2/6) -->
       <div class="actions-free">
         <p class="sec-label" style="margin-bottom:0.75rem">Tes défis du mois — 2 actions gratuites</p>
@@ -430,11 +466,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyCode()">Copier mon code</button>
           </div>
         </div>
-      
-      <!-- ASTROLOGIE GRATUITE -->
-<div class="portrait-block" id="astro-free" style="margin-bottom:1.25rem">
-  <p class="sec-label">Ton ciel natal</p>
-</div>      
+        
       <!-- ══ MUR DE PAIEMENT ══ -->
       <div class="paywall" id="paywall">
         <h2 class="paywall-title">Ton analyse complète t'attend</h2>
