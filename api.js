@@ -243,8 +243,7 @@ if(p.astro) {
   var astroFree = document.getElementById('astro-free');
   if(astroFree) {
     astroFree.innerHTML = 
-      '<p class="sec-label" style="margin-bottom:0.25rem">Signe solaire & planète dominante</p>'
-+ '<p style="font-size:1.1rem;font-family:\'Cormorant Garamond\',serif;color:#AFA9EC;margin-bottom:0.75rem">✦ ' + p.astro.signe + ' · ' + p.astro.planete + '</p>'
+      '<p style="font-size:1.1rem;font-family:\'Cormorant Garamond\',serif;color:#AFA9EC;margin-bottom:0.75rem">✦ ' + p.astro.signe + ' · ' + p.astro.planete + '</p>'
       + '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1rem;color:#C8C4E8;font-style:italic;line-height:1.8;margin-bottom:1rem">' + p.astro.souffle + '</p>'
       + '<div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">'
       + '<p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">' + p.astro.gratuit.domaine + '</p>'
