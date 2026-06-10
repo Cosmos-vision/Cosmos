@@ -710,6 +710,34 @@ function registerChapter2(){
   btn.disabled=true;
   if(userData && userData.email){ registerBrevoContact(userData.email, userData.prenom||'', 5, commentaire); }
 }
+  function shareGift(){
+  var code = '';
+  try{ code = sessionStorage.getItem('cosmos_gift') || ''; }catch(e){}
+  if(!code){
+    code = Math.random().toString(36).substring(2,9).toUpperCase();
+    try{ sessionStorage.setItem('cosmos_gift', code); }catch(e){}
+  }
+  var giftUrl = 'https://cosmos-vision.com/resultat.html?gift=' + code;
+  var btn = document.getElementById('gift-btn');
+  var display = document.getElementById('gift-link-display');
+  
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(giftUrl).then(function(){
+      btn.textContent = '✓ Lien copié !';
+      btn.style.background = 'var(--teal)';
+      display.textContent = giftUrl;
+      display.style.display = 'block';
+      setTimeout(function(){
+        btn.textContent = '🎁 Offrir l\'analyse complète à un ami';
+        btn.style.background = 'linear-gradient(135deg,var(--purple),var(--rose))';
+      }, 3000);
+    });
+  } else {
+    display.textContent = giftUrl;
+    display.style.display = 'block';
+    btn.textContent = '✓ Copie ce lien !';
+  }
+}
 </script>
 </body>
 </html>
