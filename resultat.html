@@ -684,11 +684,21 @@ if(window.CosmosAPI){
   var isGiftReceived = false;
   try{ isGiftReceived = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
   
-  window.CosmosAPI.init().then(function(){
-    if(isGiftReceived){
+  window.CosmosAPI.init();
+
+if(isGiftReceived){
+  var giftCheck = setInterval(function(){
+    var profile = null;
+    try{ profile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+    if(profile && profile.profil && profile.profil.nom !== "L'Architecte Lunaire"){
+      clearInterval(giftCheck);
       try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
-      setTimeout(function(){ unlockPaidContent(); }, 1000);
+      unlockPaidContent();
     }
+  }, 500);
+  /* Timeout de sécurité après 60 secondes */
+  setTimeout(function(){ clearInterval(giftCheck); }, 60000);
+}
   }).catch(function(){
     if(isGiftReceived){
       try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
