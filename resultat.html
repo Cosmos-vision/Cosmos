@@ -499,7 +499,17 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             </div>
           </div>
         </div>
-
+          <!-- PARRAINAGE -->
+          <div style="background:linear-gradient(135deg,rgba(127,119,221,0.1),rgba(212,83,126,0.08));border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center">
+            <p class="sec-label" style="margin-bottom:0.5rem">✦ Offre cette expérience</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#C8C4E8;margin-bottom:0.5rem;font-style:italic">Ton analyse t'a touché·e ?</p>
+            <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.6">Offre l'expérience complète à quelqu'un qui compte. Gratuitement, en un clic.</p>
+            <button onclick="shareGift()" id="gift-btn" style="background:linear-gradient(135deg,var(--purple),var(--rose));border:none;border-radius:100px;padding:0.85rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem">
+              🎁 Offrir l'analyse complète à un ami
+            </button>
+            <p id="gift-link-display" style="font-size:0.72rem;color:var(--text-faint);display:none"></p>
+          </div>
+        
         <!-- FEEDBACK + CHAPITRE II -->
         <div style="background:var(--deep);border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center">
           <p class="sec-label" style="margin-bottom:0.75rem">Ton avis compte</p>
