@@ -614,6 +614,11 @@ function handlePayment(){
 /* DÉBLOCAGE */
 function unlockPaidContent(){
   try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){}
+  /* Générer code cadeau unique */
+var giftCode = userData.prenom ? 
+  userData.prenom.substring(0,3).toUpperCase() + Math.random().toString(36).substring(2,7).toUpperCase() :
+  Math.random().toString(36).substring(2,9).toUpperCase();
+try{ sessionStorage.setItem('cosmos_gift', giftCode); }catch(e){}
   isPaid=true;
   document.getElementById('paywall').style.display='none';
   /* Retirer tous les flous */
