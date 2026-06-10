@@ -710,6 +710,7 @@ function registerChapter2(){
   btn.disabled=true;
   if(userData && userData.email){ registerBrevoContact(userData.email, userData.prenom||'', 5, commentaire); }
 }
+  
   function shareGift(){
   var code = '';
   try{ code = sessionStorage.getItem('cosmos_gift') || ''; }catch(e){}
@@ -718,26 +719,76 @@ function registerChapter2(){
     try{ sessionStorage.setItem('cosmos_gift', code); }catch(e){}
   }
   var giftUrl = 'https://cosmos-vision.com/resultat.html?gift=' + code;
-  var btn = document.getElementById('gift-btn');
-  var display = document.getElementById('gift-link-display');
   
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(giftUrl).then(function(){
-      btn.textContent = '✓ Lien copié !';
-      btn.style.background = 'var(--teal)';
-      display.textContent = giftUrl;
-      display.style.display = 'block';
-      setTimeout(function(){
-        btn.textContent = '🎁 Offrir l\'analyse complète à un ami';
-        btn.style.background = 'linear-gradient(135deg,var(--purple),var(--rose))';
-      }, 3000);
-    });
-  } else {
-    display.textContent = giftUrl;
-    display.style.display = 'block';
-    btn.textContent = '✓ Copie ce lien !';
+  /* Afficher popup */
+  var popup = document.getElementById('gift-popup');
+  if(popup) {
+    document.getElementById('gift-url-hidden').value = giftUrl;
+    popup.style.display = 'flex';
   }
 }
+
+function sendGiftEmail(){
+  var email = document.getElementById('gift-email').value;
+  var prenom = document.getElementById('gift-prenom').value;
+  var giftUrl = document.getElementById('gift-url-hidden').value;
+  
+  if(!email || !email.includes('@')){
+    alert('Merci d\'entrer un email valide !');
+    return;
+  }
+  
+  var btn = document.getElementById('gift-send-btn');
+  btn.textContent = 'Envoi en cours…';
+  btn.disabled = true;
+  
+  /* Envoyer via Brevo */
+  fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'api-key': b1+b2 },
+    body: JSON.stringify({
+      templateId: 2,
+      to: [{ email: email, name: prenom || 'toi' }],
+      params: {
+        prenom_ami: prenom || 'toi',
+        prenom_parrain: userData.prenom || 'Quelqu\'un',
+        gift_url: giftUrl
+      }
+    })
+  }).then(function(){
+    /* Enregistrer l'ami dans Brevo liste 3 */
+    registerBrevoContact(email, prenom || '', 3);
+    /* Fermer popup */
+    document.getElementById('gift-popup').style.display = 'none';
+    /* Confirmer */
+    var btn2 = document.getElementById('gift-btn');
+    btn2.textContent = '✓ Cadeau envoyé !';
+    btn2.style.background = 'var(--teal)';
+  }).catch(function(){
+    btn.textContent = 'Envoyer le cadeau →';
+    btn.disabled = false;
+    alert('Erreur d\'envoi — réessaie !');
+  });
+}
+
+function closeGiftPopup(){
+  document.getElementById('gift-popup').style.display = 'none';
+}
+  
 </script>
+  <!-- POPUP CADEAU -->
+<div id="gift-popup" style="display:none;position:fixed;inset:0;background:rgba(7,6,15,0.85);z-index:1000;align-items:center;justify-content:center;padding:1.5rem">
+  <div style="background:var(--deep);border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.75rem;width:100%;max-width:400px;position:relative">
+    <button onclick="closeGiftPopup()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--text-faint);font-size:1.2rem;cursor:pointer">✕</button>
+    <p class="sec-label" style="margin-bottom:0.5rem">🎁 Offrir l'analyse complète</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C8C4E8;font-style:italic;margin-bottom:1.25rem;line-height:1.6">À qui veux-tu offrir cette expérience ?</p>
+    <input id="gift-prenom" type="text" placeholder="Son prénom" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.75rem;color:#C8C4E8;font-family:'DM Sans',sans-serif;font-size:0.85rem;margin-bottom:0.75rem;outline:none"/>
+    <input id="gift-email" type="email" placeholder="Son adresse email" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.75rem;color:#C8C4E8;font-family:'DM Sans',sans-serif;font-size:0.85rem;margin-bottom:1.25rem;outline:none"/>
+    <input type="hidden" id="gift-url-hidden"/>
+    <button id="gift-send-btn" onclick="sendGiftEmail()" style="width:100%;background:linear-gradient(135deg,var(--purple),var(--rose));border:none;border-radius:100px;padding:0.85rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
+      Envoyer le cadeau →
+    </button>
+  </div>
+</div>
 </body>
 </html>
