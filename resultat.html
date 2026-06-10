@@ -666,7 +666,7 @@ if(astroLocked) astroLocked.style.display='none';
   setTimeout(function(){ document.getElementById('paid-section').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
 }
 
-if(isPaid || window.location.search.includes('success=true')){ unlockPaidContent(); }
+if(isPaid || window.location.search.includes('success=true') || window.location.search.includes('gift=')){ unlockPaidContent(); }
 
 /* CHARGEMENT PROFIL */
 if(window.CosmosAPI){
