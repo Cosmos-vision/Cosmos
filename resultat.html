@@ -683,7 +683,15 @@ if(window.CosmosAPI){
   
   var isGiftReceived = false;
   try{ isGiftReceived = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
-  
+
+  /* Effacer le cache si c'est un cadeau pour forcer une nouvelle génération */
+if(isGiftReceived){
+  try{ 
+    sessionStorage.removeItem('cosmos_profile');
+    sessionStorage.removeItem('cosmos_paid');
+  }catch(e){}
+}
+
   window.CosmosAPI.init();
 
   if(isGiftReceived){
