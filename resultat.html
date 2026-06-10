@@ -680,11 +680,19 @@ if(window.CosmosAPI){
   document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){ el.style.opacity='0'; });
   document.getElementById('profile-name').textContent = '✨ Cosmos construit ton profil personnalisé, merci de patienter environ 30 secondes…';
   document.getElementById('profile-code').textContent = '· · ·';
+  
+  var isGiftReceived = false;
+  try{ isGiftReceived = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
+  
   window.CosmosAPI.init().then(function(){
-    var isGiftReceived = false;
-    try{ isGiftReceived = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
     if(isGiftReceived){
-      setTimeout(function(){ unlockPaidContent(); }, 500);
+      try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
+      setTimeout(function(){ unlockPaidContent(); }, 1000);
+    }
+  }).catch(function(){
+    if(isGiftReceived){
+      try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
+      setTimeout(function(){ unlockPaidContent(); }, 3000);
     }
   });
 }
