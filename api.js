@@ -180,7 +180,18 @@ if(p.dims && p.profil) {
         '<span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">'+pts[2]+' '+p.dims.emotionnel[0]+'%</span>';
     }
   }
-
+/* ACTIONS PAYANTES */
+if(p.actions && p.actions.length >= 6) {
+  for(var i=2;i<6;i++){
+    var n=i+1;
+    var el=document.getElementById('action'+n+'-title');
+    if(el&&p.actions[i]) el.textContent=p.actions[i].titre;
+    el=document.getElementById('action'+n+'-desc');
+    if(el&&p.actions[i]) el.textContent=p.actions[i].desc;
+    el=document.getElementById('action'+n+'-freq');
+    if(el&&p.actions[i]) el.textContent=p.actions[i].freq;
+  }
+}
   /* ══ SECTIONS PAYANTES ══ */
 
   /* 3e FORCE */
