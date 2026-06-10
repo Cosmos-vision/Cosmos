@@ -623,7 +623,7 @@ function handlePayment(){
 
 /* DÉBLOCAGE */
 function unlockPaidContent(){
-  try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){}
+  var isGift = false; try{ isGift = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){} if(!isGift){ try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){} }
   /* Générer code cadeau unique */
 var giftCode = userData.prenom ? 
   userData.prenom.substring(0,3).toUpperCase() + Math.random().toString(36).substring(2,7).toUpperCase() :
@@ -666,8 +666,15 @@ if(astroLocked) astroLocked.style.display='none';
   setTimeout(function(){ document.getElementById('paid-section').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
 }
 
-if(isPaid || window.location.search.includes('success=true') || window.location.search.includes('gift=')){ unlockPaidContent(); }
-
+if(isPaid || window.location.search.includes('success=true')){
+  unlockPaidContent();
+}
+if(window.location.search.includes('gift=')){
+  /* Sauvegarder le code cadeau et rediriger vers le quiz */
+  var giftParam = new URLSearchParams(window.location.search).get('gift');
+  try{ sessionStorage.setItem('cosmos_gift_received', giftParam); }catch(e){}
+  window.location.href = 'index.html?gift=' + giftParam;
+}
 /* CHARGEMENT PROFIL */
 if(window.CosmosAPI){
   document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){ el.style.opacity='0'; });
