@@ -1128,6 +1128,12 @@ document.getElementById('cosmos-form').addEventListener('submit', function(e) {
     window.location.href = 'quiz.html';
   }, 1000);
 });
+
+  /* Détecter code cadeau */
+if(window.location.search.includes('gift=')){
+  var giftParam = new URLSearchParams(window.location.search).get('gift');
+  try{ sessionStorage.setItem('cosmos_gift_received', giftParam); }catch(e){}
+}
 </script>
 </body>
 </html>
