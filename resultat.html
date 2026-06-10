@@ -690,7 +690,7 @@ if(window.CosmosAPI){
     var giftCheck = setInterval(function(){
       var profile = null;
       try{ profile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-      if(profile && profile.profil && profile.profil.nom !== "L'Architecte Lunaire"){
+      if(profile && profile.profil && profile.profil.nom && profile.profil.code && profile.profil.code !== 'LUN-SYS-PRO'){
         clearInterval(giftCheck);
         try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
         unlockPaidContent();
