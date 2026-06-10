@@ -622,8 +622,10 @@ function handlePayment(){
 }
 
 /* DÉBLOCAGE */
-function unlockPaidContent(){
-  var isGift = false; try{ isGift = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){} if(!isGift){ try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){} }
+function unlockPaidContent(fromGift){
+  var isGift = fromGift || false;
+  try{ isGift = isGift || !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
+  if(!isGift){ try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){} }
 
   /* Masquer le bouton cadeau si l'utilisateur est arrivé via un lien cadeau */
 if(isGift){
@@ -709,8 +711,9 @@ if(isGiftReceived){
       try{ profile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
       if(profile && profile.profil && profile.profil.nom && profile.profil.code && profile.profil.code !== 'LUN-SYS-PRO'){
         clearInterval(giftCheck);
-        try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
-        unlockPaidContent();
+        unlockPaidContent(true);
+          clearInterval(giftCheck);
+          try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
       }
     }, 500);
     setTimeout(function(){ clearInterval(giftCheck); }, 60000);
