@@ -624,6 +624,15 @@ function handlePayment(){
 /* DÉBLOCAGE */
 function unlockPaidContent(){
   var isGift = false; try{ isGift = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){} if(!isGift){ try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){} }
+
+  /* Masquer le bouton cadeau si l'utilisateur est arrivé via un lien cadeau */
+if(isGift){
+  setTimeout(function(){
+    var giftBtn = document.getElementById('gift-btn');
+    if(giftBtn) giftBtn.closest('div[style*="linear-gradient"]').style.display='none';
+  }, 500);
+}
+  
   /* Générer code cadeau unique */
 var giftCode = userData.prenom ? 
   userData.prenom.substring(0,3).toUpperCase() + Math.random().toString(36).substring(2,7).toUpperCase() :
