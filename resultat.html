@@ -627,6 +627,8 @@ function unlockPaidContent(){
   document.querySelectorAll('[onclick="handlePayment()"]').forEach(function(btn){
     if(btn.id !== 'pay-btn') btn.parentElement.style.display='none';
   });
+  var astroLocked = document.getElementById('astro-locked');
+if(astroLocked) astroLocked.style.display='none';
   document.getElementById('paid-section').classList.add('unlocked');
   document.getElementById('demo-banner').style.display='none';
   /* Réappliquer le profil */
