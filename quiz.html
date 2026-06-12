@@ -644,9 +644,9 @@ function renderScene(index) {
 /* ══════════════════════════════════════════
    FIN DU QUIZ
 ══════════════════════════════════════════ */
-gtag('event', 'quiz_complete');
   function finishQuiz() {
-  /* Cacher la scène, montrer le loading */
+    gtag('event', 'quiz_complete');
+    /* Cacher la scène, montrer le loading */
   document.getElementById('scene-card').style.display = 'none';
   document.getElementById('loading-screen').classList.add('visible');
   document.getElementById('prog-fill').style.width = '100%';
