@@ -186,6 +186,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         </div>
         <p class="profile-eyebrow">Ton profil Cosmos</p>
         <h1 class="profile-name" id="profile-name">✨ Cosmos construit ton profil personnalisé, merci de patienter environ 30 secondes…</h1>
+        <div id="loading-steps" style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.6rem;text-align:left;max-width:400px;margin-left:auto;margin-right:auto"></div>
         <p class="profile-code" id="profile-code">. . .</p>
         <div class="dim-pills" id="dim-pills" style="opacity:0">
           <span class="dim-pill" style="background:rgba(127,119,221,.2);color:#AFA9EC">Lune 82%</span>
@@ -731,6 +732,29 @@ if(window.CosmosAPI){
   document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){ el.style.opacity='0'; });
   document.getElementById('profile-name').textContent = '✨ Cosmos construit ton profil personnalisé, merci de patienter environ 30 secondes…';
   document.getElementById('profile-code').textContent = '· · ·';
+  /* Étapes animées */
+var steps = [
+  'Analyse de tes 9 réponses…',
+  'Détection de tes dimensions dominantes…',
+  'Identification de tes blocages inconscients…',
+  'Calcul de ton archétype parmi 144…',
+  'Génération de ton portrait unique…',
+  'Connexion à ton ciel natal…',
+  'Ton profil prend forme…'
+];
+var stepsEl = document.getElementById('loading-steps');
+var si = 0;
+var stepTimer = setInterval(function(){
+  if(si < steps.length){
+    var line = document.createElement('div');
+    line.style.cssText = 'font-size:0.78rem;color:#AFA9EC;display:flex;align-items:center;gap:8px';
+    line.innerHTML = '<span style="color:#1D9E75;font-size:0.7rem">✓</span>' + steps[si];
+    stepsEl.appendChild(line);
+    si++;
+  } else {
+    clearInterval(stepTimer);
+  }
+}, 2500);
   
   var isGiftReceived = false;
   try{ isGiftReceived = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
