@@ -615,6 +615,9 @@ function renderScene(index) {
   if (nextBtn) {
     nextBtn.addEventListener('click', function() {
       if (answers[currentScene] === null) return;
+    gtag('event', 'quiz_question_complete', {
+      question: currentScene + 1
+    });
       if (currentScene < 8) {
         currentScene++;
         renderScene(currentScene);
@@ -641,7 +644,8 @@ function renderScene(index) {
 /* ══════════════════════════════════════════
    FIN DU QUIZ
 ══════════════════════════════════════════ */
-function finishQuiz() {
+gtag('event', 'quiz_complete');
+  function finishQuiz() {
   /* Cacher la scène, montrer le loading */
   document.getElementById('scene-card').style.display = 'none';
   document.getElementById('loading-screen').classList.add('visible');
@@ -659,7 +663,7 @@ function finishQuiz() {
   } catch(e) {}
 
   /* Redirection vers la page résultat après 2.5s */
-  setTimeout(function() {
+    setTimeout(function() {
     window.location.href = 'approfondissement.html';
   }, 5000);
 }
@@ -668,6 +672,7 @@ function finishQuiz() {
    INITIALISATION
 ══════════════════════════════════════════ */
 renderScene(0);
+  gtag('event', 'quiz_start');
 </script>
 </body>
   <!-- Google Tag Manager (noscript) -->
