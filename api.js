@@ -325,6 +325,23 @@ async function initCosmosResult() {
     el.style.transition='opacity 0.5s ease';
   });
   applyProfileToPage(result.profile);
+  if(typeof animateRadar === 'function' && result.profile.dims){
+    animateRadar({
+      top: result.profile.dims.cosmique[0],
+      right: result.profile.dims.cognitif[0],
+      bottom: result.profile.dims.emotionnel[0],
+      left: result.profile.dims.relationnel[0]
+    });
+  }
+  if(typeof animateShareRadar === 'function' && result.profile.dims){
+    animateShareRadar({
+      top: result.profile.dims.cosmique[0],
+      right: result.profile.dims.cognitif[0],
+      bottom: result.profile.dims.emotionnel[0],
+      left: result.profile.dims.relationnel[0]
+    });
+  }
+}
 if(typeof animateRadar === 'function' && result.profile.dims){
   animateRadar({
     top: result.profile.dims.cosmique[0],
