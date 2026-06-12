@@ -388,29 +388,7 @@ function finishAppro(skipped) {
   document.getElementById('intro-screen').style.display = 'none';
   document.getElementById('loading-screen').classList.add('visible');
   document.getElementById('prog-fill').style.width = '100%';
-  /* Étapes animées */
-var steps = [
-  'Analyse de tes 9 réponses…',
-  'Détection de tes dimensions dominantes…',
-  'Identification de tes blocages inconscients…',
-  'Calcul de ton archétype parmi 144…',
-  'Génération de ton portrait unique…',
-  'Connexion à ton ciel natal…',
-  'Ton profil prend forme…'
-];
-var stepsEl = document.getElementById('loading-steps');
-if(stepsEl){
-  var i = 0;
-  var stepTimer = setInterval(function(){
-    if(i < steps.length){
-      var line = document.createElement('div');
-      line.style.cssText = 'font-size:0.75rem;color:#AFA9EC;display:flex;align-items:center;gap:8px';
-      line.innerHTML = '<span style="color:#1D9E75;font-size:0.7rem">✓</span>' + steps[i];
-      stepsEl.appendChild(line);
-      i++;
-    } else { clearInterval(stepTimer); }
-  }, 1000);
-}
+  
 
   /* Sauvegarder les réponses d'approfondissement */
   try {
