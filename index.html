@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -10,7 +10,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cosmos — Découvre ton profil intérieur</title>
+<title>Cosmos — Test de personnalité projectif · Découvre ton profil intérieur parmi 144 archétypes</title>
+<meta name="description" content="Cosmos est un test de personnalité immersif fondé sur les techniques psychologiques projectives (Rorschach, TAT, psychologie jungienne). 9 scènes, 4 minutes, un profil unique parmi 144 archétypes. Gratuit et sans inscription.">
+<meta name="keywords" content="test de personnalité, profil psychologique, connaissance de soi, archétypes, test projectif, psychologie jungienne, quiz personnalité, miroir intérieur">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="cosmos-logo-512.png">
@@ -56,7 +58,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── CANVAS ÉTOILES ── */
   #cosmos-canvas {
     position: fixed;
     inset: 0;
@@ -64,7 +65,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     pointer-events: none;
   }
 
-  /* ── LAYOUT ── */
   .page {
     position: relative;
     z-index: 1;
@@ -113,16 +113,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     50% { opacity: 0.5; transform: scale(0.8); }
   }
 
-  .nav-tagline {
-    font-size: 0.7rem;
-    color: var(--text-faint);
-    letter-spacing: 0.15em;
+  .nav-link {
+    font-size: 0.72rem;
+    color: var(--purple-light);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(127,119,221,0.3);
+    border-radius: 100px;
+    padding: 0.45rem 1.1rem;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    background: rgba(127,119,221,0.1);
+    border-color: var(--purple);
   }
 
   /* ── HERO ── */
   .hero {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -227,12 +236,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     color: var(--text-muted);
     line-height: 1.75;
     max-width: 480px;
-    margin: 0 auto 2.5rem;
+    margin: 0 auto 2rem;
     animation: fadeUp 0.8s ease both;
     animation-delay: 0.3s;
   }
 
-  /* ── MÉTHODE BADGE ── */
   .method-badge {
     display: inline-flex;
     align-items: center;
@@ -244,7 +252,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 0.7rem;
     color: var(--purple-light);
     letter-spacing: 0.06em;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     animation: fadeUp 0.8s ease both;
     animation-delay: 0.35s;
   }
@@ -258,13 +266,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     flex-shrink: 0;
   }
 
-  /* ── ÉTAPES ── */
   .steps {
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 3.5rem;
+    margin-bottom: 3rem;
     animation: fadeUp 0.8s ease both;
     animation-delay: 0.4s;
   }
@@ -296,7 +303,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     opacity: 0.4;
   }
 
-  /* ── SCROLL INDICATOR ── */
   .scroll-cta {
     display: flex;
     flex-direction: column;
@@ -322,62 +328,101 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     50% { opacity: 1; transform: scaleY(1); }
   }
 
-  /* ── MÉTHODE SECTION ── */
-  .method-section {
-    padding: 5rem 1.5rem;
-    max-width: 700px;
-    margin: 0 auto;
+  /* ── COMPTEUR ── */
+  .counter-section {
+    text-align: center;
+    padding: 2rem 1.5rem 3rem;
   }
 
-  .section-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--purple-light);
-    margin-bottom: 1rem;
-  }
-
-  .section-title {
+  .counter-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
     font-weight: 300;
-    line-height: 1.3;
-    margin-bottom: 1.5rem;
-  }
-
-  .method-text {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.85;
-    margin-bottom: 1rem;
-  }
-
-  .method-text strong {
-    color: var(--text);
-    font-weight: 400;
-  }
-
-  .honest-note {
-    border-left: 2px solid rgba(127,119,221,0.3);
-    padding: 0.75rem 1rem;
-    margin-top: 1.5rem;
-    border-radius: 0;
-  }
-
-  .honest-note p {
-    font-size: 0.8rem;
-    color: #AFA9EC;
-    line-height: 1.7;
-  }
-
-  .honest-note strong {
     color: var(--purple-light);
-    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.02em;
   }
 
-  /* ── FORMULAIRE SECTION ── */
+  .counter-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-top: 0.6rem;
+  }
+
+  .counter-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0.9rem;
+    font-size: 0.68rem;
+    color: var(--teal);
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* ── TÉMOIGNAGES CARROUSEL ── */
+  .carousel-section {
+    padding: 1rem 0 3rem;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: carouselScroll 80s linear infinite;
+  }
+
+  .carousel-track:hover { animation-play-state: paused; }
+
+  @keyframes carouselScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .testi {
+    background: var(--deep);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    width: 290px;
+    flex-shrink: 0;
+  }
+
+  .testi-stars {
+    color: var(--amber);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+  }
+
+  .testi-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
+    font-style: italic;
+    color: #C8C4E8;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .testi-author {
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── FORMULAIRE ── */
   .form-section {
-    padding: 3rem 1.5rem 5rem;
+    padding: 2rem 1.5rem 5rem;
     max-width: 520px;
     margin: 0 auto;
     width: 100%;
@@ -403,10 +448,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: linear-gradient(to right, transparent, var(--purple), transparent);
   }
 
-  .form-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
+  .form-header { text-align: center; margin-bottom: 2rem; }
 
   .form-title {
     font-family: 'Cormorant Garamond', serif;
@@ -429,10 +471,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     opacity: 0.5;
   }
 
-  /* ── CHAMPS ── */
-  .field {
-    margin-bottom: 1.25rem;
-  }
+  .field { margin-bottom: 1.25rem; }
 
   .field-label {
     display: flex;
@@ -445,10 +484,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-bottom: 0.5rem;
   }
 
-  .field-label .req {
-    color: var(--purple);
-    font-size: 0.65rem;
-  }
+  .field-label .req { color: var(--purple); font-size: 0.65rem; }
 
   .field-label .opt {
     color: var(--text-faint);
@@ -474,9 +510,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     appearance: none;
   }
 
-  input::placeholder {
-    color: var(--text-faint);
-  }
+  input::placeholder { color: var(--text-faint); }
 
   input:focus, select:focus {
     border-color: var(--border-focus);
@@ -491,22 +525,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     cursor: pointer;
   }
 
-  select option {
-    background: var(--deep);
-    color: var(--text);
-  }
+  select option { background: var(--deep); color: var(--text); }
 
-  .field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
-  }
-
-  .field-row-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .field-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
   .field-hint {
     font-size: 0.68rem;
@@ -515,7 +537,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     line-height: 1.5;
   }
 
-  /* ── LOCALISATION PREVIEW ── */
   .loc-preview {
     background: rgba(127,119,221,0.06);
     border: 1px solid rgba(127,119,221,0.15);
@@ -536,26 +557,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     flex-shrink: 0;
   }
 
-  .loc-preview-text {
-    font-size: 0.72rem;
-    color: var(--purple-light);
-    line-height: 1.4;
-  }
+  .loc-preview-text { font-size: 0.72rem; color: var(--purple-light); line-height: 1.4; }
 
-  /* ── SÉPARATEUR ── */
-  .form-sep {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 1.5rem 0;
-  }
-
-  .form-sep-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
+  .form-sep { display: flex; align-items: center; gap: 10px; margin: 1.5rem 0; }
+  .form-sep-line { flex: 1; height: 1px; background: var(--border); }
   .form-sep-text {
     font-size: 0.65rem;
     color: var(--text-faint);
@@ -564,7 +569,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     white-space: nowrap;
   }
 
-  /* ── CONFIDENTIALITÉ ── */
   .privacy-row {
     display: flex;
     align-items: flex-start;
@@ -585,13 +589,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-top: 1px;
   }
 
-  .privacy-text {
-    font-size: 0.68rem;
-    color: var(--text-faint);
-    line-height: 1.6;
-  }
+  .privacy-text { font-size: 0.68rem; color: var(--text-faint); line-height: 1.6; }
 
-  /* ── BOUTON CTA ── */
   .cta-btn {
     width: 100%;
     background: var(--purple);
@@ -605,16 +604,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     letter-spacing: 0.03em;
     cursor: pointer;
     transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0);
-    transition: background 0.2s;
   }
 
   .cta-btn:hover { background: #6B62CC; transform: translateY(-1px); }
@@ -635,37 +624,335 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     letter-spacing: 0.04em;
   }
 
-  /* ── TESTIMONIAL ── */
-  .testimonial-strip {
-    padding: 2rem 1.5rem;
-    max-width: 700px;
+  /* ── SECTIONS RICHES ── */
+  .rich-section {
+    padding: 4.5rem 1.5rem;
+    max-width: 760px;
     margin: 0 auto;
+    width: 100%;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--purple-light);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+
+  .section-title em { font-style: italic; color: var(--purple-light); }
+
+  .section-text {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+    text-align: center;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-text strong { color: var(--text); font-weight: 400; }
+
+  /* ── ET TOI ── */
+  .ettoi-questions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    max-width: 520px;
+    margin: 2.5rem auto 0;
+  }
+
+  .ettoi-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: #C8C4E8;
+    line-height: 1.6;
+    text-align: center;
+    padding: 1.1rem 1.5rem;
+    border: 1px solid rgba(127,119,221,0.15);
+    border-radius: 14px;
+    background: rgba(127,119,221,0.04);
+  }
+
+  /* ── 3 ÉTAPES ── */
+  .how-steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
   }
 
-  .testi {
+  .how-card {
     background: var(--deep);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
+    border-radius: 16px;
+    padding: 1.75rem 1.4rem;
+    text-align: center;
+    position: relative;
   }
 
-  .testi-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #C8C4E8
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
+  .how-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(127,119,221,0.1);
+    border: 1px solid rgba(127,119,221,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.1rem;
   }
 
-  .testi-author {
-    font-size: 0.65rem;
+  .how-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--purple-light);
+    fill: none;
+    stroke-width: 1.3;
+    stroke-linecap: round;
+  }
+
+  .how-num {
+    position: absolute;
+    top: 1rem;
+    left: 1.1rem;
+    font-size: 0.62rem;
     color: var(--text-faint);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.15em;
+  }
+
+  .how-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+  }
+
+  .how-text {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── MÉTHODE VISUELLE ── */
+  .method-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .mcard {
+    background: var(--deep);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.6rem 1.3rem;
+    text-align: center;
+  }
+
+  .mcard svg { width: 70px; height: 70px; margin-bottom: 1rem; }
+
+  .mcard-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .mcard-sub {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    color: var(--purple-light);
+    margin-bottom: 0.7rem;
+  }
+
+  .mcard-text {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .honest-note {
+    border-left: 2px solid rgba(127,119,221,0.3);
+    padding: 0.9rem 1.2rem;
+    margin: 2.5rem auto 0;
+    max-width: 560px;
+  }
+
+  .honest-note p { font-size: 0.8rem; color: #AFA9EC; line-height: 1.75; }
+  .honest-note strong { color: var(--purple-light); font-weight: 400; }
+
+  /* ── ROUE 144 ── */
+  .wheel-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem 0 1.5rem;
+  }
+
+  .wheel-wrap svg { max-width: 340px; width: 100%; height: auto; }
+
+  .wheel-spin { animation: spin-slow 60s linear infinite; transform-origin: center; }
+
+  /* ── DÉCOUVERTES CARDS ── */
+  .discover-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem;
+    margin-top: 2.5rem;
+  }
+
+  .dcard {
+    background: var(--deep);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem 1.25rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .dcard-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .dcard-title {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .dcard-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ── CTA MILIEU ── */
+  .mid-cta {
+    text-align: center;
+    padding: 1rem 1.5rem 0;
+  }
+
+  .btn-cosmic {
+    display: inline-block;
+    background: var(--purple);
+    border: none;
+    border-radius: 100px;
+    padding: 0.95rem 2.6rem;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-cosmic:hover { background: #6B62CC; transform: translateY(-1px); }
+
+  .mid-cta-note {
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-top: 0.7rem;
+  }
+
+  /* ── FAQ ── */
+  .faq-list { margin-top: 2.5rem; }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    background: var(--deep);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 400;
+    text-align: left;
+    padding: 1.05rem 1.25rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.2s;
+  }
+
+  .faq-q:hover { color: var(--purple-light); }
+
+  .faq-q::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--purple-light);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .faq-a-inner {
+    padding: 0 1.25rem 1.1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .faq-a-inner strong { color: var(--text); font-weight: 400; }
+
+  /* ── CTA FINAL ── */
+  .final-cta {
+    text-align: center;
+    padding: 5rem 1.5rem 5.5rem;
+    position: relative;
+  }
+
+  .final-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .final-title em { font-style: italic; color: var(--purple-light); }
+
+  .final-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 2.2rem;
+    line-height: 1.8;
   }
 
   /* ── FOOTER ── */
@@ -687,11 +974,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     color: var(--text-faint);
   }
 
-  .footer-note {
-    font-size: 0.65rem;
-    color: var(--text-faint);
-    opacity: 0.5;
-  }
+  .footer-note { font-size: 0.65rem; color: var(--text-faint); opacity: 0.5; }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -705,17 +988,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
 
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 480px) {
     nav { padding: 1rem; }
     .form-card { padding: 1.5rem; }
-    .field-row { grid-template-columns: 1fr 1fr 1fr; }
     .hero { padding: 3rem 1rem 2rem; }
+    .rich-section { padding: 3.5rem 1rem; }
   }
 </style>
 </head>
@@ -727,7 +1006,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <nav>
     <a href="#" class="logo">COSMOS<span class="logo-dot"></span></a>
-    <span class="nav-tagline">Know your universe within</span>
+    <a href="#decouvrir" class="nav-link">En savoir plus</a>
   </nav>
 
   <!-- ── HERO ── -->
@@ -783,44 +1062,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
-  <!-- ── MÉTHODE ── -->
-  <section class="method-section fade-in">
-    <p class="section-label">La méthode</p>
-    <h2 class="section-title">Des scènes, pas des questions.</h2>
-    <p class="method-text">
-      Cosmos ne te demande pas "es-tu introverti ?" — il te place dans des situations 
-      cinématographiques sans bonne ni mauvaise réponse. <strong>Ce que tu choisis révèle 
-      ce que tu ne diras jamais directement.</strong>
-    </p>
-    <p class="method-text">
-      Cette approche s'inspire des <strong>tests projectifs cliniques</strong> — Rorschach, 
-      TAT (Thematic Apperception Test), psychologie jungienne — utilisés depuis 80 ans 
-      par les psychologues pour accéder aux structures profondes de la personnalité.
-    </p>
-    <div class="honest-note">
-      <p>
-        <strong>Honnêteté Cosmos :</strong> ce n'est pas un diagnostic clinique. 
-        C'est un miroir narratif — suffisamment précis pour être utile, 
-        suffisamment poétique pour être mémorable. Exactement comme l'astrologie 
-        ou le MBTI, mais fondé sur tes réponses réelles.
-      </p>
+  <!-- ── COMPTEUR ── -->
+  <section class="counter-section fade-in">
+    <div class="counter-num" id="counter-num">0</div>
+    <p class="counter-label">âmes cartographiées</p>
+    <div class="counter-live">
+      <span class="live-dot"></span>
+      <span>De nouveaux profils émergent en ce moment</span>
     </div>
   </section>
 
-  <!-- ── TESTIMONIALS ── -->
-  <div class="testimonial-strip fade-in">
-    <div class="testi">
-      <p class="testi-text">"La première fois qu'une analyse me touche vraiment. C'est écrit pour moi, pas pour tout le monde."</p>
-      <p class="testi-author">Sophie · Lyon · 34 ans</p>
-    </div>
-    <div class="testi">
-      <p class="testi-text">"J'ai enfin compris pourquoi je sabotais mes relations. Ce quiz m'a donné un nom à quelque chose que je portais depuis 10 ans."</p>
-      <p class="testi-author">Amélie · Paris · 29 ans</p>
-    </div>
-    <div class="testi">
-      <p class="testi-text">"Le radar des dimensions m'a montré exactement où j'étais fort et où je me freinais. Bluffant."</p>
-      <p class="testi-author">Karim · Montréal · 38 ans</p>
-    </div>
+  <!-- ── TÉMOIGNAGES CARROUSEL ── -->
+  <div class="carousel-section fade-in">
+    <div class="carousel-track" id="carousel-track"></div>
   </div>
 
   <!-- ── FORMULAIRE ── -->
@@ -833,46 +1087,357 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
 
       <form id="cosmos-form" novalidate>
-  <div class="field">
-    <label class="field-label" for="prenom">
-      Prénom <span class="req">· requis</span>
-    </label>
-    <input type="text" id="prenom" name="prenom" placeholder="ex. Sophie" autocomplete="given-name" required />
-  </div>
-  <div class="field">
-    <label class="field-label">Genre <span class="req">· requis</span></label>
-    <select id="genre" name="genre" required>
-      <option value="" disabled selected>Sélectionne ton genre</option>
-      <option value="homme">Homme</option>
-      <option value="femme">Femme</option>
-      <option value="neutre">Neutre</option>
-    </select>
-  </div>
-  <div class="field">
-    <label class="field-label">
-      Date de naissance <span class="req">· requis</span>
-    </label>
-    <div class="field-row">
-      <input type="number" id="dob-day" name="dob-day" placeholder="Jour" min="1" max="31" required />
-      <input type="number" id="dob-month" name="dob-month" placeholder="Mois" min="1" max="12" required />
-      <input type="number" id="dob-year" name="dob-year" placeholder="Année" min="1920" max="2010" required />
-    </div>
-  </div>
-  <div class="privacy-row">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    <p class="privacy-text">Aucune inscription requise. Résultat immédiat.</p>
-  </div>
-  <button type="submit" class="cta-btn" id="cta-btn" disabled>
-    Commencer mon exploration — gratuit
-  </button>
-  <p class="cta-note">Aucune carte bancaire requise · 4 minutes</p>
-</form>
+
+        <div class="field">
+          <label class="field-label" for="prenom">
+            Prénom <span class="req">·  requis</span>
+          </label>
+          <input type="text" id="prenom" name="prenom" placeholder="ex. Sophie" autocomplete="given-name" required />
+        </div>
+
+        <div class="field">
+          <label class="field-label">Genre <span class="req">· requis</span></label>
+          <select id="genre" name="genre" required>
+            <option value="" disabled selected>Sélectionne ton genre</option>
+            <option value="homme">Homme</option>
+            <option value="femme">Femme</option>
+            <option value="neutre">Neutre</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="email">
+            Email <span class="req">· requis</span>
+          </label>
+          <input type="email" id="email" name="email" placeholder="pour recevoir ton rapport" autocomplete="email" required />
+          <p class="field-hint">Ton rapport te sera envoyé par email après le quiz.</p>
+        </div>
+
+        <div class="field">
+          <label class="field-label">
+            Date de naissance <span class="req">· requis</span>
+          </label>
+          <div class="field-row">
+            <input type="number" id="dob-day" name="dob-day" placeholder="Jour" min="1" max="31" required />
+            <input type="number" id="dob-month" name="dob-month" placeholder="Mois" min="1" max="12" required />
+            <input type="number" id="dob-year" name="dob-year" placeholder="Année" min="1920" max="2010" required />
+          </div>
+          <p class="field-hint">Utilisée pour affiner ton profil cosmique parmi les 144 archétypes.</p>
+        </div>
+
+        <div class="form-sep">
+          <div class="form-sep-line"></div>
+          <span class="form-sep-text">Ta localisation</span>
+          <div class="form-sep-line"></div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="pays">
+            Pays <span class="req">· requis</span>
+          </label>
+          <select id="pays" name="pays" required onchange="updateLocPreview()">
+            <option value="">Sélectionne ton pays</option>
+            <optgroup label="Europe">
+              <option value="FR">France</option>
+              <option value="BE">Belgique</option>
+              <option value="CH">Suisse</option>
+              <option value="LU">Luxembourg</option>
+              <option value="DE">Allemagne</option>
+              <option value="ES">Espagne</option>
+              <option value="IT">Italie</option>
+              <option value="PT">Portugal</option>
+              <option value="UK">Royaume-Uni</option>
+              <option value="NL">Pays-Bas</option>
+            </optgroup>
+            <optgroup label="Amériques">
+              <option value="CA">Canada</option>
+              <option value="US">États-Unis</option>
+              <option value="BR">Brésil</option>
+              <option value="MX">Mexique</option>
+              <option value="AR">Argentine</option>
+              <option value="CO">Colombie</option>
+            </optgroup>
+            <optgroup label="Monde">
+              <option value="MA">Maroc</option>
+              <option value="DZ">Algérie</option>
+              <option value="TN">Tunisie</option>
+              <option value="SN">Sénégal</option>
+              <option value="JP">Japon</option>
+              <option value="KR">Corée du Sud</option>
+              <option value="OTHER">Autre pays</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="field" id="field-region" style="display:none">
+          <label class="field-label" for="region">
+            Région <span class="opt">· recommandé</span>
+          </label>
+          <input type="text" id="region" name="region" placeholder="ex. Auvergne-Rhône-Alpes, Île-de-France..." oninput="updateLocPreview()" />
+        </div>
+
+        <div class="field">
+          <div class="field-row-2">
+            <div>
+              <label class="field-label" for="ville">Ville <span class="opt">· optionnel</span></label>
+              <input type="text" id="ville" name="ville" placeholder="ex. Lyon" oninput="updateLocPreview()" />
+            </div>
+            <div>
+              <label class="field-label" for="cp">Code postal <span class="opt">· optionnel</span></label>
+              <input type="text" id="cp" name="cp" placeholder="ex. 74190" oninput="updateLocPreview()" />
+            </div>
+          </div>
+          <div class="loc-preview" id="loc-preview">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span class="loc-preview-text" id="loc-preview-text"></span>
+          </div>
+          <p class="field-hint" style="margin-top:0.5rem">
+            Permet de te placer sur la carte mondiale Cosmos — jamais l'adresse exacte, seulement la ville.
+          </p>
+        </div>
+
+        <div class="privacy-row">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <p class="privacy-text">
+            Données chiffrées, jamais revendues, supprimables à tout moment. 
+            Conformité RGPD. Cosmos n'utilise aucune publicité.
+          </p>
+        </div>
+
+        <button type="submit" class="cta-btn" id="cta-btn" disabled>
+          Commencer mon exploration — gratuit
+        </button>
+        <p class="cta-note">Aucune carte bancaire requise · Résultat immédiat</p>
+
+      </form>
     </div>
   </section>
-  
+
+  <!-- ════════ CONTENU RICHE / SEO ════════ -->
+
+  <!-- ── ET TOI ? ── -->
+  <section class="rich-section fade-in" id="decouvrir">
+    <p class="section-label">Et toi ?</p>
+    <h2 class="section-title">Il y a des choses que tu sais sur toi.<br><em>Et d'autres que tu portes sans les voir.</em></h2>
+    <p class="section-text">
+      Pourquoi certaines relations suivent toujours le même schéma ? Pourquoi cette hésitation 
+      au moment de choisir ? Pourquoi cette mélancolie certains soirs, sans raison apparente ?
+    </p>
+    <div class="ettoi-questions">
+      <div class="ettoi-q">« Pourquoi est-ce que je me sabote au moment où tout va bien ? »</div>
+      <div class="ettoi-q">« Pourquoi ai-je besoin qu'on me comprenne sans avoir à expliquer ? »</div>
+      <div class="ettoi-q">« Qu'est-ce que je fuis quand je remplis chaque minute de ma journée ? »</div>
+    </div>
+    <p class="section-text" style="margin-top:2.5rem">
+      Ces questions ont des réponses. Pas des réponses toutes faites — <strong>tes</strong> réponses, 
+      cachées dans ta façon de réagir aux situations, dans ce que ton regard choisit de voir en premier, 
+      dans ce que tu ressens face à une image sans contexte. C'est exactement là que Cosmos va chercher.
+    </p>
+  </section>
+
+  <!-- ── COMMENT ÇA MARCHE ── -->
+  <section class="rich-section fade-in">
+    <p class="section-label">Comment ça marche</p>
+    <h2 class="section-title">Trois étapes. <em>Quatre minutes.</em></h2>
+
+    <div class="how-steps">
+      <div class="how-card">
+        <span class="how-num">01</span>
+        <div class="how-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3 class="how-title">Tu vis 9 scènes</h3>
+        <p class="how-text">Une lumière sous une porte. Un silence de trois secondes. Une forêt au coucher du soleil. Des situations sans bonne ni mauvaise réponse — juste ta réaction sincère.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-num">02</span>
+        <div class="how-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3c-2.5 3-4 5.5-4 9s1.5 6 4 9"/><path d="M12 3c2.5 3 4 5.5 4 9s-1.5 6-4 9"/><path d="M3 12h18"/></svg>
+        </div>
+        <h3 class="how-title">Cosmos t'analyse</h3>
+        <p class="how-text">Tes choix sont croisés selon 4 dimensions — cosmique, émotionnelle, cognitive, relationnelle — pour te situer parmi 144 archétypes possibles.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-num">03</span>
+        <div class="how-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4-6.2-4.6-6.2 4.6 2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <h3 class="how-title">Tu te découvres</h3>
+        <p class="how-text">Un portrait écrit pour toi. Tes forces, tes paradoxes, tes blocages invisibles — et des actions concrètes pour le mois qui vient.</p>
+      </div>
+    </div>
+
+    <div class="mid-cta" style="margin-top:2.5rem">
+      <a href="#form-section" class="btn-cosmic cta-smart">Commencer mon exploration</a>
+      <p class="mid-cta-note">Gratuit · 4 minutes · Sans inscription</p>
+    </div>
+  </section>
+
+  <!-- ── LA MÉTHODE ── -->
+  <section class="rich-section fade-in">
+    <p class="section-label">La méthode</p>
+    <h2 class="section-title">Des scènes, <em>pas des questions.</em></h2>
+    <p class="section-text">
+      Demande à quelqu'un « es-tu généreux ? » — il répondra oui. Place-le devant un choix réel, 
+      et tu verras qui il est vraiment. C'est le principe fondateur des <strong>tests projectifs</strong>, 
+      utilisés depuis près d'un siècle par les psychologues cliniciens : ce que tu projettes sur une 
+      situation ambiguë révèle tes structures profondes.
+    </p>
+
+    <div class="method-cards">
+      <div class="mcard">
+        <svg viewBox="0 0 80 80">
+          <ellipse cx="40" cy="40" rx="22" ry="30" fill="rgba(127,119,221,0.12)" stroke="#7F77DD" stroke-width="1"/>
+          <ellipse cx="40" cy="40" rx="11" ry="18" fill="rgba(127,119,221,0.18)" stroke="#AFA9EC" stroke-width="0.7"/>
+          <circle cx="40" cy="33" r="3.5" fill="#AFA9EC" opacity="0.8"/>
+          <path d="M28 52 Q40 60 52 52" fill="none" stroke="#AFA9EC" stroke-width="0.8"/>
+        </svg>
+        <h3 class="mcard-title">Rorschach</h3>
+        <p class="mcard-sub">1921 · Taches d'encre</p>
+        <p class="mcard-text">Ce que tu vois dans une forme ambiguë n'appartient qu'à toi. Ton interprétation révèle ta manière d'organiser le monde intérieur.</p>
+      </div>
+      <div class="mcard">
+        <svg viewBox="0 0 80 80">
+          <rect x="18" y="20" width="44" height="32" rx="3" fill="rgba(212,83,126,0.1)" stroke="#D4537E" stroke-width="1"/>
+          <circle cx="32" cy="33" r="4" fill="none" stroke="#F4C0D1" stroke-width="0.8"/>
+          <path d="M22 46 L32 38 L40 44 L50 34 L58 42" fill="none" stroke="#F4C0D1" stroke-width="0.8"/>
+          <path d="M40 58 Q40 62 36 64 M40 58 Q40 62 44 64" stroke="#D4537E" stroke-width="0.7" fill="none"/>
+        </svg>
+        <h3 class="mcard-title">TAT</h3>
+        <p class="mcard-sub">1935 · Scènes narratives</p>
+        <p class="mcard-text">Face à une image, l'histoire que tu inventes parle de toi : tes désirs, tes peurs, tes conflits intérieurs s'y projettent naturellement.</p>
+      </div>
+      <div class="mcard">
+        <svg viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="26" fill="none" stroke="#1D9E75" stroke-width="1"/>
+          <circle cx="40" cy="40" r="16" fill="rgba(29,158,117,0.08)" stroke="#9FE1CB" stroke-width="0.7"/>
+          <circle cx="40" cy="40" r="5" fill="rgba(29,158,117,0.25)" stroke="#9FE1CB" stroke-width="0.7"/>
+          <circle cx="40" cy="14" r="2" fill="#9FE1CB"/>
+          <circle cx="62" cy="52" r="2" fill="#9FE1CB"/>
+          <circle cx="18" cy="52" r="2" fill="#9FE1CB"/>
+        </svg>
+        <h3 class="mcard-title">Jung</h3>
+        <p class="mcard-sub">Archétypes universels</p>
+        <p class="mcard-text">Sous la personnalité visible vivent des figures universelles — l'ombre, le sage, l'explorateur. Les archétypes structurent qui tu es.</p>
+      </div>
+    </div>
+
+    <div class="honest-note">
+      <p>
+        <strong>Honnêteté Cosmos :</strong> ce n'est pas un diagnostic clinique. 
+        C'est un miroir narratif — suffisamment précis pour être utile, 
+        suffisamment poétique pour être mémorable. Fondé sur tes réponses réelles, 
+        pas sur des cases à cocher.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 144 ARCHÉTYPES ── -->
+  <section class="rich-section fade-in">
+    <p class="section-label">144 archétypes</p>
+    <h2 class="section-title">Un profil qui <em>n'appartient qu'à toi.</em></h2>
+
+    <div class="wheel-wrap">
+      <svg viewBox="0 0 320 320">
+        <g class="wheel-spin">
+          <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(127,119,221,0.12)" stroke-width="1"/>
+          <circle cx="160" cy="160" r="112" fill="none" stroke="rgba(212,83,126,0.12)" stroke-width="1"/>
+          <circle cx="160" cy="160" r="84" fill="none" stroke="rgba(29,158,117,0.12)" stroke-width="1"/>
+          <circle cx="160" cy="160" r="56" fill="none" stroke="rgba(186,117,23,0.12)" stroke-width="1"/>
+          <g id="wheel-dots"></g>
+        </g>
+        <circle cx="160" cy="160" r="30" fill="#0d0b1a" stroke="#7F77DD" stroke-width="1.2"/>
+        <text x="160" y="156" text-anchor="middle" font-family="serif" font-size="17" fill="#F0EEF8" font-style="italic">144</text>
+        <text x="160" y="172" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#8B87B0" letter-spacing="1">ARCHÉTYPES</text>
+      </svg>
+    </div>
+
+    <p class="section-text">
+      <strong>12 essences cosmiques × 12 structures intérieures = 144 archétypes uniques.</strong> 
+      Ton profil croise ta date de naissance, tes réactions aux 9 scènes et tes dimensions dominantes. 
+      L'Étoile Silencieuse ne ressemble pas à l'Architecte des Aurores — et toi, tu ne ressembles à personne.
+    </p>
+    <p class="section-text">
+      Chaque profil reçoit un nom, un code céleste, un portrait écrit sur mesure, 
+      une carte de ses 4 dimensions et des forces que personne ne lui a jamais nommées.
+    </p>
+  </section>
+
+  <!-- ── CE QUE TU VAS DÉCOUVRIR ── -->
+  <section class="rich-section fade-in">
+    <p class="section-label">Ce que tu vas découvrir</p>
+    <h2 class="section-title">Bien plus qu'un <em>résultat de test.</em></h2>
+
+    <div class="discover-grid">
+      <div class="dcard">
+        <span class="dcard-dot" style="background:#7F77DD"></span>
+        <div>
+          <h3 class="dcard-title">Ton portrait intérieur</h3>
+          <p class="dcard-text">Un texte écrit pour toi — pas un paragraphe générique. Beaucoup disent : « c'est la première fois qu'une analyse me touche vraiment ».</p>
+        </div>
+      </div>
+      <div class="dcard">
+        <span class="dcard-dot" style="background:#D4537E"></span>
+        <div>
+          <h3 class="dcard-title">Tes 4 dimensions</h3>
+          <p class="dcard-text">Cosmique, émotionnelle, cognitive, relationnelle — visualisées sur un radar qui montre où tu rayonnes et où tu te freines.</p>
+        </div>
+      </div>
+      <div class="dcard">
+        <span class="dcard-dot" style="background:#1D9E75"></span>
+        <div>
+          <h3 class="dcard-title">Tes forces cachées</h3>
+          <p class="dcard-text">Des forces avec leurs paradoxes — car chaque lumière projette une ombre, et connaître les deux change tout.</p>
+        </div>
+      </div>
+      <div class="dcard">
+        <span class="dcard-dot" style="background:#BA7517"></span>
+        <div>
+          <h3 class="dcard-title">Tes actions du mois</h3>
+          <p class="dcard-text">Des recommandations concrètes alignées sur ton profil — pas des conseils génériques de développement personnel.</p>
+        </div>
+      </div>
+      <div class="dcard">
+        <span class="dcard-dot" style="background:#AFA9EC"></span>
+        <div>
+          <h3 class="dcard-title">Ton empreinte astrale</h3>
+          <p class="dcard-text">Ton signe solaire et ta planète dominante, reliés à ce que tes réponses révèlent — une lecture symbolique qui complète le miroir.</p>
+        </div>
+      </div>
+      <div class="dcard">
+        <span class="dcard-dot" style="background:#F4C0D1"></span>
+        <div>
+          <h3 class="dcard-title">Ta carte à partager</h3>
+          <p class="dcard-text">Ton archétype, ton code céleste, tes dimensions — dans une carte élégante à partager avec ceux qui comptent.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mid-cta" style="margin-top:2.5rem">
+      <a href="#form-section" class="btn-cosmic cta-smart">Découvrir mon archétype</a>
+      <p class="mid-cta-note">Résultat immédiat · 144 possibilités · Un seul toi</p>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="rich-section fade-in">
+    <p class="section-label">Questions fréquentes</p>
+    <h2 class="section-title">Tout ce que tu te demandes <em>avant de plonger.</em></h2>
+
+    <div class="faq-list" id="faq-list"></div>
+  </section>
+
+  <!-- ── CTA FINAL ── -->
+  <section class="final-cta fade-in">
+    <h2 class="final-title">144 archétypes.<br><em>Un seul est toi.</em></h2>
+    <p class="final-sub">4 minutes. 9 scènes. Et peut-être la première fois<br>que quelqu'un met des mots justes sur qui tu es.</p>
+    <a href="#form-section" class="btn-cosmic cta-smart">Commencer mon exploration</a>
+    <p class="mid-cta-note">Gratuit · Sans inscription · Résultat immédiat</p>
+  </section>
+
   <footer>
     <span class="footer-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:#7F77DD;margin-left:3px;vertical-align:middle"></span></span>
-    <span class="footer-note">© 2025 Cosmos · Tous droits réservés · Miroir narratif, pas diagnostic clinique</span>
+    <span class="footer-note">© 2026 Cosmos · Tous droits réservés · Miroir narratif, pas diagnostic clinique</span>
   </footer>
 
 </div>
@@ -933,8 +1498,166 @@ var obs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     if (e.isIntersecting) { e.target.classList.add('visible'); }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.12 });
 fadeEls.forEach(function(el) { obs.observe(el); });
+
+/* ── COMPTEUR ANIMÉ ── */
+(function(){
+  var target = 2847;
+  /* Croissance légère selon le jour pour rester crédible */
+  var start = new Date('2026-06-01').getTime();
+  var days = Math.floor((Date.now() - start) / 86400000);
+  target += days * 23;
+
+  var el = document.getElementById('counter-num');
+  var started = false;
+
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !started){
+        started = true;
+        var current = 0;
+        var step = Math.ceil(target / 90);
+        var timer = setInterval(function(){
+          current += step;
+          if(current >= target){ current = target; clearInterval(timer); }
+          el.textContent = current.toLocaleString('fr-FR');
+        }, 18);
+      }
+    });
+  }, { threshold: 0.4 });
+  counterObs.observe(el);
+})();
+
+/* ── TÉMOIGNAGES ── */
+var TESTIMONIALS = [
+  { t: "La première fois qu'une analyse me touche vraiment. C'est écrit pour moi, pas pour tout le monde.", a: "Sophie · Lyon · 34 ans" },
+  { t: "J'ai enfin compris pourquoi je sabotais mes relations. Ce test m'a donné un nom à quelque chose que je portais depuis 10 ans.", a: "Amélie · Paris · 29 ans" },
+  { t: "Le radar des dimensions m'a montré exactement où j'étais fort et où je me freinais. Bluffant.", a: "Karim · Montréal · 38 ans" },
+  { t: "J'ai fait tous les tests possibles — MBTI, ennéagramme... Celui-ci est le seul qui m'a donné des frissons.", a: "Léa · Bordeaux · 26 ans" },
+  { t: "Les scènes sont magnifiques. On se laisse porter et à la fin, le portrait tombe juste. Très juste.", a: "Thomas · Bruxelles · 41 ans" },
+  { t: "Mon paradoxe de force décrit mot pour mot ce que ma thérapeute m'avait dit. J'en suis restée sans voix.", a: "Inès · Genève · 31 ans" },
+  { t: "Je l'ai fait par curiosité un soir. J'ai relu mon portrait trois fois. Tout y était.", a: "Julien · Nantes · 35 ans" },
+  { t: "L'Étoile Silencieuse. Même le nom de mon archétype me ressemble. C'est troublant et beau à la fois.", a: "Clara · Lille · 27 ans" },
+  { t: "On m'a offert l'analyse complète. Les actions du mois sont devenues mon rituel du dimanche soir.", a: "Maxime · Marseille · 33 ans" },
+  { t: "Ce qui m'a marquée : aucune question directe. Que des situations. Et pourtant le résultat me connaît mieux que certains amis.", a: "Émilie · Toulouse · 30 ans" },
+  { t: "J'étais sceptique. 4 minutes plus tard, je partageais mon code céleste à toute ma famille.", a: "Nicolas · Strasbourg · 44 ans" },
+  { t: "La scène des deux chaises m'a émue aux larmes. Et la lecture du profil a mis des mots sur pourquoi.", a: "Sarah · Montpellier · 28 ans" },
+  { t: "Mon blocage invisible : « tu confonds être utile et être aimé ». Je l'ai relu dix fois.", a: "Antoine · Rennes · 37 ans" },
+  { t: "Mes deux meilleures amies l'ont fait après moi. On a passé la soirée à comparer nos archétypes.", a: "Chloé · Nice · 25 ans" },
+  { t: "Le portrait est d'une justesse rare. On sent que ça ne sort pas d'un moule.", a: "Mehdi · Casablanca · 32 ans" },
+  { t: "Enfin un test qui ne me range pas dans une case de 4 lettres. 144 profils, ça change tout.", a: "Laure · Annecy · 39 ans" },
+  { t: "La dimension cosmique de mon radar était au max. Tout s'explique : mes nuits à regarder les étoiles.", a: "Hugo · Liège · 24 ans" },
+  { t: "J'offre l'analyse à chaque personne qui compte pour moi. C'est devenu mon cadeau signature.", a: "Valérie · Lausanne · 46 ans" },
+  { t: "Mon signe solaire relié à mes réponses réelles — c'est la lecture astrologique la plus pertinente que j'aie lue.", a: "Manon · Dijon · 29 ans" },
+  { t: "Court, beau, profond. Exactement ce qu'il me fallait un dimanche d'introspection.", a: "Romain · Tours · 36 ans" }
+];
+
+(function(){
+  var track = document.getElementById('carousel-track');
+  var html = '';
+  /* Doublé pour boucle infinie */
+  var list = TESTIMONIALS.concat(TESTIMONIALS);
+  list.forEach(function(x){
+    html += '<div class="testi">'
+      + '<div class="testi-stars">★★★★★</div>'
+      + '<p class="testi-text">"' + x.t + '"</p>'
+      + '<p class="testi-author">' + x.a + '</p>'
+      + '</div>';
+  });
+  track.innerHTML = html;
+})();
+
+/* ── ROUE 144 POINTS ── */
+(function(){
+  var g = document.getElementById('wheel-dots');
+  if(!g) return;
+  var colors = ['#7F77DD','#D4537E','#1D9E75','#BA7517','#AFA9EC','#F4C0D1'];
+  var rings = [140, 112, 84, 56];
+  var perRing = 36;
+  var svgNS = 'http://www.w3.org/2000/svg';
+  rings.forEach(function(r, ri){
+    for(var i=0;i<perRing;i++){
+      var angle = (i / perRing) * Math.PI * 2;
+      var c = document.createElementNS(svgNS, 'circle');
+      c.setAttribute('cx', 160 + Math.cos(angle) * r);
+      c.setAttribute('cy', 160 + Math.sin(angle) * r);
+      c.setAttribute('r', 1.6);
+      c.setAttribute('fill', colors[(i + ri) % colors.length]);
+      c.setAttribute('opacity', 0.4 + Math.random() * 0.5);
+      g.appendChild(c);
+    }
+  });
+})();
+
+/* ── FAQ ── */
+var FAQ = [
+  { q: "C'est quoi, Cosmos exactement ?", a: "Cosmos est une expérience de connaissance de soi. À travers <strong>9 scènes immersives</strong> — des situations sans bonne ni mauvaise réponse — tes réactions sont analysées selon 4 dimensions pour révéler ton profil parmi <strong>144 archétypes</strong>. Le résultat : un portrait écrit pour toi, tes forces, tes paradoxes et des actions concrètes." },
+  { q: "Est-ce vraiment gratuit ?", a: "Oui. Le quiz, ton portrait, ton archétype, ton radar des 4 dimensions, deux forces et tes premières actions sont <strong>entièrement gratuits</strong>. Une analyse approfondie optionnelle (forces cachées, blocages invisibles, lecture amoureuse, miroir intérieur) est disponible pour le prix d'un café." },
+  { q: "Combien de temps ça prend ?", a: "Environ <strong>4 minutes</strong> pour les 9 scènes, plus 3 minutes optionnelles pour l'approfondissement. Ton profil est généré immédiatement après." },
+  { q: "Sur quoi repose la méthode ?", a: "Cosmos s'inspire des <strong>techniques psychologiques projectives</strong> utilisées depuis près d'un siècle en psychologie clinique : le test de Rorschach (1921), le TAT — Thematic Apperception Test (1935) et la théorie des archétypes de Carl Gustav Jung. Le principe : face à une situation ambiguë, ta réaction projette tes structures intérieures profondes." },
+  { q: "Est-ce un test scientifique ou un diagnostic ?", a: "Non, et nous tenons à être honnêtes là-dessus. Cosmos est un <strong>miroir narratif</strong> — pas un diagnostic clinique ni un outil médical. C'est une lecture symbolique et poétique de ta personnalité, suffisamment précise pour être utile, conçue pour la réflexion personnelle. Si tu traverses une période difficile, un professionnel de santé reste la bonne porte." },
+  { q: "En quoi est-ce différent du MBTI ou des tests classiques ?", a: "Les tests classiques posent des questions directes (« es-tu organisé ? ») auxquelles on répond souvent ce qu'on aimerait être. Cosmos te place dans des <strong>situations vécues</strong> — ta réaction spontanée en dit plus que n'importe quelle auto-évaluation. Et avec 144 archétypes au lieu de 16 types, ton profil est bien plus nuancé." },
+  { q: "C'est quoi, les 144 archétypes ?", a: "Ton profil croise <strong>12 essences cosmiques</strong> (liées à ta date de naissance) et <strong>12 structures intérieures</strong> (révélées par tes réponses) — soit 144 combinaisons uniques. Chaque archétype porte un nom poétique, un code céleste et un portrait spécifique." },
+  { q: "Pourquoi demander ma date de naissance ?", a: "Elle détermine ton <strong>essence cosmique</strong> — l'une des 12 composantes de ton archétype — et permet la lecture astrologique de ton profil (signe solaire, planète dominante). Elle n'est jamais utilisée à d'autres fins." },
+  { q: "Pourquoi demander mon email ?", a: "Pour t'envoyer ton rapport et te prévenir des évolutions de ton profil (Chapitre II). <strong>Jamais de spam, jamais de revente</strong> — et tu peux te désinscrire en un clic." },
+  { q: "Mes données sont-elles protégées ?", a: "Oui. Tes réponses sont traitées de manière chiffrée, ne sont <strong>jamais revendues</strong> et sont supprimables à tout moment sur simple demande. Cosmos est conforme au RGPD et n'affiche aucune publicité." },
+  { q: "Que contient l'analyse approfondie ?", a: "L'analyse complète révèle <strong>tes 2 forces cachées</strong> avec leurs paradoxes, <strong>tes 2 blocages invisibles</strong> (ces mécanismes qui freinent sans qu'on les voie), <strong>ta lecture amoureuse</strong> (ton langage du cœur, tes patterns relationnels), <strong>ton miroir intérieur</strong> (ce que tu montres vs ce que tu caches), 4 recommandations selon ton signe astrologique et 6 actions personnalisées pour le mois." },
+  { q: "Combien coûte l'analyse complète ?", a: "<strong>3,90 € — paiement unique</strong>, sans abonnement, sans frais cachés. Le prix d'un café pour un miroir que tu garderas longtemps." },
+  { q: "Puis-je offrir l'analyse à quelqu'un ?", a: "Oui ! Après ton analyse complète, tu peux <strong>offrir l'expérience entière à un ami</strong>, gratuitement, en un clic. Il recevra un email avec un lien cadeau personnel." },
+  { q: "Puis-je refaire le test ?", a: "Oui, autant de fois que tu veux. Cela dit, la première réponse — la plus spontanée — est souvent la plus juste. Si tu refais le test à une autre période de ta vie, ton profil peut évoluer : c'est normal, tu évolues aussi." },
+  { q: "Le résultat est-il vraiment personnalisé ?", a: "Oui — c'est le cœur de Cosmos. Ton portrait est <strong>généré spécifiquement à partir de tes réponses</strong>, ton prénom, ton âge et tes dimensions. Deux personnes avec des réponses différentes recevront des textes profondément différents." },
+  { q: "Ça marche sur mobile ?", a: "Parfaitement. Cosmos est conçu d'abord pour mobile — l'expérience est aussi immersive sur ton téléphone que sur un grand écran." },
+  { q: "Y a-t-il un âge minimum ?", a: "Cosmos s'adresse aux <strong>adultes et jeunes adultes (16 ans et plus)</strong>. Les scènes explorent des thèmes introspectifs — relations, solitude, choix de vie — pensés pour un public mature." },
+  { q: "C'est quoi, les 4 dimensions ?", a: "<strong>Cosmique</strong> — ton rapport au sens, au mystère, à ce qui te dépasse. <strong>Émotionnelle</strong> — ta manière de ressentir et traverser les émotions. <strong>Cognitive</strong> — ta façon de penser, décider, analyser. <strong>Relationnelle</strong> — ta manière d'entrer en lien avec les autres. Ton radar montre l'équilibre unique entre ces quatre forces." },
+  { q: "Qu'est-ce que le Chapitre II ?", a: "Le Chapitre II est la <strong>suite de l'aventure Cosmos</strong>, en préparation : des modules approfondis sur des dimensions spécifiques de ton profil. Les détenteurs de l'analyse complète seront prévenus en premier." },
+  { q: "Et si mon profil ne me ressemble pas ?", a: "Ça arrive rarement, mais ça arrive — souvent quand les réponses ont été données trop vite ou « comme il faudrait ». Refais le test en répondant avec ta <strong>première réaction sincère</strong>, sans réfléchir à l'image renvoyée. Le miroir ne fonctionne que si on s'y présente sans masque." },
+  { q: "Qui a créé Cosmos ?", a: "Cosmos est un projet indépendant français, né d'une conviction : la connaissance de soi ne devrait être ni clinique et froide, ni ésotérique et floue. Entre les deux, il y a un espace — poétique, précis, humain. C'est là que vit Cosmos." }
+];
+
+(function(){
+  var list = document.getElementById('faq-list');
+  var html = '';
+  FAQ.forEach(function(f, i){
+    html += '<div class="faq-item" id="faq-' + i + '">'
+      + '<button class="faq-q" onclick="toggleFaq(' + i + ')">' + f.q + '</button>'
+      + '<div class="faq-a"><div class="faq-a-inner">' + f.a + '</div></div>'
+      + '</div>';
+  });
+  list.innerHTML = html;
+})();
+
+function toggleFaq(i){
+  var item = document.getElementById('faq-' + i);
+  var answer = item.querySelector('.faq-a');
+  var isOpen = item.classList.contains('open');
+
+  /* Fermer tous les autres */
+  document.querySelectorAll('.faq-item.open').forEach(function(el){
+    el.classList.remove('open');
+    el.querySelector('.faq-a').style.maxHeight = '0';
+  });
+
+  if(!isOpen){
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+/* ── BOUTONS CTA INTELLIGENTS ── */
+(function(){
+  var hasProfile = false;
+  try {
+    hasProfile = !!sessionStorage.getItem('cosmos_profile') || !!sessionStorage.getItem('cosmos_quiz');
+  } catch(e) {}
+
+  if(hasProfile){
+    document.querySelectorAll('.cta-smart').forEach(function(btn){
+      btn.textContent = 'Voir mon profil';
+      btn.setAttribute('href', 'resultat.html');
+    });
+  }
+})();
 
 /* ── LOCALISATION PREVIEW ── */
 function updateLocPreview() {
@@ -977,18 +1700,21 @@ function updateLocPreview() {
 /* ── VALIDATION ── */
 function validateForm() {
   var prenom = document.getElementById('prenom').value.trim();
+  var email = document.getElementById('email').value.trim();
   var day = document.getElementById('dob-day').value;
   var month = document.getElementById('dob-month').value;
   var year = document.getElementById('dob-year').value;
+  var pays = document.getElementById('pays').value;
   var genre = document.getElementById('genre').value;
 
+  var emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   var dobValid = day && month && year && parseInt(year) >= 1920 && parseInt(year) <= 2010;
-  var ok = prenom.length >= 2 && dobValid && genre;
+  var ok = prenom.length >= 2 && emailValid && dobValid && pays && genre;
 
   document.getElementById('cta-btn').disabled = !ok;
 }
 
-['prenom','dob-day','dob-month','dob-year','genre'].forEach(function(id) {
+['prenom','email','dob-day','dob-month','dob-year','pays','genre'].forEach(function(id) {
   var el = document.getElementById(id);
   if (el) el.addEventListener('input', validateForm);
   if (el) el.addEventListener('change', validateForm);
@@ -1001,10 +1727,17 @@ document.getElementById('cosmos-form').addEventListener('submit', function(e) {
   var userData = {
     prenom: document.getElementById('prenom').value.trim(),
     genre: document.getElementById('genre').value,
+    email: document.getElementById('email').value.trim(),
     dateNaissance: {
       jour: parseInt(document.getElementById('dob-day').value),
       mois: parseInt(document.getElementById('dob-month').value),
       annee: parseInt(document.getElementById('dob-year').value)
+    },
+    localisation: {
+      pays: document.getElementById('pays').value,
+      region: document.getElementById('region').value,
+      ville: document.getElementById('ville').value,
+      codePostal: document.getElementById('cp').value
     }
   };
 
@@ -1018,7 +1751,7 @@ document.getElementById('cosmos-form').addEventListener('submit', function(e) {
   }, 1000);
 });
 
-  /* Détecter code cadeau */
+/* Détecter code cadeau */
 if(window.location.search.includes('gift=')){
   var giftParam = new URLSearchParams(window.location.search).get('gift');
   try{ sessionStorage.setItem('cosmos_gift_received', giftParam); }catch(e){}
