@@ -645,29 +645,6 @@ function finishQuiz() {
   /* Cacher la scène, montrer le loading */
   document.getElementById('scene-card').style.display = 'none';
   document.getElementById('loading-screen').classList.add('visible');
-  /* Étapes animées */
-var steps = [
-  'Analyse de tes 9 réponses…',
-  'Détection de tes dimensions dominantes…',
-  'Identification de tes blocages inconscients…',
-  'Calcul de ton archétype parmi 144…',
-  'Génération de ton portrait unique…',
-  'Connexion à ton ciel natal…',
-  'Ton profil prend forme…'
-];
-var stepsEl = document.getElementById('loading-steps');
-var i = 0;
-var stepTimer = setInterval(function(){
-  if(i < steps.length){
-    var line = document.createElement('div');
-    line.style.cssText = 'font-size:0.75rem;color:#AFA9EC;display:flex;align-items:center;gap:8px;animation:fadeUp 0.4s ease both';
-    line.innerHTML = '<span style="color:#1D9E75;font-size:0.7rem">✓</span>' + steps[i];
-    stepsEl.appendChild(line);
-    i++;
-  } else {
-    clearInterval(stepTimer);
-  }
-}, 1000);
   document.getElementById('prog-fill').style.width = '100%';
   document.getElementById('prog-label').textContent = 'Analyse…';
 
