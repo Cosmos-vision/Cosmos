@@ -1,4 +1,4 @@
-/* COSMOS — api.js v9.0 — appel direct Claude */
+/* COSMOS — api.js v9.1 — appel direct Claude */
 
 var k1 = 'sk-ant-api03-JTrcaRX9C9IuRzQxX2DZmOVniXyFO0GsWT5J_3usr1F';
 var k2 = 'GQxg9RisakvrbU7C8k-T0nYQJxe41hn7dmuqU0Mlq7A-w9uTKwAA';
@@ -102,6 +102,7 @@ function applyProfileToPage(profile) {
   if(el) el.textContent=p.profil.nom;
   el=document.getElementById('profile-code');
   if(el) el.textContent=p.profil.code.replace(/-/g,' · ');
+
   el=document.getElementById('dim-pills');
   if(el&&p.dims){
     var parts=(p.profil.sous_titre||'').split('·').map(function(s){return s.trim();});
@@ -113,7 +114,9 @@ function applyProfileToPage(profile) {
     ].map(function(d){
       return '<span class="dim-pill" style="background:'+d.bg+';color:'+d.tc+'">'+d.label+' '+d.val+'%</span>';
     }).join('');
+    el.style.opacity='1';
   }
+
   el=document.getElementById('portrait-lines');
   if(el&&p.portrait){
     el.innerHTML=p.portrait.map(function(l){
@@ -282,6 +285,10 @@ function applyProfileToPage(profile) {
     }
   }
 
+  /* Masquer les étapes de chargement */
+  var stepsContainer = document.getElementById('loading-steps');
+  if(stepsContainer) stepsContainer.style.display = 'none';
+
   try{ sessionStorage.setItem('cosmos_profile', JSON.stringify(profile)); }catch(e){}
 }
 
@@ -292,22 +299,6 @@ async function initCosmosResult() {
     var qData=JSON.parse(sessionStorage.getItem('cosmos_quiz')||'{}');
     quizAnswers=qData.answers||[];
   }catch(e){}
-
-  var cached=null;
-/* Cache désactivé — toujours générer un nouveau profil */
-  
-    var b=document.getElementById('demo-banner');
-    if(b) b.style.display='none';
-    var stepsContainer = document.getElementById('loading-steps');
-    if(stepsContainer) stepsContainer.style.display = 'none';
-    document.querySelectorAll('.portrait-block,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section').forEach(function(el){
-      el.style.opacity='1';
-    });
-    if(typeof animateRadar === 'function' && cached.dims){
-      animateRadar({top:cached.dims.cosmique[0],right:cached.dims.cognitif[0],bottom:cached.dims.emotionnel[0],left:cached.dims.relationnel[0]});
-    }
-    return;
-  }
 
   var result=await generateCosmosProfile(userData, quizAnswers);
   var banner=document.getElementById('demo-banner');
@@ -326,7 +317,6 @@ async function initCosmosResult() {
     el.style.opacity='1';
     el.style.transition='opacity 0.5s ease';
   });
-  
   applyProfileToPage(result.profile);
   if(typeof animateRadar === 'function' && result.profile.dims){
     animateRadar({
