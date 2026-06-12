@@ -754,8 +754,7 @@ if(isGiftReceived){
       if(profile && profile.profil && profile.profil.nom && profile.profil.code && profile.profil.code !== 'LUN-SYS-PRO'){
         clearInterval(giftCheck);
         unlockPaidContent(true);
-          clearInterval(giftCheck);
-          try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
+        try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
       }
     }, 500);
     setTimeout(function(){ clearInterval(giftCheck); }, 60000);
