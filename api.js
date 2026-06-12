@@ -98,7 +98,6 @@ function applyProfileToPage(profile) {
   if(!profile) return;
   var p=profile, el;
 
-  /* ══ PROFIL DE BASE ══ */
   el=document.getElementById('profile-name');
   if(el) el.textContent=p.profil.nom;
   el=document.getElementById('profile-code');
@@ -121,12 +120,7 @@ function applyProfileToPage(profile) {
       return '<p class="portrait-line">'+l+'</p>';
     }).join('');
   }
-  el=document.getElementById('portrait-lines');
-  if(el&&p.portrait){
-    el.innerHTML=p.portrait.map(function(l){
-      return '<p class="portrait-line">'+l+'</p>';
-    }).join('');
-  }
+
   /* FORCES GRATUITES */
   if(p.forces && p.forces.length >= 2) {
     var forceCards = document.querySelectorAll('.forces-section .force-card:not(.force-locked)');
@@ -141,6 +135,7 @@ function applyProfileToPage(profile) {
       forceCards[1].querySelector('.force-paradox').textContent = p.forces[1].paradoxe;
     }
   }
+
   /* ACTIONS GRATUITES */
   if(p.actions && p.actions.length >= 2) {
     var actionCards = document.querySelectorAll('.actions-free .action-card');
@@ -155,20 +150,22 @@ function applyProfileToPage(profile) {
       actionCards[1].querySelector('.action-freq').textContent = p.actions[1].freq;
     }
   }
+
   /* LÉGENDE RADAR */
-if(p.dims && p.profil) {
-  var parts2=(p.profil.sous_titre||'').split('·').map(function(s){return s.trim();});
-  var legItems = document.querySelectorAll('.radar-leg-item');
-  if(legItems[0]) legItems[0].innerHTML='<div class="radar-leg-dot" style="background:#AFA9EC"></div>Cosmique · '+parts2[0]+' '+p.dims.cosmique[0]+'%';
-  if(legItems[1]) legItems[1].innerHTML='<div class="radar-leg-dot" style="background:#9FE1CB"></div>Cognitif · '+parts2[1]+' '+p.dims.cognitif[0]+'%';
-  if(legItems[2]) legItems[2].innerHTML='<div class="radar-leg-dot" style="background:#F4C0D1"></div>Émotionnel · '+parts2[2]+' '+p.dims.emotionnel[0]+'%';
-  if(legItems[3]) legItems[3].innerHTML='<div class="radar-leg-dot" style="background:#FAC775"></div>Relationnel · Lien '+p.dims.relationnel[0]+'%';
-}
+  if(p.dims && p.profil) {
+    var parts2=(p.profil.sous_titre||'').split('·').map(function(s){return s.trim();});
+    var legItems = document.querySelectorAll('.radar-leg-item');
+    if(legItems[0]) legItems[0].innerHTML='<div class="radar-leg-dot" style="background:#AFA9EC"></div>Cosmique · '+parts2[0]+' '+p.dims.cosmique[0]+'%';
+    if(legItems[1]) legItems[1].innerHTML='<div class="radar-leg-dot" style="background:#9FE1CB"></div>Cognitif · '+parts2[1]+' '+p.dims.cognitif[0]+'%';
+    if(legItems[2]) legItems[2].innerHTML='<div class="radar-leg-dot" style="background:#F4C0D1"></div>Émotionnel · '+parts2[2]+' '+p.dims.emotionnel[0]+'%';
+    if(legItems[3]) legItems[3].innerHTML='<div class="radar-leg-dot" style="background:#FAC775"></div>Relationnel · Lien '+p.dims.relationnel[0]+'%';
+  }
+
   el=document.getElementById('share-profile-name');
-    if(el) el.textContent=p.profil.nom;
-    el=document.getElementById('share-code');
-    if(el) el.textContent=p.profil.code.replace(/-/g,' · ')+' · cosmos-vision.com';
-  
+  if(el) el.textContent=p.profil.nom;
+  el=document.getElementById('share-code');
+  if(el) el.textContent=p.profil.code.replace(/-/g,' · ')+' · cosmos-vision.com';
+
   /* PILLS CARTE PARTAGE */
   if(p.dims && p.profil) {
     var sharePills = document.querySelector('#share-card div[style*="flex"]');
@@ -180,19 +177,19 @@ if(p.dims && p.profil) {
         '<span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">'+pts[2]+' '+p.dims.emotionnel[0]+'%</span>';
     }
   }
-/* ACTIONS PAYANTES */
-if(p.actions && p.actions.length >= 6) {
-  for(var i=2;i<6;i++){
-    var n=i+1;
-    var el=document.getElementById('action'+n+'-title');
-    if(el&&p.actions[i]) el.textContent=p.actions[i].titre;
-    el=document.getElementById('action'+n+'-desc');
-    if(el&&p.actions[i]) el.textContent=p.actions[i].desc;
-    el=document.getElementById('action'+n+'-freq');
-    if(el&&p.actions[i]) el.textContent=p.actions[i].freq;
+
+  /* ACTIONS PAYANTES */
+  if(p.actions && p.actions.length >= 6) {
+    for(var i=2;i<6;i++){
+      var n=i+1;
+      var elA=document.getElementById('action'+n+'-title');
+      if(elA&&p.actions[i]) elA.textContent=p.actions[i].titre;
+      elA=document.getElementById('action'+n+'-desc');
+      if(elA&&p.actions[i]) elA.textContent=p.actions[i].desc;
+      elA=document.getElementById('action'+n+'-freq');
+      if(elA&&p.actions[i]) elA.textContent=p.actions[i].freq;
+    }
   }
-}
-  /* ══ SECTIONS PAYANTES ══ */
 
   /* 3e FORCE */
   if(p.forces && p.forces[2]) {
@@ -204,15 +201,16 @@ if(p.actions && p.actions.length >= 6) {
     if(elF3Desc) elF3Desc.textContent = f3.desc;
     if(elF3Para) elF3Para.textContent = f3.paradoxe;
   }
-/* 4e FORCE */
-if(p.forces && p.forces.length >= 4) {
-  var f4 = p.forces[3];
-  var elF4Name = document.querySelector('.force-locked:last-of-type .force-name');
-  var elF4Desc = document.querySelector('.force-locked:last-of-type .force-desc');
-  if(elF4Name) elF4Name.textContent = f4.nom;
-  if(elF4Desc) elF4Desc.textContent = f4.desc;
-}
-  
+
+  /* 4e FORCE */
+  if(p.forces && p.forces.length >= 4) {
+    var f4 = p.forces[3];
+    var elF4Name = document.querySelector('.force-locked:last-of-type .force-name');
+    var elF4Desc = document.querySelector('.force-locked:last-of-type .force-desc');
+    if(elF4Name) elF4Name.textContent = f4.nom;
+    if(elF4Desc) elF4Desc.textContent = f4.desc;
+  }
+
   /* BLOCAGES */
   if(p.blocages && p.blocages.length) {
     var blocContainer = document.getElementById('blocages-container');
@@ -257,33 +255,33 @@ if(p.forces && p.forces.length >= 4) {
     fills.forEach(function(f, i){ if(vals[i]) f.setAttribute('data-w', vals[i]); });
   }
 
-/* ASTROLOGIE GRATUITE */
-if(p.astro) {
-  var astroFree = document.getElementById('astro-free');
-  if(astroFree) {
-    astroFree.innerHTML = 
-      '<p style="font-size:1.1rem;font-family:\'Cormorant Garamond\',serif;color:#AFA9EC;margin-bottom:0.75rem">✦ ' + p.astro.signe + ' · ' + p.astro.planete + '</p>'
-      + '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1rem;color:#C8C4E8;font-style:italic;line-height:1.8;margin-bottom:1rem">' + p.astro.souffle + '</p>'
-      + '<div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">'
-      + '<p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">' + p.astro.gratuit.domaine + '</p>'
-      + '<p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">' + p.astro.gratuit.conseil + '</p>'
-      + '</div>';
-  }
-}
-
-/* ASTROLOGIE PAYANTE */
-if(p.astro && p.astro.payant) {
-  var astroPaid = document.getElementById('astro-paid');
-  if(astroPaid) {
-    astroPaid.innerHTML = p.astro.payant.map(function(item) {
-      return '<div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem;margin-bottom:8px">'
-        + '<p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">' + item.domaine + '</p>'
-        + '<p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">' + item.conseil + '</p>'
+  /* ASTROLOGIE GRATUITE */
+  if(p.astro) {
+    var astroFree = document.getElementById('astro-free');
+    if(astroFree) {
+      astroFree.innerHTML =
+        '<p style="font-size:1.1rem;font-family:\'Cormorant Garamond\',serif;color:#AFA9EC;margin-bottom:0.75rem">✦ ' + p.astro.signe + ' · ' + p.astro.planete + '</p>'
+        + '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1rem;color:#C8C4E8;font-style:italic;line-height:1.8;margin-bottom:1rem">' + p.astro.souffle + '</p>'
+        + '<div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem">'
+        + '<p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">' + p.astro.gratuit.domaine + '</p>'
+        + '<p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">' + p.astro.gratuit.conseil + '</p>'
         + '</div>';
-    }).join('');
+    }
   }
-}
-  
+
+  /* ASTROLOGIE PAYANTE */
+  if(p.astro && p.astro.payant) {
+    var astroPaid = document.getElementById('astro-paid');
+    if(astroPaid) {
+      astroPaid.innerHTML = p.astro.payant.map(function(item) {
+        return '<div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:0.75rem 1rem;margin-bottom:8px">'
+          + '<p style="font-size:0.7rem;color:#AFA9EC;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">' + item.domaine + '</p>'
+          + '<p style="font-size:0.82rem;color:#C8C4E8;line-height:1.7">' + item.conseil + '</p>'
+          + '</div>';
+      }).join('');
+    }
+  }
+
   try{ sessionStorage.setItem('cosmos_profile', JSON.stringify(profile)); }catch(e){}
 }
 
@@ -304,6 +302,9 @@ async function initCosmosResult() {
     document.querySelectorAll('.portrait-block,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section').forEach(function(el){
       el.style.opacity='1';
     });
+    if(typeof animateRadar === 'function' && cached.dims){
+      animateRadar({top:cached.dims.cosmique[0],right:cached.dims.cognitif[0],bottom:cached.dims.emotionnel[0],left:cached.dims.relationnel[0]});
+    }
     return;
   }
 
@@ -316,9 +317,9 @@ async function initCosmosResult() {
     }
   } else {
     if(banner) banner.style.display='none';
-    if(userData && userData.email) {
-  registerBrevoContact(userData.email, userData.prenom || '');
-}
+    if(userData && userData.email){
+      registerBrevoContact(userData.email, userData.prenom || '');
+    }
   }
   document.querySelectorAll('.portrait-block,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section').forEach(function(el){
     el.style.opacity='1';
@@ -368,6 +369,7 @@ async function sendBrevoEmail(email, prenom) {
     console.error('Brevo error:', e);
   }
 }
+
 async function registerBrevoContact(email, prenom, listId, commentaire) {
   listId = listId || 3;
   try {
@@ -390,4 +392,5 @@ async function registerBrevoContact(email, prenom, listId, commentaire) {
     console.error('Brevo contact error:', e);
   }
 }
+
 window.CosmosAPI={init:initCosmosResult, apply:applyProfileToPage, getDemo:getDemoProfile};
