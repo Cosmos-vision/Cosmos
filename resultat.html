@@ -749,6 +749,8 @@ if(window.location.search.includes('gift=')){
 /* CHARGEMENT PROFIL */
 setTimeout(function(){
 if(window.CosmosAPI){
+  /* Effacer le profil précédent pour forcer une nouvelle génération */
+try{ sessionStorage.removeItem('cosmos_profile'); }catch(e){}
   document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){ el.style.opacity='0'; });
   document.getElementById('profile-name').textContent = '✨ Cosmos construit ton profil personnalisé, merci de patienter environ 30 secondes…';
   document.getElementById('profile-code').textContent = '· · ·';
