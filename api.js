@@ -325,6 +325,16 @@ async function initCosmosResult() {
     el.style.opacity='1';
     el.style.transition='opacity 0.5s ease';
   });
+  /* Arrêter les étapes animées */
+if(typeof stepTimer !== 'undefined') clearInterval(stepTimer);
+
+/* Vérifier email avant d'afficher */
+var cosmosUser2 = {};
+try{ cosmosUser2 = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
+if(!cosmosUser2.email){
+  document.getElementById('email-capture').style.display = 'flex';
+  return;
+}
   applyProfileToPage(result.profile);
   if(typeof animateRadar === 'function' && result.profile.dims){
     animateRadar({
