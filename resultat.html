@@ -796,7 +796,6 @@ if(isGiftReceived){
   var cosmosUser = {};
   try{ cosmosUser = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
   window.CosmosAPI.init();
-}
   if(isGiftReceived){
     var giftCheck = setInterval(function(){
       var profile = null;
