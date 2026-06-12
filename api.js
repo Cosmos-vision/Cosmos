@@ -299,6 +299,8 @@ async function initCosmosResult() {
     applyProfileToPage(cached);
     var b=document.getElementById('demo-banner');
     if(b) b.style.display='none';
+    var stepsContainer = document.getElementById('loading-steps');
+    if(stepsContainer) stepsContainer.style.display = 'none';
     document.querySelectorAll('.portrait-block,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section').forEach(function(el){
       el.style.opacity='1';
     });
@@ -327,6 +329,8 @@ async function initCosmosResult() {
   });
   /* Arrêter les étapes animées */
 if(typeof stepTimer !== 'undefined') clearInterval(stepTimer);
+var stepsContainer = document.getElementById('loading-steps');
+if(stepsContainer) stepsContainer.style.display = 'none';
 
 /* Vérifier email avant d'afficher */
 var cosmosUser2 = {};
