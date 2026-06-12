@@ -770,12 +770,7 @@ if(isGiftReceived){
   /* Vérifier si on a déjà l'email */
   var cosmosUser = {};
   try{ cosmosUser = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
-  if(!cosmosUser.email && !isGiftReceived){
-    document.getElementById('email-capture').style.display = 'flex';
-  } else {
-    window.CosmosAPI.init();
-  }
-
+  window.CosmosAPI.init();
   if(isGiftReceived){
     var giftCheck = setInterval(function(){
       var profile = null;
