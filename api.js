@@ -294,9 +294,8 @@ async function initCosmosResult() {
   }catch(e){}
 
   var cached=null;
-  try{ cached=JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-  if(cached&&cached.profil){
-    applyProfileToPage(cached);
+/* Cache désactivé — toujours générer un nouveau profil */
+  
     var b=document.getElementById('demo-banner');
     if(b) b.style.display='none';
     var stepsContainer = document.getElementById('loading-steps');
