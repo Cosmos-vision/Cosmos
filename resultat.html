@@ -724,7 +724,9 @@ if(window.location.search.includes('gift=')){
   try{ sessionStorage.setItem('cosmos_gift_received', giftParam); }catch(e){}
   window.location.href = 'index.html?gift=' + giftParam;
 }
+  
 /* CHARGEMENT PROFIL */
+setTimeout(function(){
 if(window.CosmosAPI){
   document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall').forEach(function(el){ el.style.opacity='0'; });
   document.getElementById('profile-name').textContent = '✨ Cosmos construit ton profil personnalisé, merci de patienter environ 30 secondes…';
@@ -763,6 +765,7 @@ if(isGiftReceived){
     setTimeout(function(){ clearInterval(giftCheck); }, 60000);
   }
 }
+}, 100);
 /* PARTAGE */
 function shareIG(){
   var nom=document.getElementById('profile-name').textContent||'Mon profil Cosmos';
