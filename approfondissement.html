@@ -220,6 +220,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <script>
+  gtag('event', 'approfondissement_view');
 /* ÉTOILES */
 (function(){
   var c=document.getElementById('cosmos-canvas'),ctx=c.getContext('2d'),stars=[],W,H;
@@ -287,6 +288,8 @@ var answers = new Array(5).fill(null);
 var started = false;
 
 function startAppro() {
+  gtag('event', 'approfondissement_start');
+  
   document.getElementById('intro-screen').style.display = 'none';
   document.getElementById('scene-card').style.display = 'block';
   started = true;
@@ -294,6 +297,7 @@ function startAppro() {
 }
 
 function skipAppro() {
+  gtag('event', 'approfondissement_skip');
   finishAppro(true);
 }
 
@@ -361,6 +365,11 @@ function renderQ(index) {
   if (nextBtn) {
     nextBtn.addEventListener('click', function() {
       if (answers[currentQ] === null) return;
+
+      gtag('event', 'approfondissement_question_complete', {
+  question: currentQ + 1
+});
+      
       if (currentQ < 4) {
         currentQ++;
         renderQ(currentQ);
@@ -384,6 +393,8 @@ function renderQ(index) {
 }
 
 function finishAppro(skipped) {
+  gtag('event', skipped ? 'approfondissement_skipped_complete' : 'approfondissement_complete');
+  
   document.getElementById('scene-card').style.display = 'none';
   document.getElementById('intro-screen').style.display = 'none';
   document.getElementById('loading-screen').classList.add('visible');
