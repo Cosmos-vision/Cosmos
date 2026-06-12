@@ -638,6 +638,25 @@ function handlePayment(){
 }
 
 /* DÉBLOCAGE */
+  function saveEmail(){
+  var email = document.getElementById('email-input').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    document.getElementById('email-input').style.border = '1px solid #D4537E';
+    return;
+  }
+  try{
+    var user = JSON.parse(sessionStorage.getItem('cosmos_user')) || {};
+    user.email = email;
+    sessionStorage.setItem('cosmos_user', JSON.stringify(user));
+  }catch(e){}
+  document.getElementById('email-capture').style.display = 'none';
+  window.CosmosAPI.init();
+}
+
+function skipEmail(){
+  document.getElementById('email-capture').style.display = 'none';
+  window.CosmosAPI.init();
+}
 function unlockPaidContent(fromGift){
   var isGift = fromGift || false;
   try{ isGift = isGift || !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
@@ -719,7 +738,14 @@ if(isGiftReceived){
   }catch(e){}
 }
 
-  window.CosmosAPI.init();
+  /* Vérifier si on a déjà l'email */
+  var cosmosUser = {};
+  try{ cosmosUser = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
+  if(!cosmosUser.email && !isGiftReceived){
+    document.getElementById('email-capture').style.display = 'flex';
+  } else {
+    window.CosmosAPI.init();
+  }
 
   if(isGiftReceived){
     var giftCheck = setInterval(function(){
@@ -849,6 +875,22 @@ function closeGiftPopup(){
     </button>
   </div>
 </div>
+  <!-- EMAIL CAPTURE -->
+<div id="email-capture" style="display:none;position:fixed;inset:0;background:rgba(7,6,15,0.92);z-index:500;align-items:center;justify-content:center;padding:1.5rem">
+  <div style="background:#0d0b1a;border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:2rem;width:100%;max-width:400px;text-align:center">
+    <p style="font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#AFA9EC;margin-bottom:0.75rem">✦ Ton profil est prêt</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:0.5rem;color:#F0EEF8">Où t'envoyer ton rapport ?</h2>
+    <p style="font-size:0.8rem;color:#8B87B0;margin-bottom:1.5rem;line-height:1.6">Entre ton email pour recevoir ton analyse complète et être prévenu·e du Chapitre II.</p>
+    <input id="email-input" type="email" placeholder="ton@email.com" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:'DM Sans',sans-serif;font-size:0.9rem;margin-bottom:0.75rem;outline:none;text-align:center"/>
+    <button onclick="saveEmail()" style="width:100%;background:#7F77DD;border:none;border-radius:100px;padding:0.9rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;margin-bottom:0.75rem">
+      Voir mon profil →
+    </button>
+    <button onclick="skipEmail()" style="background:none;border:none;color:#4A4870;font-family:'DM Sans',sans-serif;font-size:0.75rem;cursor:pointer;text-decoration:underline">
+      Continuer sans email
+    </button>
+  </div>
+</div>
+  
 </body>
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPKSNPDJ"
