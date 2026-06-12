@@ -691,6 +691,7 @@ try{ sessionStorage.setItem('cosmos_gift', giftCode); }catch(e){}
     el.style.userSelect='auto';
     el.style.pointerEvents='auto';
   });
+  
   /* Masquer les boutons débloquer */
   document.querySelectorAll('[onclick="handlePayment()"]').forEach(function(btn){
     if(btn.id !== 'pay-btn') btn.parentElement.style.display='none';
@@ -699,6 +700,7 @@ try{ sessionStorage.setItem('cosmos_gift', giftCode); }catch(e){}
 if(astroLocked) astroLocked.style.display='none';
   document.getElementById('paid-section').classList.add('unlocked');
   document.getElementById('demo-banner').style.display='none';
+  
   /* Réappliquer le profil */
   var cachedProfile=null;
   try{ cachedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
@@ -766,6 +768,7 @@ var stepTimer = setInterval(function(){
     clearInterval(stepTimer);
   }
 }, 4000);
+  
   /* Étapes animées */
 var steps = [
   'Analyse de tes 9 réponses…',
@@ -788,7 +791,7 @@ var stepTimer = setInterval(function(){
   } else {
     clearInterval(stepTimer);
   }
-}, 2500);
+}, 8000);
   
   var isGiftReceived = false;
   try{ isGiftReceived = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
@@ -804,7 +807,13 @@ if(isGiftReceived){
   /* Vérifier si on a déjà l'email */
   var cosmosUser = {};
   try{ cosmosUser = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
+  var cosmosUser = {};
+try{ cosmosUser = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
+if(!cosmosUser.email && !isGiftReceived){
+  document.getElementById('email-capture').style.display = 'flex';
+} else {
   window.CosmosAPI.init();
+}
   if(isGiftReceived){
     var giftCheck = setInterval(function(){
       var profile = null;
