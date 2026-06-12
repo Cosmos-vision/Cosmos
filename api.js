@@ -317,6 +317,14 @@ async function initCosmosResult() {
     el.style.opacity='1';
     el.style.transition='opacity 0.5s ease';
   });
+  /* Vérifier email avant d'afficher le profil */
+var cosmosUserCheck = {};
+try{ cosmosUserCheck = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
+if(!cosmosUserCheck.email){
+  document.getElementById('email-capture').style.display = 'flex';
+  try{ sessionStorage.setItem('cosmos_profile', JSON.stringify(result.profile)); }catch(e){}
+  return;
+}
   applyProfileToPage(result.profile);
   if(typeof animateRadar === 'function' && result.profile.dims){
     animateRadar({
