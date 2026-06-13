@@ -403,7 +403,9 @@ function renderQ(index) {
 }
 
 function finishAppro(skipped) {
+  if (typeof gtag === 'function') {
   gtag('event', skipped ? 'approfondissement_skipped_complete' : 'approfondissement_complete');
+  }
   
   document.getElementById('scene-card').style.display = 'none';
   document.getElementById('intro-screen').style.display = 'none';
