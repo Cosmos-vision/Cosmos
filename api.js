@@ -322,6 +322,8 @@ var cosmosUserCheck = {};
 try{ cosmosUserCheck = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
 if(!cosmosUserCheck.email){
   document.getElementById('email-capture').style.display = 'flex';
+  gtag('event', 'email_popup_view');
+  
   try{ sessionStorage.setItem('cosmos_profile', JSON.stringify(result.profile)); }catch(e){}
   return;
 }
