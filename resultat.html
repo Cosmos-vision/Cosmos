@@ -653,6 +653,7 @@ function handlePayment(){
     sessionStorage.setItem('cosmos_user', JSON.stringify(user));
   }catch(e){}
   document.getElementById('email-capture').style.display = 'none';
+  registerBrevoContact(email, user.prenom || '', 3);
     
   /* Appliquer le profil déjà généré */
 var savedProfile = null;
