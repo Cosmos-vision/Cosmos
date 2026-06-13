@@ -376,10 +376,10 @@ function renderQ(index) {
       if (answers[currentQ] === null) return;
 
       if (typeof gtag === 'function') {
-  gtag('event', 'approfondissement_question_complete', {
-    question: currentQ + 1
-});
-}      
+        gtag('event', 'approfondissement_question_complete', {
+          question: currentQ + 1
+        });
+      }      
       if (currentQ < 4) {
         currentQ++;
         renderQ(currentQ);
@@ -388,7 +388,7 @@ function renderQ(index) {
         finishAppro(false);
       }
     });
-  }
+    }
 
   var backBtn = document.getElementById('btn-back');
   if (backBtn) {
