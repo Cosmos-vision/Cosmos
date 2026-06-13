@@ -650,6 +650,8 @@ if (typeof gtag === 'function') {
   function finishQuiz() {
     if (typeof gtag === 'function') {
     gtag('event', 'quiz_complete');
+      }
+    
     /* Cacher la scène, montrer le loading */
   document.getElementById('scene-card').style.display = 'none';
   document.getElementById('loading-screen').classList.add('visible');
