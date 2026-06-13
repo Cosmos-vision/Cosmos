@@ -639,7 +639,9 @@ function handlePayment(){
 
 /* DÉBLOCAGE */
   function saveEmail(){
+    if (typeof gtag === 'function') {
     gtag('event', 'email_submit');
+    }
   var email = document.getElementById('email-input').value.trim();
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
     document.getElementById('email-input').style.border = '1px solid #D4537E';
@@ -672,7 +674,9 @@ if(savedProfile && savedProfile.profil){
 }
 
 function skipEmail(){
-  gtag('event', 'email_popup_close');
+  if (typeof gtag === 'function') {
+    gtag('event', 'email_popup_close');
+  }
   
   document.getElementById('email-capture').style.display = 'none';
   window.CosmosAPI.init();
