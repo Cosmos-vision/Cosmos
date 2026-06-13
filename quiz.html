@@ -615,11 +615,12 @@ function renderScene(index) {
   if (nextBtn) {
     nextBtn.addEventListener('click', function() {
       if (answers[currentScene] === null) return;
-      
-      if (typeof gtag === 'function') {
-      gtag('event', 'quiz_question_complete', {
-      question: currentScene + 1
+
+if (typeof gtag === 'function') {
+  gtag('event', 'quiz_question_complete', {
+    question: currentScene + 1
     });
+  }
       if (currentScene < 8) {
         currentScene++;
         renderScene(currentScene);
