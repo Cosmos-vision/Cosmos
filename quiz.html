@@ -615,7 +615,9 @@ function renderScene(index) {
   if (nextBtn) {
     nextBtn.addEventListener('click', function() {
       if (answers[currentScene] === null) return;
-    gtag('event', 'quiz_question_complete', {
+      
+      if (typeof gtag === 'function') {
+      gtag('event', 'quiz_question_complete', {
       question: currentScene + 1
     });
       if (currentScene < 8) {
@@ -645,6 +647,7 @@ function renderScene(index) {
    FIN DU QUIZ
 ══════════════════════════════════════════ */
   function finishQuiz() {
+    if (typeof gtag === 'function') {
     gtag('event', 'quiz_complete');
     /* Cacher la scène, montrer le loading */
   document.getElementById('scene-card').style.display = 'none';
@@ -672,7 +675,10 @@ function renderScene(index) {
    INITIALISATION
 ══════════════════════════════════════════ */
 renderScene(0);
+
+if (typeof gtag === 'function') {
   gtag('event', 'quiz_start');
+}
 </script>
 </body>
   <!-- Google Tag Manager (noscript) -->
