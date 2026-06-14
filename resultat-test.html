@@ -243,20 +243,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         </div>
       </div>
 
-      <!-- 1 FORCE VISIBLE -->
-      <div style="margin-bottom:1.25rem">
-        <p class="sec-label" style="margin-bottom:0.75rem">Ta force dominante</p>
-        <div class="force-card" id="force1-card">
-          <div class="force-icon" style="background:rgba(127,119,221,0.15)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-          </div>
-          <div>
-            <p class="force-name" id="force1-name">La vision structurelle</p>
-            <p class="force-desc" id="force1-desc">Tu captes les patterns avant les détails. Tu vois la mécanique sous-jacente avant que quiconque l'ait nommée.</p>
-            <p class="force-paradox" id="force1-paradox" style="background:rgba(127,119,221,0.08)">Ce que les autres voient : calme. La réalité : analyse permanente.</p>
-          </div>
-        </div>
-      </div>
+
 
       <!-- SIGNE SOLAIRE — 2 lignes max -->
       <div style="margin-bottom:1.25rem">
@@ -264,18 +251,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         <div class="portrait-block" id="astro-free" style="margin-bottom:0"></div>
       </div>
 
-      <!-- 1 ACTION GRATUITE -->
-      <div style="margin-bottom:1.5rem">
-        <p class="sec-label" style="margin-bottom:0.75rem">Ton défi du mois</p>
-        <div class="action-card">
-          <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC">1</div>
-          <div>
-            <p class="action-title" id="action1-title">Le journal des structures</p>
-            <p class="action-desc" id="action1-desc">Chaque matin, 5 minutes. Note un pattern que tu as observé hier.</p>
-            <p class="action-freq" id="action1-freq">Chaque matin · 5 min</p>
-          </div>
-        </div>
-      </div>
+
 
       <!-- ROUE 144 ARCHÉTYPES -->
       <div style="text-align:center;margin-bottom:1.5rem;padding:1.5rem;background:var(--deep);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden">
@@ -302,6 +278,13 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       <!-- TEASERS FLOUS — frustration positive -->
       <div style="margin-bottom:0.5rem">
         <p class="sec-label" style="margin-bottom:0.75rem">Ce que Cosmos a détecté</p>
+
+        <!-- Teaser 0 — Force dominante -->
+        <div class="teaser-block" style="margin-bottom:8px">
+          <div class="teaser-label"><span class="lock-icon">🔒</span> Ta force dominante</div>
+          <p class="teaser-text" id="force1-teaser" style="margin-bottom:0.5rem">Une force structurante a été identifiée dans ton profil…</p>
+          <p class="teaser-blur">Cette force porte un paradoxe précis que peu de personnes autour de toi peuvent nommer. Elle explique à la fois ce qui te rend exceptionnel et ce qui te pèse sans que tu saches pourquoi.</p>
+        </div>
 
         <!-- Teaser 1 — Blocage -->
         <div class="teaser-block" style="margin-bottom:8px">
@@ -351,6 +334,10 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
         <div class="revelation-items">
           <div class="revelation-item">
+            <span class="revelation-item-icon">⚡</span>
+            <span class="revelation-item-text">Révéler <strong>ta force dominante et son paradoxe</strong> — ce qui te rend rare, et ce qu'il te coûte.</span>
+          </div>
+          <div class="revelation-item">
             <span class="revelation-item-icon">🔁</span>
             <span class="revelation-item-text">Comprendre <strong>pourquoi tu répètes les mêmes erreurs relationnelles</strong> — et comment en sortir.</span>
           </div>
@@ -368,7 +355,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
           <div class="revelation-item">
             <span class="revelation-item-icon">✦</span>
-            <span class="revelation-item-text"><strong>4 recommandations personnalisées</strong> selon ton ciel natal + 5 actions concrètes pour ce mois.</span>
+            <span class="revelation-item-text"><strong>4 recommandations selon ton ciel natal</strong> + 6 défis hebdomadaires et mensuels personnalisés.</span>
           </div>
         </div>
 
@@ -700,10 +687,14 @@ function saveEmail(){
     if(typeof animateShareRadar === 'function' && savedProfile.dims){
       animateShareRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
     }
-    /* Mettre à jour la rareté */
+    /* Mettre à jour la rareté et teaser force */
     if(savedProfile.profil && savedProfile.profil.rarete){
       var rarEl = document.getElementById('rarete-text');
       if(rarEl) rarEl.textContent = 'Le tien est rare à ' + savedProfile.profil.rarete;
+    }
+    if(savedProfile.forces && savedProfile.forces[0]){
+      var forceTeaser = document.getElementById('force1-teaser');
+      if(forceTeaser) forceTeaser.textContent = savedProfile.forces[0].nom + ' — ' + savedProfile.forces[0].desc.split('.')[0] + '…';
     }
   } else {
     window.CosmosAPI.init();
