@@ -787,7 +787,9 @@ function unlockPaidContent(fromGift){
   var cachedProfile=null;
   try{ cachedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
   if(cachedProfile && window.CosmosAPI){ 
-  window.CosmosAPI.apply(cachedProfile); 
+    window.CosmosAPI.apply(cachedProfile); 
+  } else if(window.CosmosAPI){
+    window.CosmosAPI.init();
   }
   setTimeout(function(){
     animateCompat();
@@ -872,7 +874,9 @@ if(window.CosmosAPI){
       if(profile && profile.profil && profile.profil.code !== 'LUN-SYS-PRO'){
         clearInterval(giftCheck);
         unlockPaidContent(true);
-        try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
+        if(!window.location.search.includes('success=true')){
+          try{ sessionStorage.removeItem('cosmos_profile'); }catch(e){}
+        }
       }
     }, 500);
     setTimeout(function(){ clearInterval(giftCheck); }, 60000);
