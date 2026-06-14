@@ -678,9 +678,26 @@ function skipEmail(){
   if (typeof gtag === 'function') {
     gtag('event', 'email_popup_close');
   }
-  
   document.getElementById('email-capture').style.display = 'none';
-  window.CosmosAPI.init();
+  
+  var savedProfile = null;
+  try{ savedProfile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+  if(savedProfile && savedProfile.profil){
+    document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall,.force-card,#dim-pills').forEach(function(el){ el.style.opacity='1'; });
+    var banner = document.getElementById('demo-banner');
+    if(banner) banner.style.display='none';
+    var stepsEl = document.getElementById('loading-steps');
+    if(stepsEl) stepsEl.style.display='none';
+    window.CosmosAPI.apply(savedProfile);
+    if(typeof animateRadar === 'function' && savedProfile.dims){
+      animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
+    }
+    if(typeof animateShareRadar === 'function' && savedProfile.dims){
+      animateShareRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
+    }
+  } else {
+    window.CosmosAPI.init();
+  }
 }
 function unlockPaidContent(fromGift){
   var isGift = fromGift || false;
