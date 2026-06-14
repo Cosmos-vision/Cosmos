@@ -866,7 +866,9 @@ if(window.CosmosAPI){
   if(isGiftReceived){
     try{ sessionStorage.removeItem('cosmos_profile'); sessionStorage.removeItem('cosmos_paid'); }catch(e){}
   }
-  window.CosmosAPI.init();
+  if(!window.location.search.includes('success=true')){
+    window.CosmosAPI.init();
+  }
   if(isGiftReceived){
     var giftCheck = setInterval(function(){
       var profile = null;
