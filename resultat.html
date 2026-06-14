@@ -627,14 +627,10 @@ var isPaid=false;
 try{ isPaid=sessionStorage.getItem('cosmos_paid')==='true'; }catch(e){}
 
 function handlePayment(){
-  var btn=document.getElementById('pay-btn');
-  if(btn){ btn.textContent='Redirection vers le paiement…'; btn.disabled=true; }
   var STRIPE_LINK = 'https://buy.stripe.com/dRmdR2bW8eTBfDUgepdUY01';
-  if(STRIPE_LINK.includes('TON_LIEN_ICI')){
-    setTimeout(unlockPaidContent, 1500);
-    return;
-  }
-  window.location.href = STRIPE_LINK + '?client_reference_id=' + encodeURIComponent(userData.email||'user');
+  var email = '';
+  try{ email = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}').email || ''; }catch(e){}
+  window.location.href = STRIPE_LINK + '?client_reference_id=' + encodeURIComponent(email||'user');
 }
 
 /* DÉBLOCAGE */
