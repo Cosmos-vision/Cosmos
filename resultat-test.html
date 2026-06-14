@@ -786,8 +786,8 @@ function unlockPaidContent(fromGift){
   document.getElementById('demo-banner').style.display='none';
   var cachedProfile=null;
   try{ cachedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-  if(cachedProfile && window.CosmosAPI){ 
-    window.CosmosAPI.apply(cachedProfile); 
+  if(cachedProfile && window.CosmosAPI){
+    window.CosmosAPI.apply(cachedProfile);
   } else if(window.CosmosAPI){
     window.CosmosAPI.init();
   }
@@ -809,20 +809,22 @@ function unlockPaidContent(fromGift){
 
 if(isPaid || window.location.search.includes('success=true')){
   /* Appliquer le profil depuis le cache sans regénérer */
-  var cachedForUnlock = null;
-  try{ cachedForUnlock = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-  if(cachedForUnlock && window.CosmosAPI){
-    window.CosmosAPI.apply(cachedForUnlock);
-    document.querySelectorAll('.portrait-block,.radar-wrap,#dim-pills').forEach(function(el){ el.style.opacity='1'; });
-    var banner = document.getElementById('demo-banner');
-    if(banner) banner.style.display='none';
-    var stepsEl = document.getElementById('loading-steps');
-    if(stepsEl) stepsEl.style.display='none';
-    if(cachedForUnlock.dims){
-      animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});
+  setTimeout(function(){
+    var cachedForUnlock = null;
+    try{ cachedForUnlock = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+    if(cachedForUnlock && window.CosmosAPI){
+      window.CosmosAPI.apply(cachedForUnlock);
+      document.querySelectorAll('.portrait-block,.radar-wrap,#dim-pills').forEach(function(el){ el.style.opacity='1'; });
+      var bannerEl = document.getElementById('demo-banner');
+      if(bannerEl) bannerEl.style.display='none';
+      var stepsEl2 = document.getElementById('loading-steps');
+      if(stepsEl2) stepsEl2.style.display='none';
+      if(cachedForUnlock.dims){
+        animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});
+      }
     }
-  }
-  unlockPaidContent();
+    unlockPaidContent();
+  }, 200);
 }
 if(window.location.search.includes('gift=')){
   var giftParam = new URLSearchParams(window.location.search).get('gift');
@@ -832,6 +834,10 @@ if(window.location.search.includes('gift=')){
 
 /* CHARGEMENT PROFIL */
 setTimeout(function(){
+  /* Si retour Stripe ou déjà payé — ne pas regénérer */
+  if(window.location.search.includes('success=true') || sessionStorage.getItem('cosmos_paid') === 'true'){
+    return;
+  }
 if(window.CosmosAPI){
   try{ sessionStorage.removeItem('cosmos_profile'); }catch(e){}
   document.querySelectorAll('.portrait-block,.radar-wrap').forEach(function(el){ el.style.opacity='0'; });
@@ -866,9 +872,7 @@ if(window.CosmosAPI){
   if(isGiftReceived){
     try{ sessionStorage.removeItem('cosmos_profile'); sessionStorage.removeItem('cosmos_paid'); }catch(e){}
   }
-  if(!window.location.search.includes('success=true')){
-    window.CosmosAPI.init();
-  }
+  window.CosmosAPI.init();
   if(isGiftReceived){
     var giftCheck = setInterval(function(){
       var profile = null;
@@ -876,9 +880,7 @@ if(window.CosmosAPI){
       if(profile && profile.profil && profile.profil.code !== 'LUN-SYS-PRO'){
         clearInterval(giftCheck);
         unlockPaidContent(true);
-        if(!window.location.search.includes('success=true')){
-          try{ sessionStorage.removeItem('cosmos_profile'); }catch(e){}
-        }
+        try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
       }
     }, 500);
     setTimeout(function(){ clearInterval(giftCheck); }, 60000);
