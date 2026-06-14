@@ -284,7 +284,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       <!-- BOUTON DÉBLOQUER FORCES -->
       <div style="text-align:center;margin-bottom:1.25rem">
         <p style="font-size:0.78rem;color:#AFA9EC;margin-bottom:0.75rem">✦ 2 forces cachées supplémentaires + 2 blocages inconscients t'attendent</p>
-        <button onclick="handlePayment()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
+        <button onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
           Débloquer mes forces →
         </button>
       </div>
@@ -319,7 +319,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       <!-- BOUTON DÉBLOQUER ASTROLOGIE -->
       <div style="text-align:center;margin-bottom:1.25rem">
         <p style="font-size:0.78rem;color:#AFA9EC;margin-bottom:0.75rem">✦ 4 recommandations personnalisées selon ton signe t'attendent</p>
-        <button onclick="handlePayment()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
+        <button onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer">
           Débloquer mes recommandations →
         </button>
       </div>
@@ -399,7 +399,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
   </ul>
   <p class="paywall-price">3,90€</p>
   <p class="paywall-price-note">Paiement unique · Accès permanent · Apple Pay / Google Pay acceptés</p>
-  <button class="pay-btn" id="pay-btn" onclick="handlePayment()">Comprendre mes mécanismes profonds →</button>
+  <button class="pay-btn" id="pay-btn" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')">Comprendre mes mécanismes profonds →</button>
   <p class="pay-note">Paiement sécurisé par Stripe · Aucune donnée bancaire stockée</p>
 </div>
 
@@ -520,7 +520,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <p class="sec-label" style="margin-bottom:0.5rem">✦ Offre cette expérience</p>
             <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#C8C4E8;margin-bottom:0.5rem;font-style:italic">Ton analyse t'a touché·e ?</p>
             <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.6">Offre l'expérience complète à quelqu'un qui compte. Gratuitement, en un clic.</p>
-            <button onclick="shareGift()" id="gift-btn" style="background:linear-gradient(135deg,var(--purple),var(--rose));border:none;border-radius:100px;padding:0.85rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem">
+            <button onclick="checkEmailBeforeAction(function(){ shareGift(); }, 'gift')" id="gift-btn" style="background:linear-gradient(135deg,var(--purple),var(--rose));border:none;border-radius:100px;padding:0.85rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem">
               🎁 Offrir l'analyse complète à un ami
             </button>
             <p id="gift-link-display" style="font-size:0.72rem;color:var(--text-faint);display:none"></p>
@@ -540,7 +540,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <textarea id="feedback-text" placeholder="Un commentaire, une réflexion, quelque chose qui t'a touché·e..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.75rem;color:#C8C4E8;font-family:'DM Sans',sans-serif;font-size:0.82rem;line-height:1.6;resize:none;height:80px;margin-bottom:1.25rem;outline:none"></textarea>
           <p style="font-size:0.85rem;color:#C8C4E8;margin-bottom:0.5rem">Intéressé·e par le <strong>Chapitre II — Tes patterns amoureux</strong> ?</p>
           <p style="font-size:0.75rem;color:var(--text-faint);margin-bottom:1rem">Sois notifié·e en avant-première dès sa sortie.</p>
-          <button onclick="registerChapter2()" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem" id="chapter2-btn">Je veux être notifié·e</button>
+          <button onclick="checkEmailBeforeAction(function(){ registerChapter2(); }, 'chapter2')" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem" id="chapter2-btn">Je veux être notifié·e</button>
           <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.65rem 1.5rem;color:#AFA9EC;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;width:100%">↑ Revenir en haut</button>
         </div>
 
@@ -678,12 +678,60 @@ function skipEmail(){
   if (typeof gtag === 'function') {
     gtag('event', 'email_popup_close');
   }
-  
   document.getElementById('email-capture').style.display = 'none';
-  window.CosmosAPI.init();
+  
+  var savedProfile = null;
+  try{ savedProfile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+  if(savedProfile && savedProfile.profil){
+    document.querySelectorAll('.portrait-block,.radar-wrap,.forces-section,.actions-free,.paywall,.force-card,#dim-pills').forEach(function(el){ el.style.opacity='1'; });
+    var banner = document.getElementById('demo-banner');
+    if(banner) banner.style.display='none';
+    var stepsEl = document.getElementById('loading-steps');
+    if(stepsEl) stepsEl.style.display='none';
+    window.CosmosAPI.apply(savedProfile);
+    if(typeof animateRadar === 'function' && savedProfile.dims){
+      animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
+    }
+    if(typeof animateShareRadar === 'function' && savedProfile.dims){
+      animateShareRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
+    }
+  } else {
+    window.CosmosAPI.init();
+  }
 }
+  
+function checkEmailBeforeAction(action, context){
+  var user = {};
+  try{ user = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
+  
+  if(user.email){
+    action();
+    return;
+  }
+  
+  var title = document.querySelector('#email-capture h2');
+  var desc = document.querySelector('#email-capture p:nth-child(3)');
+  
+  if(context === 'payment'){
+    if(title) title.textContent = 'Entre ton email avant de continuer';
+    if(desc) desc.textContent = 'Nécessaire pour recevoir ta confirmation d\'achat.';
+  } else if(context === 'chapter2'){
+    if(title) title.textContent = 'Pour être notifié·e en avant-première';
+    if(desc) desc.textContent = 'Entre ton email pour recevoir le Chapitre II dès sa sortie.';
+  } else if(context === 'gift'){
+    if(title) title.textContent = 'Entre ton email d\'abord';
+    if(desc) desc.textContent = 'On a besoin de ton email pour envoyer le cadeau à ton ami.';
+  } else {
+    if(title) title.textContent = 'Entre ton email pour continuer';
+    if(desc) desc.textContent = 'Nécessaire pour accéder à ton analyse complète.';
+  }
+  
+  window._pendingAction = action;
+  document.getElementById('email-capture').style.display = 'flex';
+}
+
 function unlockPaidContent(fromGift){
-  var isGift = fromGift || false;
+   var isGift = fromGift || false;
   try{ isGift = isGift || !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
   if(!isGift){ try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){} }
 
