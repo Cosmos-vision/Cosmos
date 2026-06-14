@@ -696,11 +696,49 @@ function skipEmail(){
       animateShareRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
     }
   } else {
-    window.CosmosAPI.init();
-  }
+  window.CosmosAPI.init();
 }
+if(window._pendingAction){
+  var action = window._pendingAction;
+  window._pendingAction = null;
+  action();
+}
+}
+
+function skipEmail(){
+
+function checkEmailBeforeAction(action, context){
+  var user = {};
+  try{ user = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
+  
+  if(user.email){
+    action();
+    return;
+  }
+  
+  var title = document.querySelector('#email-capture h2');
+  var desc = document.querySelector('#email-capture p:nth-child(3)');
+  
+  if(context === 'payment'){
+    if(title) title.textContent = 'Entre ton email avant de continuer';
+    if(desc) desc.textContent = 'Nécessaire pour recevoir ta confirmation d\'achat.';
+  } else if(context === 'chapter2'){
+    if(title) title.textContent = 'Pour être notifié·e en avant-première';
+    if(desc) desc.textContent = 'Entre ton email pour recevoir le Chapitre II dès sa sortie.';
+  } else if(context === 'gift'){
+    if(title) title.textContent = 'Entre ton email d\'abord';
+    if(desc) desc.textContent = 'On a besoin de ton email pour envoyer le cadeau à ton ami.';
+  } else {
+    if(title) title.textContent = 'Entre ton email pour continuer';
+    if(desc) desc.textContent = 'Nécessaire pour accéder à ton analyse complète.';
+  }
+  
+  window._pendingAction = action;
+  document.getElementById('email-capture').style.display = 'flex';
+}
+
 function unlockPaidContent(fromGift){
-  var isGift = fromGift || false;
+   var isGift = fromGift || false;
   try{ isGift = isGift || !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
   if(!isGift){ try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){} }
 
