@@ -672,6 +672,11 @@ if(savedProfile && savedProfile.profil){
 } else {
   window.CosmosAPI.init();
 }
+if(window._pendingAction){
+  var action = window._pendingAction;
+  window._pendingAction = null;
+  action();
+}
 }
 
 function skipEmail(){
