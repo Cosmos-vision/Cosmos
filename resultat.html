@@ -92,8 +92,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 /* TEASER FLOU */
 .teaser-block{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px;position:relative;overflow:hidden}
 .teaser-label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);margin-bottom:6px;display:flex;align-items:center;gap:6px}
-.teaser-text{font-size:0.82rem;color:var(--text-muted);line-height:1.6;position:relative}
-.teaser-text::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(transparent,var(--deep))}
+.teaser-text{font-size:0.82rem;color:var(--text-muted);line-height:1.6}
 .teaser-blur{filter:blur(4px);user-select:none;pointer-events:none;font-size:0.82rem;color:var(--text-muted);line-height:1.6}
 .lock-icon{font-size:0.8rem;opacity:0.5}
 
@@ -254,7 +253,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
 
       <!-- ROUE 144 ARCHÉTYPES -->
-      <div style="text-align:center;margin-bottom:1.5rem;padding:1.5rem;background:var(--deep);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden">
+      <div id="roue-section" style="text-align:center;margin-bottom:1.5rem;padding:1.5rem;background:var(--deep);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden">
         <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)"></div>
         <p style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem">144 archétypes</p>
         <div style="display:flex;justify-content:center;margin:0 auto 1rem">
@@ -276,7 +275,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       </div>
 
       <!-- TEASERS FLOUS — frustration positive -->
-      <div style="margin-bottom:0.5rem">
+      <div id="teasers-section" style="margin-bottom:0.5rem">
         <p class="sec-label" style="margin-bottom:0.75rem">Ce que Cosmos a détecté</p>
 
         <!-- Teaser 0 — Force dominante -->
@@ -304,7 +303,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         <div class="teaser-block" style="margin-bottom:8px">
           <div class="teaser-label"><span class="lock-icon">🔒</span> Ton âme miroir — profil de compatibilité</div>
           <p class="teaser-text" style="margin-bottom:0.5rem">Un profil complémentaire au tien a été identifié parmi 144 archétypes…</p>
-          <p class="teaser-blur" style="margin-bottom:0">Le profil qui te correspond a été calculé. Résonance émotionnelle : ██% · Complémentarité : ██% · Les 3 signaux pour le reconnaître sont précis et contre-intuitifs.</p>
+          <p class="teaser-blur" style="margin-bottom:0">Le profil qui te correspond a été calculé. Résonance émotionnelle : 92% · Complémentarité : 79% · Les 3 signaux pour le reconnaître sont précis et contre-intuitifs.</p>
         </div>
 
         <!-- Teaser 4 — Mental -->
@@ -355,7 +354,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
           <div class="revelation-item">
             <span class="revelation-item-icon">✦</span>
-            <span class="revelation-item-text"><strong>4 recommandations selon ton ciel natal</strong> + 6 défis hebdomadaires et mensuels personnalisés.</span>
+            <span class="revelation-item-text"><strong>4 recommandations selon ton ciel natal</strong> + 2 actions concrètes pour transformer ce mois.</span>
           </div>
         </div>
 
@@ -367,40 +366,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         <p class="revelation-note">Paiement sécurisé par Stripe · Aucune donnée bancaire stockée</p>
       </div>
 
-      <!-- CARTE DE PARTAGE -->
-      <div class="share-section">
-        <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
-        <div class="share-card-visual" id="share-card">
-          <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="360" cy="30" r="70" fill="rgba(127,119,221,0.06)"/>
-            <circle cx="40" cy="130" r="50" fill="rgba(212,83,126,0.05)"/>
-          </svg>
-          <div style="position:relative;z-index:2">
-            <p class="share-logo">COSMOS<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
-            <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
-            <svg viewBox="0 0 100 100" width="70" height="70" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-              <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-              <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
-              <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
-              <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
-              <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
-              <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
-            </svg>
-            <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:8px" id="share-pills">
-              <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">Lune 82%</span>
-              <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">Systémique 91%</span>
-              <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">Protecteur 74%</span>
-            </div>
-            <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
-          </div>
-        </div>
-        <div class="share-btns">
-          <button class="share-btn share-btn-ig" onclick="shareIG()">Partager sur Instagram Stories</button>
-          <button class="share-btn share-btn-fb" onclick="shareFB()">Partager sur Facebook</button>
-          <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyCode()">Copier mon code</button>
-        </div>
-      </div>
+
 
       <!-- SECTION PAYANTE -->
       <div class="paid-section" id="paid-section">
@@ -494,28 +460,16 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
         </div>
 
-        <!-- 5 ACTIONS SUPPLÉMENTAIRES -->
+        <!-- 2 ACTIONS CONCRÈTES DU MOIS -->
         <div style="margin-bottom:1.25rem">
-          <p class="sec-label" style="margin-bottom:0.75rem">5 actions personnalisées du mois</p>
+          <p class="sec-label" style="margin-bottom:0.75rem">2 actions concrètes pour ce mois</p>
           <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(29,158,117,0.2);color:#9FE1CB;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">2</div>
-            <div><p class="action-title" id="action2-title">La pause de réception</p><p class="action-desc" id="action2-desc">Avant de répondre, attends 3 secondes de plus.</p><p class="action-freq" id="action2-freq">Cette semaine · Continu</p></div>
+            <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">1</div>
+            <div><p class="action-title" id="action1-title">Le journal des structures</p><p class="action-desc" id="action1-desc">Chaque matin, 5 minutes. Note un pattern que tu as observé hier.</p><p class="action-freq" id="action1-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Chaque matin · 5 min</p></div>
           </div>
           <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(212,83,126,0.2);color:#F4C0D1;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">3</div>
-            <div><p class="action-title" id="action3-title">Le rituel lunaire</p><p class="action-desc" id="action3-desc">Une soirée sans écrans après 21h.</p><p class="action-freq" id="action3-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">1 soir / semaine</p></div>
-          </div>
-          <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(186,117,23,0.2);color:#FAC775;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">4</div>
-            <div><p class="action-title" id="action4-title">La phrase non dite</p><p class="action-desc" id="action4-desc">Dis à quelqu'un quelque chose que tu ressens vraiment.</p><p class="action-freq" id="action4-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Cette semaine · 1 fois</p></div>
-          </div>
-          <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">5</div>
-            <div><p class="action-title" id="action5-title">La carte de ton cosmos</p><p class="action-desc" id="action5-desc">Note les 5 personnes qui comptent le plus.</p><p class="action-freq" id="action5-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Ce week-end · 20 min</p></div>
-          </div>
-          <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(29,158,117,0.2);color:#9FE1CB;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">6</div>
-            <div><p class="action-title" id="action6-title">L'invitation inattendue</p><p class="action-desc" id="action6-desc">Contacte quelqu'un non vu depuis 6 mois.</p><p class="action-freq" id="action6-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Ce mois · 1 fois</p></div>
+            <div class="action-num" style="background:rgba(212,83,126,0.2);color:#F4C0D1;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">2</div>
+            <div><p class="action-title" id="action2-title">La phrase non dite</p><p class="action-desc" id="action2-desc">Dis à quelqu'un quelque chose que tu ressens vraiment.</p><p class="action-freq" id="action2-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Cette semaine · 1 fois</p></div>
           </div>
         </div>
 
@@ -546,6 +500,41 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <p style="font-size:0.75rem;color:var(--text-faint);margin-bottom:1rem">Sois notifié·e en avant-première dès sa sortie.</p>
           <button onclick="checkEmailBeforeAction(function(){ registerChapter2(); }, 'chapter2')" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem" id="chapter2-btn">Je veux être notifié·e</button>
           <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.65rem 1.5rem;color:#AFA9EC;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;width:100%">↑ Revenir en haut</button>
+        </div>
+
+        <!-- CARTE DE PARTAGE -->
+        <div class="share-section" style="margin-bottom:1.25rem">
+          <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
+          <div class="share-card-visual" id="share-card">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="360" cy="30" r="70" fill="rgba(127,119,221,0.06)"/>
+              <circle cx="40" cy="130" r="50" fill="rgba(212,83,126,0.05)"/>
+            </svg>
+            <div style="position:relative;z-index:2">
+              <p class="share-logo">COSMOS<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
+              <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
+              <svg viewBox="0 0 100 100" width="70" height="70" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+                <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+                <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
+                <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
+                <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
+                <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
+                <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
+              </svg>
+              <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:8px" id="share-pills">
+                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">Lune 82%</span>
+                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">Systémique 91%</span>
+                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">Protecteur 74%</span>
+              </div>
+              <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
+            </div>
+          </div>
+          <div class="share-btns">
+            <button class="share-btn share-btn-ig" onclick="shareIG()">Partager sur Instagram Stories</button>
+            <button class="share-btn share-btn-fb" onclick="shareFB()">Partager sur Facebook</button>
+            <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyCode()">Copier mon code</button>
+          </div>
         </div>
 
         <!-- CHAPITRE SUIVANT -->
@@ -768,6 +757,24 @@ function unlockPaidContent(fromGift){
   try{ sessionStorage.setItem('cosmos_gift', giftCode); }catch(e){}
   isPaid=true;
   document.getElementById('paywall').style.display='none';
+  /* Déflouter les teasers après paiement */
+  document.querySelectorAll('.teaser-blur').forEach(function(el){
+    el.style.filter='none';
+    el.style.userSelect='auto';
+    el.style.pointerEvents='auto';
+  });
+  document.querySelectorAll('.teaser-text::after').forEach(function(el){
+    el.style.display='none';
+  });
+  /* Supprimer le dégradé de masquage sur teaser-text */
+  document.querySelectorAll('.teaser-text').forEach(function(el){
+    el.style.webkitMaskImage='none';
+    el.style.maskImage='none';
+  });
+  /* Retirer les icônes cadenas */
+  document.querySelectorAll('.lock-icon').forEach(function(el){
+    el.textContent='✦';
+  });
   document.querySelectorAll('[style*="blur"]').forEach(function(el){
     el.style.filter='none';
     el.style.userSelect='auto';
@@ -801,7 +808,23 @@ function unlockPaidContent(fromGift){
 }
 
 if(isPaid || window.location.search.includes('success=true')){
-  unlockPaidContent();
+  /* Appliquer le profil depuis le cache sans regénérer */
+  setTimeout(function(){
+    var cachedForUnlock = null;
+    try{ cachedForUnlock = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+    if(cachedForUnlock && window.CosmosAPI){
+      window.CosmosAPI.apply(cachedForUnlock);
+      document.querySelectorAll('.portrait-block,.radar-wrap,#dim-pills').forEach(function(el){ el.style.opacity='1'; });
+      var bannerEl = document.getElementById('demo-banner');
+      if(bannerEl) bannerEl.style.display='none';
+      var stepsEl2 = document.getElementById('loading-steps');
+      if(stepsEl2) stepsEl2.style.display='none';
+      if(cachedForUnlock.dims){
+        animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});
+      }
+    }
+    unlockPaidContent();
+  }, 200);
 }
 if(window.location.search.includes('gift=')){
   var giftParam = new URLSearchParams(window.location.search).get('gift');
@@ -811,6 +834,10 @@ if(window.location.search.includes('gift=')){
 
 /* CHARGEMENT PROFIL */
 setTimeout(function(){
+  /* Si retour Stripe ou déjà payé — ne pas regénérer */
+  if(window.location.search.includes('success=true') || sessionStorage.getItem('cosmos_paid') === 'true'){
+    return;
+  }
 if(window.CosmosAPI){
   try{ sessionStorage.removeItem('cosmos_profile'); }catch(e){}
   document.querySelectorAll('.portrait-block,.radar-wrap').forEach(function(el){ el.style.opacity='0'; });
