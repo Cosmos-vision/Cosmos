@@ -756,12 +756,24 @@ function unlockPaidContent(fromGift){
   try{ sessionStorage.setItem('cosmos_gift', giftCode); }catch(e){}
   isPaid=true;
   document.getElementById('paywall').style.display='none';
-  /* Masquer teasers et roue */
-  document.querySelectorAll('.teaser-block').forEach(function(el){ el.style.display='none'; });
-  var teasersWrap = document.getElementById('teasers-section');
-  if(teasersWrap) teasersWrap.style.display='none';
-  var roueWrap = document.getElementById('roue-section');
-  if(roueWrap) roueWrap.style.display='none';
+  /* Déflouter les teasers après paiement */
+  document.querySelectorAll('.teaser-blur').forEach(function(el){
+    el.style.filter='none';
+    el.style.userSelect='auto';
+    el.style.pointerEvents='auto';
+  });
+  document.querySelectorAll('.teaser-text::after').forEach(function(el){
+    el.style.display='none';
+  });
+  /* Supprimer le dégradé de masquage sur teaser-text */
+  document.querySelectorAll('.teaser-text').forEach(function(el){
+    el.style.webkitMaskImage='none';
+    el.style.maskImage='none';
+  });
+  /* Retirer les icônes cadenas */
+  document.querySelectorAll('.lock-icon').forEach(function(el){
+    el.textContent='✦';
+  });
   document.querySelectorAll('[style*="blur"]').forEach(function(el){
     el.style.filter='none';
     el.style.userSelect='auto';
