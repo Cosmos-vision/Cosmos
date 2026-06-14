@@ -786,10 +786,8 @@ function unlockPaidContent(fromGift){
   document.getElementById('demo-banner').style.display='none';
   var cachedProfile=null;
   try{ cachedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-  if(cachedProfile && window.CosmosAPI){
-    window.CosmosAPI.apply(cachedProfile);
-  } else if(window.CosmosAPI){
-    window.CosmosAPI.init();
+  if(cachedProfile && window.CosmosAPI){ 
+  window.CosmosAPI.apply(cachedProfile); 
   }
   setTimeout(function(){
     animateCompat();
