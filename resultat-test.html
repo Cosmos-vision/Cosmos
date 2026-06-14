@@ -696,17 +696,10 @@ function skipEmail(){
       animateShareRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
     }
   } else {
-  window.CosmosAPI.init();
+    window.CosmosAPI.init();
+  }
 }
-if(window._pendingAction){
-  var action = window._pendingAction;
-  window._pendingAction = null;
-  action();
-}
-}
-
-function skipEmail(){
-
+  
 function checkEmailBeforeAction(action, context){
   var user = {};
   try{ user = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
