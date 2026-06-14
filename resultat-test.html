@@ -254,7 +254,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
 
       <!-- ROUE 144 ARCHÉTYPES -->
-      <div style="text-align:center;margin-bottom:1.5rem;padding:1.5rem;background:var(--deep);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden">
+      <div id="roue-section" style="text-align:center;margin-bottom:1.5rem;padding:1.5rem;background:var(--deep);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden">
         <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)"></div>
         <p style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem">144 archétypes</p>
         <div style="display:flex;justify-content:center;margin:0 auto 1rem">
@@ -276,7 +276,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       </div>
 
       <!-- TEASERS FLOUS — frustration positive -->
-      <div style="margin-bottom:0.5rem">
+      <div id="teasers-section" style="margin-bottom:0.5rem">
         <p class="sec-label" style="margin-bottom:0.75rem">Ce que Cosmos a détecté</p>
 
         <!-- Teaser 0 — Force dominante -->
@@ -355,7 +355,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
           <div class="revelation-item">
             <span class="revelation-item-icon">✦</span>
-            <span class="revelation-item-text"><strong>4 recommandations selon ton ciel natal</strong> + 6 défis hebdomadaires et mensuels personnalisés.</span>
+            <span class="revelation-item-text"><strong>4 recommandations selon ton ciel natal</strong> + 2 actions concrètes pour transformer ce mois.</span>
           </div>
         </div>
 
@@ -494,28 +494,16 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
         </div>
 
-        <!-- 5 ACTIONS SUPPLÉMENTAIRES -->
+        <!-- 2 ACTIONS CONCRÈTES DU MOIS -->
         <div style="margin-bottom:1.25rem">
-          <p class="sec-label" style="margin-bottom:0.75rem">5 actions personnalisées du mois</p>
+          <p class="sec-label" style="margin-bottom:0.75rem">2 actions concrètes pour ce mois</p>
           <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(29,158,117,0.2);color:#9FE1CB;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">2</div>
-            <div><p class="action-title" id="action2-title">La pause de réception</p><p class="action-desc" id="action2-desc">Avant de répondre, attends 3 secondes de plus.</p><p class="action-freq" id="action2-freq">Cette semaine · Continu</p></div>
+            <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">1</div>
+            <div><p class="action-title" id="action1-title">Le journal des structures</p><p class="action-desc" id="action1-desc">Chaque matin, 5 minutes. Note un pattern que tu as observé hier.</p><p class="action-freq" id="action1-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Chaque matin · 5 min</p></div>
           </div>
           <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(212,83,126,0.2);color:#F4C0D1;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">3</div>
-            <div><p class="action-title" id="action3-title">Le rituel lunaire</p><p class="action-desc" id="action3-desc">Une soirée sans écrans après 21h.</p><p class="action-freq" id="action3-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">1 soir / semaine</p></div>
-          </div>
-          <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(186,117,23,0.2);color:#FAC775;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">4</div>
-            <div><p class="action-title" id="action4-title">La phrase non dite</p><p class="action-desc" id="action4-desc">Dis à quelqu'un quelque chose que tu ressens vraiment.</p><p class="action-freq" id="action4-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Cette semaine · 1 fois</p></div>
-          </div>
-          <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">5</div>
-            <div><p class="action-title" id="action5-title">La carte de ton cosmos</p><p class="action-desc" id="action5-desc">Note les 5 personnes qui comptent le plus.</p><p class="action-freq" id="action5-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Ce week-end · 20 min</p></div>
-          </div>
-          <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(29,158,117,0.2);color:#9FE1CB;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">6</div>
-            <div><p class="action-title" id="action6-title">L'invitation inattendue</p><p class="action-desc" id="action6-desc">Contacte quelqu'un non vu depuis 6 mois.</p><p class="action-freq" id="action6-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Ce mois · 1 fois</p></div>
+            <div class="action-num" style="background:rgba(212,83,126,0.2);color:#F4C0D1;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">2</div>
+            <div><p class="action-title" id="action2-title">La phrase non dite</p><p class="action-desc" id="action2-desc">Dis à quelqu'un quelque chose que tu ressens vraiment.</p><p class="action-freq" id="action2-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Cette semaine · 1 fois</p></div>
           </div>
         </div>
 
@@ -768,6 +756,12 @@ function unlockPaidContent(fromGift){
   try{ sessionStorage.setItem('cosmos_gift', giftCode); }catch(e){}
   isPaid=true;
   document.getElementById('paywall').style.display='none';
+  /* Masquer teasers et roue */
+  document.querySelectorAll('.teaser-block').forEach(function(el){ el.style.display='none'; });
+  var teasersWrap = document.getElementById('teasers-section');
+  if(teasersWrap) teasersWrap.style.display='none';
+  var roueWrap = document.getElementById('roue-section');
+  if(roueWrap) roueWrap.style.display='none';
   document.querySelectorAll('[style*="blur"]').forEach(function(el){
     el.style.filter='none';
     el.style.userSelect='auto';
