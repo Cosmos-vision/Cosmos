@@ -290,9 +290,9 @@ function applyProfileToPage(profile) {
   if(stepsContainer) stepsContainer.style.display = 'none';
 
   try{ 
-    sessionStorage.setItem('cosmos_profile', JSON.stringify(result.profile));
-    localStorage.setItem('cosmos_profile', JSON.stringify(result.profile));
-  }catch(e){}
+  sessionStorage.setItem('cosmos_profile', JSON.stringify(profile)); // ✅
+  localStorage.setItem('cosmos_profile', JSON.stringify(profile));   // ✅
+}catch(e){}
 }
 
 async function initCosmosResult() {
@@ -331,8 +331,8 @@ if (typeof gtag === 'function') {
 }
   
   try{ 
-    sessionStorage.setItem('cosmos_profile', JSON.stringify(profile));
-    localStorage.setItem('cosmos_profile', JSON.stringify(profile));
+    sessionStorage.setItem('cosmos_profile', JSON.stringify(result.profile)); // ✅
+    localStorage.setItem('cosmos_profile', JSON.stringify(result.profile));   // ✅
   }catch(e){}
   return;
 }
