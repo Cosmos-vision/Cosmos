@@ -613,31 +613,20 @@ function loadProfile(){
   }
 
   /* Teasers — reproduction exacte de resultat.html */
-  var teasersEl = document.getElementById('pdf-teasers');
-  if(teasersEl){
-    teasersEl.innerHTML = 
-      '<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ta force dominante</span><br>Une force structurante a été identifiée dans ton profil… Cette force porte un paradoxe précis que peu de personnes autour de toi peuvent nommer.</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ton blocage principal</span><br>Ton profil révèle une tendance à saboter inconsciemment ce qui compte le plus pour toi…</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Pourquoi tu attires toujours le même type de personnes</span><br>Ta dimension relationnelle montre un schéma répétitif…</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ton âme miroir</span><br>Un profil complémentaire au tien a été identifié parmi 144 archétypes…</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ce qui te vide mentalement</span><br>Ton profil cognitif révèle une source d\'épuisement que tu n\'arrives pas à nommer…</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">4 recommandations selon ton ciel natal</span><br>Ton signe solaire croisé avec ton archétype révèle des patterns spécifiques…</span></div>';
-  }
-    if(profile.blocages && profile.blocages[0]){
-      html += '<div class="pl-teaser-item"><span class="pl-teaser-icon">🧱</span><span class="pl-teaser-text"><span class="pl-teaser-strong">'+profile.blocages[0].nom+'</span> — '+(profile.blocages[0].desc.split('.')[0])+'.</span></div>';
+    var teasersEl = document.getElementById('pdf-teasers');
+    if(teasersEl){
+      teasersEl.innerHTML = 
+        '<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ta force dominante</span><br>Une force structurante a été identifiée dans ton profil… Cette force porte un paradoxe précis que peu de personnes autour de toi peuvent nommer.</span></div>'
+       +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ton blocage principal</span><br>Ton profil révèle une tendance à saboter inconsciemment ce qui compte le plus pour toi…</span></div>'
+       +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Pourquoi tu attires toujours le même type de personnes</span><br>Ta dimension relationnelle montre un schéma répétitif…</span></div>'
+       +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ton âme miroir</span><br>Un profil complémentaire au tien a été identifié parmi 144 archétypes…</span></div>'
+       +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ce qui te vide mentalement</span><br>Ton profil cognitif révèle une source d\'épuisement que tu n\'arrives pas à nommer…</span></div>'
+       +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">4 recommandations selon ton ciel natal</span><br>Ton signe solaire croisé avec ton archétype révèle des patterns spécifiques…</span></div>';
     }
-    teasersEl.innerHTML = 
-      '<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ta force dominante</span><br>Une force structurante a été identifiée dans ton profil… Cette force porte un paradoxe précis que peu de personnes autour de toi peuvent nommer.</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ton blocage principal</span><br>Ton profil révèle une tendance à saboter inconsciemment ce qui compte le plus pour toi…</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Pourquoi tu attires toujours le même type de personnes</span><br>Ta dimension relationnelle montre un schéma répétitif…</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ton âme miroir</span><br>Un profil complémentaire au tien a été identifié parmi 144 archétypes…</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">Ce qui te vide mentalement</span><br>Ton profil cognitif révèle une source d\'épuisement que tu n\'arrives pas à nommer…</span></div>'
-     +'<div class="pl-teaser-item"><span class="pl-teaser-icon">🔒</span><span class="pl-teaser-text"><span class="pl-teaser-strong">4 recommandations selon ton ciel natal</span><br>Ton signe solaire croisé avec ton archétype révèle des patterns spécifiques…</span></div>';
   }
-}
-loadProfile();
+  loadProfile();
 
-loadProfile();
+/* GÉNÉRER PDF */
 
 /* GÉNÉRER PDF */
 async function generatePDF(){
