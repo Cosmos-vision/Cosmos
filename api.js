@@ -331,8 +331,8 @@ if (typeof gtag === 'function') {
 }
   
   try{ 
-    sessionStorage.setItem('cosmos_profile', JSON.stringify(result.profile));
-    localStorage.setItem('cosmos_profile', JSON.stringify(result.profile));
+    sessionStorage.setItem('cosmos_profile', JSON.stringify(profile));
+    localStorage.setItem('cosmos_profile', JSON.stringify(profile));
   }catch(e){}
   return;
 }
