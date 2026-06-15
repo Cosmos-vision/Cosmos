@@ -753,9 +753,13 @@ function drawPDFRadar(scores){
 /* Charger profil depuis sessionStorage */
 function loadProfile(){
   var profile = null;
-  try{ profile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+  /* Lire depuis localStorage (partagé entre onglets) en priorité */
+  try{ profile = JSON.parse(localStorage.getItem('cosmos_profile')); }catch(e){}
+  if(!profile || !profile.profil){
+    try{ profile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+  }
   var prenom = '';
-  try{ prenom = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}').prenom || ''; }catch(e){}
+  try{ prenom = JSON.parse(localStorage.getItem('cosmos_user')||sessionStorage.getItem('cosmos_user')||'{}').prenom || ''; }catch(e){}
 
   if(!profile || !profile.profil){
     document.getElementById('status-text').textContent = '⚠️ Profil non trouvé — génère ton profil depuis le quiz d\'abord.';
@@ -873,9 +877,9 @@ async function generatePDF(){
     pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
 
     var prenom = '';
-    try{ prenom = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}').prenom || 'cosmos'; }catch(e){}
+    try{ prenom = JSON.parse(localStorage.getItem('cosmos_user')||sessionStorage.getItem('cosmos_user')||'{}').prenom || 'cosmos'; }catch(e){}
     var code = '';
-    try{ code = JSON.parse(sessionStorage.getItem('cosmos_profile')||'{}').profil.code || ''; }catch(e){}
+    try{ code = (JSON.parse(localStorage.getItem('cosmos_profile')||'null')||JSON.parse(sessionStorage.getItem('cosmos_profile')||'{}')).profil.code || ''; }catch(e){}
     var filename = 'cosmos-'+prenom.toLowerCase()+'-'+code.toLowerCase()+'.pdf';
 
     pdf.save(filename);
