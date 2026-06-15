@@ -289,10 +289,7 @@ function applyProfileToPage(profile) {
   var stepsContainer = document.getElementById('loading-steps');
   if(stepsContainer) stepsContainer.style.display = 'none';
 
-  try{ 
-    sessionStorage.setItem('cosmos_profile', JSON.stringify(profile));
-    localStorage.setItem('cosmos_profile', JSON.stringify(profile));
-  }catch(e){}
+  try{ sessionStorage.setItem('cosmos_profile', JSON.stringify(profile)); }catch(e){}
 }
 
 async function initCosmosResult() {
@@ -330,10 +327,7 @@ if (typeof gtag === 'function') {
   gtag('event', 'email_popup_view');
 }
   
-  try{ 
-    sessionStorage.setItem('cosmos_profile', JSON.stringify(result.profile));
-    localStorage.setItem('cosmos_profile', JSON.stringify(result.profile));
-  }catch(e){}
+  try{ sessionStorage.setItem('cosmos_profile', JSON.stringify(result.profile)); }catch(e){}
   return;
 }
   applyProfileToPage(result.profile);
