@@ -927,6 +927,13 @@ if(window.location.search.includes('gift=')){
 /* CHARGEMENT */
 setTimeout(function(){
   if(window.location.search.includes('success=true')||sessionStorage.getItem('cosmos_paid')==='true'){return;}
+
+  /* Vérifier si profil existe dans localStorage */
+  var localProfile = null;
+  try{ localProfile = JSON.parse(localStorage.getItem('cosmos_profile')); }catch(e){}
+  if(localProfile && localProfile.profil && window.CosmosAPI){
+  sessionStorage.setItem('cosmos_profile', JSON.stringify(localProfile));
+  }
   if(window.CosmosAPI){
     try{sessionStorage.removeItem('cosmos_profile');localStorage.removeItem('cosmos_profile');}catch(e){}
     document.querySelectorAll('.card,.radar-wrap').forEach(function(el){el.style.opacity='0';});
