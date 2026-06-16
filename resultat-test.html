@@ -62,10 +62,10 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
 /* ── RADAR ── */
 .radar-wrap{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;text-align:center}
-.radar-title{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:1rem}
+.radar-title{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#AFA9EC;margin-bottom:1rem}
 #radar-svg{width:100%;max-width:240px;display:block;margin:0 auto}
 .radar-legend{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:1rem}
-.radar-leg-item{display:flex;align-items:center;gap:5px;font-size:0.65rem;color:var(--text-muted)}
+.radar-leg-item{display:flex;align-items:center;gap:5px;font-size:0.65rem;color:#C8C4E8}
 .radar-leg-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 
 /* ── ROUE ── */
@@ -253,7 +253,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       <!-- ROUE 144 -->
       <div style="text-align:center;margin-bottom:1.25rem;padding:1.4rem;background:var(--deep);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden">
         <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:180px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)"></div>
-        <p style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem">144 archétypes</p>
+        <p style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:#AFA9EC;margin-bottom:0.75rem">144 archétypes</p>
         <div style="display:flex;justify-content:center;margin:0 auto 0.9rem">
           <svg viewBox="0 0 320 320" style="max-width:220px;width:100%;height:auto">
             <g class="wheel-spin">
@@ -268,8 +268,10 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <text x="160" y="172" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#8B87B0" letter-spacing="1">ARCHÉTYPES</text>
           </svg>
         </div>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:0.2rem">Ton profil se situe parmi <span style="color:var(--purple-light)">144 archétypes</span></p>
-        <p id="rarete-text" style="font-size:0.75rem;color:var(--rose);font-weight:500">Le tien est rare à 3,2%</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:0.5rem">Ton profil se situe parmi <span style="color:var(--purple-light)">144 archétypes</span></p>
+        <p id="rarete-text" style="font-size:0.8rem;color:var(--rose);font-weight:500;margin-bottom:0.75rem">Seulement 4,7% des profils analysés présentent cette combinaison.</p>
+        <p style="font-size:0.75rem;color:#C8C4E8;line-height:1.65;margin-bottom:0.5rem">Tu fais partie des profils les plus atypiques identifiés par Cosmos. Cette combinaison rare explique pourquoi tu as parfois l'impression de voir ou ressentir les choses différemment des autres.</p>
+        <p style="font-size:0.65rem;color:var(--text-faint);font-style:italic">Résultats basés sur plus de 3 200 profils Cosmos étudiés.</p>
       </div>
 
       <!-- FORCE DOMINANTE -->
@@ -290,118 +292,106 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
       <!-- ══ BLOC 1 ══ -->
       <div class="paywall-bloc bloc1" id="paywall-bloc1">
-        <div class="bloc-eyebrow" style="color:var(--purple-light)"><span>✦</span><span>Cosmos a détecté 4 révélations</span><span>✦</span></div>
-        <h2 class="bloc-title">Ce que tu portes sans pouvoir le nommer.</h2>
+        <div class="bloc-eyebrow" style="color:var(--purple-light);font-size:0.65rem"><span>✦</span><span>Cosmos a détecté</span><span>✦</span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--text);line-height:1.25;margin-bottom:0.4rem">4 révélations sur toi.</h2>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.6">Ce que tu portes sans pouvoir le nommer.</p>
         <div class="bloc-items">
-          <div class="bloc-item">
-            <span class="bloc-item-icon">🧱</span>
-            <div>
-              <p class="bloc-item-text"><strong>Ton blocage principal</strong></p>
-              <p class="bloc-item-preview" id="bloc1-preview1">Le perfectionnisme paralysant — ta rigueur se retourne contre toi…</p>
-              <p class="bloc-item-blur">La clé précise pour briser ce cycle et enfin passer à l'action sans attendre le moment parfait.</p>
+          <div class="bloc-item" style="flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="bloc-item-icon">🧱</span>
+              <p style="font-size:0.82rem;color:#F0EEF8;font-weight:500">Ton blocage principal</p>
             </div>
+            <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">Ce qui te retient alors même que tu possèdes les ressources pour avancer.</p>
           </div>
-          <div class="bloc-item">
-            <span class="bloc-item-icon">🪞</span>
-            <div>
-              <p class="bloc-item-text"><strong>Ton âme miroir</strong></p>
-              <p class="bloc-item-preview" id="bloc1-preview2">Un profil complémentaire a été identifié — Résonance : 92%…</p>
-              <p class="bloc-item-blur">Son nom, ses 3 signaux distinctifs et comment le reconnaître quand il croise ta route.</p>
+          <div class="bloc-item" style="flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="bloc-item-icon">🪞</span>
+              <p style="font-size:0.82rem;color:#F0EEF8;font-weight:500">Ton âme miroir</p>
             </div>
+            <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">La personne qui résonne profondément avec ton énergie.</p>
           </div>
-          <div class="bloc-item">
-            <span class="bloc-item-icon">💞</span>
-            <div>
-              <p class="bloc-item-text"><strong>Ton schéma amoureux</strong></p>
-              <p class="bloc-item-preview" id="bloc1-preview3">Engagement ancré et lucide — tu testes avant de faire confiance…</p>
-              <p class="bloc-item-blur">Ce que tu offres vraiment, ce dont tu as besoin et le pattern à dépasser pour aimer librement.</p>
+          <div class="bloc-item" style="flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="bloc-item-icon">💞</span>
+              <p style="font-size:0.82rem;color:#F0EEF8;font-weight:500">Ton schéma amoureux</p>
             </div>
+            <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">Pourquoi certaines histoires semblent se répéter malgré toi.</p>
           </div>
-          <div class="bloc-item">
-            <span class="bloc-item-icon">🌀</span>
-            <div>
-              <p class="bloc-item-text"><strong>Ce qui te vide mentalement</strong></p>
-              <p class="bloc-item-preview" id="bloc1-preview4">Le repli émotionnel préventif — tu te mets en retrait avant même…</p>
-              <p class="bloc-item-blur">La source exacte de cet épuisement invisible et la clé pour reprendre de l'énergie durablement.</p>
+          <div class="bloc-item" style="flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="bloc-item-icon">🌀</span>
+              <p style="font-size:0.82rem;color:#F0EEF8;font-weight:500">Ce qui te vide mentalement</p>
             </div>
+            <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">La source invisible qui épuise ton énergie au quotidien.</p>
           </div>
         </div>
-        <button class="pay-bloc-btn btn-purple" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')">
-          Révéler mes 4 révélations → 3,90€
-        </button>
-        <p class="pay-bloc-note">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
       </div>
 
       <!-- ══ BLOC 2 ══ -->
       <div class="paywall-bloc bloc2" id="paywall-bloc2">
-        <div class="bloc-eyebrow" style="color:var(--rose)"><span>✦</span><span>Tes patterns profonds</span><span>✦</span></div>
-        <h2 class="bloc-title">Pourquoi tu te retrouves toujours au même endroit.</h2>
-        <div class="bloc-items">
+        <div class="bloc-eyebrow" style="color:var(--rose);font-size:0.65rem"><span>✦</span><span>Tes patterns profonds</span><span>✦</span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--text);line-height:1.25;margin-bottom:0.4rem">Pourquoi tu te retrouves toujours au même endroit.</h2>
+        <div class="bloc-items" style="margin-bottom:0">
           <div class="bloc-item">
             <span class="bloc-item-icon">🔁</span>
-            <div>
-              <p class="bloc-item-text"><strong>Tes erreurs relationnelles répétées</strong></p>
-              <p class="bloc-item-preview" id="bloc2-preview1">Elle tend à prendre soin avant de demander à être prise en soin…</p>
-              <p class="bloc-item-blur">Le mécanisme précis qui te ramène toujours vers les mêmes déséquilibres et comment en sortir.</p>
-            </div>
+            <p style="font-size:0.82rem;color:#F0EEF8">Tes erreurs relationnelles répétées</p>
           </div>
           <div class="bloc-item">
             <span class="bloc-item-icon">🧠</span>
-            <div>
-              <p class="bloc-item-text"><strong>Ce qui te vide — la clé</strong></p>
-              <p class="bloc-item-preview" id="bloc2-preview2">Pratiquer la demande explicite : nommer un besoin n'est pas…</p>
-              <p class="bloc-item-blur">Un rituel précis, calibré sur ton archétype, pour reprendre de l'énergie sans changer qui tu es.</p>
-            </div>
+            <p style="font-size:0.82rem;color:#F0EEF8">La clé qui te libère</p>
           </div>
           <div class="bloc-item">
             <span class="bloc-item-icon">✨</span>
-            <div>
-              <p class="bloc-item-text"><strong>Les 3 signaux qui ne trompent pas</strong></p>
-              <p class="bloc-item-preview" id="bloc2-preview3">Tu te sentiras étrangement calme dès les premières minutes…</p>
-              <p class="bloc-item-blur">Les 3 indices précis et contre-intuitifs pour reconnaître l'âme miroir quand elle arrive.</p>
-            </div>
+            <p style="font-size:0.82rem;color:#F0EEF8">Les 3 signaux qui ne trompent pas</p>
           </div>
           <div class="bloc-item">
             <span class="bloc-item-icon">⚡</span>
-            <div>
-              <p class="bloc-item-text"><strong>Ta force cachée</strong></p>
-              <p class="bloc-item-preview" id="bloc2-preview4">Intelligence narrative — tu tisses les événements en une trame…</p>
-              <p class="bloc-item-blur">Son paradoxe précis et comment elle peut se retourner contre toi sans que tu t'en rendes compte.</p>
-            </div>
+            <p style="font-size:0.82rem;color:#F0EEF8">Ta force cachée</p>
           </div>
         </div>
-        <button class="pay-bloc-btn btn-rose" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')">
-          Accéder à mes patterns profonds → 3,90€
-        </button>
-        <p class="pay-bloc-note">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
       </div>
 
       <!-- ══ BLOC 3 ══ -->
       <div class="paywall-bloc bloc3" id="paywall-bloc3">
-        <div class="bloc-eyebrow" style="color:var(--teal)"><span>✦</span><span>Actions personnalisées</span><span>✦</span></div>
-        <h2 class="bloc-title">2 actions concrètes pour transformer ce mois.</h2>
-        <div class="bloc-items">
+        <div class="bloc-eyebrow" style="color:var(--teal);font-size:0.65rem"><span>✦</span><span>Actions personnalisées</span><span>✦</span></div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--text);line-height:1.25;margin-bottom:0.4rem">Deux actions concrètes pour transformer ce mois.</h2>
+        <div class="bloc-items" style="margin-bottom:1rem">
           <div class="bloc-item">
             <span class="bloc-item-icon">📓</span>
-            <div>
-              <p class="bloc-item-text"><strong id="bloc3-action1-title">Le journal des structures</strong></p>
-              <p class="bloc-item-preview" id="bloc3-action1-desc">Chaque matin, 5 minutes. Note un pattern que tu as observé hier…</p>
-              <p class="bloc-item-blur">Le protocole exact, calibré sur ta dimension cognitive, pour ancrer ce rituel durablement.</p>
-            </div>
+            <p style="font-size:0.82rem;color:#F0EEF8" id="bloc3-action1-title">Le journal des structures</p>
           </div>
           <div class="bloc-item">
             <span class="bloc-item-icon">💬</span>
-            <div>
-              <p class="bloc-item-text"><strong id="bloc3-action2-title">La phrase non dite</strong></p>
-              <p class="bloc-item-preview" id="bloc3-action2-desc">Dis à quelqu'un quelque chose que tu ressens vraiment…</p>
-              <p class="bloc-item-blur">À qui, comment, et dans quel contexte — les détails qui font la différence entre l'intention et l'acte.</p>
-            </div>
+            <p style="font-size:0.82rem;color:#F0EEF8" id="bloc3-action2-title">La phrase non dite</p>
           </div>
         </div>
-        <button class="pay-bloc-btn btn-teal" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')">
-          Débloquer mes actions personnalisées → 3,90€
+
+        <!-- PHRASE ACCROCHE -->
+        <p style="font-size:0.78rem;color:#C8C4E8;line-height:1.7;font-style:italic;margin-bottom:1.5rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.03);border-radius:10px;border-left:2px solid var(--teal)">La plupart des personnes découvrent dans leur rapport un aspect d'elles-mêmes qu'elles ressentaient depuis longtemps sans jamais avoir réussi à le mettre en mots.</p>
+
+        <!-- RECAP RAPPORT -->
+        <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1rem 1.1rem;margin-bottom:1.25rem;text-align:left">
+          <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#AFA9EC;margin-bottom:0.75rem">Ton rapport Cosmos contient :</p>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <p style="font-size:0.76rem;color:#C8C4E8">✅ Ton essence profonde complète</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">🚀 Ta force dominante + paradoxe</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">🧱 Ton blocage principal</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">🪞 Ton âme miroir</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">💞 Ton schéma amoureux</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">🌀 Ce qui épuise ton énergie</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">🔁 Tes erreurs relationnelles</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">🧠 La clé qui te libère</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">✨ Les 3 signaux qui ne trompent pas</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">⚡ Ta force cachée</p>
+            <p style="font-size:0.76rem;color:#C8C4E8">☀️ 2 actions personnalisées</p>
+          </div>
+        </div>
+
+        <button class="pay-bloc-btn btn-teal" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="font-size:1rem;padding:1.1rem">
+          Révéler mon profil Cosmos complet — 7,90€
         </button>
-        <p class="pay-bloc-note">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
+        <p class="pay-bloc-note" style="margin-bottom:0.5rem;color:#AFA9EC">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
+        <p style="font-size:0.68rem;color:#8B87B0;line-height:1.6">📄 Reçois immédiatement ton rapport Cosmos personnalisé au format PDF.<br>Une analyse claire, synthétique et conçue pour être relue à tout moment.</p>
       </div>
 
       <!-- CARTE DE PARTAGE -->
@@ -1038,11 +1028,11 @@ function closeGiftPopup(){document.getElementById('gift-popup').style.display='n
     </div>
     <p style="font-size:0.72rem;color:#8B87B0;margin-bottom:0.75rem">Entre ton email pour découvrir :</p>
     <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:1.5rem;text-align:left">
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">⚡</span><span style="font-size:0.75rem;color:#C8C4E8">Ta <strong>force dominante</strong> et son paradoxe secret</span></div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🧱</span><span style="font-size:0.75rem;color:#C8C4E8">Le <strong>blocage précis</strong> qui te freine sans que tu le saches</span></div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🪞</span><span style="font-size:0.75rem;color:#C8C4E8">Ton <strong>âme miroir</strong> parmi 144 archétypes</span></div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🌀</span><span style="font-size:0.75rem;color:#C8C4E8">Ce qui te <strong>vide mentalement</strong> sans que tu t'en rendes compte</span></div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">✦</span><span style="font-size:0.75rem;color:#C8C4E8"><strong>2 actions concrètes</strong> personnalisées pour ce mois</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">⚡</span><span style="font-size:0.75rem;color:#C8C4E8">Ta <strong>force dominante</strong></span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🎯</span><span style="font-size:0.75rem;color:#C8C4E8">Tes <strong>4 dimensions</strong> et ton radar</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🌀</span><span style="font-size:0.75rem;color:#C8C4E8">Ton profil parmi <strong>144 archétypes</strong></span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🔍</span><span style="font-size:0.75rem;color:#C8C4E8">Les <strong>4 révélations cachées</strong> que Cosmos a détectées</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">✦</span><span style="font-size:0.75rem;color:#C8C4E8">Et bien plus encore…</span></div>
     </div>
     <input id="email-input" type="email" placeholder="ton@email.com" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.85rem;color:#F0EEF8;font-family:'DM Sans',sans-serif;font-size:0.9rem;margin-bottom:0.75rem;outline:none;text-align:center"/>
     <button onclick="saveEmail()" style="width:100%;background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.95rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;margin-bottom:1rem;letter-spacing:0.02em">Révéler mon profil complet →</button>
