@@ -1,25 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NPKSNPDJ');</script>
-<!-- End Google Tag Manager -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NPKSNPDJ');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cosmos — Ton profil</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="cosmos-logo-512.png">
 <meta property="og:title" content="Cosmos — Pas un quiz. Un miroir de toi-même.">
-<meta property="og:description" content="9 scènes immersives. Un profil unique parmi 144 archétypes.">
 <meta property="og:image" content="https://cosmos-vision.com/og-image.png">
 <meta property="og:url" content="https://cosmos-vision.com">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -27,142 +18,153 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 :root {
   --void:#07060f; --deep:#0d0b1a; --surface:#131128; --muted:#1e1b35;
   --border:rgba(255,255,255,0.07); --purple:#7F77DD; --purple-light:#AFA9EC;
-  --purple-glow:rgba(127,119,221,0.15); --rose:#D4537E; --teal:#1D9E75;
-  --amber:#BA7517; --text:#F0EEF8; --text-muted:#8B87B0; --text-faint:#4A4870;
+  --rose:#D4537E; --teal:#1D9E75; --amber:#BA7517;
+  --text:#F0EEF8; --text-muted:#8B87B0; --text-faint:#4A4870;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--void);color:var(--text);font-family:'DM Sans',sans-serif;
-  font-weight:300;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--void);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #cosmos-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
 .page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
-nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid var(--border);backdrop-filter:blur(12px);
-  background:rgba(7,6,15,0.6);position:sticky;top:0;z-index:100}
-.logo{font-family:'DM Sans',sans-serif;font-weight:300;font-size:1rem;
-  letter-spacing:0.25em;text-transform:uppercase;color:var(--text);
-  text-decoration:none;display:flex;align-items:center;gap:6px}
-.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--purple);
-  animation:pulse 3s ease-in-out infinite}
+nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);backdrop-filter:blur(12px);background:rgba(7,6,15,0.6);position:sticky;top:0;z-index:100}
+.logo{font-family:'DM Sans',sans-serif;font-weight:300;font-size:1rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:6px}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:var(--purple);animation:pulse 3s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
-.main{flex:1;padding:2rem 1.5rem 5rem;display:flex;flex-direction:column;align-items:center;gap:0}
-.content{width:100%;max-width:580px}
-.sec-label{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;
-  color:#AFA9EC;margin-bottom:0.75rem;font-weight:500}
-.profile-hero{text-align:center;padding:2.5rem 0 2rem;position:relative}
+.main{flex:1;padding:2rem 1.5rem 5rem;display:flex;flex-direction:column;align-items:center}
+.content{width:100%;max-width:560px}
+.sec-label{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple-light);margin-bottom:0.75rem;font-weight:500}
+
+/* ── HERO ── */
+.profile-hero{text-align:center;padding:2.5rem 0 2rem}
 .profile-orb-wrap{display:flex;justify-content:center;margin-bottom:1.5rem}
-.profile-orb{width:90px;height:90px;border-radius:50%;background:var(--muted);
-  border:1.5px solid var(--purple);display:flex;align-items:center;justify-content:center;
-  position:relative;animation:float 6s ease-in-out infinite}
-.profile-orb::before{content:'';position:absolute;width:114px;height:114px;
-  border-radius:50%;border:1px solid rgba(127,119,221,0.2);animation:spinRing 20s linear infinite}
-.profile-orb::after{content:'';position:absolute;width:140px;height:140px;
-  border-radius:50%;border:1px solid rgba(127,119,221,0.08);animation:spinRing 35s linear infinite reverse}
-.orb-inner{width:60px;height:60px;border-radius:50%;
-  background:rgba(127,119,221,0.12);border:1px solid rgba(175,169,236,0.3);
-  display:flex;align-items:center;justify-content:center}
+.profile-orb{width:84px;height:84px;border-radius:50%;background:var(--muted);border:1.5px solid var(--purple);display:flex;align-items:center;justify-content:center;position:relative;animation:float 6s ease-in-out infinite}
+.profile-orb::before{content:'';position:absolute;width:108px;height:108px;border-radius:50%;border:1px solid rgba(127,119,221,0.18);animation:spinRing 20s linear infinite}
+.profile-orb::after{content:'';position:absolute;width:132px;height:132px;border-radius:50%;border:1px solid rgba(127,119,221,0.07);animation:spinRing 35s linear infinite reverse}
+.orb-inner{width:56px;height:56px;border-radius:50%;background:rgba(127,119,221,0.12);border:1px solid rgba(175,169,236,0.3);display:flex;align-items:center;justify-content:center}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes spinRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.profile-eyebrow{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.5rem}
-.profile-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.5rem}
-.profile-code{font-size:0.65rem;color:var(--text-faint);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem}
-.dim-pills{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:1.25rem}
-.dim-pill{font-size:0.65rem;padding:3px 10px;border-radius:20px;font-weight:400;letter-spacing:0.04em}
-.portrait-block{background:var(--deep);border:1px solid var(--border);
-  border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
-.portrait-block::before{content:'';position:absolute;top:0;left:50%;
-  transform:translateX(-50%);width:160px;height:1px;
-  background:linear-gradient(to right,transparent,var(--purple),transparent)}
-.portrait-line{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#C8C4E8;line-height:1.85;font-style:italic}
-.portrait-line+.portrait-line{margin-top:0.75rem}
-.portrait-accent{color:var(--purple-light);font-style:normal}
-.radar-wrap{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center}
-.radar-title{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:1rem}
-#radar-svg{width:100%;max-width:260px;display:block;margin:0 auto}
-.radar-legend{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:1rem}
-.radar-leg-item{display:flex;align-items:center;gap:6px;font-size:0.7rem;color:var(--text-muted)}
-.radar-leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.force-card{background:var(--deep);border:1px solid var(--border);
-  border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
-.force-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.force-name{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:3px}
-.force-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6}
-.force-paradox{font-size:0.72rem;color:#AFA9EC;margin-top:5px;padding:4px 8px;border-radius:6px;font-style:italic}
+.profile-eyebrow{font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.5rem}
+.profile-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.4rem}
+.profile-code{font-size:0.6rem;color:var(--text-faint);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1rem}
+.dim-pills{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:0}
+.dim-pill{font-size:0.62rem;padding:3px 10px;border-radius:20px;font-weight:400;letter-spacing:0.04em}
 
-/* TEASER FLOU */
-.teaser-block{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px;position:relative;overflow:hidden}
-.teaser-label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);margin-bottom:6px;display:flex;align-items:center;gap:6px}
-.teaser-text{font-size:0.82rem;color:var(--text-muted);line-height:1.6}
-.teaser-blur{filter:blur(4px);user-select:none;pointer-events:none;font-size:0.82rem;color:var(--text-muted);line-height:1.6}
-.lock-icon{font-size:0.8rem;opacity:0.5}
+/* ── BLOCS GÉNÉRIQUES ── */
+.card{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
 
-/* SECTION RÉVÉLATION — paywall émotionnel */
-.revelation-section{background:linear-gradient(135deg,rgba(127,119,221,0.08) 0%,rgba(212,83,126,0.06) 100%);border:1px solid rgba(127,119,221,0.25);border-radius:20px;padding:2rem 1.5rem;margin-bottom:1.25rem;position:relative;overflow:hidden;text-align:center}
-.revelation-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:300px;height:1px;background:linear-gradient(to right,transparent,var(--purple),var(--rose),transparent)}
-.revelation-eyebrow{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:8px}
-.revelation-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.3;margin-bottom:0.75rem}
-.revelation-sub{font-size:0.82rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
-.revelation-items{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.75rem;text-align:left}
-.revelation-item{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,0.03);border-radius:10px;padding:0.75rem 1rem}
-.revelation-item-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
-.revelation-item-text{font-size:0.82rem;color:#C8C4E8;line-height:1.6}
-.revelation-price{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--text);margin-bottom:0.25rem}
-.revelation-price-note{font-size:0.7rem;color:var(--text-faint);margin-bottom:1.5rem;letter-spacing:0.04em}
-.revelation-btn{width:100%;background:linear-gradient(135deg,var(--purple),var(--rose));border:none;border-radius:100px;padding:1.1rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;cursor:pointer;transition:all 0.2s;margin-bottom:0.75rem;letter-spacing:0.02em}
-.revelation-btn:hover{opacity:0.9;transform:translateY(-1px)}
-.revelation-note{font-size:0.65rem;color:var(--text-faint);letter-spacing:0.04em}
+/* ── PORTRAIT ── */
+.portrait-line{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:#C8C4E8;line-height:1.85;font-style:italic}
+.portrait-line+.portrait-line{margin-top:0.65rem}
+.portrait-fade{position:relative;margin-top:0.65rem}
+.portrait-fade-content{filter:blur(5px);user-select:none;pointer-events:none}
+.portrait-fade::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(13,11,26,0) 0%,rgba(13,11,26,0.95) 70%)}
 
-.action-card{background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
-.action-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px}
-.action-title{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:3px}
-.action-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6}
-.action-freq{font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em}
+/* ── RADAR ── */
+.radar-wrap{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;text-align:center}
+.radar-title{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:1rem}
+#radar-svg{width:100%;max-width:240px;display:block;margin:0 auto}
+.radar-legend{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:1rem}
+.radar-leg-item{display:flex;align-items:center;gap:5px;font-size:0.65rem;color:var(--text-muted)}
+.radar-leg-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+/* ── ROUE ── */
+.wheel-spin{animation:spin-slow 60s linear infinite;transform-origin:center}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* ── FORCE DOMINANTE ── */
+.force-visible{display:flex;gap:12px;align-items:flex-start}
+.force-icon-wrap{width:34px;height:34px;border-radius:50%;background:rgba(127,119,221,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.force-name{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:2px}
+.force-desc-blur{filter:blur(5px);user-select:none;font-size:0.76rem;color:var(--text-muted);line-height:1.55;position:relative}
+
+/* ── PAYWALL BLOCS ── */
+.paywall-bloc{border-radius:20px;padding:1.75rem;margin-bottom:1rem;position:relative;overflow:hidden;text-align:center}
+.paywall-bloc::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:280px;height:1px}
+
+/* BLOC 1 */
+.bloc1{background:linear-gradient(135deg,rgba(127,119,221,0.07) 0%,rgba(212,83,126,0.05) 100%);border:1px solid rgba(127,119,221,0.2)}
+.bloc1::before{background:linear-gradient(to right,transparent,var(--purple),transparent)}
+
+/* BLOC 2 */
+.bloc2{background:linear-gradient(135deg,rgba(212,83,126,0.07) 0%,rgba(127,119,221,0.05) 100%);border:1px solid rgba(212,83,126,0.2)}
+.bloc2::before{background:linear-gradient(to right,transparent,var(--rose),transparent)}
+
+/* BLOC 3 */
+.bloc3{background:linear-gradient(135deg,rgba(29,158,117,0.07) 0%,rgba(127,119,221,0.05) 100%);border:1px solid rgba(29,158,117,0.2)}
+.bloc3::before{background:linear-gradient(to right,transparent,var(--teal),transparent)}
+
+.bloc-eyebrow{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;gap:6px}
+.bloc-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;color:var(--text);line-height:1.35;margin-bottom:0.75rem}
+.bloc-items{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem;text-align:left}
+.bloc-item{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,0.03);border-radius:10px;padding:0.7rem 0.9rem}
+.bloc-item-icon{font-size:0.9rem;flex-shrink:0;margin-top:1px}
+.bloc-item-text{font-size:0.78rem;color:#C8C4E8;line-height:1.55}
+.bloc-item-preview{font-size:0.72rem;color:var(--text-muted);font-style:italic;margin-top:2px;line-height:1.5}
+.bloc-item-blur{filter:blur(4px);user-select:none;pointer-events:none;font-size:0.72rem;color:var(--text-muted);margin-top:2px;line-height:1.5}
+
+/* Bouton paywall */
+.pay-bloc-btn{width:100%;border:none;border-radius:100px;padding:1rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;transition:all 0.2s;margin-bottom:0.5rem;letter-spacing:0.02em}
+.pay-bloc-btn:hover{opacity:0.9;transform:translateY(-1px)}
+.btn-purple{background:linear-gradient(135deg,var(--purple),var(--rose))}
+.btn-rose{background:linear-gradient(135deg,var(--rose),var(--purple))}
+.btn-teal{background:linear-gradient(135deg,var(--teal),var(--purple))}
+.pay-bloc-note{font-size:0.6rem;color:var(--text-faint);letter-spacing:0.04em}
+
+/* ── SECTION PAYANTE ── */
 .paid-section{display:none}
 .paid-section.unlocked{display:block}
+
 .blocage-card{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px}
 .blocage-name{font-size:0.85rem;font-weight:500;color:var(--rose);margin-bottom:4px}
 .blocage-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:6px}
-.blocage-key{font-size:0.75rem;color:var(--teal);padding:5px 9px;background:rgba(29,158,117,0.08);border-radius:6px;border-left:2px solid var(--teal);display:block}
-.love-card{background:var(--deep);border:1px solid rgba(212,83,126,0.25);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
-.love-style{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rose);margin-bottom:0.5rem}
-.love-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;margin-bottom:0.75rem}
-.love-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.75;margin-bottom:1rem}
-.love-row{display:flex;gap:8px;margin-bottom:6px;align-items:flex-start}
-.love-row-label{font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);min-width:90px;flex-shrink:0;padding-top:1px}
-.love-row-val{font-size:0.8rem;color:var(--text-muted);line-height:1.5}
-.mirror-card{background:linear-gradient(135deg,rgba(212,83,126,0.06) 0%,rgba(7,6,15,0) 60%);border:1px solid rgba(212,83,126,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
-.mirror-head{display:flex;gap:14px;align-items:center;margin-bottom:1rem}
-.mirror-orb{width:48px;height:48px;border-radius:50%;background:rgba(212,83,126,0.12);border:1px solid rgba(212,83,126,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
-.mirror-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--text)}
-.mirror-sub{font-size:0.65rem;color:rgba(212,83,126,0.7);margin-top:2px}
-.mirror-quote{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-style:italic;color:var(--text-muted);line-height:1.75;border-left:2px solid rgba(212,83,126,0.3);padding-left:1rem;margin-bottom:1rem}
-.compat-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
-.compat-label{font-size:0.7rem;color:rgba(212,83,126,0.7);width:110px;flex-shrink:0}
-.compat-track{flex:1;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+.blocage-key{font-size:0.72rem;color:var(--teal);padding:5px 9px;background:rgba(29,158,117,0.08);border-radius:6px;border-left:2px solid var(--teal);display:block}
+
+.mirror-card{background:linear-gradient(135deg,rgba(212,83,126,0.06) 0%,rgba(7,6,15,0) 60%);border:1px solid rgba(212,83,126,0.2);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.mirror-head{display:flex;gap:12px;align-items:center;margin-bottom:0.9rem}
+.mirror-orb{width:44px;height:44px;border-radius:50%;background:rgba(212,83,126,0.12);border:1px solid rgba(212,83,126,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.mirror-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--text)}
+.mirror-sub{font-size:0.6rem;color:rgba(212,83,126,0.7);margin-top:2px}
+.mirror-quote{font-family:'Cormorant Garamond',serif;font-size:0.88rem;font-style:italic;color:var(--text-muted);line-height:1.7;border-left:2px solid rgba(212,83,126,0.3);padding-left:0.9rem;margin-bottom:0.9rem}
+.compat-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.compat-label{font-size:0.65rem;color:rgba(212,83,126,0.7);width:105px;flex-shrink:0}
+.compat-track{flex:1;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
 .compat-fill{height:100%;border-radius:2px;width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
-.compat-pct{font-size:0.7rem;font-weight:500;width:28px;text-align:right;color:rgba(212,83,126,0.8)}
-.mirror-signals{background:rgba(255,255,255,0.03);border-radius:10px;padding:0.9rem;margin-top:0.75rem;font-size:0.78rem;color:var(--text-muted);line-height:1.65}
-.mirror-signals-label{font-size:0.62rem;color:rgba(212,83,126,0.6);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px}
-.action-card-full{border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
-.share-section{margin-bottom:1.25rem}
-.share-card-visual{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.5rem;text-align:center;position:relative;overflow:hidden;margin-bottom:1rem}
-.share-card-visual::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
-.share-logo{font-family:'DM Sans',sans-serif;font-weight:300;font-size:1.2rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);margin-bottom:3px}
-.share-profile-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--purple-light);margin-bottom:10px}
-.share-code{font-size:0.58rem;color:var(--text-faint);letter-spacing:0.15em;text-transform:uppercase;margin-top:10px}
+.compat-pct{font-size:0.65rem;font-weight:500;width:28px;text-align:right;color:rgba(212,83,126,0.8)}
+.mirror-signals{background:rgba(255,255,255,0.03);border-radius:10px;padding:0.8rem;margin-top:0.75rem;font-size:0.75rem;color:var(--text-muted);line-height:1.65}
+.mirror-signals-label{font-size:0.58rem;color:rgba(212,83,126,0.6);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
+
+.love-card{background:var(--deep);border:1px solid rgba(212,83,126,0.2);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.love-style{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rose);margin-bottom:0.4rem}
+.love-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;margin-bottom:0.65rem}
+.love-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.7;margin-bottom:0.9rem}
+.love-row{display:flex;gap:8px;margin-bottom:5px;align-items:flex-start}
+.love-row-label{font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);min-width:85px;flex-shrink:0;padding-top:1px}
+.love-row-val{font-size:0.76rem;color:var(--text-muted);line-height:1.5}
+
+.force-card-paid{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.force-name-paid{font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:2px}
+.force-desc-paid{font-size:0.75rem;color:var(--text-muted);line-height:1.55}
+.force-paradox-paid{font-size:0.68rem;color:var(--purple-light);margin-top:4px;padding:3px 7px;border-radius:5px;font-style:italic}
+
+.action-item{background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.action-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px}
+.action-title{font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:2px}
+.action-desc{font-size:0.74rem;color:var(--text-muted);line-height:1.55}
+.action-freq{font-size:0.6rem;color:var(--text-faint);margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
+
+.share-card-visual{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;text-align:center;position:relative;overflow:hidden;margin-bottom:0.9rem}
+.share-card-visual::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
+.share-logo{font-family:'DM Sans',sans-serif;font-weight:300;font-size:1.1rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);margin-bottom:3px}
+.share-profile-name{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-style:italic;color:var(--purple-light);margin-bottom:8px}
+.share-code{font-size:0.55rem;color:var(--text-faint);letter-spacing:0.15em;text-transform:uppercase;margin-top:8px}
 .share-btns{display:flex;flex-direction:column;gap:8px}
-.share-btn{width:100%;border:none;border-radius:100px;padding:0.8rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;transition:all 0.18s}
-.share-btn-ig{background:var(--purple);color:white}
-.share-btn-fb{background:#1877F2;color:white}
-.share-btn-copy{background:transparent;color:var(--text-muted);border:1px solid var(--border)}
+.share-btn{width:100%;border:none;border-radius:100px;padding:0.75rem;font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:500;cursor:pointer;transition:all 0.18s}
+
+.demo-banner{background:rgba(127,119,221,0.1);border:1px solid rgba(127,119,221,0.25);border-radius:10px;padding:0.7rem 1rem;margin-bottom:1.25rem;font-size:0.73rem;color:var(--purple-light);line-height:1.5;text-align:center}
 .next-chapter{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;display:flex;align-items:center;gap:12px;margin-bottom:2rem}
-.nc-icon{width:36px;height:36px;border-radius:50%;background:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nc-title{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:2px}
-.nc-sub{font-size:0.72rem;color:var(--text-faint)}
-.demo-banner{background:rgba(186,117,23,0.1);border:1px solid rgba(186,117,23,0.25);border-radius:10px;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:0.75rem;color:var(--amber);line-height:1.5;text-align:center}
+.nc-icon{width:34px;height:34px;border-radius:50%;background:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 @media(max-width:480px){.main{padding:1.5rem 1rem 5rem}nav{padding:0.9rem 1rem}}
-.wheel-spin{animation:spin-slow 60s linear infinite;transform-origin:center}
-@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -170,20 +172,20 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 <div class="page">
   <nav>
     <a href="index.html" class="logo">COSMOS<span class="logo-dot"></span></a>
-    <span style="font-size:0.7rem;color:var(--text-faint);letter-spacing:0.06em" id="nav-name"></span>
+    <span style="font-size:0.68rem;color:var(--text-faint);letter-spacing:0.06em" id="nav-name"></span>
   </nav>
   <div class="main">
-    <div class="content" id="content">
+    <div class="content">
 
-      <!-- DEMO BANNER -->
-      <div class="demo-banner" id="demo-banner" style="background:rgba(127,119,221,0.15);border-color:rgba(127,119,221,0.3);color:#AFA9EC">✨ Ton profil unique est en cours de création…</div>
+      <!-- BANNER -->
+      <div class="demo-banner" id="demo-banner">✨ Ton profil unique est en cours de création…</div>
 
       <!-- HERO -->
       <div class="profile-hero">
         <div class="profile-orb-wrap">
           <div class="profile-orb">
             <div class="orb-inner">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="1.2" stroke-linecap="round">
                 <circle cx="12" cy="12" r="9"/>
                 <path d="M12 3c-2.5 3-4 5.5-4 9s1.5 6 4 9"/>
                 <path d="M12 3c2.5 3 4 5.5 4 9s-1.5 6-4 9"/>
@@ -193,24 +195,30 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
         </div>
         <p class="profile-eyebrow">Ton profil Cosmos</p>
-        <h1 class="profile-name" id="profile-name">✨ Cosmos construit ton profil personnalisé, merci de patienter environ 30 secondes…</h1>
-        <div id="loading-steps" style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.6rem;text-align:left;max-width:400px;margin-left:auto;margin-right:auto"></div>
-        <p class="profile-code" id="profile-code">. . .</p>
+        <h1 class="profile-name" id="profile-name">✨ Cosmos analyse tes réponses…</h1>
+        <div id="loading-steps" style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.5rem;text-align:left;max-width:380px;margin-left:auto;margin-right:auto"></div>
+        <p class="profile-code" id="profile-code">· · ·</p>
         <div class="dim-pills" id="dim-pills" style="opacity:0">
           <span class="dim-pill" style="background:rgba(127,119,221,.2);color:#AFA9EC">Lune 82%</span>
           <span class="dim-pill" style="background:rgba(29,158,117,.18);color:#9FE1CB">Systémique 91%</span>
           <span class="dim-pill" style="background:rgba(212,83,126,.18);color:#F4C0D1">Protecteur 74%</span>
-          <span class="dim-pill" style="background:rgba(186,117,23,.18);color:#FAC775">Lien profond 88%</span>
+          <span class="dim-pill" style="background:rgba(186,117,23,.18);color:#FAC775">Lien 88%</span>
         </div>
       </div>
 
-      <!-- PORTRAIT — 3 lignes visibles -->
-      <div class="portrait-block">
+      <!-- PORTRAIT — 1 ligne visible + 4 floutées -->
+      <div class="card" style="margin-bottom:1.25rem">
         <p class="sec-label">Ton essence</p>
-        <div id="portrait-lines">
-          <p class="portrait-line">Tu ne t'expliques pas — tu <span class="portrait-accent">te révèles lentement</span>, à ceux qui savent attendre.</p>
-          <p class="portrait-line">Là où les autres voient du bruit, tu perçois une architecture cachée.</p>
-          <p class="portrait-line">Tu portes une <span class="portrait-accent">loyauté silencieuse</span> que peu remarquent, mais que tous ressentent.</p>
+        <div id="portrait-line-visible">
+          <p class="portrait-line">Tu ne t'expliques pas — tu te révèles lentement, à ceux qui savent attendre.</p>
+        </div>
+        <div class="portrait-fade" style="margin-top:0.65rem">
+          <div class="portrait-fade-content" id="portrait-lines-blurred">
+            <p class="portrait-line">Là où les autres voient du bruit, tu perçois une architecture cachée.</p>
+            <p class="portrait-line" style="margin-top:0.65rem">Tu portes une loyauté silencieuse que peu remarquent, mais que tous ressentent.</p>
+            <p class="portrait-line" style="margin-top:0.65rem">Ta sensibilité est ton radar le plus précis — mais tu la caches comme un aveu.</p>
+            <p class="portrait-line" style="margin-top:0.65rem">Tu es de ceux qui changent l'atmosphère d'une pièce simplement en y entrant.</p>
+          </div>
         </div>
       </div>
 
@@ -229,35 +237,25 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <circle id="r-right" cx="110" cy="110" r="4" fill="#9FE1CB"/>
           <circle id="r-bottom" cx="110" cy="110" r="4" fill="#F4C0D1"/>
           <circle id="r-left" cx="110" cy="110" r="4" fill="#FAC775"/>
-          <text x="110" y="10" text-anchor="middle" font-size="9" fill="#AFA9EC" font-family="DM Sans, sans-serif">Cosmique</text>
-          <text x="202" y="106" text-anchor="middle" font-size="9" fill="#9FE1CB" font-family="DM Sans, sans-serif">Cog.</text>
-          <text x="110" y="218" text-anchor="middle" font-size="9" fill="#F4C0D1" font-family="DM Sans, sans-serif">Émotionnel</text>
-          <text x="6" y="113" text-anchor="start" font-size="9" fill="#FAC775" font-family="DM Sans, sans-serif">Lien</text>
+          <text x="110" y="10" text-anchor="middle" font-size="9" fill="#AFA9EC" font-family="DM Sans">Cosmique</text>
+          <text x="202" y="106" text-anchor="middle" font-size="9" fill="#9FE1CB" font-family="DM Sans">Cog.</text>
+          <text x="110" y="218" text-anchor="middle" font-size="9" fill="#F4C0D1" font-family="DM Sans">Émotionnel</text>
+          <text x="6" y="113" text-anchor="start" font-size="9" fill="#FAC775" font-family="DM Sans">Lien</text>
         </svg>
         <div class="radar-legend">
-          <div class="radar-leg-item"><div class="radar-leg-dot" style="background:#AFA9EC"></div>Cosmique · <span id="leg-cosmique">Lune 82%</span></div>
-          <div class="radar-leg-item"><div class="radar-leg-dot" style="background:#9FE1CB"></div>Cognitif · <span id="leg-cognitif">Systémique 91%</span></div>
-          <div class="radar-leg-item"><div class="radar-leg-dot" style="background:#F4C0D1"></div>Émotionnel · <span id="leg-emotionnel">Protecteur 74%</span></div>
-          <div class="radar-leg-item"><div class="radar-leg-dot" style="background:#FAC775"></div>Relationnel · <span id="leg-relationnel">Lien 88%</span></div>
+          <div class="radar-leg-item"><div class="radar-leg-dot" style="background:#AFA9EC"></div><span id="leg-cosmique">Cosmique 82%</span></div>
+          <div class="radar-leg-item"><div class="radar-leg-dot" style="background:#9FE1CB"></div><span id="leg-cognitif">Cognitif 91%</span></div>
+          <div class="radar-leg-item"><div class="radar-leg-dot" style="background:#F4C0D1"></div><span id="leg-emotionnel">Émotionnel 74%</span></div>
+          <div class="radar-leg-item"><div class="radar-leg-dot" style="background:#FAC775"></div><span id="leg-relationnel">Lien 88%</span></div>
         </div>
       </div>
 
-
-
-      <!-- SIGNE SOLAIRE — 2 lignes max -->
-      <div style="margin-bottom:1.25rem">
-        <p class="sec-label" style="margin-bottom:0.75rem">Signe solaire & planète dominante</p>
-        <div class="portrait-block" id="astro-free" style="margin-bottom:0"></div>
-      </div>
-
-
-
-      <!-- ROUE 144 ARCHÉTYPES -->
-      <div id="roue-section" style="text-align:center;margin-bottom:1.5rem;padding:1.5rem;background:var(--deep);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)"></div>
-        <p style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem">144 archétypes</p>
-        <div style="display:flex;justify-content:center;margin:0 auto 1rem">
-          <svg viewBox="0 0 320 320" style="max-width:240px;width:100%;height:auto">
+      <!-- ROUE 144 -->
+      <div style="text-align:center;margin-bottom:1.25rem;padding:1.4rem;background:var(--deep);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:180px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)"></div>
+        <p style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-faint);margin-bottom:0.75rem">144 archétypes</p>
+        <div style="display:flex;justify-content:center;margin:0 auto 0.9rem">
+          <svg viewBox="0 0 320 320" style="max-width:220px;width:100%;height:auto">
             <g class="wheel-spin">
               <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(127,119,221,0.12)" stroke-width="1"/>
               <circle cx="160" cy="160" r="112" fill="none" stroke="rgba(212,83,126,0.12)" stroke-width="1"/>
@@ -270,103 +268,172 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <text x="160" y="172" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#8B87B0" letter-spacing="1">ARCHÉTYPES</text>
           </svg>
         </div>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text);margin-bottom:0.25rem">Ton profil se situe parmi <span style="color:var(--purple-light)">144 archétypes</span></p>
-        <p id="rarete-text" style="font-size:0.78rem;color:var(--rose);font-weight:500">Le tien est rare à 3,2%</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:0.2rem">Ton profil se situe parmi <span style="color:var(--purple-light)">144 archétypes</span></p>
+        <p id="rarete-text" style="font-size:0.75rem;color:var(--rose);font-weight:500">Le tien est rare à 3,2%</p>
       </div>
 
-      <!-- TEASERS FLOUS — frustration positive -->
-      <div id="teasers-section" style="margin-bottom:0.5rem">
-        <p class="sec-label" style="margin-bottom:0.75rem">Ce que Cosmos a détecté</p>
-
-        <!-- Teaser 0 — Force dominante -->
-        <div class="teaser-block" style="margin-bottom:8px">
-          <div class="teaser-label"><span class="lock-icon">🔒</span> Ta force dominante</div>
-          <p class="teaser-text" id="force1-teaser" style="margin-bottom:0.5rem">Une force structurante a été identifiée dans ton profil…</p>
-          <p class="teaser-blur">Cette force porte un paradoxe précis que peu de personnes autour de toi peuvent nommer. Elle explique à la fois ce qui te rend exceptionnel et ce qui te pèse sans que tu saches pourquoi.</p>
-        </div>
-
-        <!-- Teaser 1 — Blocage -->
-        <div class="teaser-block" style="margin-bottom:8px">
-          <div class="teaser-label"><span class="lock-icon">🔒</span> Ton blocage principal détecté</div>
-          <p class="teaser-text" id="teaser-blocage" style="margin-bottom:0.5rem">Ton profil révèle une tendance à saboter inconsciemment ce qui compte le plus pour toi…</p>
-          <p class="teaser-blur">Cette tension entre ta vision et ta capacité à passer à l'action crée un cycle que tu reconnais probablement. La clé pour le briser est précise et personnalisée à ton archétype.</p>
-        </div>
-
-        <!-- Teaser 2 — Relations -->
-        <div class="teaser-block" style="margin-bottom:8px">
-          <div class="teaser-label"><span class="lock-icon">🔒</span> Pourquoi tu attires toujours le même type de personnes</div>
-          <p class="teaser-text" style="margin-bottom:0.5rem">Ta dimension relationnelle montre un schéma répétitif dans tes choix affectifs…</p>
-          <p class="teaser-blur">Ce pattern est directement lié à ta dimension émotionnelle dominante. Il explique pourquoi certaines relations te vident sans que tu comprennes pourquoi, et d'autres te nourrissent instantanément.</p>
-        </div>
-
-        <!-- Teaser 3 — Âme miroir -->
-        <div class="teaser-block" style="margin-bottom:8px">
-          <div class="teaser-label"><span class="lock-icon">🔒</span> Ton âme miroir — profil de compatibilité</div>
-          <p class="teaser-text" style="margin-bottom:0.5rem">Un profil complémentaire au tien a été identifié parmi 144 archétypes…</p>
-          <p class="teaser-blur" style="margin-bottom:0">Le profil qui te correspond a été calculé. Résonance émotionnelle : 92% · Complémentarité : 79% · Les 3 signaux pour le reconnaître sont précis et contre-intuitifs.</p>
-        </div>
-
-        <!-- Teaser 4 — Mental -->
-        <div class="teaser-block" style="margin-bottom:8px">
-          <div class="teaser-label"><span class="lock-icon">🔒</span> Ce qui te vide mentalement sans que tu t'en rendes compte</div>
-          <p class="teaser-text" style="margin-bottom:0.5rem">Ton profil cognitif révèle une source d'épuisement que tu n'arrives pas à nommer…</p>
-          <p class="teaser-blur" style="margin-bottom:0">Ton profil cognitif révèle une source d'épuisement spécifique que la plupart des gens de ton archétype ignorent pendant des années. Elle est liée à ta façon de traiter l'information en silence.</p>
-        </div>
-
-        <!-- Teaser 5 — Ciel natal -->
-        <div class="teaser-block">
-          <div class="teaser-label"><span class="lock-icon">🔒</span> 4 recommandations selon ton ciel natal</div>
-          <p class="teaser-text" style="margin-bottom:0.5rem">Ton signe solaire croisé avec ton archétype révèle des patterns spécifiques…</p>
-          <p class="teaser-blur" style="margin-bottom:0">Vie émotionnelle · Mental et clarté · Amour et relations · Travail et ambition — 4 domaines analysés à partir de ton signe et de ta planète dominante, croisés avec ton archétype.</p>
+      <!-- FORCE DOMINANTE -->
+      <div class="card" style="margin-bottom:1.5rem">
+        <p class="sec-label">Ta force dominante</p>
+        <div class="force-visible">
+          <div class="force-icon-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="1.5" stroke-linecap="round">
+              <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+          </div>
+          <div style="flex:1">
+            <p class="force-name" id="force1-name">La vision structurelle</p>
+            <p class="force-desc-blur" id="force1-desc-blur">Tu captes les patterns avant les détails. Tu vois la mécanique sous-jacente avant que quiconque l'ait nommée. Cette capacité rare porte un paradoxe que tu connais bien.</p>
+          </div>
         </div>
       </div>
 
-      <!-- SECTION RÉVÉLATION — paywall émotionnel fort -->
-      <div class="revelation-section" id="paywall">
-        <div class="revelation-eyebrow">
-          <span>✦</span>
-          <span>Tu n'as vu que la surface</span>
-          <span>✦</span>
+      <!-- ══ BLOC 1 ══ -->
+      <div class="paywall-bloc bloc1" id="paywall-bloc1">
+        <div class="bloc-eyebrow" style="color:var(--purple-light)"><span>✦</span><span>Cosmos a détecté 4 révélations</span><span>✦</span></div>
+        <h2 class="bloc-title">Ce que tu portes sans pouvoir le nommer.</h2>
+        <div class="bloc-items">
+          <div class="bloc-item">
+            <span class="bloc-item-icon">🧱</span>
+            <div>
+              <p class="bloc-item-text"><strong>Ton blocage principal</strong></p>
+              <p class="bloc-item-preview" id="bloc1-preview1">Le perfectionnisme paralysant — ta rigueur se retourne contre toi…</p>
+              <p class="bloc-item-blur">La clé précise pour briser ce cycle et enfin passer à l'action sans attendre le moment parfait.</p>
+            </div>
+          </div>
+          <div class="bloc-item">
+            <span class="bloc-item-icon">🪞</span>
+            <div>
+              <p class="bloc-item-text"><strong>Ton âme miroir</strong></p>
+              <p class="bloc-item-preview" id="bloc1-preview2">Un profil complémentaire a été identifié — Résonance : 92%…</p>
+              <p class="bloc-item-blur">Son nom, ses 3 signaux distinctifs et comment le reconnaître quand il croise ta route.</p>
+            </div>
+          </div>
+          <div class="bloc-item">
+            <span class="bloc-item-icon">💞</span>
+            <div>
+              <p class="bloc-item-text"><strong>Ton schéma amoureux</strong></p>
+              <p class="bloc-item-preview" id="bloc1-preview3">Engagement ancré et lucide — tu testes avant de faire confiance…</p>
+              <p class="bloc-item-blur">Ce que tu offres vraiment, ce dont tu as besoin et le pattern à dépasser pour aimer librement.</p>
+            </div>
+          </div>
+          <div class="bloc-item">
+            <span class="bloc-item-icon">🌀</span>
+            <div>
+              <p class="bloc-item-text"><strong>Ce qui te vide mentalement</strong></p>
+              <p class="bloc-item-preview" id="bloc1-preview4">Le repli émotionnel préventif — tu te mets en retrait avant même…</p>
+              <p class="bloc-item-blur">La source exacte de cet épuisement invisible et la clé pour reprendre de l'énergie durablement.</p>
+            </div>
+          </div>
         </div>
-        <h2 class="revelation-title">Cosmos a détecté ce que tu ressens sans pouvoir l'expliquer.</h2>
-        <p class="revelation-sub" style="color:#F0EEF8;font-size:0.88rem;font-weight:400">Tes patterns profonds. Tes schémas relationnels. Ce qui te freine sans que tu le saches. Tout est là — personnalisé à ton archétype unique.</p>
-
-        <div class="revelation-items">
-          <div class="revelation-item">
-            <span class="revelation-item-icon">⚡</span>
-            <span class="revelation-item-text">Révéler <strong>ta force dominante et son paradoxe</strong> — ce qui te rend rare, et ce qu'il te coûte.</span>
-          </div>
-          <div class="revelation-item">
-            <span class="revelation-item-icon">🔁</span>
-            <span class="revelation-item-text">Comprendre <strong>pourquoi tu répètes les mêmes erreurs relationnelles</strong> — et comment en sortir.</span>
-          </div>
-          <div class="revelation-item">
-            <span class="revelation-item-icon">🧱</span>
-            <span class="revelation-item-text">Identifier <strong>le blocage précis</strong> qui te fait repousser ce qui compte vraiment.</span>
-          </div>
-          <div class="revelation-item">
-            <span class="revelation-item-icon">🌀</span>
-            <span class="revelation-item-text">Découvrir <strong>ce qui te vide mentalement</strong> sans que tu t'en rendes compte.</span>
-          </div>
-          <div class="revelation-item">
-            <span class="revelation-item-icon">🪞</span>
-            <span class="revelation-item-text">Reconnaître <strong>l'âme miroir faite pour toi</strong> — et les 3 signaux qui ne trompent pas.</span>
-          </div>
-          <div class="revelation-item">
-            <span class="revelation-item-icon">✦</span>
-            <span class="revelation-item-text"><strong>4 recommandations selon ton ciel natal</strong> + 2 actions concrètes pour transformer ce mois.</span>
-          </div>
-        </div>
-
-        <p class="revelation-price">3,90€</p>
-        <p class="revelation-price-note">Paiement unique · Accès permanent · Apple Pay / Google Pay</p>
-        <button class="revelation-btn" id="pay-btn" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')">
-          Révéler mon analyse complète →
+        <button class="pay-bloc-btn btn-purple" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')">
+          Révéler mes 4 révélations → 3,90€
         </button>
-        <p class="revelation-note">Paiement sécurisé par Stripe · Aucune donnée bancaire stockée</p>
+        <p class="pay-bloc-note">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
       </div>
 
+      <!-- ══ BLOC 2 ══ -->
+      <div class="paywall-bloc bloc2" id="paywall-bloc2">
+        <div class="bloc-eyebrow" style="color:var(--rose)"><span>✦</span><span>Tes patterns profonds</span><span>✦</span></div>
+        <h2 class="bloc-title">Pourquoi tu te retrouves toujours au même endroit.</h2>
+        <div class="bloc-items">
+          <div class="bloc-item">
+            <span class="bloc-item-icon">🔁</span>
+            <div>
+              <p class="bloc-item-text"><strong>Tes erreurs relationnelles répétées</strong></p>
+              <p class="bloc-item-preview" id="bloc2-preview1">Elle tend à prendre soin avant de demander à être prise en soin…</p>
+              <p class="bloc-item-blur">Le mécanisme précis qui te ramène toujours vers les mêmes déséquilibres et comment en sortir.</p>
+            </div>
+          </div>
+          <div class="bloc-item">
+            <span class="bloc-item-icon">🧠</span>
+            <div>
+              <p class="bloc-item-text"><strong>Ce qui te vide — la clé</strong></p>
+              <p class="bloc-item-preview" id="bloc2-preview2">Pratiquer la demande explicite : nommer un besoin n'est pas…</p>
+              <p class="bloc-item-blur">Un rituel précis, calibré sur ton archétype, pour reprendre de l'énergie sans changer qui tu es.</p>
+            </div>
+          </div>
+          <div class="bloc-item">
+            <span class="bloc-item-icon">✨</span>
+            <div>
+              <p class="bloc-item-text"><strong>Les 3 signaux qui ne trompent pas</strong></p>
+              <p class="bloc-item-preview" id="bloc2-preview3">Tu te sentiras étrangement calme dès les premières minutes…</p>
+              <p class="bloc-item-blur">Les 3 indices précis et contre-intuitifs pour reconnaître l'âme miroir quand elle arrive.</p>
+            </div>
+          </div>
+          <div class="bloc-item">
+            <span class="bloc-item-icon">⚡</span>
+            <div>
+              <p class="bloc-item-text"><strong>Ta force cachée</strong></p>
+              <p class="bloc-item-preview" id="bloc2-preview4">Intelligence narrative — tu tisses les événements en une trame…</p>
+              <p class="bloc-item-blur">Son paradoxe précis et comment elle peut se retourner contre toi sans que tu t'en rendes compte.</p>
+            </div>
+          </div>
+        </div>
+        <button class="pay-bloc-btn btn-rose" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')">
+          Accéder à mes patterns profonds → 3,90€
+        </button>
+        <p class="pay-bloc-note">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
+      </div>
 
+      <!-- ══ BLOC 3 ══ -->
+      <div class="paywall-bloc bloc3" id="paywall-bloc3">
+        <div class="bloc-eyebrow" style="color:var(--teal)"><span>✦</span><span>Actions personnalisées</span><span>✦</span></div>
+        <h2 class="bloc-title">2 actions concrètes pour transformer ce mois.</h2>
+        <div class="bloc-items">
+          <div class="bloc-item">
+            <span class="bloc-item-icon">📓</span>
+            <div>
+              <p class="bloc-item-text"><strong id="bloc3-action1-title">Le journal des structures</strong></p>
+              <p class="bloc-item-preview" id="bloc3-action1-desc">Chaque matin, 5 minutes. Note un pattern que tu as observé hier…</p>
+              <p class="bloc-item-blur">Le protocole exact, calibré sur ta dimension cognitive, pour ancrer ce rituel durablement.</p>
+            </div>
+          </div>
+          <div class="bloc-item">
+            <span class="bloc-item-icon">💬</span>
+            <div>
+              <p class="bloc-item-text"><strong id="bloc3-action2-title">La phrase non dite</strong></p>
+              <p class="bloc-item-preview" id="bloc3-action2-desc">Dis à quelqu'un quelque chose que tu ressens vraiment…</p>
+              <p class="bloc-item-blur">À qui, comment, et dans quel contexte — les détails qui font la différence entre l'intention et l'acte.</p>
+            </div>
+          </div>
+        </div>
+        <button class="pay-bloc-btn btn-teal" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')">
+          Débloquer mes actions personnalisées → 3,90€
+        </button>
+        <p class="pay-bloc-note">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
+      </div>
+
+      <!-- CARTE DE PARTAGE -->
+      <div style="margin-bottom:1.25rem">
+        <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
+        <div class="share-card-visual" id="share-card">
+          <div style="position:relative;z-index:2">
+            <p class="share-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
+            <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
+            <svg viewBox="0 0 100 100" width="65" height="65" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+              <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+              <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
+              <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
+              <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
+              <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
+              <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
+            </svg>
+            <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:6px" id="share-pills">
+              <span style="font-size:0.55rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">Lune 82%</span>
+              <span style="font-size:0.55rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">Systémique 91%</span>
+              <span style="font-size:0.55rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">Protecteur 74%</span>
+            </div>
+            <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
+          </div>
+        </div>
+        <div class="share-btns">
+          <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
+          <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
+          <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" id="copy-btn" onclick="copyCode()">Copier mon code</button>
+        </div>
+      </div>
 
       <!-- SECTION PAYANTE -->
       <div class="paid-section" id="paid-section">
@@ -376,66 +443,50 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <p class="sec-label" style="margin-bottom:0.75rem">Tes 2 blocages inconscients</p>
         </div>
 
-        <!-- FORCES SUPPLÉMENTAIRES -->
+        <!-- FORCES CACHÉES -->
         <div style="margin-bottom:1.25rem">
           <p class="sec-label" style="margin-bottom:0.75rem">Tes forces cachées</p>
-          <div class="force-card">
-            <div class="force-icon" style="background:rgba(29,158,117,0.15)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9FE1CB" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="force-card-paid">
+            <div class="force-icon-wrap" style="background:rgba(29,158,117,0.15)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9FE1CB" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div>
-              <p class="force-name" id="force2-name">La protection instinctive</p>
-              <p class="force-desc" id="force2-desc">Tu crées de la sécurité sans t'en rendre compte.</p>
-              <p class="force-paradox" id="force2-paradox" style="background:rgba(29,158,117,0.08)">Tu protèges tout le monde sauf toi-même.</p>
+              <p class="force-name-paid" id="force2-name">La protection instinctive</p>
+              <p class="force-desc-paid" id="force2-desc">Tu crées de la sécurité sans t'en rendre compte.</p>
+              <p class="force-paradox-paid" id="force2-paradox" style="background:rgba(29,158,117,0.08)">Tu protèges tout le monde sauf toi-même.</p>
             </div>
           </div>
-          <div class="force-card">
-            <div class="force-icon" style="background:rgba(186,117,23,0.15)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FAC775" stroke-width="1.5" stroke-linecap="round"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 3"/></svg>
+          <div class="force-card-paid">
+            <div class="force-icon-wrap" style="background:rgba(186,117,23,0.15)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FAC775" stroke-width="1.5" stroke-linecap="round"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 3"/></svg>
             </div>
             <div>
-              <p class="force-name" id="force3-name">Force cachée</p>
-              <p class="force-desc" id="force3-desc">Cette force se révèle dans les moments de dépassement.</p>
-              <p class="force-paradox" id="force3-paradox" style="background:rgba(186,117,23,0.08)">Débloquer pour découvrir.</p>
+              <p class="force-name-paid" id="force3-name">Force cachée</p>
+              <p class="force-desc-paid" id="force3-desc">Cette force se révèle dans les moments de dépassement.</p>
+              <p class="force-paradox-paid" id="force3-paradox" style="background:rgba(186,117,23,0.08)">Son paradoxe t'attend.</p>
             </div>
           </div>
-          <div class="force-card">
-            <div class="force-icon" style="background:rgba(212,83,126,0.15)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F4C0D1" stroke-width="1.5" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <div>
-              <p class="force-name" id="force4-name">Force mystérieuse</p>
-              <p class="force-desc" id="force4-desc">Cette dimension de toi reste à explorer.</p>
-              <p class="force-paradox" id="force4-paradox" style="background:rgba(212,83,126,0.08)">Débloquer pour découvrir cette force cachée.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ASTROLOGIE PAYANTE -->
-        <div style="margin-bottom:1.25rem">
-          <p class="sec-label" style="margin-bottom:0.75rem">✦ Ton ciel natal — recommandations complètes</p>
-          <div id="astro-paid"></div>
         </div>
 
         <!-- PORTRAIT AMOUREUX -->
         <div class="love-card">
           <p class="sec-label">Ton portrait amoureux</p>
           <p class="love-style" id="love-style-text">Style d'attachement · Sécure-distancié</p>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;margin-bottom:0.75rem" id="love-title-text">Tu aimes profondément, mais tu testes avant de faire confiance.</h3>
-          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.75;margin-bottom:1rem" id="love-desc-text">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste.</p>
-          <div class="love-row"><span class="love-row-label">Tu offres</span><span class="love-row-val" id="love-offre">Une loyauté absolue et une présence calme.</span></div>
-          <div class="love-row"><span class="love-row-label">Tu as besoin</span><span class="love-row-val" id="love-besoin">De constance silencieuse — quelqu'un qui est là encore et encore.</span></div>
-          <div class="love-row"><span class="love-row-label">À dépasser</span><span class="love-row-val" id="love-pattern">Attendre que l'autre prouve sa valeur avant de s'engager.</span></div>
+          <h3 class="love-title" id="love-title-text">Tu aimes profondément, mais tu testes avant de faire confiance.</h3>
+          <p class="love-desc" id="love-desc-text">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste.</p>
+          <div class="love-row"><span class="love-row-label">Tu offres</span><span class="love-row-val" id="love-offre">Une loyauté absolue.</span></div>
+          <div class="love-row"><span class="love-row-label">Tu as besoin</span><span class="love-row-val" id="love-besoin">De constance silencieuse.</span></div>
+          <div class="love-row"><span class="love-row-label">À dépasser</span><span class="love-row-val" id="love-pattern">Attendre que l'autre prouve.</span></div>
         </div>
 
-        <!-- AME MIROIR -->
+        <!-- ÂME MIROIR -->
         <div class="mirror-card">
           <p class="sec-label">Ton âme miroir</p>
           <div class="mirror-head">
             <div class="mirror-orb">🌞</div>
             <div>
               <p class="mirror-name" id="mirror-name">Le Gardien du Feu Doux</p>
-              <p class="mirror-sub" id="mirror-sub">Soleil · Narratif · Architecture expansive</p>
+              <p class="mirror-sub" id="mirror-sub">Soleil · Narratif · Expansif</p>
             </div>
           </div>
           <p class="mirror-quote" id="mirror-quote">"Cette personne arrive avec une constance tranquille — cette façon d'être là sans calculer."</p>
@@ -460,16 +511,22 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </div>
         </div>
 
-        <!-- 2 ACTIONS CONCRÈTES DU MOIS -->
+        <!-- ASTROLOGIE PAYANTE -->
+        <div style="margin-bottom:1.25rem">
+          <p class="sec-label" style="margin-bottom:0.75rem">✦ Ton ciel natal</p>
+          <div id="astro-paid"></div>
+        </div>
+
+        <!-- 2 ACTIONS -->
         <div style="margin-bottom:1.25rem">
           <p class="sec-label" style="margin-bottom:0.75rem">2 actions concrètes pour ce mois</p>
-          <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">1</div>
-            <div><p class="action-title" id="action1-title">Le journal des structures</p><p class="action-desc" id="action1-desc">Chaque matin, 5 minutes. Note un pattern que tu as observé hier.</p><p class="action-freq" id="action1-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Chaque matin · 5 min</p></div>
+          <div class="action-item">
+            <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC">1</div>
+            <div><p class="action-title" id="action1-title">Le journal des structures</p><p class="action-desc" id="action1-desc">Chaque matin, 5 minutes. Note un pattern observé hier.</p><p class="action-freq" id="action1-freq">Chaque matin · 5 min</p></div>
           </div>
-          <div style="background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start">
-            <div class="action-num" style="background:rgba(212,83,126,0.2);color:#F4C0D1;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px">2</div>
-            <div><p class="action-title" id="action2-title">La phrase non dite</p><p class="action-desc" id="action2-desc">Dis à quelqu'un quelque chose que tu ressens vraiment.</p><p class="action-freq" id="action2-freq" style="font-size:0.65rem;color:var(--text-faint);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em">Cette semaine · 1 fois</p></div>
+          <div class="action-item">
+            <div class="action-num" style="background:rgba(212,83,126,0.2);color:#F4C0D1">2</div>
+            <div><p class="action-title" id="action2-title">La phrase non dite</p><p class="action-desc" id="action2-desc">Dis à quelqu'un quelque chose que tu ressens vraiment.</p><p class="action-freq" id="action2-freq">Cette semaine · 1 fois</p></div>
           </div>
         </div>
 
@@ -478,81 +535,62 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <button onclick="window.open('cosmos-pdf.html','_blank')" style="background:linear-gradient(135deg,#BA7517,#FAC775);border:none;border-radius:100px;padding:0.85rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%">
             ⬇ Télécharger mon analyse complète
           </button>
-          <p style="font-size:0.65rem;color:var(--text-faint);margin-top:0.5rem">Format PDF · Design premium · Garde-le sur ton téléphone</p>
+          <p style="font-size:0.62rem;color:var(--text-faint);margin-top:0.5rem">Format PDF · Design premium · Garde-le sur ton téléphone</p>
         </div>
-        
+
         <!-- PARRAINAGE -->
-        <div id="gift-section" style="background:linear-gradient(135deg,rgba(127,119,221,0.1),rgba(212,83,126,0.08));border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center">
-          <p class="sec-label" style="margin-bottom:0.5rem">✦ Offre cette expérience</p>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#C8C4E8;margin-bottom:0.5rem;font-style:italic">Ton analyse t'a touché·e ?</p>
-          <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.6">Offre l'expérience complète à quelqu'un qui compte. Gratuitement, en un clic.</p>
-          <button onclick="checkEmailBeforeAction(function(){ shareGift(); }, 'gift')" id="gift-btn" style="background:linear-gradient(135deg,var(--purple),var(--rose));border:none;border-radius:100px;padding:0.85rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem">
+        <div id="gift-section" style="background:linear-gradient(135deg,rgba(127,119,221,0.1),rgba(212,83,126,0.08));border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;text-align:center">
+          <p class="sec-label" style="margin-bottom:0.4rem">✦ Offre cette expérience</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C8C4E8;margin-bottom:0.4rem;font-style:italic">Ton analyse t'a touché·e ?</p>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1.1rem;line-height:1.6">Offre l'expérience complète à quelqu'un qui compte. Gratuitement, en un clic.</p>
+          <button onclick="checkEmailBeforeAction(function(){ shareGift(); }, 'gift')" id="gift-btn" style="background:linear-gradient(135deg,var(--purple),var(--rose));border:none;border-radius:100px;padding:0.8rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.5rem">
             🎁 Offrir l'analyse complète à un ami
           </button>
-          <p id="gift-link-display" style="font-size:0.72rem;color:var(--text-faint);display:none"></p>
         </div>
 
         <!-- FEEDBACK + CHAPITRE II -->
-        <div style="background:var(--deep);border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center">
-          <p class="sec-label" style="margin-bottom:0.75rem">Ton avis compte</p>
-          <p style="font-size:0.85rem;color:#C8C4E8;margin-bottom:1rem">Cette analyse t'a-t-elle aidé à mieux te comprendre ?</p>
-          <div style="display:flex;gap:10px;justify-content:center;margin-bottom:1rem">
-            <button onclick="sendFeedback(1)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
-            <button onclick="sendFeedback(2)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
-            <button onclick="sendFeedback(3)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
-            <button onclick="sendFeedback(4)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
-            <button onclick="sendFeedback(5)" style="font-size:1.8rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+        <div style="background:var(--deep);border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;text-align:center">
+          <p class="sec-label" style="margin-bottom:0.65rem">Ton avis compte</p>
+          <p style="font-size:0.82rem;color:#C8C4E8;margin-bottom:0.9rem">Cette analyse t'a-t-elle aidé à mieux te comprendre ?</p>
+          <div style="display:flex;gap:10px;justify-content:center;margin-bottom:0.9rem">
+            <button onclick="sendFeedback(1)" style="font-size:1.6rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+            <button onclick="sendFeedback(2)" style="font-size:1.6rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+            <button onclick="sendFeedback(3)" style="font-size:1.6rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+            <button onclick="sendFeedback(4)" style="font-size:1.6rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
+            <button onclick="sendFeedback(5)" style="font-size:1.6rem;background:none;border:none;cursor:pointer;color:#FAC775">⭐</button>
           </div>
-          <textarea id="feedback-text" placeholder="Un commentaire, une réflexion..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.75rem;color:#C8C4E8;font-family:'DM Sans',sans-serif;font-size:0.82rem;line-height:1.6;resize:none;height:80px;margin-bottom:1.25rem;outline:none"></textarea>
-          <p style="font-size:0.85rem;color:#C8C4E8;margin-bottom:0.5rem">Intéressé·e par le <strong>Chapitre II — Tes patterns amoureux</strong> ?</p>
-          <p style="font-size:0.75rem;color:var(--text-faint);margin-bottom:1rem">Sois notifié·e en avant-première dès sa sortie.</p>
-          <button onclick="checkEmailBeforeAction(function(){ registerChapter2(); }, 'chapter2')" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.75rem" id="chapter2-btn">Je veux être notifié·e</button>
-          <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.65rem 1.5rem;color:#AFA9EC;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;width:100%">↑ Revenir en haut</button>
+          <textarea id="feedback-text" placeholder="Un commentaire, une réflexion..." style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.75rem;color:#C8C4E8;font-family:'DM Sans',sans-serif;font-size:0.8rem;line-height:1.6;resize:none;height:75px;margin-bottom:1.1rem;outline:none"></textarea>
+          <p style="font-size:0.82rem;color:#C8C4E8;margin-bottom:0.4rem">Intéressé·e par le <strong>Chapitre II — Tes patterns amoureux</strong> ?</p>
+          <p style="font-size:0.72rem;color:var(--text-faint);margin-bottom:0.9rem">Sois notifié·e en avant-première dès sa sortie.</p>
+          <button onclick="checkEmailBeforeAction(function(){ registerChapter2(); }, 'chapter2')" style="background:var(--purple);border:none;border-radius:100px;padding:0.75rem 2rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;width:100%;margin-bottom:0.65rem" id="chapter2-btn">Je veux être notifié·e</button>
+          <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.6rem 1.5rem;color:#AFA9EC;font-family:'DM Sans',sans-serif;font-size:0.8rem;cursor:pointer;width:100%">↑ Revenir en haut</button>
         </div>
 
-        <!-- CARTE DE PARTAGE -->
-        <div class="share-section" style="margin-bottom:1.25rem">
+        <!-- PARTAGE -->
+        <div style="margin-bottom:1.25rem">
           <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
-          <div class="share-card-visual" id="share-card">
-            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="360" cy="30" r="70" fill="rgba(127,119,221,0.06)"/>
-              <circle cx="40" cy="130" r="50" fill="rgba(212,83,126,0.05)"/>
-            </svg>
+          <div class="share-card-visual" id="share-card-paid">
             <div style="position:relative;z-index:2">
-              <p class="share-logo">COSMOS<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
-              <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
-              <svg viewBox="0 0 100 100" width="70" height="70" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-                <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-                <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
-                <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
-                <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
-                <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
-                <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
-              </svg>
-              <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:8px" id="share-pills">
-                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">Lune 82%</span>
-                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">Systémique 91%</span>
-                <span style="font-size:0.58rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">Protecteur 74%</span>
-              </div>
-              <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
+              <p class="share-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
+              <p class="share-profile-name" id="share-profile-name-paid">L'Architecte Lunaire</p>
+              <p class="share-code" id="share-code-paid">LUN · SYS · PRO · cosmos-vision.com</p>
             </div>
           </div>
           <div class="share-btns">
-            <button class="share-btn share-btn-ig" onclick="shareIG()">Partager sur Instagram Stories</button>
-            <button class="share-btn share-btn-fb" onclick="shareFB()">Partager sur Facebook</button>
-            <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyCode()">Copier mon code</button>
+            <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
+            <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
+            <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" id="copy-btn-paid" onclick="copyCode()">Copier mon code</button>
           </div>
         </div>
 
         <!-- CHAPITRE SUIVANT -->
         <div class="next-chapter">
           <div class="nc-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
           <div>
-            <p class="nc-title">Chapitre II — Tes patterns amoureux</p>
-            <p class="nc-sub">Bientôt disponible · Modules approfondis · cosmos-vision.com</p>
+            <p style="font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:2px">Chapitre II — Tes patterns amoureux</p>
+            <p style="font-size:0.68rem;color:var(--text-faint)">Bientôt disponible · cosmos-vision.com</p>
           </div>
         </div>
 
@@ -572,19 +610,38 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
   resize();make(160);window.addEventListener('resize',function(){resize();make(160);});requestAnimationFrame(draw);
 })();
 
-var userData={}, quizData={answers:[]};
-try{ userData=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}'); }catch(e){}
-try{ quizData=JSON.parse(sessionStorage.getItem('cosmos_quiz')||'{}'); }catch(e){}
-if(userData.prenom){ document.getElementById('nav-name').textContent=userData.prenom; }
+/* ROUE */
+(function(){
+  var g=document.getElementById('wheel-dots');
+  if(!g)return;
+  var colors=['#7F77DD','#D4537E','#1D9E75','#BA7517','#AFA9EC','#F4C0D1'];
+  var rings=[140,112,84,56],perRing=36,svgNS='http://www.w3.org/2000/svg';
+  rings.forEach(function(r,ri){
+    for(var i=0;i<perRing;i++){
+      var angle=(i/perRing)*Math.PI*2;
+      var c=document.createElementNS(svgNS,'circle');
+      c.setAttribute('cx',160+Math.cos(angle)*r);
+      c.setAttribute('cy',160+Math.sin(angle)*r);
+      c.setAttribute('r',1.6);
+      c.setAttribute('fill',colors[(i+ri)%colors.length]);
+      c.setAttribute('opacity',0.4+Math.random()*0.5);
+      g.appendChild(c);
+    }
+  });
+})();
 
-/* ANIMATION RADAR */
+var userData={},quizData={answers:[]};
+try{userData=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}');}catch(e){}
+try{quizData=JSON.parse(sessionStorage.getItem('cosmos_quiz')||'{}');}catch(e){}
+if(userData.prenom){document.getElementById('nav-name').textContent=userData.prenom;}
+
+/* RADAR */
 function animateRadar(scores){
-  scores = scores || {top:82,right:91,bottom:74,left:88};
+  scores=scores||{top:82,right:91,bottom:74,left:88};
   var cx=110,cy=110,maxR=92,start=null;
   function step(ts){
     if(!start)start=ts;
-    var p=Math.min((ts-start)/1200,1);
-    var e=1-Math.pow(1-p,3);
+    var p=Math.min((ts-start)/1200,1),e=1-Math.pow(1-p,3);
     var pts=cx+','+(cy-(scores.top/100*maxR*e))+' '+(cx+(scores.right/100*maxR*e))+','+cy+' '+cx+','+(cy+(scores.bottom/100*maxR*e))+' '+(cx-(scores.left/100*maxR*e))+','+cy;
     document.getElementById('radar-shape').setAttribute('points',pts);
     document.getElementById('r-top').setAttribute('cy',cy-(scores.top/100*maxR*e));
@@ -597,12 +654,11 @@ function animateRadar(scores){
 }
 
 function animateShareRadar(scores){
-  scores = scores || {top:82,right:91,bottom:74,left:88};
+  scores=scores||{top:82,right:91,bottom:74,left:88};
   var cx=50,cy=50,maxR=42,start=null;
   function step(ts){
     if(!start)start=ts;
-    var p=Math.min((ts-start)/1000,1);
-    var e=1-Math.pow(1-p,3);
+    var p=Math.min((ts-start)/1000,1),e=1-Math.pow(1-p,3);
     var pts=cx+','+(cy-(scores.top/100*maxR*e))+' '+(cx+(scores.right/100*maxR*e))+','+cy+' '+cx+','+(cy+(scores.bottom/100*maxR*e))+' '+(cx-(scores.left/100*maxR*e))+','+cy;
     document.getElementById('share-radar').setAttribute('points',pts);
     document.getElementById('sr-top').setAttribute('cy',cy-(scores.top/100*maxR*e));
@@ -614,28 +670,6 @@ function animateShareRadar(scores){
   requestAnimationFrame(step);
 }
 
-/* ROUE 144 ARCHÉTYPES — points SVG animés */
-(function(){
-  var g = document.getElementById('wheel-dots');
-  if(!g) return;
-  var colors = ['#7F77DD','#D4537E','#1D9E75','#BA7517','#AFA9EC','#F4C0D1'];
-  var rings = [140, 112, 84, 56];
-  var perRing = 36;
-  var svgNS = 'http://www.w3.org/2000/svg';
-  rings.forEach(function(r, ri){
-    for(var i=0;i<perRing;i++){
-      var angle = (i / perRing) * Math.PI * 2;
-      var c = document.createElementNS(svgNS, 'circle');
-      c.setAttribute('cx', 160 + Math.cos(angle) * r);
-      c.setAttribute('cy', 160 + Math.sin(angle) * r);
-      c.setAttribute('r', 1.6);
-      c.setAttribute('fill', colors[(i + ri) % colors.length]);
-      c.setAttribute('opacity', 0.4 + Math.random() * 0.5);
-      g.appendChild(c);
-    }
-  });
-})();
-
 function animateCompat(){
   document.querySelectorAll('.compat-fill').forEach(function(f){
     var w=f.getAttribute('data-w');
@@ -645,333 +679,338 @@ function animateCompat(){
 
 setTimeout(animateRadar,300);
 
-/* PAIEMENT */
 var isPaid=false;
-try{ isPaid=sessionStorage.getItem('cosmos_paid')==='true'; }catch(e){}
+try{isPaid=sessionStorage.getItem('cosmos_paid')==='true';}catch(e){}
 
 function handlePayment(){
-  var STRIPE_LINK = 'https://buy.stripe.com/dRmdR2bW8eTBfDUgepdUY01';
-  var email = '';
-  try{ email = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}').email || ''; }catch(e){}
-  window.location.href = STRIPE_LINK + '?client_reference_id=' + encodeURIComponent(email||'user');
+  var STRIPE_LINK='https://buy.stripe.com/dRmdR2bW8eTBfDUgepdUY01';
+  var email='';
+  try{email=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}').email||'';}catch(e){}
+  window.location.href=STRIPE_LINK+'?client_reference_id='+encodeURIComponent(email||'user');
+}
+
+/* Peupler les previews des blocs avec le vrai profil */
+function populateBlocs(profile){
+  if(!profile) return;
+  /* BLOC 1 previews */
+  if(profile.blocages && profile.blocages[0]){
+    var b1el = document.getElementById('bloc1-preview1');
+    if(b1el) b1el.textContent = profile.blocages[0].nom + ' — ' + profile.blocages[0].desc.split('.')[0] + '…';
+  }
+  if(profile.miroir){
+    var mirEl = document.getElementById('bloc1-preview2');
+    if(mirEl) mirEl.textContent = profile.miroir.nom + ' — Résonance : '+(profile.miroir.resonance||92)+'%…';
+  }
+  if(profile.amour){
+    var amEl = document.getElementById('bloc1-preview3');
+    if(amEl) amEl.textContent = (profile.amour.style||'') + ' — ' + (profile.amour.desc||'').split('.')[0] + '…';
+  }
+  if(profile.blocages && profile.blocages[1]){
+    var b2el = document.getElementById('bloc1-preview4');
+    if(b2el) b2el.textContent = profile.blocages[1].nom + ' — ' + profile.blocages[1].desc.split('.')[0] + '…';
+  }
+  /* BLOC 2 previews */
+  if(profile.amour){
+    var am2 = document.getElementById('bloc2-preview1');
+    if(am2) am2.textContent = (profile.amour.pattern||'').split('.')[0] + '…';
+  }
+  if(profile.blocages && profile.blocages[1]){
+    var b2key = document.getElementById('bloc2-preview2');
+    if(b2key) b2key.textContent = (profile.blocages[1].cle||'').split('.')[0] + '…';
+  }
+  if(profile.miroir){
+    var sig = document.getElementById('bloc2-preview3');
+    if(sig) sig.textContent = (profile.miroir.signaux||'').split('.')[0] + '…';
+  }
+  if(profile.forces && profile.forces[1]){
+    var f2 = document.getElementById('bloc2-preview4');
+    if(f2) f2.textContent = profile.forces[1].nom + ' — ' + profile.forces[1].desc.split('.')[0] + '…';
+  }
+  /* BLOC 3 previews */
+  if(profile.actions && profile.actions[0]){
+    var a1t = document.getElementById('bloc3-action1-title');
+    var a1d = document.getElementById('bloc3-action1-desc');
+    if(a1t) a1t.textContent = profile.actions[0].titre;
+    if(a1d) a1d.textContent = profile.actions[0].desc.split('.')[0] + '…';
+  }
+  if(profile.actions && profile.actions[1]){
+    var a2t = document.getElementById('bloc3-action2-title');
+    var a2d = document.getElementById('bloc3-action2-desc');
+    if(a2t) a2t.textContent = profile.actions[1].titre;
+    if(a2d) a2d.textContent = profile.actions[1].desc.split('.')[0] + '…';
+  }
+  /* Force dominante visible */
+  if(profile.forces && profile.forces[0]){
+    var fn = document.getElementById('force1-name');
+    var fb = document.getElementById('force1-desc-blur');
+    if(fn) fn.textContent = profile.forces[0].nom;
+    if(fb) fb.textContent = profile.forces[0].desc + ' ' + profile.forces[0].paradoxe;
+  }
+  /* Rareté */
+  if(profile.profil && profile.profil.rarete){
+    var rarEl = document.getElementById('rarete-text');
+    if(rarEl) rarEl.textContent = 'Le tien est rare à ' + profile.profil.rarete;
+  }
+  /* Portrait ligne 1 visible */
+  if(profile.portrait && profile.portrait[0]){
+    var pl = document.getElementById('portrait-line-visible');
+    if(pl) pl.innerHTML = '<p class="portrait-line">'+profile.portrait[0]+'</p>';
+  }
+  /* Portrait lignes floutées */
+  if(profile.portrait && profile.portrait.length > 1){
+    var pb = document.getElementById('portrait-lines-blurred');
+    if(pb){
+      pb.innerHTML = profile.portrait.slice(1).map(function(l){
+        return '<p class="portrait-line">'+l+'</p>';
+      }).join('<br>');
+    }
+  }
+}
+
+function populateEmailPopup(profile){
+  if(!profile||!profile.profil) return;
+  var nameEl=document.getElementById('popup-archetype-name');
+  var line1El=document.getElementById('popup-portrait-line1');
+  var line2El=document.getElementById('popup-portrait-line2');
+  var exitEl=document.getElementById('exit-archetype-name');
+  if(nameEl) nameEl.textContent=profile.profil.nom||'';
+  if(exitEl) exitEl.textContent=profile.profil.nom||'ton archétype';
+  if(line1El&&profile.portrait&&profile.portrait[0]) line1El.textContent=profile.portrait[0];
+  if(line2El&&profile.portrait&&profile.portrait[1]) line2El.textContent=profile.portrait[1];
 }
 
 /* DÉBLOCAGE */
 function saveEmail(){
-  if (typeof gtag === 'function') { gtag('event', 'email_submit'); }
-  var email = document.getElementById('email-input').value.trim();
+  if(typeof gtag==='function'){gtag('event','email_submit');}
+  var email=document.getElementById('email-input').value.trim();
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    document.getElementById('email-input').style.border = '1px solid #D4537E';
+    document.getElementById('email-input').style.border='1px solid #D4537E';
     return;
   }
-  try{
-    var user = JSON.parse(sessionStorage.getItem('cosmos_user')) || {};
-    user.email = email;
-    sessionStorage.setItem('cosmos_user', JSON.stringify(user));
-  }catch(e){}
-  document.getElementById('email-capture').style.display = 'none';
-  registerBrevoContact(email, user.prenom || '', 3);
-  var savedProfile = null;
-  try{ savedProfile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-  if(savedProfile && savedProfile.profil){
-    document.querySelectorAll('.portrait-block,.radar-wrap,.paid-section,#dim-pills').forEach(function(el){ el.style.opacity='1'; });
-    var banner = document.getElementById('demo-banner');
+  try{var user=JSON.parse(sessionStorage.getItem('cosmos_user'))||{};user.email=email;sessionStorage.setItem('cosmos_user',JSON.stringify(user));}catch(e){}
+  document.getElementById('email-capture').style.display='none';
+  registerBrevoContact(email,userData.prenom||'',3);
+  var savedProfile=null;
+  try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+  if(savedProfile&&savedProfile.profil){
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills').forEach(function(el){el.style.opacity='1';});
+    var banner=document.getElementById('demo-banner');
     if(banner) banner.style.display='none';
     window.CosmosAPI.apply(savedProfile);
-    if(typeof animateRadar === 'function' && savedProfile.dims){
+    populateBlocs(savedProfile);
+    if(typeof animateRadar==='function'&&savedProfile.dims){
       animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
     }
-    if(typeof animateShareRadar === 'function' && savedProfile.dims){
+    if(typeof animateShareRadar==='function'&&savedProfile.dims){
       animateShareRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
-    }
-    /* Mettre à jour la rareté et teaser force */
-    if(savedProfile.profil && savedProfile.profil.rarete){
-      var rarEl = document.getElementById('rarete-text');
-      if(rarEl) rarEl.textContent = 'Le tien est rare à ' + savedProfile.profil.rarete;
-    }
-    if(savedProfile.forces && savedProfile.forces[0]){
-      var forceTeaser = document.getElementById('force1-teaser');
-      if(forceTeaser) forceTeaser.textContent = savedProfile.forces[0].nom + ' — ' + savedProfile.forces[0].desc.split('.')[0] + '…';
     }
   } else {
     window.CosmosAPI.init();
   }
-  if(window._pendingAction){
-    var action = window._pendingAction;
-    window._pendingAction = null;
-    action();
+  if(window._pendingAction){var action=window._pendingAction;window._pendingAction=null;action();}
+}
+
+function showExitMessage(){
+  if(typeof gtag==='function'){gtag('event','email_popup_close');}
+  document.getElementById('email-capture').style.display='none';
+  document.getElementById('exit-message').style.display='flex';
+}
+
+function returnToEmail(){
+  document.getElementById('exit-message').style.display='none';
+  document.getElementById('email-capture').style.display='flex';
+}
+
+function leaveForGood(){
+  if(typeof gtag==='function'){gtag('event','email_popup_abandon');}
+  document.getElementById('exit-message').style.display='none';
+  var savedProfile=null;
+  try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+  if(savedProfile&&savedProfile.profil){
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills').forEach(function(el){el.style.opacity='1';});
+    var banner=document.getElementById('demo-banner');
+    if(banner) banner.style.display='none';
+    var stepsEl=document.getElementById('loading-steps');
+    if(stepsEl) stepsEl.style.display='none';
+    window.CosmosAPI.apply(savedProfile);
+    populateBlocs(savedProfile);
+    if(typeof animateRadar==='function'&&savedProfile.dims){
+      animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
+    }
+  } else {
+    window.CosmosAPI.init();
   }
 }
 
 function skipEmail(){
-  if (typeof gtag === 'function') { gtag('event', 'email_popup_close'); }
-  document.getElementById('email-capture').style.display = 'none';
-  var savedProfile = null;
-  try{ savedProfile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-  if(savedProfile && savedProfile.profil){
-    document.querySelectorAll('.portrait-block,.radar-wrap,#dim-pills').forEach(function(el){ el.style.opacity='1'; });
-    var banner = document.getElementById('demo-banner');
-    if(banner) banner.style.display='none';
-    var stepsEl = document.getElementById('loading-steps');
-    if(stepsEl) stepsEl.style.display='none';
-    window.CosmosAPI.apply(savedProfile);
-    if(typeof animateRadar === 'function' && savedProfile.dims){
-      animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
-    }
-    if(typeof animateShareRadar === 'function' && savedProfile.dims){
-      animateShareRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
-    }
-  } else {
-    window.CosmosAPI.init();
-  }
+  showExitMessage();
 }
 
-function checkEmailBeforeAction(action, context){
-  var user = {};
-  try{ user = JSON.parse(sessionStorage.getItem('cosmos_user')) || {}; }catch(e){}
-  if(user.email){ action(); return; }
-  var title = document.querySelector('#email-capture h2');
-  var desc = document.querySelector('#email-capture p:nth-child(3)');
-  if(context === 'payment'){
-    if(title) title.textContent = 'Entre ton email avant de continuer';
-    if(desc) desc.textContent = 'Nécessaire pour recevoir ta confirmation d\'achat.';
-  } else if(context === 'chapter2'){
-    if(title) title.textContent = 'Pour être notifié·e en avant-première';
-    if(desc) desc.textContent = 'Entre ton email pour recevoir le Chapitre II dès sa sortie.';
-  } else if(context === 'gift'){
-    if(title) title.textContent = 'Entre ton email d\'abord';
-    if(desc) desc.textContent = 'On a besoin de ton email pour envoyer le cadeau à ton ami.';
-  } else {
-    if(title) title.textContent = 'Entre ton email pour continuer';
-    if(desc) desc.textContent = 'Nécessaire pour accéder à ton analyse complète.';
+function checkEmailBeforeAction(action,context){
+  var user={};
+  try{user=JSON.parse(sessionStorage.getItem('cosmos_user'))||{};}catch(e){}
+  if(user.email){action();return;}
+  var title=document.querySelector('#email-capture h2');
+  var desc=document.querySelector('#email-capture p:nth-child(3)');
+  if(context==='payment'){
+    if(title) title.textContent='Entre ton email avant de continuer';
+    if(desc) desc.textContent='Nécessaire pour recevoir ta confirmation d\'achat.';
+  } else if(context==='chapter2'){
+    if(title) title.textContent='Pour être notifié·e en avant-première';
+    if(desc) desc.textContent='Entre ton email pour recevoir le Chapitre II dès sa sortie.';
+  } else if(context==='gift'){
+    if(title) title.textContent='Entre ton email d\'abord';
+    if(desc) desc.textContent='On a besoin de ton email pour envoyer le cadeau à ton ami.';
   }
-  window._pendingAction = action;
-  document.getElementById('email-capture').style.display = 'flex';
+  window._pendingAction=action;
+  document.getElementById('email-capture').style.display='flex';
 }
 
 function unlockPaidContent(fromGift){
-  var isGift = fromGift || false;
-  try{ isGift = isGift || !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
-  if(!isGift){ try{ sessionStorage.setItem('cosmos_paid','true'); }catch(e){} }
+  var isGift=fromGift||false;
+  try{isGift=isGift||!!sessionStorage.getItem('cosmos_gift_received');}catch(e){}
+  if(!isGift){try{sessionStorage.setItem('cosmos_paid','true');}catch(e){}}
   if(isGift){
     setTimeout(function(){
-      var giftBtn = document.getElementById('gift-btn');
+      var giftBtn=document.getElementById('gift-btn');
       if(giftBtn) giftBtn.closest('div[style*="linear-gradient"]').style.display='none';
-    }, 500);
+    },500);
   }
-  var giftCode = userData.prenom ?
-    userData.prenom.substring(0,3).toUpperCase() + Math.random().toString(36).substring(2,7).toUpperCase() :
-    Math.random().toString(36).substring(2,9).toUpperCase();
-  try{ sessionStorage.setItem('cosmos_gift', giftCode); }catch(e){}
+  var giftCode=userData.prenom?userData.prenom.substring(0,3).toUpperCase()+Math.random().toString(36).substring(2,7).toUpperCase():Math.random().toString(36).substring(2,9).toUpperCase();
+  try{sessionStorage.setItem('cosmos_gift',giftCode);}catch(e){}
   isPaid=true;
-  document.getElementById('paywall').style.display='none';
-  /* Déflouter les teasers après paiement */
-  document.querySelectorAll('.teaser-blur').forEach(function(el){
-    el.style.filter='none';
-    el.style.userSelect='auto';
-    el.style.pointerEvents='auto';
+  /* Masquer les 3 blocs paywall */
+  ['paywall-bloc1','paywall-bloc2','paywall-bloc3'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.style.display='none';
   });
-  document.querySelectorAll('.teaser-text::after').forEach(function(el){
-    el.style.display='none';
-  });
-  /* Supprimer le dégradé de masquage sur teaser-text */
-  document.querySelectorAll('.teaser-text').forEach(function(el){
-    el.style.webkitMaskImage='none';
-    el.style.maskImage='none';
-  });
-  /* Retirer les icônes cadenas */
-  document.querySelectorAll('.lock-icon').forEach(function(el){
-    el.textContent='✦';
-  });
-  document.querySelectorAll('[style*="blur"]').forEach(function(el){
-    el.style.filter='none';
-    el.style.userSelect='auto';
-    el.style.pointerEvents='auto';
-  });
-  var astroLocked = document.getElementById('astro-locked');
-  if(astroLocked) astroLocked.style.display='none';
+  /* Déflouter */
+  document.querySelectorAll('.portrait-fade-content').forEach(function(el){el.style.filter='none';el.style.userSelect='auto';});
+  document.querySelectorAll('.portrait-fade::after').forEach(function(el){el.style.display='none';});
+  document.querySelectorAll('.force-desc-blur').forEach(function(el){el.style.filter='none';el.style.userSelect='auto';});
+  document.querySelectorAll('.bloc-item-blur').forEach(function(el){el.style.filter='none';el.style.userSelect='auto';el.style.pointerEvents='auto';});
   document.getElementById('paid-section').classList.add('unlocked');
   document.getElementById('demo-banner').style.display='none';
   var cachedProfile=null;
-  try{ cachedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-  if(cachedProfile && window.CosmosAPI){
-    window.CosmosAPI.apply(cachedProfile);
-  } else if(window.CosmosAPI){
-    window.CosmosAPI.init();
-  }
+  try{cachedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+  if(cachedProfile&&window.CosmosAPI){window.CosmosAPI.apply(cachedProfile);populateBlocs(cachedProfile);}
+  else if(window.CosmosAPI){window.CosmosAPI.init();}
   setTimeout(function(){
     animateCompat();
     var p=cachedProfile;
-    if(p && p.dims){
-      animateShareRadar({top:p.dims.cosmique[0],right:p.dims.cognitif[0],bottom:p.dims.emotionnel[0],left:p.dims.relationnel[0]});
-    } else {
-      animateShareRadar();
-    }
-  }, 300);
-  if(userData && userData.email){
-    sendBrevoEmail(userData.email, userData.prenom || 'toi');
-    registerBrevoContact(userData.email, userData.prenom || '', 4);
+    if(p&&p.dims){animateShareRadar({top:p.dims.cosmique[0],right:p.dims.cognitif[0],bottom:p.dims.emotionnel[0],left:p.dims.relationnel[0]});}
+    else{animateShareRadar();}
+  },300);
+  if(userData&&userData.email){
+    sendBrevoEmail(userData.email,userData.prenom||'toi');
+    registerBrevoContact(userData.email,userData.prenom||'',4);
   }
-  setTimeout(function(){ document.getElementById('paid-section').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
+  setTimeout(function(){document.getElementById('paid-section').scrollIntoView({behavior:'smooth',block:'start'});},400);
 }
 
-if(isPaid || window.location.search.includes('success=true')){
-  /* Appliquer le profil depuis le cache sans regénérer */
+if(isPaid||window.location.search.includes('success=true')){
   setTimeout(function(){
-    var cachedForUnlock = null;
-    try{ cachedForUnlock = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-    if(cachedForUnlock && window.CosmosAPI){
+    var cachedForUnlock=null;
+    try{cachedForUnlock=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+    if(cachedForUnlock&&window.CosmosAPI){
       window.CosmosAPI.apply(cachedForUnlock);
-      document.querySelectorAll('.portrait-block,.radar-wrap,#dim-pills').forEach(function(el){ el.style.opacity='1'; });
-      var bannerEl = document.getElementById('demo-banner');
+      populateBlocs(cachedForUnlock);
+      document.querySelectorAll('.card,.radar-wrap,#dim-pills').forEach(function(el){el.style.opacity='1';});
+      var bannerEl=document.getElementById('demo-banner');
       if(bannerEl) bannerEl.style.display='none';
-      var stepsEl2 = document.getElementById('loading-steps');
+      var stepsEl2=document.getElementById('loading-steps');
       if(stepsEl2) stepsEl2.style.display='none';
-      if(cachedForUnlock.dims){
-        animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});
-      }
+      if(cachedForUnlock.dims){animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});}
     }
     unlockPaidContent();
-  }, 200);
-}
-if(window.location.search.includes('gift=')){
-  var giftParam = new URLSearchParams(window.location.search).get('gift');
-  try{ sessionStorage.setItem('cosmos_gift_received', giftParam); }catch(e){}
-  window.location.href = 'index.html?gift=' + giftParam;
+  },200);
 }
 
-/* CHARGEMENT PROFIL */
-setTimeout(function(){
-  /* Si retour Stripe ou déjà payé — ne pas regénérer */
-  if(window.location.search.includes('success=true') || sessionStorage.getItem('cosmos_paid') === 'true'){
-    return;
-  }
-if(window.CosmosAPI){
-  try{ sessionStorage.removeItem('cosmos_profile'); }catch(e){}
-  document.querySelectorAll('.portrait-block,.radar-wrap').forEach(function(el){ el.style.opacity='0'; });
-  document.getElementById('profile-name').textContent = '✨ Cosmos construit ton profil personnalisé, merci de patienter environ 30 secondes…';
-  document.getElementById('profile-code').textContent = '· · ·';
-  var steps = [
-    'Lecture de tes 9 réponses projectives…',
-    'Analyse de tes patterns émotionnels…',
-    'Détection de tes dimensions dominantes…',
-    'Identification de tes blocages inconscients…',
-    'Calcul de ton archétype parmi 144…',
-    'Exploration de ton monde intérieur…',
-    'Génération de ton portrait unique…',
-    'Connexion à ton ciel natal…',
-    'Calcul de ton âme miroir…',
-    'Finalisation de ton analyse complète…',
-    'Ton profil prend forme…'
-  ];
-  var stepsEl = document.getElementById('loading-steps');
-  var si = 0;
-  var stepTimer = setInterval(function(){
-    if(si < steps.length){
-      var line = document.createElement('div');
-      line.style.cssText = 'font-size:0.78rem;color:#AFA9EC;display:flex;align-items:center;gap:8px;margin-top:0.5rem';
-      line.innerHTML = '<span style="color:#1D9E75;font-size:0.7rem">✓</span>' + steps[si];
-      stepsEl.appendChild(line);
-      si++;
-    } else { clearInterval(stepTimer); }
-  }, 4000);
-  var isGiftReceived = false;
-  try{ isGiftReceived = !!sessionStorage.getItem('cosmos_gift_received'); }catch(e){}
-  if(isGiftReceived){
-    try{ sessionStorage.removeItem('cosmos_profile'); sessionStorage.removeItem('cosmos_paid'); }catch(e){}
-  }
-  window.CosmosAPI.init();
-  if(isGiftReceived){
-    var giftCheck = setInterval(function(){
-      var profile = null;
-      try{ profile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
-      if(profile && profile.profil && profile.profil.code !== 'LUN-SYS-PRO'){
-        clearInterval(giftCheck);
-        unlockPaidContent(true);
-        try{ sessionStorage.removeItem('cosmos_gift_received'); }catch(e){}
-      }
-    }, 500);
-    setTimeout(function(){ clearInterval(giftCheck); }, 60000);
-  }
+if(window.location.search.includes('gift=')){
+  var giftParam=new URLSearchParams(window.location.search).get('gift');
+  try{sessionStorage.setItem('cosmos_gift_received',giftParam);}catch(e){}
+  window.location.href='index.html?gift='+giftParam;
 }
-}, 100);
+
+/* CHARGEMENT */
+setTimeout(function(){
+  if(window.location.search.includes('success=true')||sessionStorage.getItem('cosmos_paid')==='true'){return;}
+  if(window.CosmosAPI){
+    try{sessionStorage.removeItem('cosmos_profile');localStorage.removeItem('cosmos_profile');}catch(e){}
+    document.querySelectorAll('.card,.radar-wrap').forEach(function(el){el.style.opacity='0';});
+    document.getElementById('profile-name').textContent='✨ Cosmos analyse tes réponses…';
+    document.getElementById('profile-code').textContent='· · ·';
+    var steps=['Lecture de tes 9 réponses projectives…','Analyse de tes patterns émotionnels…','Détection de tes dimensions dominantes…','Identification de tes blocages inconscients…','Calcul de ton archétype parmi 144…','Connexion à ton monde intérieur…','Génération de ton portrait unique…','Connexion à ton ciel natal…','Calcul de ton âme miroir…','Finalisation de ton analyse complète…'];
+    var stepsEl=document.getElementById('loading-steps'),si=0;
+    var stepTimer=setInterval(function(){
+      if(si<steps.length){
+        var line=document.createElement('div');
+        line.style.cssText='font-size:0.75rem;color:#AFA9EC;display:flex;align-items:center;gap:8px;margin-top:0.4rem';
+        line.innerHTML='<span style="color:#1D9E75;font-size:0.65rem">✓</span>'+steps[si];
+        stepsEl.appendChild(line);si++;
+      } else {clearInterval(stepTimer);}
+    },4000);
+    var isGiftReceived=false;
+    try{isGiftReceived=!!sessionStorage.getItem('cosmos_gift_received');}catch(e){}
+    if(isGiftReceived){try{sessionStorage.removeItem('cosmos_profile');sessionStorage.removeItem('cosmos_paid');}catch(e){}}
+    window.CosmosAPI.init();
+    if(isGiftReceived){
+      var giftCheck=setInterval(function(){
+        var profile=null;
+        try{profile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+        if(profile&&profile.profil&&profile.profil.code!=='LUN-SYS-PRO'){
+          clearInterval(giftCheck);unlockPaidContent(true);
+          try{sessionStorage.removeItem('cosmos_gift_received');}catch(e){}
+        }
+      },500);
+      setTimeout(function(){clearInterval(giftCheck);},60000);
+    }
+  }
+},100);
 
 function shareIG(){
   var nom=document.getElementById('profile-name').textContent||'Mon profil Cosmos';
-  var code=document.getElementById('share-code').textContent||'';
-  alert('📸 Pour partager sur Instagram :\n\n1. Fais une capture d\'écran de ta carte de profil\n2. Ouvre Instagram → "+" → Story\n3. Partage !\n\nTon profil : '+nom+'\n'+code);
+  alert('📸 Pour partager :\n1. Capture d\'écran\n2. Instagram → Story\n\nTon profil : '+nom);
 }
 function shareFB(){
-  var nom=document.getElementById('profile-name').textContent||'Mon profil Cosmos';
+  var nom=document.getElementById('profile-name').textContent||'';
   var code=document.getElementById('share-code').textContent||'';
   var text=encodeURIComponent('Je viens de découvrir mon profil Cosmos : '+nom+' ('+code+'). Et toi ? 🌟');
   window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('https://cosmos-vision.com')+'&quote='+text,'_blank');
 }
 function copyCode(){
   var code=document.getElementById('share-code').textContent;
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(code).then(function(){
-      var btn=document.getElementById('copy-btn');
-      btn.textContent='✓ Copié !';
-      setTimeout(function(){btn.textContent='Copier mon code';},2000);
-    });
-  }
+  if(navigator.clipboard){navigator.clipboard.writeText(code).then(function(){var btn=document.getElementById('copy-btn');btn.textContent='✓ Copié !';setTimeout(function(){btn.textContent='Copier mon code';},2000);});}
 }
 function sendFeedback(note){
   var stars=document.querySelectorAll('[onclick^="sendFeedback"]');
-  stars.forEach(function(s,i){ s.textContent=i<note?'⭐':'☆'; });
+  stars.forEach(function(s,i){s.textContent=i<note?'⭐':'☆';});
 }
 function registerChapter2(){
   var btn=document.getElementById('chapter2-btn');
   var commentaire=document.getElementById('feedback-text').value;
-  btn.textContent='✓ Tu seras notifié·e !';
-  btn.style.background='var(--teal)';
-  btn.disabled=true;
-  if(userData && userData.email){ registerBrevoContact(userData.email, userData.prenom||'', 5, commentaire); }
+  btn.textContent='✓ Tu seras notifié·e !';btn.style.background='var(--teal)';btn.disabled=true;
+  if(userData&&userData.email){registerBrevoContact(userData.email,userData.prenom||'',5,commentaire);}
 }
 function shareGift(){
-  var code = '';
-  try{ code = sessionStorage.getItem('cosmos_gift') || ''; }catch(e){}
-  if(!code){
-    code = Math.random().toString(36).substring(2,9).toUpperCase();
-    try{ sessionStorage.setItem('cosmos_gift', code); }catch(e){}
-  }
-  var giftUrl = 'https://cosmos-vision.com/resultat.html?gift=' + code;
-  var popup = document.getElementById('gift-popup');
-  if(popup) {
-    document.getElementById('gift-url-hidden').value = giftUrl;
-    popup.style.display = 'flex';
-  }
+  var code='';
+  try{code=sessionStorage.getItem('cosmos_gift')||'';}catch(e){}
+  if(!code){code=Math.random().toString(36).substring(2,9).toUpperCase();try{sessionStorage.setItem('cosmos_gift',code);}catch(e){}}
+  var giftUrl='https://cosmos-vision.com/resultat.html?gift='+code;
+  var popup=document.getElementById('gift-popup');
+  if(popup){document.getElementById('gift-url-hidden').value=giftUrl;popup.style.display='flex';}
 }
 function sendGiftEmail(){
-  var email = document.getElementById('gift-email').value;
-  var prenom = document.getElementById('gift-prenom').value;
-  var giftUrl = document.getElementById('gift-url-hidden').value;
-  if(!email || !email.includes('@')){ alert('Merci d\'entrer un email valide !'); return; }
-  var btn = document.getElementById('gift-send-btn');
-  btn.textContent = 'Envoi en cours…';
-  btn.disabled = true;
-  fetch('https://api.brevo.com/v3/smtp/email', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'api-key': b1+b2 },
-    body: JSON.stringify({
-      templateId: 2,
-      to: [{ email: email, name: prenom || 'toi' }],
-      params: { prenom_ami: prenom || 'toi', prenom_parrain: userData.prenom || 'Quelqu\'un', gift_url: giftUrl }
-    })
-  }).then(function(){
-    registerBrevoContact(email, prenom || '', 3);
-    document.getElementById('gift-popup').style.display = 'none';
-    var btn2 = document.getElementById('gift-btn');
-    btn2.textContent = '✓ Cadeau envoyé !';
-    btn2.style.background = 'var(--teal)';
-  }).catch(function(){
-    btn.textContent = 'Envoyer le cadeau →';
-    btn.disabled = false;
-    alert('Erreur d\'envoi — réessaie !');
-  });
+  var email=document.getElementById('gift-email').value;
+  var prenom=document.getElementById('gift-prenom').value;
+  var giftUrl=document.getElementById('gift-url-hidden').value;
+  if(!email||!email.includes('@')){alert('Email invalide !');return;}
+  var btn=document.getElementById('gift-send-btn');btn.textContent='Envoi…';btn.disabled=true;
+  fetch('https://api.brevo.com/v3/smtp/email',{method:'POST',headers:{'Content-Type':'application/json','api-key':b1+b2},body:JSON.stringify({templateId:2,to:[{email:email,name:prenom||'toi'}],params:{prenom_ami:prenom||'toi',prenom_parrain:userData.prenom||'Quelqu\'un',gift_url:giftUrl}})})
+  .then(function(){registerBrevoContact(email,prenom||'',3);document.getElementById('gift-popup').style.display='none';var btn2=document.getElementById('gift-btn');btn2.textContent='✓ Cadeau envoyé !';btn2.style.background='var(--teal)';})
+  .catch(function(){btn.textContent='Envoyer →';btn.disabled=false;alert('Erreur — réessaie !');});
 }
-function closeGiftPopup(){ document.getElementById('gift-popup').style.display = 'none'; }
+function closeGiftPopup(){document.getElementById('gift-popup').style.display='none';}
 </script>
 
 <!-- POPUP CADEAU -->
@@ -988,18 +1027,41 @@ function closeGiftPopup(){ document.getElementById('gift-popup').style.display =
 </div>
 
 <!-- EMAIL CAPTURE -->
-<div id="email-capture" style="display:none;position:fixed;inset:0;background:rgba(7,6,15,0.92);z-index:500;align-items:center;justify-content:center;padding:1.5rem">
-  <div style="background:#0d0b1a;border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:2rem;width:100%;max-width:400px;text-align:center">
-    <p style="font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#AFA9EC;margin-bottom:0.75rem">✦ Ton profil est prêt</p>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:0.5rem;color:#F0EEF8">Où t'envoyer ton rapport ?</h2>
-    <p style="font-size:0.8rem;color:#8B87B0;margin-bottom:1.5rem;line-height:1.6">Entre ton email pour recevoir ton analyse complète et être prévenu·e du Chapitre II.</p>
-    <input id="email-input" type="email" placeholder="ton@email.com" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:'DM Sans',sans-serif;font-size:0.9rem;margin-bottom:0.75rem;outline:none;text-align:center"/>
-    <button onclick="saveEmail()" style="width:100%;background:#7F77DD;border:none;border-radius:100px;padding:0.9rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;margin-bottom:0.75rem">Voir mon profil →</button>
-    <button onclick="skipEmail()" style="background:none;border:none;color:#4A4870;font-family:'DM Sans',sans-serif;font-size:0.75rem;cursor:pointer;text-decoration:underline">Continuer sans email</button>
+<div id="email-capture" style="display:none;position:fixed;inset:0;background:rgba(7,6,15,0.95);z-index:500;align-items:center;justify-content:center;padding:1.5rem;overflow-y:auto">
+  <div style="background:linear-gradient(135deg,rgba(127,119,221,0.08),rgba(212,83,126,0.06));border:1px solid rgba(127,119,221,0.3);border-radius:20px;padding:2rem;width:100%;max-width:420px;text-align:center;position:relative">
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,#7F77DD,#D4537E,transparent)"></div>
+    <p style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#AFA9EC;margin-bottom:0.75rem">✦ Ton profil est prêt</p>
+    <h2 id="popup-archetype-name" style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#F0EEF8;margin-bottom:0.5rem;line-height:1.2">L'Architecte Lunaire</h2>
+    <div style="background:rgba(255,255,255,0.03);border-radius:10px;padding:0.75rem 1rem;margin-bottom:1.25rem;border-left:2px solid rgba(127,119,221,0.4)">
+      <p id="popup-portrait-line1" style="font-family:'Cormorant Garamond',serif;font-size:0.88rem;color:#C8C4E8;font-style:italic;line-height:1.7;margin-bottom:0.35rem">Tu ne t'expliques pas — tu te révèles lentement, à ceux qui savent attendre.</p>
+      <p id="popup-portrait-line2" style="font-family:'Cormorant Garamond',serif;font-size:0.88rem;color:#C8C4E8;font-style:italic;line-height:1.7">Là où les autres voient du bruit, tu perçois une architecture cachée.</p>
+    </div>
+    <p style="font-size:0.72rem;color:#8B87B0;margin-bottom:0.75rem">Entre ton email pour découvrir :</p>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:1.5rem;text-align:left">
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">⚡</span><span style="font-size:0.75rem;color:#C8C4E8">Ta <strong>force dominante</strong> et son paradoxe secret</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🧱</span><span style="font-size:0.75rem;color:#C8C4E8">Le <strong>blocage précis</strong> qui te freine sans que tu le saches</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🪞</span><span style="font-size:0.75rem;color:#C8C4E8">Ton <strong>âme miroir</strong> parmi 144 archétypes</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🌀</span><span style="font-size:0.75rem;color:#C8C4E8">Ce qui te <strong>vide mentalement</strong> sans que tu t'en rendes compte</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">✦</span><span style="font-size:0.75rem;color:#C8C4E8"><strong>2 actions concrètes</strong> personnalisées pour ce mois</span></div>
+    </div>
+    <input id="email-input" type="email" placeholder="ton@email.com" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.85rem;color:#F0EEF8;font-family:'DM Sans',sans-serif;font-size:0.9rem;margin-bottom:0.75rem;outline:none;text-align:center"/>
+    <button onclick="saveEmail()" style="width:100%;background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.95rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;margin-bottom:1rem;letter-spacing:0.02em">Révéler mon profil complet →</button>
+    <p style="font-size:0.6rem;color:#4A4870;letter-spacing:0.04em">Aucun spam · Désabonnement en 1 clic</p>
+    <button onclick="showExitMessage()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#4A4870;font-size:1rem;cursor:pointer;opacity:0.5">✕</button>
+  </div>
+</div>
+
+<!-- MESSAGE DE SORTIE -->
+<div id="exit-message" style="display:none;position:fixed;inset:0;background:rgba(7,6,15,0.95);z-index:501;align-items:center;justify-content:center;padding:1.5rem">
+  <div style="background:var(--deep);border:1px solid rgba(212,83,126,0.3);border-radius:20px;padding:2rem;width:100%;max-width:380px;text-align:center">
+    <p style="font-size:2rem;margin-bottom:1rem">🌙</p>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#F0EEF8;margin-bottom:0.75rem;line-height:1.4">Dommage de partir sans découvrir <span id="exit-archetype-name" style="color:#AFA9EC">ton archétype</span>…</h3>
+    <p style="font-size:0.78rem;color:#8B87B0;margin-bottom:1.5rem;line-height:1.7">Cosmos a analysé tes 9 réponses et identifié des mécanismes uniques — ta force cachée, ton blocage principal, ton âme miroir. Tout ça t'attend, à un email près.</p>
+    <button onclick="returnToEmail()" style="width:100%;background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.95rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;cursor:pointer;margin-bottom:0.75rem">Je veux découvrir mon profil →</button>
+    <button onclick="leaveForGood()" style="background:none;border:none;color:#4A4870;font-family:'DM Sans',sans-serif;font-size:0.72rem;cursor:pointer;text-decoration:underline">Non merci, quitter sans découvrir</button>
   </div>
 </div>
 
 </body>
-<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPKSNPDJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </html>
