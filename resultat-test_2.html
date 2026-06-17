@@ -51,8 +51,8 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .portrait-line{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:#C8C4E8;line-height:1.85;font-style:italic}
 .portrait-line+.portrait-line{margin-top:0.65rem}
 .portrait-fade{position:relative;margin-top:0.65rem}
-.portrait-fade-content{filter:blur(3px);user-select:none;pointer-events:none}
-.portrait-fade::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(13,11,26,0) 0%,rgba(13,11,26,0.85) 50%)}
+.portrait-fade-content{filter:blur(5px);user-select:none;pointer-events:none}
+.portrait-fade::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(13,11,26,0) 0%,rgba(13,11,26,0.95) 70%)}
 .radar-wrap{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;text-align:center}
 .radar-title{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#AFA9EC;margin-bottom:1rem}
 #radar-svg{width:100%;max-width:240px;display:block;margin:0 auto}
@@ -257,16 +257,15 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
       <!-- BOUTON DISCRET -->
       <div style="text-align:center;margin-bottom:1.25rem">
-        <button onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.65rem 1.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
+        <button onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:transparent;border:1px solid rgba(127,119,221,0.4);border-radius:100px;padding:0.65rem 1.75rem;color:#AFA9EC;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
           🔓 Révéler mon profil Cosmos complet — 7,90€
         </button>
-        <p style="font-size:0.62rem;color:#8B87B0;margin-top:0.5rem;text-align:center;letter-spacing:0.04em">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
       </div>
 
       <!-- ══ BLOC 1 ══ -->
       <div class="paywall-bloc bloc1" id="paywall-bloc1">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--purple-light);margin-bottom:0.25rem;letter-spacing:0.04em"> Cosmos a détecté </p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.35rem">4 révélations sur toi*</h2>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--purple-light);margin-bottom:0.25rem;letter-spacing:0.04em">✦ Cosmos a détecté ✦</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.35rem">4 révélations sur toi.*</h2>
         <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.25rem;font-style:italic">Ce que tu portes sans pouvoir le nommer.</p>
         <div class="bloc-items" style="margin-bottom:1rem">
           <div class="bloc-item" style="flex-direction:column;gap:4px">
@@ -291,8 +290,8 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
       <!-- ══ BLOC 2 ══ -->
       <div class="paywall-bloc bloc2" id="paywall-bloc2">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--rose);margin-bottom:0.25rem;letter-spacing:0.04em">✦ Tes patterns profonds ✦</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:1.25rem">Pourquoi tu te retrouves toujours au même endroit ?*</h2>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--rose);margin-bottom:0.25rem;letter-spacing:0.04em">✦ Tes patterns profonds ✦</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:1.25rem">Pourquoi tu te retrouves toujours au même endroit.*</h2>
         <div class="bloc-items" style="margin-bottom:1rem">
           <div class="bloc-item"><span class="bloc-item-icon">🔁</span><p style="font-size:0.85rem;color:#F0EEF8">Tes erreurs relationnelles répétées</p></div>
           <div class="bloc-item"><span class="bloc-item-icon">🧠</span><p style="font-size:0.85rem;color:#F0EEF8">La clé qui te libère</p></div>
@@ -304,17 +303,17 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
       <!-- ══ BLOC 3 ══ -->
       <div class="paywall-bloc bloc3" id="paywall-bloc3">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--teal);margin-bottom:0.25rem;letter-spacing:0.04em">✦ Actions personnalisées ✦</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.75rem">Cosmos a préparé deux actions pour toi*</h2>
-        <p style="font-size:0.85rem;color:#C8C4E8;line-height:1.7;margin-bottom:1.25rem;padding:0.85rem 1rem;background:rgba(29,158,117,0.06);border-radius:10px;border-left:2px solid var(--teal);text-align:left">Découvre tes 2 actions personnalisées que tu pourras appliquer immédiatement afin de t'aider à avancer dès aujourd'hui.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--teal);margin-bottom:0.25rem;letter-spacing:0.04em">✦ Actions personnalisées ✦</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.75rem">Cosmos a préparé deux actions pour toi.*</h2>
+        <p style="font-size:0.85rem;color:#C8C4E8;line-height:1.7;margin-bottom:1.25rem;padding:0.85rem 1rem;background:rgba(29,158,117,0.06);border-radius:10px;border-left:2px solid var(--teal);text-align:left">Cosmos a préparé 2 actions personnalisées que tu pourras appliquer immédiatement afin de t'aider à avancer dès aujourd'hui.</p>
         <p style="font-size:0.68rem;color:#8B87B0;font-style:italic;margin-bottom:1.5rem">* Détail du contenu visible uniquement une fois ton profil entièrement révélé.</p>
 
         <!-- BLOC RAPPORT -->
         <div style="background:linear-gradient(135deg,rgba(127,119,221,0.06),rgba(212,83,126,0.04));border:1px solid rgba(127,119,221,0.25);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:left;position:relative;overflow:hidden">
           <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,#7F77DD,transparent)"></div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:#AFA9EC;margin-bottom:0.25rem;letter-spacing:0.04em">🔓 Ton rapport Cosmos complet</p>
-          <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.5rem">Ce que Cosmos sait de toi :</h2>
-          <p style="font-size:0.82rem;color:var(--text-muted);font-style:italic;margin-bottom:1.1rem;line-height:1.6">Les réponses que Cosmos n'a pas encore révélées…</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#AFA9EC;margin-bottom:0.25rem;letter-spacing:0.04em">🔓 Ton rapport Cosmos complet</p>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.5rem">Tout ce que Cosmos sait de toi.</h2>
+          <p style="font-size:0.82rem;color:var(--text-muted);font-style:italic;margin-bottom:1.1rem;line-height:1.6">Toutes les réponses que Cosmos n'a pas encore révélées…</p>
           <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:1.1rem">
             <p style="font-size:0.78rem;color:#C8C4E8">✅ Ton essence profonde complète</p>
             <p style="font-size:0.78rem;color:#C8C4E8">🚀 Ta force dominante et son paradoxe</p>
@@ -333,122 +332,139 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         </div>
       </div>
 
-      <!-- PARTAGE GRATUIT -->
-      <div style="margin-bottom:1.25rem">
-        <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
-        <div class="share-card-visual" id="share-card">
-          <div style="position:relative;z-index:2">
-            <p class="share-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
-            <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
-            <svg viewBox="0 0 100 100" width="65" height="65" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-              <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-              <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
-              <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
-              <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
-              <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
-              <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
-            </svg>
-            <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:6px" id="share-pills">
-              <span style="font-size:0.55rem;padding:2px 7px;border-radius:20px;background:rgba(127,119,221,0.2);color:#AFA9EC">Lune 82%</span>
-              <span style="font-size:0.55rem;padding:2px 7px;border-radius:20px;background:rgba(29,158,117,0.18);color:#9FE1CB">Systémique 91%</span>
-              <span style="font-size:0.55rem;padding:2px 7px;border-radius:20px;background:rgba(212,83,126,0.18);color:#F4C0D1">Protecteur 74%</span>
-            </div>
-            <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
-          </div>
-        </div>
-        <div class="share-btns">
-          <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
-          <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
-          <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" id="copy-btn" onclick="copyCode()">Copier mon code</button>
-        </div>
-      </div>
-
       <!-- SECTION PAYANTE -->
       <div class="paid-section" id="paid-section">
 
-        <!-- BLOCAGES -->
-        <div style="margin-bottom:1.25rem" id="blocages-container">
-          <p class="sec-label" style="margin-bottom:0.75rem">Tes 2 blocages inconscients</p>
+        <!-- ══ PAGE 1 PAYANTE ══ -->
+
+        <!-- ESSENCE COMPLÈTE -->
+        <div class="card" style="margin-bottom:1.25rem">
+          <p class="sec-label">✅ Ton essence profonde</p>
+          <div id="portrait-full">
+            <p class="portrait-line">Tu ne t'expliques pas — tu te révèles lentement, à ceux qui savent attendre.</p>
+          </div>
         </div>
 
-        <!-- FORCES CACHÉES -->
-        <div style="margin-bottom:1.25rem">
-          <p class="sec-label" style="margin-bottom:0.75rem">Tes forces cachées</p>
-          <div class="force-card-paid">
-            <div class="force-icon-wrap" style="background:rgba(29,158,117,0.15)">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9FE1CB" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <!-- FORCE DOMINANTE COMPLÈTE -->
+        <div style="background:linear-gradient(135deg,rgba(127,119,221,0.08),rgba(7,6,15,0));border:1px solid rgba(127,119,221,0.25);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)"></div>
+          <p class="sec-label">🚀 Ta force dominante</p>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div class="force-icon-wrap">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
             </div>
-            <div>
-              <p class="force-name-paid" id="force2-name">La protection instinctive</p>
-              <p class="force-desc-paid" id="force2-desc">Tu crées de la sécurité sans t'en rendre compte.</p>
-              <p class="force-paradox-paid" id="force2-paradox" style="background:rgba(29,158,117,0.08)">Tu protèges tout le monde sauf toi-même.</p>
+            <div style="flex:1">
+              <p style="font-size:0.88rem;font-weight:500;color:var(--text);margin-bottom:5px" id="force1-name-full">La vision structurelle</p>
+              <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.65;margin-bottom:8px" id="force1-desc-full">Tu captes les patterns avant les détails. Tu vois la mécanique sous-jacente avant que quiconque l'ait nommée.</p>
+              <div style="background:rgba(127,119,221,0.08);border-left:2px solid var(--purple);border-radius:0 8px 8px 0;padding:6px 10px">
+                <p style="font-size:0.72rem;color:#AFA9EC;font-style:italic" id="force1-paradox-full">Ce que les autres voient : calme. La réalité : analyse permanente.</p>
+              </div>
             </div>
           </div>
-          <div class="force-card-paid">
+        </div>
+
+        <!-- LES 4 RÉVÉLATIONS -->
+        <div style="margin-bottom:1.25rem">
+          <p class="sec-label" style="margin-bottom:1rem">🧱 Les 4 révélations sur toi</p>
+
+          <!-- Blocage principal -->
+          <div class="blocage-card" style="margin-bottom:0.75rem;border-top:2px solid var(--rose)">
+            <p style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);margin-bottom:0.4rem">🧱 Ton blocage principal</p>
+            <p class="blocage-name" id="blocage1-name">Le perfectionnisme paralysant</p>
+            <p class="blocage-desc" id="blocage1-desc">Ta rigueur analytique peut se retourner contre toi, générant une exigence interne difficile à satisfaire.</p>
+            <span class="blocage-key" id="blocage1-key">Clé : autoriser le brouillon — chaque action imparfaite aujourd'hui vaut mieux que la perfection de demain.</span>
+          </div>
+
+          <!-- Âme miroir -->
+          <div class="mirror-card" style="margin-bottom:0.75rem">
+            <p style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);margin-bottom:0.75rem">🪞 Ton âme miroir</p>
+            <div class="mirror-head">
+              <div class="mirror-orb">🌞</div>
+              <div>
+                <p class="mirror-name" id="mirror-name">Le Gardien du Feu Doux</p>
+                <p class="mirror-sub" id="mirror-sub">Soleil · Narratif · Expansif</p>
+              </div>
+            </div>
+            <p class="mirror-quote" id="mirror-quote">"Cette personne arrive avec une constance tranquille — cette façon d'être là sans calculer."</p>
+            <div class="compat-row">
+              <span class="compat-label">Résonance émotionnelle</span>
+              <div class="compat-track"><div class="compat-fill" style="background:var(--rose)" data-w="92"></div></div>
+              <span class="compat-pct">92%</span>
+            </div>
+            <div class="compat-row">
+              <span class="compat-label">Complémentarité</span>
+              <div class="compat-track"><div class="compat-fill" style="background:var(--purple)" data-w="79"></div></div>
+              <span class="compat-pct">79%</span>
+            </div>
+            <div class="compat-row">
+              <span class="compat-label">Harmonie cosmique</span>
+              <div class="compat-track"><div class="compat-fill" style="background:var(--amber)" data-w="86"></div></div>
+              <span class="compat-pct">86%</span>
+            </div>
+            <div class="mirror-signals">
+              <p class="mirror-signals-label">Les 3 signaux que tu la rencontres</p>
+              <span id="mirror-signals-text">Tu te sentiras étrangement calme dès les premières minutes. Elle dira quelque chose de précis sur toi sans te connaître. Et le silence entre vous ne sera pas vide — il sera plein.</span>
+            </div>
+          </div>
+
+          <!-- Schéma amoureux -->
+          <div class="love-card" style="margin-bottom:0.75rem">
+            <p style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);margin-bottom:0.4rem">💞 Ton schéma amoureux</p>
+            <p class="love-style" id="love-style-text">Style · Sécure-distancié</p>
+            <h3 class="love-title" id="love-title-text">Tu aimes profondément, mais tu testes avant de faire confiance.</h3>
+            <p class="love-desc" id="love-desc-text">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste.</p>
+            <div class="love-row"><span class="love-row-label">Tu offres</span><span class="love-row-val" id="love-offre">Une loyauté absolue.</span></div>
+            <div class="love-row"><span class="love-row-label">Tu as besoin</span><span class="love-row-val" id="love-besoin">De constance silencieuse.</span></div>
+            <div class="love-row"><span class="love-row-label">À dépasser</span><span class="love-row-val" id="love-pattern">Attendre que l'autre prouve.</span></div>
+          </div>
+
+          <!-- Ce qui vide l'énergie -->
+          <div class="blocage-card" style="border-top:2px solid var(--teal)">
+            <p style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.4rem">🌀 Ce qui vide ton énergie</p>
+            <p class="blocage-name" style="color:var(--teal)" id="blocage2-name">Le repli émotionnel préventif</p>
+            <p class="blocage-desc" id="blocage2-desc">Sa dimension protectrice peut l'amener à se placer en retrait de ses propres besoins affectifs pour ne pas sembler vulnérable.</p>
+            <span class="blocage-key" id="blocage2-key">Antidote : pratiquer la demande explicite — nommer un besoin n'est pas une faiblesse, c'est un acte de confiance.</span>
+          </div>
+        </div>
+
+        <!-- ══ PAGE 2 PAYANTE ══ -->
+        <div style="height:1px;background:linear-gradient(to right,transparent,rgba(127,119,221,0.3),transparent);margin:1.5rem 0"></div>
+
+        <!-- ERREURS RELATIONNELLES + CLÉ -->
+        <div style="margin-bottom:1.25rem">
+          <p class="sec-label" style="margin-bottom:1rem">🔁 Pourquoi tu te retrouves toujours au même endroit</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0">
+            <div style="background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1rem">
+              <p style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);margin-bottom:0.5rem">🔁 Tes erreurs relationnelles</p>
+              <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.65" id="love-pattern-full">Elle tend à prendre soin avant de demander à être prise en soin — un cycle qui crée des déséquilibres durables sans qu'elle s'en rende compte.</p>
+            </div>
+            <div style="background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1rem">
+              <p style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem">🧠 La clé qui te libère</p>
+              <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.65" id="cle-liberation">Apprendre à recevoir avec la même grâce qu'elle donne — c'est là que sa transformation commence.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORCE CACHÉE -->
+        <div style="background:linear-gradient(135deg,rgba(186,117,23,0.08),rgba(7,6,15,0));border:1px solid rgba(186,117,23,0.25);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem">
+          <p class="sec-label" style="color:var(--amber);margin-bottom:0.75rem">⚡ Ton potentiel caché</p>
+          <div class="force-card-paid" style="background:transparent;border:none;padding:0;margin:0">
             <div class="force-icon-wrap" style="background:rgba(186,117,23,0.15)">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FAC775" stroke-width="1.5" stroke-linecap="round"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 3"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FAC775" stroke-width="1.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
             <div>
-              <p class="force-name-paid" id="force3-name">Force cachée</p>
-              <p class="force-desc-paid" id="force3-desc">Cette force se révèle dans les moments de dépassement.</p>
-              <p class="force-paradox-paid" id="force3-paradox" style="background:rgba(186,117,23,0.08)">Son paradoxe t'attend.</p>
+              <p class="force-name-paid" id="force2-name">Intelligence narrative</p>
+              <p class="force-desc-paid" id="force2-desc">Tu sais tisser les événements en une trame cohérente, donnant du sens là où les autres ne voient que chaos. Tu raconte le monde de façon à ce que chacun s'y retrouve.</p>
+              <p class="force-paradox-paid" id="force2-paradox" style="background:rgba(186,117,23,0.08);color:var(--amber)">Tu structures si bien le récit des autres que tu en oublies parfois d'écrire le tien.</p>
             </div>
           </div>
-        </div>
-
-        <!-- PORTRAIT AMOUREUX -->
-        <div class="love-card">
-          <p class="sec-label">Ton portrait amoureux</p>
-          <p class="love-style" id="love-style-text">Style · Sécure-distancié</p>
-          <h3 class="love-title" id="love-title-text">Tu aimes profondément, mais tu testes avant de faire confiance.</h3>
-          <p class="love-desc" id="love-desc-text">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste.</p>
-          <div class="love-row"><span class="love-row-label">Tu offres</span><span class="love-row-val" id="love-offre">Une loyauté absolue.</span></div>
-          <div class="love-row"><span class="love-row-label">Tu as besoin</span><span class="love-row-val" id="love-besoin">De constance silencieuse.</span></div>
-          <div class="love-row"><span class="love-row-label">À dépasser</span><span class="love-row-val" id="love-pattern">Attendre que l'autre prouve.</span></div>
-        </div>
-
-        <!-- ÂME MIROIR -->
-        <div class="mirror-card">
-          <p class="sec-label">Ton âme miroir</p>
-          <div class="mirror-head">
-            <div class="mirror-orb">🌞</div>
-            <div>
-              <p class="mirror-name" id="mirror-name">Le Gardien du Feu Doux</p>
-              <p class="mirror-sub" id="mirror-sub">Soleil · Narratif · Expansif</p>
-            </div>
-          </div>
-          <p class="mirror-quote" id="mirror-quote">"Cette personne arrive avec une constance tranquille — cette façon d'être là sans calculer."</p>
-          <div class="compat-row">
-            <span class="compat-label">Résonance émotionnelle</span>
-            <div class="compat-track"><div class="compat-fill" style="background:var(--rose)" data-w="92"></div></div>
-            <span class="compat-pct">92%</span>
-          </div>
-          <div class="compat-row">
-            <span class="compat-label">Complémentarité</span>
-            <div class="compat-track"><div class="compat-fill" style="background:var(--purple)" data-w="79"></div></div>
-            <span class="compat-pct">79%</span>
-          </div>
-          <div class="compat-row">
-            <span class="compat-label">Harmonie cosmique</span>
-            <div class="compat-track"><div class="compat-fill" style="background:var(--amber)" data-w="86"></div></div>
-            <span class="compat-pct">86%</span>
-          </div>
-          <div class="mirror-signals">
-            <p class="mirror-signals-label">Les 3 signaux que tu la rencontres</p>
-            <span id="mirror-signals-text">Tu te sentiras étrangement calme dès les premières minutes. Elle dira quelque chose de précis sur toi sans te connaître. Et le silence entre vous ne sera pas vide — il sera plein.</span>
-          </div>
-        </div>
-
-        <!-- ASTROLOGIE PAYANTE -->
-        <div style="margin-bottom:1.25rem">
-          <p class="sec-label" style="margin-bottom:0.75rem">✦ Ton ciel natal</p>
-          <div id="astro-paid"></div>
         </div>
 
         <!-- 2 ACTIONS -->
         <div style="margin-bottom:1.25rem">
-          <p class="sec-label" style="margin-bottom:0.75rem">2 actions concrètes pour ce mois</p>
+          <p class="sec-label" style="margin-bottom:0.75rem">☀️ Tes 2 actions personnalisées</p>
           <div class="action-item">
             <div class="action-num" style="background:rgba(127,119,221,0.2);color:#AFA9EC">1</div>
             <div><p class="action-title" id="action1-title">Le journal des structures</p><p class="action-desc" id="action1-desc">Chaque matin, 5 minutes. Note un pattern observé hier.</p><p class="action-freq" id="action1-freq">Chaque matin · 5 min</p></div>
@@ -457,6 +473,13 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <div class="action-num" style="background:rgba(212,83,126,0.2);color:#F4C0D1">2</div>
             <div><p class="action-title" id="action2-title">La phrase non dite</p><p class="action-desc" id="action2-desc">Dis à quelqu'un quelque chose que tu ressens vraiment.</p><p class="action-freq" id="action2-freq">Cette semaine · 1 fois</p></div>
           </div>
+        </div>
+
+        <!-- CONCLUSION COSMOS -->
+        <div style="background:linear-gradient(135deg,rgba(127,119,221,0.06),rgba(212,83,126,0.04));border:1px solid rgba(127,119,221,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:center;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,#7F77DD,#D4537E,transparent)"></div>
+          <p style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:#AFA9EC;margin-bottom:0.75rem">✦ Conclusion Cosmos</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#C8C4E8;font-style:italic;line-height:1.8" id="cosmos-conclusion">"Ton profil présente une cohérence rare entre tes aspirations profondes et tes comportements visibles. Cette clarté est une force — apprends à lui faire confiance."</p>
         </div>
 
         <!-- BOUTON PDF -->
@@ -581,16 +604,86 @@ function handlePayment(){
 
 function populateBlocs(profile){
   if(!profile) return;
+  /* Force dominante gratuite */
   if(profile.forces&&profile.forces[0]){
     var fn=document.getElementById('force1-name');var fb=document.getElementById('force1-desc-blur');
     if(fn) fn.textContent=profile.forces[0].nom;
     if(fb) fb.textContent=profile.forces[0].desc+' '+profile.forces[0].paradoxe;
+    /* Force dominante payante */
+    var fnf=document.getElementById('force1-name-full');var fdf=document.getElementById('force1-desc-full');var fpf=document.getElementById('force1-paradox-full');
+    if(fnf) fnf.textContent=profile.forces[0].nom;
+    if(fdf) fdf.textContent=profile.forces[0].desc;
+    if(fpf) fpf.textContent=profile.forces[0].paradoxe;
   }
+  /* Rareté */
   if(profile.profil&&profile.profil.rarete){var rarEl=document.getElementById('rarete-text');if(rarEl) rarEl.textContent='Seulement '+profile.profil.rarete+' des profils analysés présentent cette combinaison.';}
-  if(profile.portrait&&profile.portrait[0]){var pl=document.getElementById('portrait-line-visible');if(pl) pl.innerHTML='<p class="portrait-line">'+profile.portrait[0]+'</p>';}
+  /* Portrait ligne 1 visible */
+  if(profile.portrait&&profile.portrait[0]){
+    var pl=document.getElementById('portrait-line-visible');
+    if(pl) pl.innerHTML='<p class="portrait-line">'+profile.portrait[0]+'</p>';
+    /* Portrait complet payant */
+    var pf=document.getElementById('portrait-full');
+    if(pf) pf.innerHTML=profile.portrait.map(function(l){return '<p class="portrait-line">'+l+'</p>';}).join('');
+  }
+  /* Portrait lignes floutées */
   if(profile.portrait&&profile.portrait.length>1){var pb=document.getElementById('portrait-lines-blurred');if(pb) pb.innerHTML=profile.portrait.slice(1).map(function(l){return '<p class="portrait-line">'+l+'</p>';}).join('<br>');}
-  if(profile.actions&&profile.actions[0]){var a1t=document.getElementById('bloc3-action1-title');if(a1t) a1t.textContent=profile.actions[0].titre;}
-  if(profile.actions&&profile.actions[1]){var a2t=document.getElementById('bloc3-action2-title');if(a2t) a2t.textContent=profile.actions[1].titre;}
+  /* Blocages */
+  if(profile.blocages){
+    if(profile.blocages[0]){
+      var b1n=document.getElementById('blocage1-name');var b1d=document.getElementById('blocage1-desc');var b1k=document.getElementById('blocage1-key');
+      if(b1n) b1n.textContent=profile.blocages[0].nom;
+      if(b1d) b1d.textContent=profile.blocages[0].desc;
+      if(b1k) b1k.textContent='Clé : '+profile.blocages[0].cle;
+    }
+    if(profile.blocages[1]){
+      var b2n=document.getElementById('blocage2-name');var b2d=document.getElementById('blocage2-desc');var b2k=document.getElementById('blocage2-key');
+      if(b2n) b2n.textContent=profile.blocages[1].nom;
+      if(b2d) b2d.textContent=profile.blocages[1].desc;
+      if(b2k) b2k.textContent='Antidote : '+profile.blocages[1].cle;
+    }
+  }
+  /* Amour */
+  if(profile.amour){
+    var lpf=document.getElementById('love-pattern-full');
+    if(lpf) lpf.textContent=profile.amour.pattern||'';
+    var cle=document.getElementById('cle-liberation');
+    if(cle&&profile.blocages&&profile.blocages[1]) cle.textContent=profile.blocages[1].cle||'';
+  }
+  /* Force cachée */
+  if(profile.forces&&profile.forces[1]){
+    var f2n=document.getElementById('force2-name');var f2d=document.getElementById('force2-desc');var f2p=document.getElementById('force2-paradox');
+    if(f2n) f2n.textContent=profile.forces[1].nom;
+    if(f2d) f2d.textContent=profile.forces[1].desc;
+    if(f2p) f2p.textContent=profile.forces[1].paradoxe;
+  }
+  /* Actions */
+  if(profile.actions){
+    if(profile.actions[0]){
+      var a1t=document.getElementById('action1-title');var a1d=document.getElementById('action1-desc');var a1f=document.getElementById('action1-freq');
+      if(a1t) a1t.textContent=profile.actions[0].titre;
+      if(a1d) a1d.textContent=profile.actions[0].desc;
+      if(a1f) a1f.textContent=profile.actions[0].freq;
+    }
+    if(profile.actions[1]){
+      var a2t=document.getElementById('action2-title');var a2d=document.getElementById('action2-desc');var a2f=document.getElementById('action2-freq');
+      if(a2t) a2t.textContent=profile.actions[1].titre;
+      if(a2d) a2d.textContent=profile.actions[1].desc;
+      if(a2f) a2f.textContent=profile.actions[1].freq;
+    }
+  }
+  /* Conclusion selon profil dominant */
+  var conclusions=[
+    '"Ton profil présente une cohérence rare entre tes aspirations profondes et tes comportements visibles. Cette clarté est une force — apprends à lui faire confiance."',
+    '"Tes dimensions sont fortement alignées, ce qui explique ton sentiment de certitude dans certaines décisions importantes. Fais confiance à cette boussole intérieure."',
+    '"Ce que tu portes n'est pas un fardeau — c'est une profondeur que peu de personnes atteignent. Tu n'es pas fait·e pour les chemins déjà tracés."',
+    '"Ton profil n'est pas fait pour suivre les chemins déjà tracés. Il est fait pour en ouvrir de nouveaux — et tu le sais déjà."',
+    '"Lorsque tu cesses de chercher à être compris·e par tous, tu découvres enfin la place qui t'était destinée depuis le début."'
+  ];
+  var concEl=document.getElementById('cosmos-conclusion');
+  if(concEl&&profile.dims){
+    var idx=Math.floor((profile.dims.cosmique[0]+profile.dims.cognitif[0])%conclusions.length);
+    concEl.textContent=conclusions[idx];
+  }
 }
 
 function populateEmailPopup(profile){
@@ -764,13 +857,13 @@ function closeGiftPopup(){document.getElementById('gift-popup').style.display='n
       <p id="popup-portrait-line1" style="font-family:'Cormorant Garamond',serif;font-size:0.88rem;color:#C8C4E8;font-style:italic;line-height:1.7;margin-bottom:0.35rem">Tu ne t'expliques pas — tu te révèles lentement, à ceux qui savent attendre.</p>
       <p id="popup-portrait-line2" style="font-family:'Cormorant Garamond',serif;font-size:0.88rem;color:#C8C4E8;font-style:italic;line-height:1.7">Là où les autres voient du bruit, tu perçois une architecture cachée.</p>
     </div>
-    <p style="font-size:0.82rem;color:#C8C4E8;font-weight:500;margin-bottom:0.75rem">Entre ton email pour découvrir :</p>
-    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;text-align:left">
-      <p style="font-size:0.78rem;color:#C8C4E8">⚡ Ta <strong>force dominante</strong></p>
-      <p style="font-size:0.78rem;color:#C8C4E8">🎯 Tes <strong>4 dimensions</strong> et ton radar</p>
-      <p style="font-size:0.78rem;color:#C8C4E8">🌀 Ton profil parmi <strong>144 archétypes</strong></p>
-      <p style="font-size:0.78rem;color:#C8C4E8">🔍 Les <strong>4 révélations cachées</strong> que Cosmos a détectées</p>
-      <p style="font-size:0.78rem;color:#8B87B0">✦ Et bien plus encore…</p>
+    <p style="font-size:0.72rem;color:#8B87B0;margin-bottom:0.75rem">Entre ton email pour découvrir :</p>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:1.5rem;text-align:left">
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">⚡</span><span style="font-size:0.75rem;color:#C8C4E8">Ta <strong>force dominante</strong></span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🎯</span><span style="font-size:0.75rem;color:#C8C4E8">Tes <strong>4 dimensions</strong> et ton radar</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🌀</span><span style="font-size:0.75rem;color:#C8C4E8">Ton profil parmi <strong>144 archétypes</strong></span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🔍</span><span style="font-size:0.75rem;color:#C8C4E8">Les <strong>4 révélations cachées</strong> que Cosmos a détectées</span></div>
+      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">✦</span><span style="font-size:0.75rem;color:#C8C4E8">Et bien plus encore…</span></div>
     </div>
     <input id="email-input" type="email" placeholder="ton@email.com" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.85rem;color:#F0EEF8;font-family:'DM Sans',sans-serif;font-size:0.9rem;margin-bottom:0.75rem;outline:none;text-align:center"/>
     <button onclick="saveEmail()" style="width:100%;background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.95rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;margin-bottom:1rem;letter-spacing:0.02em">Découvrir mon profil maintenant →</button>
