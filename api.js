@@ -290,8 +290,8 @@ function applyProfileToPage(profile) {
   if(stepsContainer) stepsContainer.style.display = 'none';
 
   try{ 
-  sessionStorage.setItem('cosmos_profile', JSON.stringify(profile)); // ✅
-  localStorage.setItem('cosmos_profile', JSON.stringify(profile));   // ✅
+  sessionStorage.setItem('cosmos_profile', JSON.stringify(p)); // ✅
+  localStorage.setItem('cosmos_profile', JSON.stringify(p));   // ✅
 }catch(e){}
 }
 
