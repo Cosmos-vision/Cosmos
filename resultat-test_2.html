@@ -382,7 +382,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <div class="love-card" style="margin-bottom:0.75rem">
             <p style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);margin-bottom:0.4rem">💞 Ton schéma amoureux</p>
             <p class="love-style" id="love-style-text">Style · Sécure-distancié</p>
-            <h3 class="love-title" id="love-title-text">Tu aimes profondément, mais tu testes avant de faire confiance.</h3>
             <p class="love-desc" id="love-desc-text">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste.</p>
             <div class="love-row"><span class="love-row-label">Tu offres</span><span class="love-row-val" id="love-offre">Une loyauté absolue.</span></div>
             <div class="love-row"><span class="love-row-label">Tu as besoin</span><span class="love-row-val" id="love-besoin">De constance silencieuse.</span></div>
@@ -605,11 +604,10 @@ function populateBlocs(profile){
     }
   }
   if(profile.amour){
-    var lsf=document.getElementById('love-style-text');var ltf=document.getElementById('love-title-text');
+    var lsf=document.getElementById('love-style-text');
     var ldf=document.getElementById('love-desc-text');var lof=document.getElementById('love-offre');
     var lbf=document.getElementById('love-besoin');var lpf=document.getElementById('love-pattern');
     if(lsf) lsf.textContent='Style · '+(profile.amour.style||'');
-    if(ltf) ltf.textContent=profile.amour.titre||profile.amour.desc||'';
     if(ldf) ldf.textContent=profile.amour.desc||'';
     if(lof) lof.textContent=profile.amour.offre||'';
     if(lbf) lbf.textContent=profile.amour.besoin||'';
@@ -737,6 +735,11 @@ function unlockPaidContent(fromGift){
   isPaid=true;
   ['paywall-bloc1','paywall-bloc2','paywall-bloc3'].forEach(function(id){var el=document.getElementById(id);if(el) el.style.display='none';});
   var discBtn=document.querySelector('.content>div[style*="text-align:center"]');if(discBtn) discBtn.style.display='none';
+  /* Cache les blocs gratuits doublons */
+  var gratuitEssence=document.querySelector('.card #portrait-line-visible');
+  if(gratuitEssence&&gratuitEssence.closest('.card')){gratuitEssence.closest('.card').style.display='none';}
+  var gratuitForce=document.querySelector('.card .force-desc-blur');
+  if(gratuitForce&&gratuitForce.closest('.card')){gratuitForce.closest('.card').style.display='none';}
   document.querySelectorAll('.portrait-fade-content').forEach(function(el){el.style.filter='none';el.style.userSelect='auto';});
   document.querySelectorAll('.force-desc-blur').forEach(function(el){el.style.filter='none';el.style.userSelect='auto';});
   document.getElementById('paid-section').classList.add('unlocked');
