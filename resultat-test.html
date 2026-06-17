@@ -776,7 +776,8 @@ if(window.location.search.includes('gift=')){
 setTimeout(function(){
   if(window.location.search.includes('success=true')||sessionStorage.getItem('cosmos_paid')==='true'){return;}
   var localProfile=null;try{localProfile=JSON.parse(localStorage.getItem('cosmos_profile'));}catch(e){}
-  if(localProfile&&localProfile.profil&&window.CosmosAPI){
+  var freshQuiz=null;try{freshQuiz=JSON.parse(sessionStorage.getItem('cosmos_quiz'));}catch(e){}
+  if(localProfile&&localProfile.profil&&window.CosmosAPI&&!freshQuiz){
     sessionStorage.setItem('cosmos_profile',JSON.stringify(localProfile));
     window.CosmosAPI.apply(localProfile);populateBlocs(localProfile);
     document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144').forEach(function(el){el.style.opacity='1';});
