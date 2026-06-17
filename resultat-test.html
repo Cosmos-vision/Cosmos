@@ -33,8 +33,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .main{flex:1;padding:2rem 1.5rem 5rem;display:flex;flex-direction:column;align-items:center}
 .content{width:100%;max-width:560px}
 .sec-label{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--purple-light);margin-bottom:0.75rem;font-weight:500}
-
-/* ── HERO ── */
 .profile-hero{text-align:center;padding:2.5rem 0 2rem}
 .profile-orb-wrap{display:flex;justify-content:center;margin-bottom:1.5rem}
 .profile-orb{width:84px;height:84px;border-radius:50%;background:var(--muted);border:1.5px solid var(--purple);display:flex;align-items:center;justify-content:center;position:relative;animation:float 6s ease-in-out infinite}
@@ -48,79 +46,52 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .profile-code{font-size:0.6rem;color:var(--text-faint);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1rem}
 .dim-pills{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:0}
 .dim-pill{font-size:0.62rem;padding:3px 10px;border-radius:20px;font-weight:400;letter-spacing:0.04em}
-
-/* ── BLOCS GÉNÉRIQUES ── */
 .card{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
-
-/* ── PORTRAIT ── */
 .portrait-line{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:#C8C4E8;line-height:1.85;font-style:italic}
 .portrait-line+.portrait-line{margin-top:0.65rem}
 .portrait-fade{position:relative;margin-top:0.65rem}
-.portrait-fade-content{filter:blur(5px);user-select:none;pointer-events:none}
-.portrait-fade::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(13,11,26,0) 0%,rgba(13,11,26,0.95) 70%)}
-
-/* ── RADAR ── */
+.portrait-fade-content{filter:blur(3px);user-select:none;pointer-events:none}
+.portrait-fade::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(13,11,26,0) 0%,rgba(13,11,26,0.85) 50%)}
 .radar-wrap{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;text-align:center}
 .radar-title{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#AFA9EC;margin-bottom:1rem}
 #radar-svg{width:100%;max-width:240px;display:block;margin:0 auto}
 .radar-legend{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:1rem}
 .radar-leg-item{display:flex;align-items:center;gap:5px;font-size:0.65rem;color:#C8C4E8}
 .radar-leg-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-
-/* ── ROUE ── */
 .wheel-spin{animation:spin-slow 60s linear infinite;transform-origin:center}
 @keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-
-/* ── FORCE DOMINANTE ── */
 .force-visible{display:flex;gap:12px;align-items:flex-start}
 .force-icon-wrap{width:34px;height:34px;border-radius:50%;background:rgba(127,119,221,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .force-name{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:2px}
-.force-desc-blur{filter:blur(5px);user-select:none;font-size:0.76rem;color:var(--text-muted);line-height:1.55;position:relative}
+.force-desc-blur{filter:blur(5px);user-select:none;font-size:0.76rem;color:var(--text-muted);line-height:1.55}
 
-/* ── PAYWALL BLOCS ── */
+/* PAYWALL BLOCS */
 .paywall-bloc{border-radius:20px;padding:1.75rem;margin-bottom:1rem;position:relative;overflow:hidden;text-align:center}
 .paywall-bloc::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:280px;height:1px}
-
-/* BLOC 1 */
-.bloc1{background:linear-gradient(135deg,rgba(127,119,221,0.07) 0%,rgba(212,83,126,0.05) 100%);border:1px solid rgba(127,119,221,0.2)}
+.bloc1{background:linear-gradient(135deg,rgba(127,119,221,0.07),rgba(212,83,126,0.05));border:1px solid rgba(127,119,221,0.2)}
 .bloc1::before{background:linear-gradient(to right,transparent,var(--purple),transparent)}
-
-/* BLOC 2 */
-.bloc2{background:linear-gradient(135deg,rgba(212,83,126,0.07) 0%,rgba(127,119,221,0.05) 100%);border:1px solid rgba(212,83,126,0.2)}
+.bloc2{background:linear-gradient(135deg,rgba(212,83,126,0.07),rgba(127,119,221,0.05));border:1px solid rgba(212,83,126,0.2)}
 .bloc2::before{background:linear-gradient(to right,transparent,var(--rose),transparent)}
-
-/* BLOC 3 */
-.bloc3{background:linear-gradient(135deg,rgba(29,158,117,0.07) 0%,rgba(127,119,221,0.05) 100%);border:1px solid rgba(29,158,117,0.2)}
+.bloc3{background:linear-gradient(135deg,rgba(29,158,117,0.07),rgba(127,119,221,0.05));border:1px solid rgba(29,158,117,0.2)}
 .bloc3::before{background:linear-gradient(to right,transparent,var(--teal),transparent)}
-
-.bloc-eyebrow{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;gap:6px}
-.bloc-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;color:var(--text);line-height:1.35;margin-bottom:0.75rem}
-.bloc-items{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem;text-align:left}
+.bloc-items{display:flex;flex-direction:column;gap:8px;text-align:left}
 .bloc-item{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,0.03);border-radius:10px;padding:0.7rem 0.9rem}
 .bloc-item-icon{font-size:0.9rem;flex-shrink:0;margin-top:1px}
-.bloc-item-text{font-size:0.78rem;color:#C8C4E8;line-height:1.55}
-.bloc-item-preview{font-size:0.72rem;color:var(--text-muted);font-style:italic;margin-top:2px;line-height:1.5}
-.bloc-item-blur{filter:blur(4px);user-select:none;pointer-events:none;font-size:0.72rem;color:var(--text-muted);margin-top:2px;line-height:1.5}
-
-/* Bouton paywall */
 .pay-bloc-btn{width:100%;border:none;border-radius:100px;padding:1rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;transition:all 0.2s;margin-bottom:0.5rem;letter-spacing:0.02em}
 .pay-bloc-btn:hover{opacity:0.9;transform:translateY(-1px)}
 .btn-purple{background:linear-gradient(135deg,var(--purple),var(--rose))}
 .btn-rose{background:linear-gradient(135deg,var(--rose),var(--purple))}
 .btn-teal{background:linear-gradient(135deg,var(--teal),var(--purple))}
-.pay-bloc-note{font-size:0.6rem;color:var(--text-faint);letter-spacing:0.04em}
 
-/* ── SECTION PAYANTE ── */
+/* SECTION PAYANTE */
 .paid-section{display:none}
 .paid-section.unlocked{display:block}
-
 .blocage-card{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px}
 .blocage-name{font-size:0.85rem;font-weight:500;color:var(--rose);margin-bottom:4px}
 .blocage-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6;margin-bottom:6px}
 .blocage-key{font-size:0.72rem;color:var(--teal);padding:5px 9px;background:rgba(29,158,117,0.08);border-radius:6px;border-left:2px solid var(--teal);display:block}
-
-.mirror-card{background:linear-gradient(135deg,rgba(212,83,126,0.06) 0%,rgba(7,6,15,0) 60%);border:1px solid rgba(212,83,126,0.2);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.mirror-card{background:linear-gradient(135deg,rgba(212,83,126,0.06),rgba(7,6,15,0) 60%);border:1px solid rgba(212,83,126,0.2);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
 .mirror-head{display:flex;gap:12px;align-items:center;margin-bottom:0.9rem}
 .mirror-orb{width:44px;height:44px;border-radius:50%;background:rgba(212,83,126,0.12);border:1px solid rgba(212,83,126,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
 .mirror-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--text)}
@@ -133,7 +104,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .compat-pct{font-size:0.65rem;font-weight:500;width:28px;text-align:right;color:rgba(212,83,126,0.8)}
 .mirror-signals{background:rgba(255,255,255,0.03);border-radius:10px;padding:0.8rem;margin-top:0.75rem;font-size:0.75rem;color:var(--text-muted);line-height:1.65}
 .mirror-signals-label{font-size:0.58rem;color:rgba(212,83,126,0.6);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
-
 .love-card{background:var(--deep);border:1px solid rgba(212,83,126,0.2);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
 .love-style{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rose);margin-bottom:0.4rem}
 .love-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;margin-bottom:0.65rem}
@@ -141,18 +111,15 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .love-row{display:flex;gap:8px;margin-bottom:5px;align-items:flex-start}
 .love-row-label{font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);min-width:85px;flex-shrink:0;padding-top:1px}
 .love-row-val{font-size:0.76rem;color:var(--text-muted);line-height:1.5}
-
 .force-card-paid{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
 .force-name-paid{font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:2px}
 .force-desc-paid{font-size:0.75rem;color:var(--text-muted);line-height:1.55}
 .force-paradox-paid{font-size:0.68rem;color:var(--purple-light);margin-top:4px;padding:3px 7px;border-radius:5px;font-style:italic}
-
 .action-item{background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
 .action-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px}
 .action-title{font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:2px}
 .action-desc{font-size:0.74rem;color:var(--text-muted);line-height:1.55}
 .action-freq{font-size:0.6rem;color:var(--text-faint);margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
-
 .share-card-visual{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;text-align:center;position:relative;overflow:hidden;margin-bottom:0.9rem}
 .share-card-visual::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
 .share-logo{font-family:'DM Sans',sans-serif;font-weight:300;font-size:1.1rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);margin-bottom:3px}
@@ -160,7 +127,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .share-code{font-size:0.55rem;color:var(--text-faint);letter-spacing:0.15em;text-transform:uppercase;margin-top:8px}
 .share-btns{display:flex;flex-direction:column;gap:8px}
 .share-btn{width:100%;border:none;border-radius:100px;padding:0.75rem;font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:500;cursor:pointer;transition:all 0.18s}
-
 .demo-banner{background:rgba(127,119,221,0.1);border:1px solid rgba(127,119,221,0.25);border-radius:10px;padding:0.7rem 1rem;margin-bottom:1.25rem;font-size:0.73rem;color:var(--purple-light);line-height:1.5;text-align:center}
 .next-chapter{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;display:flex;align-items:center;gap:12px;margin-bottom:2rem}
 .nc-icon{width:34px;height:34px;border-radius:50%;background:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -177,7 +143,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
   <div class="main">
     <div class="content">
 
-      <!-- BANNER -->
       <div class="demo-banner" id="demo-banner">✨ Ton profil unique est en cours de création…</div>
 
       <!-- HERO -->
@@ -206,7 +171,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         </div>
       </div>
 
-      <!-- PORTRAIT — 1 ligne visible + 4 floutées -->
+      <!-- PORTRAIT -->
       <div class="card" style="margin-bottom:1.25rem">
         <p class="sec-label">Ton essence</p>
         <div id="portrait-line-visible">
@@ -271,11 +236,11 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:0.5rem">Ton profil se situe parmi <span style="color:var(--purple-light)">144 archétypes</span></p>
         <p id="rarete-text" style="font-size:0.8rem;color:var(--rose);font-weight:500;margin-bottom:0.75rem">Seulement 4,7% des profils analysés présentent cette combinaison.</p>
         <p style="font-size:0.75rem;color:#C8C4E8;line-height:1.65;margin-bottom:0.5rem">Tu fais partie des profils les plus atypiques identifiés par Cosmos. Cette combinaison rare explique pourquoi tu as parfois l'impression de voir ou ressentir les choses différemment des autres.</p>
-        <p style="font-size:0.65rem;color:var(--text-faint);font-style:italic">Résultats basés sur plus de 3 200 profils Cosmos étudiés.</p>
+        <p style="font-size:0.65rem;color:#8B87B0;font-style:italic">Résultats basés sur plus de 3 200 profils Cosmos étudiés.</p>
       </div>
 
       <!-- FORCE DOMINANTE -->
-      <div class="card" style="margin-bottom:1.5rem">
+      <div class="card" style="margin-bottom:1rem">
         <p class="sec-label">Ta force dominante</p>
         <div class="force-visible">
           <div class="force-icon-wrap">
@@ -290,113 +255,85 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         </div>
       </div>
 
+      <!-- BOUTON DISCRET -->
+      <div style="text-align:center;margin-bottom:1.25rem">
+        <button onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.65rem 1.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
+          🔓 Révéler mon profil Cosmos complet — 7,90€
+        </button>
+        <p style="font-size:0.62rem;color:#8B87B0;margin-top:0.5rem;text-align:center;letter-spacing:0.04em">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
+      </div>
+
       <!-- ══ BLOC 1 ══ -->
       <div class="paywall-bloc bloc1" id="paywall-bloc1">
-        <div class="bloc-eyebrow" style="color:var(--purple-light);font-size:0.65rem"><span>✦</span><span>Cosmos a détecté</span><span>✦</span></div>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--text);line-height:1.25;margin-bottom:0.4rem">4 révélations sur toi*</h2>
-        <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.6">Ce que tu portes sans pouvoir le nommer.</p>
-        <div class="bloc-items">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--purple-light);margin-bottom:0.25rem;letter-spacing:0.04em"> Cosmos a détecté </p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.35rem">4 révélations sur toi*</h2>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.25rem;font-style:italic">Ce que tu portes sans pouvoir le nommer.</p>
+        <div class="bloc-items" style="margin-bottom:1rem">
           <div class="bloc-item" style="flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:8px">
-              <span class="bloc-item-icon">🧱</span>
-              <p style="font-size:0.82rem;color:#F0EEF8;font-weight:500">Ton blocage principal</p>
-            </div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="bloc-item-icon">🧱</span><p style="font-size:0.85rem;color:#F0EEF8;font-weight:500">Ton blocage principal</p></div>
             <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">Ce qui te retient alors même que tu possèdes les ressources pour avancer.</p>
           </div>
           <div class="bloc-item" style="flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:8px">
-              <span class="bloc-item-icon">🪞</span>
-              <p style="font-size:0.82rem;color:#F0EEF8;font-weight:500">Ton âme miroir</p>
-            </div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="bloc-item-icon">🪞</span><p style="font-size:0.85rem;color:#F0EEF8;font-weight:500">Ton âme miroir</p></div>
             <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">La personne qui résonne profondément avec ton énergie.</p>
           </div>
           <div class="bloc-item" style="flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:8px">
-              <span class="bloc-item-icon">💞</span>
-              <p style="font-size:0.82rem;color:#F0EEF8;font-weight:500">Ton schéma amoureux</p>
-            </div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="bloc-item-icon">💞</span><p style="font-size:0.85rem;color:#F0EEF8;font-weight:500">Ton schéma amoureux</p></div>
             <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">Pourquoi certaines histoires semblent se répéter malgré toi.</p>
           </div>
           <div class="bloc-item" style="flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:8px">
-              <span class="bloc-item-icon">🌀</span>
-              <p style="font-size:0.82rem;color:#F0EEF8;font-weight:500">Ce qui te vide mentalement</p>
-            </div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="bloc-item-icon">🌀</span><p style="font-size:0.85rem;color:#F0EEF8;font-weight:500">Ce qui te vide mentalement</p></div>
             <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">La source invisible qui épuise ton énergie au quotidien.</p>
           </div>
         </div>
-        <p style="font-size:0.68rem;color:#8B87B0;font-style:italic;margin-top:0.75rem">* Détail du contenu visible uniquement une fois ton profil entièrement révélé.</p>
+        <p style="font-size:0.68rem;color:#8B87B0;font-style:italic;margin-bottom:0">* Détail du contenu visible uniquement une fois ton profil entièrement révélé.</p>
       </div>
 
       <!-- ══ BLOC 2 ══ -->
       <div class="paywall-bloc bloc2" id="paywall-bloc2">
-        <div class="bloc-eyebrow" style="color:var(--rose);font-size:0.65rem"><span>✦</span><span>Tes patterns profonds</span><span>✦</span></div>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--text);line-height:1.25;margin-bottom:0.4rem">Pourquoi tu te retrouves toujours au même endroit?*</h2>
-        <div class="bloc-items" style="margin-bottom:0">
-          <div class="bloc-item">
-            <span class="bloc-item-icon">🔁</span>
-            <p style="font-size:0.82rem;color:#F0EEF8">Tes erreurs relationnelles répétées</p>
-          </div>
-          <div class="bloc-item">
-            <span class="bloc-item-icon">🧠</span>
-            <p style="font-size:0.82rem;color:#F0EEF8">La clé qui te libère</p>
-          </div>
-          <div class="bloc-item">
-            <span class="bloc-item-icon">✨</span>
-            <p style="font-size:0.82rem;color:#F0EEF8">Les 3 signaux qui ne trompent pas</p>
-          </div>
-          <div class="bloc-item">
-            <span class="bloc-item-icon">⚡</span>
-            <p style="font-size:0.82rem;color:#F0EEF8">Ta force cachée</p>
-          </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--rose);margin-bottom:0.25rem;letter-spacing:0.04em">✦ Tes patterns profonds ✦</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:1.25rem">Pourquoi tu te retrouves toujours au même endroit ?*</h2>
+        <div class="bloc-items" style="margin-bottom:1rem">
+          <div class="bloc-item"><span class="bloc-item-icon">🔁</span><p style="font-size:0.85rem;color:#F0EEF8">Tes erreurs relationnelles répétées</p></div>
+          <div class="bloc-item"><span class="bloc-item-icon">🧠</span><p style="font-size:0.85rem;color:#F0EEF8">La clé qui te libère</p></div>
+          <div class="bloc-item"><span class="bloc-item-icon">✨</span><p style="font-size:0.85rem;color:#F0EEF8">Les 3 signaux qui ne trompent pas</p></div>
+          <div class="bloc-item"><span class="bloc-item-icon">⚡</span><p style="font-size:0.85rem;color:#F0EEF8">Ta force cachée</p></div>
         </div>
-        <p style="font-size:0.68rem;color:#8B87B0;font-style:italic;margin-top:0.75rem">* Détail du contenu visible uniquement une fois ton profil entièrement révélé.</p>
+        <p style="font-size:0.68rem;color:#8B87B0;font-style:italic;margin-bottom:0">* Détail du contenu visible uniquement une fois ton profil entièrement révélé.</p>
       </div>
 
       <!-- ══ BLOC 3 ══ -->
       <div class="paywall-bloc bloc3" id="paywall-bloc3">
-        <div class="bloc-eyebrow" style="color:var(--teal);font-size:0.65rem"><span>✦</span><span>Actions personnalisées</span><span>✦</span></div>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--text);line-height:1.25;margin-bottom:0.4rem">Deux actions concrètes pour transformer ce mois*</h2>
-        <div class="bloc-items" style="margin-bottom:1rem">
-          <div class="bloc-item">
-            <span class="bloc-item-icon">📓</span>
-            <p style="font-size:0.82rem;color:#F0EEF8" id="bloc3-action1-title">Le journal des structures</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--teal);margin-bottom:0.25rem;letter-spacing:0.04em">✦ Actions personnalisées ✦</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.75rem">Cosmos a préparé deux actions pour toi*</h2>
+        <p style="font-size:0.85rem;color:#C8C4E8;line-height:1.7;margin-bottom:1.25rem;padding:0.85rem 1rem;background:rgba(29,158,117,0.06);border-radius:10px;border-left:2px solid var(--teal);text-align:left">Découvre tes 2 actions personnalisées que tu pourras appliquer immédiatement afin de t'aider à avancer dès aujourd'hui.</p>
+        <p style="font-size:0.68rem;color:#8B87B0;font-style:italic;margin-bottom:1.5rem">* Détail du contenu visible uniquement une fois ton profil entièrement révélé.</p>
+
+        <!-- BLOC RAPPORT -->
+        <div style="background:linear-gradient(135deg,rgba(127,119,221,0.06),rgba(212,83,126,0.04));border:1px solid rgba(127,119,221,0.25);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:left;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,#7F77DD,transparent)"></div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:#AFA9EC;margin-bottom:0.25rem;letter-spacing:0.04em">🔓 Ton rapport Cosmos complet</p>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.5rem">Ce que Cosmos sait de toi :</h2>
+          <p style="font-size:0.82rem;color:var(--text-muted);font-style:italic;margin-bottom:1.1rem;line-height:1.6">Les réponses que Cosmos n'a pas encore révélées…</p>
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:1.1rem">
+            <p style="font-size:0.78rem;color:#C8C4E8">✅ Ton essence profonde complète</p>
+            <p style="font-size:0.78rem;color:#C8C4E8">🚀 Ta force dominante et son paradoxe</p>
+            <p style="font-size:0.78rem;color:#C8C4E8">🧱 Les 4 révélations sur toi</p>
+            <p style="font-size:0.78rem;color:#C8C4E8">🔁 Tes erreurs relationnelles répétées</p>
+            <p style="font-size:0.78rem;color:#C8C4E8">🧠 La clé qui te libère</p>
+            <p style="font-size:0.78rem;color:#C8C4E8">✨ Les 3 signaux qui ne trompent pas</p>
+            <p style="font-size:0.78rem;color:#C8C4E8">⚡ Ta force cachée</p>
+            <p style="font-size:0.78rem;color:#C8C4E8">☀️ 2 actions personnalisées</p>
           </div>
-          <div class="bloc-item">
-            <span class="bloc-item-icon">💬</span>
-            <p style="font-size:0.82rem;color:#F0EEF8" id="bloc3-action2-title">La phrase non dite</p>
-          </div>
+          <p style="font-size:0.7rem;color:#8B87B0;font-style:italic;line-height:1.6;margin-bottom:1.25rem">📄 Rapport PDF disponible immédiatement. Une analyse concise, personnelle et pensée pour t'aider à mieux comprendre ce qui te rend unique.</p>
+          <button class="pay-bloc-btn btn-purple" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="font-size:1rem;padding:1.1rem;margin-bottom:0.5rem">
+            Révéler mon profil Cosmos complet — 7,90€
+          </button>
+          <p style="font-size:0.65rem;color:#AFA9EC;letter-spacing:0.04em;text-align:center">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
         </div>
-
-        <!-- PHRASE ACCROCHE -->
-        <p style="font-size:0.78rem;color:#C8C4E8;line-height:1.7;font-style:italic;margin-bottom:1.5rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.03);border-radius:10px;border-left:2px solid var(--teal)">La plupart des personnes découvrent dans leur rapport un aspect d'elles-mêmes qu'elles ressentaient depuis longtemps sans jamais avoir réussi à le mettre en mots.</p>
-
-        <!-- RECAP RAPPORT -->
-        <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1rem 1.1rem;margin-bottom:1.25rem;text-align:left">
-          <p style="font-size:1rem;font-family:'Cormorant Garamond',serif;font-weight:400;color:#F0EEF8;margin-bottom:0.75rem">Ton rapport Cosmos contient :</p>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <p style="font-size:0.76rem;color:#C8C4E8">✅ Ton essence profonde complète</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">🚀 Ta force dominante + paradoxe</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">🧱 Ton blocage principal</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">🪞 Ton âme miroir</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">💞 Ton schéma amoureux</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">🌀 Ce qui épuise ton énergie</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">🔁 Tes erreurs relationnelles</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">🧠 La clé qui te libère</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">✨ Les 3 signaux qui ne trompent pas</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">⚡ Ta force cachée</p>
-            <p style="font-size:0.76rem;color:#C8C4E8">☀️ 2 actions personnalisées</p>
-          </div>
-        </div>
-
-        <button class="pay-bloc-btn btn-teal" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="font-size:1rem;padding:1.1rem">
-          Révéler mon profil Cosmos complet — 7,90€
-        </button>
-        <p class="pay-bloc-note" style="margin-bottom:0.5rem;color:#AFA9EC">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
-        <p style="font-size:0.68rem;color:#8B87B0;line-height:1.6">📄 Reçois immédiatement ton rapport Cosmos personnalisé au format PDF.<br>Une analyse claire, synthétique et conçue pour être relue à tout moment.</p>
       </div>
 
-      <!-- CARTE DE PARTAGE -->
+      <!-- PARTAGE GRATUIT -->
       <div style="margin-bottom:1.25rem">
         <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
         <div class="share-card-visual" id="share-card">
@@ -463,7 +400,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         <!-- PORTRAIT AMOUREUX -->
         <div class="love-card">
           <p class="sec-label">Ton portrait amoureux</p>
-          <p class="love-style" id="love-style-text">Style d'attachement · Sécure-distancié</p>
+          <p class="love-style" id="love-style-text">Style · Sécure-distancié</p>
           <h3 class="love-title" id="love-title-text">Tu aimes profondément, mais tu testes avant de faire confiance.</h3>
           <p class="love-desc" id="love-desc-text">Tu n'as pas besoin qu'on te cherche — tu as besoin qu'on reste.</p>
           <div class="love-row"><span class="love-row-label">Tu offres</span><span class="love-row-val" id="love-offre">Une loyauté absolue.</span></div>
@@ -540,7 +477,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           </button>
         </div>
 
-        <!-- FEEDBACK + CHAPITRE II -->
+        <!-- FEEDBACK -->
         <div style="background:var(--deep);border:1px solid rgba(127,119,221,0.3);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;text-align:center">
           <p class="sec-label" style="margin-bottom:0.65rem">Ton avis compte</p>
           <p style="font-size:0.82rem;color:#C8C4E8;margin-bottom:0.9rem">Cette analyse t'a-t-elle aidé à mieux te comprendre ?</p>
@@ -571,7 +508,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <div class="share-btns">
             <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
             <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
-            <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" id="copy-btn-paid" onclick="copyCode()">Copier mon code</button>
+            <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" id="copy-btn" onclick="copyCode()">Copier mon code</button>
           </div>
         </div>
 
@@ -593,7 +530,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
 <script src="api.js?v=3"></script>
 <script>
-/* ÉTOILES */
 (function(){
   var c=document.getElementById('cosmos-canvas'),ctx=c.getContext('2d'),stars=[],W,H;
   function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
@@ -601,25 +537,11 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
   function draw(t){ctx.clearRect(0,0,W,H);stars.forEach(function(s){var al=(Math.sin(t*s.sp+s.ph)+1)/2*s.a;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);if(s.col==='rose')ctx.fillStyle='rgba(212,83,126,'+al+')';else if(s.col==='purple')ctx.fillStyle='rgba(175,169,236,'+al+')';else ctx.fillStyle='rgba(255,255,255,'+al+')';ctx.fill();});requestAnimationFrame(draw);}
   resize();make(160);window.addEventListener('resize',function(){resize();make(160);});requestAnimationFrame(draw);
 })();
-
-/* ROUE */
 (function(){
-  var g=document.getElementById('wheel-dots');
-  if(!g)return;
+  var g=document.getElementById('wheel-dots');if(!g)return;
   var colors=['#7F77DD','#D4537E','#1D9E75','#BA7517','#AFA9EC','#F4C0D1'];
   var rings=[140,112,84,56],perRing=36,svgNS='http://www.w3.org/2000/svg';
-  rings.forEach(function(r,ri){
-    for(var i=0;i<perRing;i++){
-      var angle=(i/perRing)*Math.PI*2;
-      var c=document.createElementNS(svgNS,'circle');
-      c.setAttribute('cx',160+Math.cos(angle)*r);
-      c.setAttribute('cy',160+Math.sin(angle)*r);
-      c.setAttribute('r',1.6);
-      c.setAttribute('fill',colors[(i+ri)%colors.length]);
-      c.setAttribute('opacity',0.4+Math.random()*0.5);
-      g.appendChild(c);
-    }
-  });
+  rings.forEach(function(r,ri){for(var i=0;i<perRing;i++){var angle=(i/perRing)*Math.PI*2;var c=document.createElementNS(svgNS,'circle');c.setAttribute('cx',160+Math.cos(angle)*r);c.setAttribute('cy',160+Math.sin(angle)*r);c.setAttribute('r',1.6);c.setAttribute('fill',colors[(i+ri)%colors.length]);c.setAttribute('opacity',0.4+Math.random()*0.5);g.appendChild(c);}});
 })();
 
 var userData={},quizData={answers:[]};
@@ -627,48 +549,25 @@ try{userData=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}');}catch(e){}
 try{quizData=JSON.parse(sessionStorage.getItem('cosmos_quiz')||'{}');}catch(e){}
 if(userData.prenom){document.getElementById('nav-name').textContent=userData.prenom;}
 
-/* RADAR */
 function animateRadar(scores){
   scores=scores||{top:82,right:91,bottom:74,left:88};
   var cx=110,cy=110,maxR=92,start=null;
-  function step(ts){
-    if(!start)start=ts;
-    var p=Math.min((ts-start)/1200,1),e=1-Math.pow(1-p,3);
-    var pts=cx+','+(cy-(scores.top/100*maxR*e))+' '+(cx+(scores.right/100*maxR*e))+','+cy+' '+cx+','+(cy+(scores.bottom/100*maxR*e))+' '+(cx-(scores.left/100*maxR*e))+','+cy;
-    document.getElementById('radar-shape').setAttribute('points',pts);
-    document.getElementById('r-top').setAttribute('cy',cy-(scores.top/100*maxR*e));
-    document.getElementById('r-right').setAttribute('cx',cx+(scores.right/100*maxR*e));
-    document.getElementById('r-bottom').setAttribute('cy',cy+(scores.bottom/100*maxR*e));
-    document.getElementById('r-left').setAttribute('cx',cx-(scores.left/100*maxR*e));
-    if(p<1)requestAnimationFrame(step);
-  }
+  function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/1200,1),e=1-Math.pow(1-p,3);var pts=cx+','+(cy-(scores.top/100*maxR*e))+' '+(cx+(scores.right/100*maxR*e))+','+cy+' '+cx+','+(cy+(scores.bottom/100*maxR*e))+' '+(cx-(scores.left/100*maxR*e))+','+cy;document.getElementById('radar-shape').setAttribute('points',pts);document.getElementById('r-top').setAttribute('cy',cy-(scores.top/100*maxR*e));document.getElementById('r-right').setAttribute('cx',cx+(scores.right/100*maxR*e));document.getElementById('r-bottom').setAttribute('cy',cy+(scores.bottom/100*maxR*e));document.getElementById('r-left').setAttribute('cx',cx-(scores.left/100*maxR*e));if(p<1)requestAnimationFrame(step);}
   requestAnimationFrame(step);
 }
-
 function animateShareRadar(scores){
   scores=scores||{top:82,right:91,bottom:74,left:88};
   var cx=50,cy=50,maxR=42,start=null;
-  function step(ts){
-    if(!start)start=ts;
-    var p=Math.min((ts-start)/1000,1),e=1-Math.pow(1-p,3);
-    var pts=cx+','+(cy-(scores.top/100*maxR*e))+' '+(cx+(scores.right/100*maxR*e))+','+cy+' '+cx+','+(cy+(scores.bottom/100*maxR*e))+' '+(cx-(scores.left/100*maxR*e))+','+cy;
-    document.getElementById('share-radar').setAttribute('points',pts);
-    document.getElementById('sr-top').setAttribute('cy',cy-(scores.top/100*maxR*e));
-    document.getElementById('sr-right').setAttribute('cx',cx+(scores.right/100*maxR*e));
-    document.getElementById('sr-bottom').setAttribute('cy',cy+(scores.bottom/100*maxR*e));
-    document.getElementById('sr-left').setAttribute('cx',cx-(scores.left/100*maxR*e));
-    if(p<1)requestAnimationFrame(step);
-  }
+  function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/1000,1),e=1-Math.pow(1-p,3);var pts=cx+','+(cy-(scores.top/100*maxR*e))+' '+(cx+(scores.right/100*maxR*e))+','+cy+' '+cx+','+(cy+(scores.bottom/100*maxR*e))+' '+(cx-(scores.left/100*maxR*e))+','+cy;
+  var sr=document.getElementById('share-radar');if(sr)sr.setAttribute('points',pts);
+  var srt=document.getElementById('sr-top');if(srt)srt.setAttribute('cy',cy-(scores.top/100*maxR*e));
+  var srr=document.getElementById('sr-right');if(srr)srr.setAttribute('cx',cx+(scores.right/100*maxR*e));
+  var srb=document.getElementById('sr-bottom');if(srb)srb.setAttribute('cy',cy+(scores.bottom/100*maxR*e));
+  var srl=document.getElementById('sr-left');if(srl)srl.setAttribute('cx',cx-(scores.left/100*maxR*e));
+  if(p<1)requestAnimationFrame(step);}
   requestAnimationFrame(step);
 }
-
-function animateCompat(){
-  document.querySelectorAll('.compat-fill').forEach(function(f){
-    var w=f.getAttribute('data-w');
-    setTimeout(function(){f.style.width=w+'%';},200);
-  });
-}
-
+function animateCompat(){document.querySelectorAll('.compat-fill').forEach(function(f){var w=f.getAttribute('data-w');setTimeout(function(){f.style.width=w+'%';},200);});}
 setTimeout(animateRadar,300);
 
 var isPaid=false;
@@ -676,87 +575,22 @@ try{isPaid=sessionStorage.getItem('cosmos_paid')==='true';}catch(e){}
 
 function handlePayment(){
   var STRIPE_LINK='https://buy.stripe.com/dRmdR2bW8eTBfDUgepdUY01';
-  var email='';
-  try{email=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}').email||'';}catch(e){}
+  var email='';try{email=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}').email||'';}catch(e){}
   window.location.href=STRIPE_LINK+'?client_reference_id='+encodeURIComponent(email||'user');
 }
 
-/* Peupler les previews des blocs avec le vrai profil */
 function populateBlocs(profile){
   if(!profile) return;
-  /* BLOC 1 previews */
-  if(profile.blocages && profile.blocages[0]){
-    var b1el = document.getElementById('bloc1-preview1');
-    if(b1el) b1el.textContent = profile.blocages[0].nom + ' — ' + profile.blocages[0].desc.split('.')[0] + '…';
+  if(profile.forces&&profile.forces[0]){
+    var fn=document.getElementById('force1-name');var fb=document.getElementById('force1-desc-blur');
+    if(fn) fn.textContent=profile.forces[0].nom;
+    if(fb) fb.textContent=profile.forces[0].desc+' '+profile.forces[0].paradoxe;
   }
-  if(profile.miroir){
-    var mirEl = document.getElementById('bloc1-preview2');
-    if(mirEl) mirEl.textContent = profile.miroir.nom + ' — Résonance : '+(profile.miroir.resonance||92)+'%…';
-  }
-  if(profile.amour){
-    var amEl = document.getElementById('bloc1-preview3');
-    if(amEl) amEl.textContent = (profile.amour.style||'') + ' — ' + (profile.amour.desc||'').split('.')[0] + '…';
-  }
-  if(profile.blocages && profile.blocages[1]){
-    var b2el = document.getElementById('bloc1-preview4');
-    if(b2el) b2el.textContent = profile.blocages[1].nom + ' — ' + profile.blocages[1].desc.split('.')[0] + '…';
-  }
-  /* BLOC 2 previews */
-  if(profile.amour){
-    var am2 = document.getElementById('bloc2-preview1');
-    if(am2) am2.textContent = (profile.amour.pattern||'').split('.')[0] + '…';
-  }
-  if(profile.blocages && profile.blocages[1]){
-    var b2key = document.getElementById('bloc2-preview2');
-    if(b2key) b2key.textContent = (profile.blocages[1].cle||'').split('.')[0] + '…';
-  }
-  if(profile.miroir){
-    var sig = document.getElementById('bloc2-preview3');
-    if(sig) sig.textContent = (profile.miroir.signaux||'').split('.')[0] + '…';
-  }
-  if(profile.forces && profile.forces[1]){
-    var f2 = document.getElementById('bloc2-preview4');
-    if(f2) f2.textContent = profile.forces[1].nom + ' — ' + profile.forces[1].desc.split('.')[0] + '…';
-  }
-  /* BLOC 3 previews */
-  if(profile.actions && profile.actions[0]){
-    var a1t = document.getElementById('bloc3-action1-title');
-    var a1d = document.getElementById('bloc3-action1-desc');
-    if(a1t) a1t.textContent = profile.actions[0].titre;
-    if(a1d) a1d.textContent = profile.actions[0].desc.split('.')[0] + '…';
-  }
-  if(profile.actions && profile.actions[1]){
-    var a2t = document.getElementById('bloc3-action2-title');
-    var a2d = document.getElementById('bloc3-action2-desc');
-    if(a2t) a2t.textContent = profile.actions[1].titre;
-    if(a2d) a2d.textContent = profile.actions[1].desc.split('.')[0] + '…';
-  }
-  /* Force dominante visible */
-  if(profile.forces && profile.forces[0]){
-    var fn = document.getElementById('force1-name');
-    var fb = document.getElementById('force1-desc-blur');
-    if(fn) fn.textContent = profile.forces[0].nom;
-    if(fb) fb.textContent = profile.forces[0].desc + ' ' + profile.forces[0].paradoxe;
-  }
-  /* Rareté */
-  if(profile.profil && profile.profil.rarete){
-    var rarEl = document.getElementById('rarete-text');
-    if(rarEl) rarEl.textContent = 'Le tien est rare à ' + profile.profil.rarete;
-  }
-  /* Portrait ligne 1 visible */
-  if(profile.portrait && profile.portrait[0]){
-    var pl = document.getElementById('portrait-line-visible');
-    if(pl) pl.innerHTML = '<p class="portrait-line">'+profile.portrait[0]+'</p>';
-  }
-  /* Portrait lignes floutées */
-  if(profile.portrait && profile.portrait.length > 1){
-    var pb = document.getElementById('portrait-lines-blurred');
-    if(pb){
-      pb.innerHTML = profile.portrait.slice(1).map(function(l){
-        return '<p class="portrait-line">'+l+'</p>';
-      }).join('<br>');
-    }
-  }
+  if(profile.profil&&profile.profil.rarete){var rarEl=document.getElementById('rarete-text');if(rarEl) rarEl.textContent='Seulement '+profile.profil.rarete+' des profils analysés présentent cette combinaison.';}
+  if(profile.portrait&&profile.portrait[0]){var pl=document.getElementById('portrait-line-visible');if(pl) pl.innerHTML='<p class="portrait-line">'+profile.portrait[0]+'</p>';}
+  if(profile.portrait&&profile.portrait.length>1){var pb=document.getElementById('portrait-lines-blurred');if(pb) pb.innerHTML=profile.portrait.slice(1).map(function(l){return '<p class="portrait-line">'+l+'</p>';}).join('<br>');}
+  if(profile.actions&&profile.actions[0]){var a1t=document.getElementById('bloc3-action1-title');if(a1t) a1t.textContent=profile.actions[0].titre;}
+  if(profile.actions&&profile.actions[1]){var a2t=document.getElementById('bloc3-action2-title');if(a2t) a2t.textContent=profile.actions[1].titre;}
 }
 
 function populateEmailPopup(profile){
@@ -771,34 +605,21 @@ function populateEmailPopup(profile){
   if(line2El&&profile.portrait&&profile.portrait[1]) line2El.textContent=profile.portrait[1];
 }
 
-/* DÉBLOCAGE */
 function saveEmail(){
   if(typeof gtag==='function'){gtag('event','email_submit');}
   var email=document.getElementById('email-input').value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    document.getElementById('email-input').style.border='1px solid #D4537E';
-    return;
-  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('email-input').style.border='1px solid #D4537E';return;}
   try{var user=JSON.parse(sessionStorage.getItem('cosmos_user'))||{};user.email=email;sessionStorage.setItem('cosmos_user',JSON.stringify(user));}catch(e){}
   document.getElementById('email-capture').style.display='none';
   registerBrevoContact(email,userData.prenom||'',3);
-  var savedProfile=null;
-  try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+  var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(savedProfile&&savedProfile.profil){
     document.querySelectorAll('.card,.radar-wrap,#dim-pills').forEach(function(el){el.style.opacity='1';});
-    var banner=document.getElementById('demo-banner');
-    if(banner) banner.style.display='none';
-    window.CosmosAPI.apply(savedProfile);
-    populateBlocs(savedProfile);
-    if(typeof animateRadar==='function'&&savedProfile.dims){
-      animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
-    }
-    if(typeof animateShareRadar==='function'&&savedProfile.dims){
-      animateShareRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
-    }
-  } else {
-    window.CosmosAPI.init();
-  }
+    var banner=document.getElementById('demo-banner');if(banner) banner.style.display='none';
+    window.CosmosAPI.apply(savedProfile);populateBlocs(savedProfile);
+    if(typeof animateRadar==='function'&&savedProfile.dims){animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});}
+    if(typeof animateShareRadar==='function'&&savedProfile.dims){animateShareRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});}
+  } else {window.CosmosAPI.init();}
   if(window._pendingAction){var action=window._pendingAction;window._pendingAction=null;action();}
 }
 
@@ -807,111 +628,61 @@ function showExitMessage(){
   document.getElementById('email-capture').style.display='none';
   document.getElementById('exit-message').style.display='flex';
 }
-
-function returnToEmail(){
-  document.getElementById('exit-message').style.display='none';
-  document.getElementById('email-capture').style.display='flex';
-}
-
+function returnToEmail(){document.getElementById('exit-message').style.display='none';document.getElementById('email-capture').style.display='flex';}
 function leaveForGood(){
   if(typeof gtag==='function'){gtag('event','email_popup_abandon');}
   document.getElementById('exit-message').style.display='none';
-  var savedProfile=null;
-  try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+  var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(savedProfile&&savedProfile.profil){
     document.querySelectorAll('.card,.radar-wrap,#dim-pills').forEach(function(el){el.style.opacity='1';});
-    var banner=document.getElementById('demo-banner');
-    if(banner) banner.style.display='none';
-    var stepsEl=document.getElementById('loading-steps');
-    if(stepsEl) stepsEl.style.display='none';
-    window.CosmosAPI.apply(savedProfile);
-    populateBlocs(savedProfile);
-    if(typeof animateRadar==='function'&&savedProfile.dims){
-      animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});
-    }
-  } else {
-    window.CosmosAPI.init();
-  }
+    var banner=document.getElementById('demo-banner');if(banner) banner.style.display='none';
+    var stepsEl=document.getElementById('loading-steps');if(stepsEl) stepsEl.style.display='none';
+    window.CosmosAPI.apply(savedProfile);populateBlocs(savedProfile);
+    if(typeof animateRadar==='function'&&savedProfile.dims){animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});}
+  } else {window.CosmosAPI.init();}
 }
-
-function skipEmail(){
-  showExitMessage();
-}
+function skipEmail(){showExitMessage();}
 
 function checkEmailBeforeAction(action,context){
-  var user={};
-  try{user=JSON.parse(sessionStorage.getItem('cosmos_user'))||{};}catch(e){}
+  var user={};try{user=JSON.parse(sessionStorage.getItem('cosmos_user'))||{};}catch(e){}
   if(user.email){action();return;}
   var title=document.querySelector('#email-capture h2');
   var desc=document.querySelector('#email-capture p:nth-child(3)');
-  if(context==='payment'){
-    if(title) title.textContent='Entre ton email avant de continuer';
-    if(desc) desc.textContent='Nécessaire pour recevoir ta confirmation d\'achat.';
-  } else if(context==='chapter2'){
-    if(title) title.textContent='Pour être notifié·e en avant-première';
-    if(desc) desc.textContent='Entre ton email pour recevoir le Chapitre II dès sa sortie.';
-  } else if(context==='gift'){
-    if(title) title.textContent='Entre ton email d\'abord';
-    if(desc) desc.textContent='On a besoin de ton email pour envoyer le cadeau à ton ami.';
-  }
+  if(context==='payment'){if(title) title.textContent='Entre ton email avant de continuer';if(desc) desc.textContent='Nécessaire pour recevoir ta confirmation d\'achat.';}
+  else if(context==='chapter2'){if(title) title.textContent='Pour être notifié·e en avant-première';if(desc) desc.textContent='Entre ton email pour recevoir le Chapitre II dès sa sortie.';}
+  else if(context==='gift'){if(title) title.textContent='Entre ton email d\'abord';if(desc) desc.textContent='On a besoin de ton email pour envoyer le cadeau à ton ami.';}
   window._pendingAction=action;
   document.getElementById('email-capture').style.display='flex';
 }
 
 function unlockPaidContent(fromGift){
-  var isGift=fromGift||false;
-  try{isGift=isGift||!!sessionStorage.getItem('cosmos_gift_received');}catch(e){}
+  var isGift=fromGift||false;try{isGift=isGift||!!sessionStorage.getItem('cosmos_gift_received');}catch(e){}
   if(!isGift){try{sessionStorage.setItem('cosmos_paid','true');}catch(e){}}
-  if(isGift){
-    setTimeout(function(){
-      var giftBtn=document.getElementById('gift-btn');
-      if(giftBtn) giftBtn.closest('div[style*="linear-gradient"]').style.display='none';
-    },500);
-  }
   var giftCode=userData.prenom?userData.prenom.substring(0,3).toUpperCase()+Math.random().toString(36).substring(2,7).toUpperCase():Math.random().toString(36).substring(2,9).toUpperCase();
   try{sessionStorage.setItem('cosmos_gift',giftCode);}catch(e){}
   isPaid=true;
-  /* Masquer les 3 blocs paywall */
-  ['paywall-bloc1','paywall-bloc2','paywall-bloc3'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) el.style.display='none';
-  });
-  /* Déflouter */
+  ['paywall-bloc1','paywall-bloc2','paywall-bloc3'].forEach(function(id){var el=document.getElementById(id);if(el) el.style.display='none';});
+  var discBtn=document.querySelector('.content>div[style*="text-align:center"]');if(discBtn) discBtn.style.display='none';
   document.querySelectorAll('.portrait-fade-content').forEach(function(el){el.style.filter='none';el.style.userSelect='auto';});
-  document.querySelectorAll('.portrait-fade::after').forEach(function(el){el.style.display='none';});
   document.querySelectorAll('.force-desc-blur').forEach(function(el){el.style.filter='none';el.style.userSelect='auto';});
-  document.querySelectorAll('.bloc-item-blur').forEach(function(el){el.style.filter='none';el.style.userSelect='auto';el.style.pointerEvents='auto';});
   document.getElementById('paid-section').classList.add('unlocked');
   document.getElementById('demo-banner').style.display='none';
-  var cachedProfile=null;
-  try{cachedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+  var cachedProfile=null;try{cachedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(cachedProfile&&window.CosmosAPI){window.CosmosAPI.apply(cachedProfile);populateBlocs(cachedProfile);}
   else if(window.CosmosAPI){window.CosmosAPI.init();}
-  setTimeout(function(){
-    animateCompat();
-    var p=cachedProfile;
-    if(p&&p.dims){animateShareRadar({top:p.dims.cosmique[0],right:p.dims.cognitif[0],bottom:p.dims.emotionnel[0],left:p.dims.relationnel[0]});}
-    else{animateShareRadar();}
-  },300);
-  if(userData&&userData.email){
-    sendBrevoEmail(userData.email,userData.prenom||'toi');
-    registerBrevoContact(userData.email,userData.prenom||'',4);
-  }
+  setTimeout(function(){animateCompat();var p=cachedProfile;if(p&&p.dims){animateShareRadar({top:p.dims.cosmique[0],right:p.dims.cognitif[0],bottom:p.dims.emotionnel[0],left:p.dims.relationnel[0]});}else{animateShareRadar();}},300);
+  if(userData&&userData.email){sendBrevoEmail(userData.email,userData.prenom||'toi');registerBrevoContact(userData.email,userData.prenom||'',4);}
   setTimeout(function(){document.getElementById('paid-section').scrollIntoView({behavior:'smooth',block:'start'});},400);
 }
 
 if(isPaid||window.location.search.includes('success=true')){
   setTimeout(function(){
-    var cachedForUnlock=null;
-    try{cachedForUnlock=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+    var cachedForUnlock=null;try{cachedForUnlock=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
     if(cachedForUnlock&&window.CosmosAPI){
-      window.CosmosAPI.apply(cachedForUnlock);
-      populateBlocs(cachedForUnlock);
+      window.CosmosAPI.apply(cachedForUnlock);populateBlocs(cachedForUnlock);
       document.querySelectorAll('.card,.radar-wrap,#dim-pills').forEach(function(el){el.style.opacity='1';});
-      var bannerEl=document.getElementById('demo-banner');
-      if(bannerEl) bannerEl.style.display='none';
-      var stepsEl2=document.getElementById('loading-steps');
-      if(stepsEl2) stepsEl2.style.display='none';
+      var bannerEl=document.getElementById('demo-banner');if(bannerEl) bannerEl.style.display='none';
+      var stepsEl2=document.getElementById('loading-steps');if(stepsEl2) stepsEl2.style.display='none';
       if(cachedForUnlock.dims){animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});}
     }
     unlockPaidContent();
@@ -924,15 +695,23 @@ if(window.location.search.includes('gift=')){
   window.location.href='index.html?gift='+giftParam;
 }
 
-/* CHARGEMENT */
 setTimeout(function(){
   if(window.location.search.includes('success=true')||sessionStorage.getItem('cosmos_paid')==='true'){return;}
-
-  /* Vérifier si profil existe dans localStorage */
-  var localProfile = null;
-  try{ localProfile = JSON.parse(localStorage.getItem('cosmos_profile')); }catch(e){}
-  if(localProfile && localProfile.profil && window.CosmosAPI){
-  sessionStorage.setItem('cosmos_profile', JSON.stringify(localProfile));
+  var localProfile=null;try{localProfile=JSON.parse(localStorage.getItem('cosmos_profile'));}catch(e){}
+  if(localProfile&&localProfile.profil&&window.CosmosAPI){
+    sessionStorage.setItem('cosmos_profile',JSON.stringify(localProfile));
+    window.CosmosAPI.apply(localProfile);populateBlocs(localProfile);
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills').forEach(function(el){el.style.opacity='1';});
+    var bannerEl=document.getElementById('demo-banner');if(bannerEl) bannerEl.style.display='none';
+    var stepsEl=document.getElementById('loading-steps');if(stepsEl) stepsEl.style.display='none';
+    if(localProfile.dims){animateRadar({top:localProfile.dims.cosmique[0],right:localProfile.dims.cognitif[0],bottom:localProfile.dims.emotionnel[0],left:localProfile.dims.relationnel[0]});}
+    var cosmosUser={};try{cosmosUser=JSON.parse(sessionStorage.getItem('cosmos_user'))||{};}catch(e){}
+    if(!cosmosUser.email){
+      populateEmailPopup(localProfile);
+      document.getElementById('email-capture').style.display='flex';
+      if(typeof gtag==='function'){gtag('event','email_popup_view');}
+    }
+    return;
   }
   if(window.CosmosAPI){
     try{sessionStorage.removeItem('cosmos_profile');localStorage.removeItem('cosmos_profile');}catch(e){}
@@ -941,74 +720,24 @@ setTimeout(function(){
     document.getElementById('profile-code').textContent='· · ·';
     var steps=['Lecture de tes 9 réponses projectives…','Analyse de tes patterns émotionnels…','Détection de tes dimensions dominantes…','Identification de tes blocages inconscients…','Calcul de ton archétype parmi 144…','Connexion à ton monde intérieur…','Génération de ton portrait unique…','Connexion à ton ciel natal…','Calcul de ton âme miroir…','Finalisation de ton analyse complète…'];
     var stepsEl=document.getElementById('loading-steps'),si=0;
-    var stepTimer=setInterval(function(){
-      if(si<steps.length){
-        var line=document.createElement('div');
-        line.style.cssText='font-size:0.75rem;color:#AFA9EC;display:flex;align-items:center;gap:8px;margin-top:0.4rem';
-        line.innerHTML='<span style="color:#1D9E75;font-size:0.65rem">✓</span>'+steps[si];
-        stepsEl.appendChild(line);si++;
-      } else {clearInterval(stepTimer);}
-    },4000);
-    var isGiftReceived=false;
-    try{isGiftReceived=!!sessionStorage.getItem('cosmos_gift_received');}catch(e){}
+    var stepTimer=setInterval(function(){if(si<steps.length){var line=document.createElement('div');line.style.cssText='font-size:0.75rem;color:#AFA9EC;display:flex;align-items:center;gap:8px;margin-top:0.4rem';line.innerHTML='<span style="color:#1D9E75;font-size:0.65rem">✓</span>'+steps[si];stepsEl.appendChild(line);si++;}else{clearInterval(stepTimer);}},4000);
+    var isGiftReceived=false;try{isGiftReceived=!!sessionStorage.getItem('cosmos_gift_received');}catch(e){}
     if(isGiftReceived){try{sessionStorage.removeItem('cosmos_profile');sessionStorage.removeItem('cosmos_paid');}catch(e){}}
     window.CosmosAPI.init();
     if(isGiftReceived){
-      var giftCheck=setInterval(function(){
-        var profile=null;
-        try{profile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
-        if(profile&&profile.profil&&profile.profil.code!=='LUN-SYS-PRO'){
-          clearInterval(giftCheck);unlockPaidContent(true);
-          try{sessionStorage.removeItem('cosmos_gift_received');}catch(e){}
-        }
-      },500);
+      var giftCheck=setInterval(function(){var profile=null;try{profile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}if(profile&&profile.profil&&profile.profil.code!=='LUN-SYS-PRO'){clearInterval(giftCheck);unlockPaidContent(true);try{sessionStorage.removeItem('cosmos_gift_received');}catch(e){}}},500);
       setTimeout(function(){clearInterval(giftCheck);},60000);
     }
   }
 },100);
 
-function shareIG(){
-  var nom=document.getElementById('profile-name').textContent||'Mon profil Cosmos';
-  alert('📸 Pour partager :\n1. Capture d\'écran\n2. Instagram → Story\n\nTon profil : '+nom);
-}
-function shareFB(){
-  var nom=document.getElementById('profile-name').textContent||'';
-  var code=document.getElementById('share-code').textContent||'';
-  var text=encodeURIComponent('Je viens de découvrir mon profil Cosmos : '+nom+' ('+code+'). Et toi ? 🌟');
-  window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('https://cosmos-vision.com')+'&quote='+text,'_blank');
-}
-function copyCode(){
-  var code=document.getElementById('share-code').textContent;
-  if(navigator.clipboard){navigator.clipboard.writeText(code).then(function(){var btn=document.getElementById('copy-btn');btn.textContent='✓ Copié !';setTimeout(function(){btn.textContent='Copier mon code';},2000);});}
-}
-function sendFeedback(note){
-  var stars=document.querySelectorAll('[onclick^="sendFeedback"]');
-  stars.forEach(function(s,i){s.textContent=i<note?'⭐':'☆';});
-}
-function registerChapter2(){
-  var btn=document.getElementById('chapter2-btn');
-  var commentaire=document.getElementById('feedback-text').value;
-  btn.textContent='✓ Tu seras notifié·e !';btn.style.background='var(--teal)';btn.disabled=true;
-  if(userData&&userData.email){registerBrevoContact(userData.email,userData.prenom||'',5,commentaire);}
-}
-function shareGift(){
-  var code='';
-  try{code=sessionStorage.getItem('cosmos_gift')||'';}catch(e){}
-  if(!code){code=Math.random().toString(36).substring(2,9).toUpperCase();try{sessionStorage.setItem('cosmos_gift',code);}catch(e){}}
-  var giftUrl='https://cosmos-vision.com/resultat.html?gift='+code;
-  var popup=document.getElementById('gift-popup');
-  if(popup){document.getElementById('gift-url-hidden').value=giftUrl;popup.style.display='flex';}
-}
-function sendGiftEmail(){
-  var email=document.getElementById('gift-email').value;
-  var prenom=document.getElementById('gift-prenom').value;
-  var giftUrl=document.getElementById('gift-url-hidden').value;
-  if(!email||!email.includes('@')){alert('Email invalide !');return;}
-  var btn=document.getElementById('gift-send-btn');btn.textContent='Envoi…';btn.disabled=true;
-  fetch('https://api.brevo.com/v3/smtp/email',{method:'POST',headers:{'Content-Type':'application/json','api-key':b1+b2},body:JSON.stringify({templateId:2,to:[{email:email,name:prenom||'toi'}],params:{prenom_ami:prenom||'toi',prenom_parrain:userData.prenom||'Quelqu\'un',gift_url:giftUrl}})})
-  .then(function(){registerBrevoContact(email,prenom||'',3);document.getElementById('gift-popup').style.display='none';var btn2=document.getElementById('gift-btn');btn2.textContent='✓ Cadeau envoyé !';btn2.style.background='var(--teal)';})
-  .catch(function(){btn.textContent='Envoyer →';btn.disabled=false;alert('Erreur — réessaie !');});
-}
+function shareIG(){var nom=document.getElementById('profile-name').textContent||'Mon profil Cosmos';alert('📸 Pour partager :\n1. Capture d\'écran\n2. Instagram → Story\n\nTon profil : '+nom);}
+function shareFB(){var nom=document.getElementById('profile-name').textContent||'';var code=document.getElementById('share-code-paid')&&document.getElementById('share-code-paid').textContent||'';var text=encodeURIComponent('Je viens de découvrir mon profil Cosmos : '+nom+'. Et toi ? 🌟');window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('https://cosmos-vision.com')+'&quote='+text,'_blank');}
+function copyCode(){var el=document.getElementById('share-code-paid')||document.getElementById('share-code');if(!el)return;var code=el.textContent;if(navigator.clipboard){navigator.clipboard.writeText(code).then(function(){var btn=document.getElementById('copy-btn');if(btn){btn.textContent='✓ Copié !';setTimeout(function(){btn.textContent='Copier mon code';},2000);}});}}
+function sendFeedback(note){var stars=document.querySelectorAll('[onclick^="sendFeedback"]');stars.forEach(function(s,i){s.textContent=i<note?'⭐':'☆';});}
+function registerChapter2(){var btn=document.getElementById('chapter2-btn');var commentaire=document.getElementById('feedback-text').value;btn.textContent='✓ Tu seras notifié·e !';btn.style.background='var(--teal)';btn.disabled=true;if(userData&&userData.email){registerBrevoContact(userData.email,userData.prenom||'',5,commentaire);}}
+function shareGift(){var code='';try{code=sessionStorage.getItem('cosmos_gift')||'';}catch(e){}if(!code){code=Math.random().toString(36).substring(2,9).toUpperCase();try{sessionStorage.setItem('cosmos_gift',code);}catch(e){}}var giftUrl='https://cosmos-vision.com/resultat.html?gift='+code;var popup=document.getElementById('gift-popup');if(popup){document.getElementById('gift-url-hidden').value=giftUrl;popup.style.display='flex';}}
+function sendGiftEmail(){var email=document.getElementById('gift-email').value;var prenom=document.getElementById('gift-prenom').value;var giftUrl=document.getElementById('gift-url-hidden').value;if(!email||!email.includes('@')){alert('Email invalide !');return;}var btn=document.getElementById('gift-send-btn');btn.textContent='Envoi…';btn.disabled=true;fetch('https://api.brevo.com/v3/smtp/email',{method:'POST',headers:{'Content-Type':'application/json','api-key':b1+b2},body:JSON.stringify({templateId:2,to:[{email:email,name:prenom||'toi'}],params:{prenom_ami:prenom||'toi',prenom_parrain:userData.prenom||'Quelqu\'un',gift_url:giftUrl}})}).then(function(){registerBrevoContact(email,prenom||'',3);document.getElementById('gift-popup').style.display='none';var btn2=document.getElementById('gift-btn');btn2.textContent='✓ Cadeau envoyé !';btn2.style.background='var(--teal)';}).catch(function(){btn.textContent='Envoyer →';btn.disabled=false;alert('Erreur — réessaie !');});}
 function closeGiftPopup(){document.getElementById('gift-popup').style.display='none';}
 </script>
 
@@ -1035,16 +764,16 @@ function closeGiftPopup(){document.getElementById('gift-popup').style.display='n
       <p id="popup-portrait-line1" style="font-family:'Cormorant Garamond',serif;font-size:0.88rem;color:#C8C4E8;font-style:italic;line-height:1.7;margin-bottom:0.35rem">Tu ne t'expliques pas — tu te révèles lentement, à ceux qui savent attendre.</p>
       <p id="popup-portrait-line2" style="font-family:'Cormorant Garamond',serif;font-size:0.88rem;color:#C8C4E8;font-style:italic;line-height:1.7">Là où les autres voient du bruit, tu perçois une architecture cachée.</p>
     </div>
-    <p style="font-size:0.72rem;color:#8B87B0;margin-bottom:0.75rem">Entre ton email pour découvrir :</p>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:1.5rem;text-align:left">
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">⚡</span><span style="font-size:0.75rem;color:#C8C4E8">Ta <strong>force dominante</strong></span></div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🎯</span><span style="font-size:0.75rem;color:#C8C4E8">Tes <strong>4 dimensions</strong> et ton radar</span></div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🌀</span><span style="font-size:0.75rem;color:#C8C4E8">Ton profil parmi <strong>144 archétypes</strong></span></div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">🔍</span><span style="font-size:0.75rem;color:#C8C4E8">Les <strong>4 révélations cachées</strong> que Cosmos a détectées</span></div>
-      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:8px;padding:0.5rem 0.75rem"><span style="font-size:0.85rem">✦</span><span style="font-size:0.75rem;color:#C8C4E8">Et bien plus encore…</span></div>
+    <p style="font-size:0.82rem;color:#C8C4E8;font-weight:500;margin-bottom:0.75rem">Entre ton email pour découvrir :</p>
+    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;text-align:left">
+      <p style="font-size:0.78rem;color:#C8C4E8">⚡ Ta <strong>force dominante</strong></p>
+      <p style="font-size:0.78rem;color:#C8C4E8">🎯 Tes <strong>4 dimensions</strong> et ton radar</p>
+      <p style="font-size:0.78rem;color:#C8C4E8">🌀 Ton profil parmi <strong>144 archétypes</strong></p>
+      <p style="font-size:0.78rem;color:#C8C4E8">🔍 Les <strong>4 révélations cachées</strong> que Cosmos a détectées</p>
+      <p style="font-size:0.78rem;color:#8B87B0">✦ Et bien plus encore…</p>
     </div>
     <input id="email-input" type="email" placeholder="ton@email.com" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.85rem;color:#F0EEF8;font-family:'DM Sans',sans-serif;font-size:0.9rem;margin-bottom:0.75rem;outline:none;text-align:center"/>
-    <button onclick="saveEmail()" style="width:100%;background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.95rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;margin-bottom:1rem;letter-spacing:0.02em">Découvrir mon profil Cosmos →</button>
+    <button onclick="saveEmail()" style="width:100%;background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.95rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;cursor:pointer;margin-bottom:1rem;letter-spacing:0.02em">Découvrir mon profil maintenant →</button>
     <p style="font-size:0.6rem;color:#4A4870;letter-spacing:0.04em">Aucun spam · Désabonnement en 1 clic</p>
     <button onclick="showExitMessage()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#4A4870;font-size:1rem;cursor:pointer;opacity:0.5">✕</button>
   </div>
