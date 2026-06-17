@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmos — Ton analyse complète</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07060f;color:#F0EEF8;font-family:'DM Sans',sans-serif;font-weight:300;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem 4rem;gap:1.5rem;-webkit-font-smoothing:antialiased}
+.controls{display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-align:center}
+.controls h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:#F0EEF8}
+.status{font-size:0.8rem;color:#8B87B0}
+.btn-generate{background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.9rem 2.5rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;cursor:pointer;transition:opacity 0.2s}
+.btn-generate:hover{opacity:0.9}
+#pdf-pages{width:794px;display:flex;flex-direction:column;gap:24px}
+.pdf-page{width:794px;min-height:1123px;position:relative;overflow:hidden;background:#0d0b1a;border:1px solid rgba(127,119,221,0.2)}
+.page-stripe{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,#7F77DD,#D4537E,#1D9E75);z-index:2}
+.stars-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.page-inner{padding:36px 44px 32px;position:relative;z-index:1}
+.pdf-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.pdf-header-eyebrow{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:#4A4870;margin-bottom:5px}
+.pdf-header-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#F0EEF8;margin-bottom:4px;line-height:1.15}
+.pdf-header-code{font-size:9px;letter-spacing:2px;color:#7F77DD}
+.pdf-header-right{text-align:right;font-size:9px;color:#4A4870;line-height:1.7}
+.sec-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:#4A4870;margin-bottom:9px}
+.dims-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px}
+.dim-row{display:flex;align-items:center;gap:7px}
+.dim-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.dim-inner{flex:1}
+.dim-top{display:flex;justify-content:space-between;margin-bottom:3px}
+.dim-name{font-size:9.5px;color:#8B87B0}
+.dim-pct{font-size:9.5px;font-weight:500}
+.dim-bar{height:2px;background:rgba(255,255,255,0.06);border-radius:2px}
+.dim-fill{height:100%;border-radius:2px}
+.essence-bloc{margin-bottom:18px;padding:13px 15px;border-left:2px solid #7F77DD;background:rgba(127,119,221,0.05);border-radius:0 8px 8px 0}
+.essence-line{font-family:'Cormorant Garamond',serif;font-size:11.5px;color:#C8C4E8;line-height:1.8;font-style:italic}
+.essence-line+.essence-line{margin-top:3px}
+.force-bloc{margin-bottom:18px;padding:13px 15px;border:1px solid rgba(127,119,221,0.22);border-radius:9px;background:rgba(127,119,221,0.04)}
+.force-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.force-badge{font-size:8px;color:#7F77DD;background:rgba(127,119,221,0.12);padding:2px 7px;border-radius:20px}
+.force-name{font-size:14px;font-weight:500;color:#F0EEF8;margin-bottom:4px}
+.force-desc{font-size:10.5px;color:#8B87B0;line-height:1.65;margin-bottom:7px}
+.force-paradox{padding-top:7px;border-top:1px solid rgba(255,255,255,0.05);font-size:9.5px;color:#AFA9EC;font-style:italic}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.rev-card{padding:11px 12px;background:#131128;border:1px solid rgba(255,255,255,0.05);border-radius:9px}
+.rev-label{font-size:9px;font-weight:500;margin-bottom:3px}
+.rev-name{font-size:10px;font-weight:500;color:#F0EEF8;margin-bottom:3px}
+.rev-desc{font-size:9.5px;color:#8B87B0;line-height:1.5;margin-bottom:5px}
+.rev-key{font-size:9px;color:#1D9E75;background:rgba(29,158,117,0.08);border-radius:4px;padding:3px 6px;display:block;line-height:1.4}
+.rev-quote{font-family:'Cormorant Garamond',serif;font-size:9.5px;color:#8B87B0;font-style:italic;border-left:1.5px solid rgba(212,83,126,0.3);padding-left:5px;margin-bottom:5px;line-height:1.5}
+.rev-compat{display:flex;gap:6px;font-size:8.5px}
+.rev-love-row{display:flex;gap:4px;margin-bottom:2px;font-size:9.5px;color:#8B87B0;line-height:1.45}
+.rev-love-label{font-size:8.5px;text-transform:uppercase;letter-spacing:0.05em;color:#4A4870;min-width:58px;flex-shrink:0;padding-top:1px}
+.rev-piege{font-size:9px;color:#AFA9EC;font-style:italic;margin-top:4px}
+.page-footer{margin-top:18px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between}
+.page-footer p{font-size:8.5px;color:#4A4870}
+.p2-title-bloc{margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.p2-eyebrow{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:#4A4870;margin-bottom:3px}
+.p2-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;color:#F0EEF8}
+.two-cols{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:18px}
+.col-card{padding:12px 13px;border-radius:9px}
+.col-label{font-size:9px;font-weight:500;margin-bottom:6px}
+.col-text{font-size:10.5px;color:#8B87B0;line-height:1.65}
+.hidden-force{margin-bottom:18px;padding:12px 14px;border:1px solid rgba(186,117,23,0.28);border-radius:9px;background:rgba(186,117,23,0.04)}
+.hf-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#BA7517;margin-bottom:5px}
+.hf-name{font-size:14px;font-weight:500;color:#F0EEF8;margin-bottom:4px}
+.hf-desc{font-size:10.5px;color:#8B87B0;line-height:1.65;margin-bottom:5px}
+.hf-paradox{font-size:9.5px;color:#BA7517;font-style:italic}
+.actions-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:18px}
+.action-card{padding:11px 12px;background:#131128;border:1px solid rgba(255,255,255,0.06);border-radius:9px}
+.action-header{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.action-num{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;flex-shrink:0}
+.action-title{font-size:10.5px;font-weight:500;color:#F0EEF8}
+.action-desc{font-size:9.5px;color:#8B87B0;line-height:1.55;margin-bottom:4px}
+.action-freq{font-size:8.5px;text-transform:uppercase;letter-spacing:0.07em}
+.conclusion-bloc{padding:15px 18px;background:linear-gradient(135deg,rgba(127,119,221,0.07),rgba(212,83,126,0.04));border:1px solid rgba(127,119,221,0.18);border-radius:10px;text-align:center;position:relative;overflow:hidden}
+.conclusion-bar{position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:1px;background:linear-gradient(to right,transparent,#7F77DD,#D4537E,transparent)}
+.conclusion-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:#4A4870;margin-bottom:7px}
+.conclusion-text{font-family:'Cormorant Garamond',serif;font-size:12.5px;color:#C8C4E8;font-style:italic;line-height:1.8}
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <h2>Cosmos — Ton analyse complète</h2>
+  <p class="status" id="status-text">Chargement du profil…</p>
+  <button class="btn-generate" id="btn-generate" onclick="generatePDF()">⬇ Télécharger mon analyse PDF</button>
+</div>
+
+<div id="pdf-pages">
+
+  <!-- PAGE 1 -->
+  <div class="pdf-page" id="pdf-page1">
+    <div class="page-stripe"></div>
+    <canvas class="stars-canvas" id="stars1"></canvas>
+    <div class="page-inner">
+
+      <div class="pdf-header">
+        <div>
+          <p class="pdf-header-eyebrow">Cosmos · Analyse personnalisée</p>
+          <p class="pdf-header-name" id="pdf-name">L'Étoile Analytique</p>
+          <p class="pdf-header-code" id="pdf-code">SOL · ANA · EXP</p>
+        </div>
+        <div class="pdf-header-right" id="pdf-header-right">Sophie · Capricorne<br>juin 2026</div>
+      </div>
+
+      <p class="sec-label">Tes 4 dimensions</p>
+      <div class="dims-grid">
+        <div class="dim-row">
+          <div class="dim-dot" style="background:#AFA9EC"></div>
+          <div class="dim-inner">
+            <div class="dim-top"><span class="dim-name" id="d1l">Cosmique · Soleil</span><span class="dim-pct" style="color:#AFA9EC" id="d1p">82%</span></div>
+            <div class="dim-bar"><div class="dim-fill" style="background:#AFA9EC" id="d1b"></div></div>
+          </div>
+        </div>
+        <div class="dim-row">
+          <div class="dim-dot" style="background:#9FE1CB"></div>
+          <div class="dim-inner">
+            <div class="dim-top"><span class="dim-name" id="d2l">Cognitif · Analytique</span><span class="dim-pct" style="color:#9FE1CB" id="d2p">88%</span></div>
+            <div class="dim-bar"><div class="dim-fill" style="background:#9FE1CB" id="d2b"></div></div>
+          </div>
+        </div>
+        <div class="dim-row">
+          <div class="dim-dot" style="background:#F4C0D1"></div>
+          <div class="dim-inner">
+            <div class="dim-top"><span class="dim-name" id="d3l">Émotionnel · Expansif</span><span class="dim-pct" style="color:#F4C0D1" id="d3p">74%</span></div>
+            <div class="dim-bar"><div class="dim-fill" style="background:#F4C0D1" id="d3b"></div></div>
+          </div>
+        </div>
+        <div class="dim-row">
+          <div class="dim-dot" style="background:#FAC775"></div>
+          <div class="dim-inner">
+            <div class="dim-top"><span class="dim-name" id="d4l">Relationnel · Lien</span><span class="dim-pct" style="color:#FAC775" id="d4p">79%</span></div>
+            <div class="dim-bar"><div class="dim-fill" style="background:#FAC775" id="d4b"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="sec-label">Ton essence profonde</p>
+      <div class="essence-bloc" id="pdf-essence"></div>
+
+      <p class="sec-label">Ta force dominante</p>
+      <div class="force-bloc">
+        <div class="force-header">
+          <span style="font-size:10px">🚀</span>
+          <span class="force-badge" id="pdf-force-badge">Cosmique</span>
+        </div>
+        <p class="force-name" id="pdf-force-name">Lucidité Solaire</p>
+        <p class="force-desc" id="pdf-force-desc">Sophie perçoit les structures invisibles derrière chaque situation.</p>
+        <p class="force-paradox" id="pdf-force-paradox">Son paradoxe : sa vision nette peut devenir un fardeau.</p>
+      </div>
+
+      <p class="sec-label">Les 4 révélations sur toi</p>
+      <div class="rev-grid">
+        <div class="rev-card" style="border-top:2px solid #D4537E">
+          <p class="rev-label" style="color:#D4537E">🧱 Ton blocage principal</p>
+          <p class="rev-name" id="pdf-b1-name">Le Perfectionnisme Paralysant</p>
+          <p class="rev-desc" id="pdf-b1-desc">Sa rigueur peut se retourner contre elle.</p>
+          <span class="rev-key" id="pdf-b1-key">Clé : autoriser le brouillon.</span>
+        </div>
+        <div class="rev-card" style="border-top:2px solid #D4537E">
+          <p class="rev-label" style="color:#D4537E">🪞 Ton âme miroir</p>
+          <p class="rev-name" id="pdf-mirror-name">Le Voyageur Intuitif</p>
+          <p class="rev-quote" id="pdf-mirror-quote">"Là où Sophie construit, son miroir trace des chemins sans carte."</p>
+          <div class="rev-compat">
+            <span style="color:#D4537E">Rés. <span id="pdf-c1">92</span>%</span>
+            <span style="color:#4A4870">·</span>
+            <span style="color:#7F77DD">Compl. <span id="pdf-c2">79</span>%</span>
+            <span style="color:#4A4870">·</span>
+            <span style="color:#BA7517">Cosmos <span id="pdf-c3">86</span>%</span>
+          </div>
+        </div>
+        <div class="rev-card" style="border-top:2px solid #7F77DD">
+          <p class="rev-label" style="color:#7F77DD">💞 Ton schéma amoureux</p>
+          <p class="rev-name" id="pdf-love-style">Fusion Consciente</p>
+          <div class="rev-love-row"><span class="rev-love-label">Elle offre</span><span id="pdf-love-offre">Loyauté absolue.</span></div>
+          <div class="rev-love-row"><span class="rev-love-label">Elle a besoin</span><span id="pdf-love-besoin">D'être reçue en profondeur.</span></div>
+          <p class="rev-piege" id="pdf-love-pattern">Piège : donner avant de demander.</p>
+        </div>
+        <div class="rev-card" style="border-top:2px solid #1D9E75">
+          <p class="rev-label" style="color:#1D9E75">🌀 Ce qui vide ton énergie</p>
+          <p class="rev-name" id="pdf-b2-name">La Solitude du Lucide</p>
+          <p class="rev-desc" id="pdf-b2-desc">Sa capacité à voir loin peut l'isoler des cercles qui préfèrent la surface.</p>
+          <span class="rev-key" id="pdf-b2-key">Antidote : chercher des espaces à sa hauteur.</span>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <p>cosmos-vision.com</p>
+        <p>Page 1 / 2</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="pdf-page" id="pdf-page2">
+    <div class="page-stripe"></div>
+    <canvas class="stars-canvas" id="stars2"></canvas>
+    <div class="page-inner">
+
+      <div class="p2-title-bloc">
+        <p class="p2-eyebrow" id="pdf-p2-eyebrow">L'Étoile Analytique · Suite</p>
+        <p class="p2-title">Comprendre pourquoi tu te retrouves toujours au même endroit</p>
+      </div>
+
+      <div class="two-cols">
+        <div class="col-card" style="background:rgba(212,83,126,0.05);border:1px solid rgba(212,83,126,0.15)">
+          <p class="col-label" style="color:#D4537E">🔁 Tes erreurs relationnelles</p>
+          <p class="col-text" id="pdf-pattern">Elle tend à prendre soin avant de demander à être prise en soin.</p>
+        </div>
+        <div class="col-card" style="background:rgba(29,158,117,0.05);border:1px solid rgba(29,158,117,0.15)">
+          <p class="col-label" style="color:#1D9E75">🧠 La clé qui te libère</p>
+          <p class="col-text" id="pdf-cle">Pratiquer la demande explicite — nommer un besoin est un acte de confiance.</p>
+        </div>
+      </div>
+
+      <div class="hidden-force">
+        <p class="hf-label">⚡ Ton potentiel caché</p>
+        <p class="hf-name" id="pdf-f2-name">Intelligence narrative</p>
+        <p class="hf-desc" id="pdf-f2-desc">Sophie sait tisser les événements en une trame cohérente, donnant du sens là où d'autres ne voient que chaos.</p>
+        <p class="hf-paradox" id="pdf-f2-paradox">Son paradoxe : elle structure si bien le récit des autres qu'elle en oublie parfois d'écrire le sien.</p>
+      </div>
+
+      <p class="sec-label">☀️ Tes 2 actions personnalisées</p>
+      <div class="actions-grid">
+        <div class="action-card" style="border-color:rgba(175,169,236,0.2)">
+          <div class="action-header">
+            <div class="action-num" style="background:rgba(175,169,236,0.18);color:#AFA9EC">1</div>
+            <p class="action-title" id="pdf-a1-title">Cartographie Stellaire</p>
+          </div>
+          <p class="action-desc" id="pdf-a1-desc">Chaque soir, noter trois observations sur soi-même comme si l'on cartographiait une constellation inconnue.</p>
+          <p class="action-freq" style="color:#AFA9EC" id="pdf-a1-freq">Quotidien · 5 min</p>
+        </div>
+        <div class="action-card" style="border-color:rgba(244,192,209,0.2)">
+          <div class="action-header">
+            <div class="action-num" style="background:rgba(212,83,126,0.15);color:#F4C0D1">2</div>
+            <p class="action-title" id="pdf-a2-title">Dépose Émotionnelle</p>
+          </div>
+          <p class="action-desc" id="pdf-a2-desc">Une fois par semaine, laisser sortir sans filtrer ce qu'elle porte émotionnellement.</p>
+          <p class="action-freq" style="color:#F4C0D1" id="pdf-a2-freq">Hebdomadaire · 20 min</p>
+        </div>
+      </div>
+
+      <div class="conclusion-bloc">
+        <div class="conclusion-bar"></div>
+        <p class="conclusion-label">✦ Conclusion Cosmos</p>
+        <p class="conclusion-text" id="pdf-conclusion">"Ton profil présente une cohérence rare entre tes aspirations profondes et tes comportements visibles. Cette clarté est une force — apprends à lui faire confiance."</p>
+      </div>
+
+      <div class="page-footer" style="margin-top:16px">
+        <p id="pdf-footer">cosmos-vision.com · Analyse personnalisée · juin 2026</p>
+        <p>Page 2 / 2</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+function drawStars(canvasId){
+  var c=document.getElementById(canvasId);
+  if(!c)return;
+  c.width=794;c.height=1123;
+  var ctx=c.getContext('2d');
+  var cols=['212,83,126','175,169,236','255,255,255','29,158,117'];
+  for(var i=0;i<220;i++){
+    var x=Math.random()*794,y=Math.random()*1123;
+    var r=Math.random()*1.1+0.2;
+    var a=Math.random()*0.45+0.06;
+    var col=Math.random()>0.92?cols[0]:Math.random()>0.86?cols[1]:Math.random()>0.97?cols[3]:cols[2];
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.fillStyle='rgba('+col+','+a+')';ctx.fill();
+  }
+}
+drawStars('stars1');
+drawStars('stars2');
+
+function loadProfile(){
+  var profile=null;
+  try{profile=JSON.parse(localStorage.getItem('cosmos_profile'));}catch(e){}
+  if(!profile||!profile.profil){
+    try{profile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+  }
+  if(!profile||!profile.profil){
+    document.getElementById('status-text').textContent='⚠️ Profil non trouvé — fais le quiz d\'abord.';
+    return;
+  }
+  document.getElementById('status-text').textContent='✅ Profil chargé — prêt à télécharger !';
+  var p=profile.profil;
+  var prenom=p.nom?p.nom.split(' ')[0]:'';
+  var date=new Date().toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+
+  document.getElementById('pdf-name').textContent=p.nom||'';
+  document.getElementById('pdf-code').textContent=(p.code||'').replace(/-/g,' · ');
+  document.getElementById('pdf-header-right').innerHTML=prenom+(p.signe?' · '+p.signe:'')+'<br>'+date;
+  document.getElementById('pdf-p2-eyebrow').textContent=(p.nom||'')+' · Suite';
+  document.getElementById('pdf-footer').textContent='cosmos-vision.com · Analyse personnalisée · '+date;
+
+  if(profile.dims){
+    var d=profile.dims;
+    var parts=(p.sous_titre||'').split('·').map(function(s){return s.trim();});
+    var ds=[
+      {l:'d1l',p:'d1p',b:'d1b',val:d.cosmique[0],label:'Cosmique · '+(parts[0]||'')},
+      {l:'d2l',p:'d2p',b:'d2b',val:d.cognitif[0],label:'Cognitif · '+(parts[1]||'')},
+      {l:'d3l',p:'d3p',b:'d3b',val:d.emotionnel[0],label:'Émotionnel · '+(parts[2]||'')},
+      {l:'d4l',p:'d4p',b:'d4b',val:d.relationnel[0],label:'Relationnel · Lien'}
+    ];
+    ds.forEach(function(x){
+      var el=document.getElementById(x.l);if(el)el.textContent=x.label;
+      var ep=document.getElementById(x.p);if(ep)ep.textContent=x.val+'%';
+      var eb=document.getElementById(x.b);if(eb)eb.style.width=x.val+'%';
+    });
+  }
+
+  if(profile.portrait&&profile.portrait.length>0){
+    var ess=document.getElementById('pdf-essence');
+    ess.innerHTML=profile.portrait.map(function(l){return '<p class="essence-line">'+l+'</p>';}).join('');
+  }
+
+  if(profile.forces&&profile.forces[0]){
+    var f=profile.forces[0];
+    var badge=document.getElementById('pdf-force-badge');
+    if(badge&&p.sous_titre)badge.textContent=p.sous_titre.split('·')[0].trim();
+    document.getElementById('pdf-force-name').textContent=f.nom||'';
+    document.getElementById('pdf-force-desc').textContent=f.desc||'';
+    document.getElementById('pdf-force-paradox').textContent='Son paradoxe : '+(f.paradoxe||'');
+  }
+
+  if(profile.blocages){
+    if(profile.blocages[0]){
+      document.getElementById('pdf-b1-name').textContent=profile.blocages[0].nom||'';
+      document.getElementById('pdf-b1-desc').textContent=profile.blocages[0].desc||'';
+      document.getElementById('pdf-b1-key').textContent='Clé : '+(profile.blocages[0].cle||'');
+    }
+    if(profile.blocages[1]){
+      document.getElementById('pdf-b2-name').textContent=profile.blocages[1].nom||'';
+      document.getElementById('pdf-b2-desc').textContent=profile.blocages[1].desc||'';
+      document.getElementById('pdf-b2-key').textContent='Antidote : '+(profile.blocages[1].cle||'');
+      document.getElementById('pdf-cle').textContent=profile.blocages[1].cle||'';
+    }
+  }
+
+  if(profile.miroir){
+    var m=profile.miroir;
+    document.getElementById('pdf-mirror-name').textContent=m.nom||'';
+    document.getElementById('pdf-mirror-quote').textContent='"'+(m.citation||'')+'"';
+    document.getElementById('pdf-c1').textContent=m.resonance||92;
+    document.getElementById('pdf-c2').textContent=m.complementarite||79;
+    document.getElementById('pdf-c3').textContent=m.harmonie||86;
+  }
+
+  if(profile.amour){
+    var am=profile.amour;
+    document.getElementById('pdf-love-style').textContent=am.style||'';
+    document.getElementById('pdf-love-offre').textContent=am.offre||'';
+    document.getElementById('pdf-love-besoin').textContent=am.besoin||'';
+    document.getElementById('pdf-love-pattern').textContent='Piège : '+(am.pattern||'');
+    document.getElementById('pdf-pattern').textContent=am.pattern||'';
+  }
+
+  if(profile.forces&&profile.forces[1]){
+    var f2=profile.forces[1];
+    document.getElementById('pdf-f2-name').textContent=f2.nom||'';
+    document.getElementById('pdf-f2-desc').textContent=f2.desc||'';
+    document.getElementById('pdf-f2-paradox').textContent='Son paradoxe : '+(f2.paradoxe||'');
+  }
+
+  if(profile.actions){
+    if(profile.actions[0]){
+      document.getElementById('pdf-a1-title').textContent=profile.actions[0].titre||'';
+      document.getElementById('pdf-a1-desc').textContent=profile.actions[0].desc||'';
+      document.getElementById('pdf-a1-freq').textContent=profile.actions[0].freq||'';
+    }
+    if(profile.actions[1]){
+      document.getElementById('pdf-a2-title').textContent=profile.actions[1].titre||'';
+      document.getElementById('pdf-a2-desc').textContent=profile.actions[1].desc||'';
+      document.getElementById('pdf-a2-freq').textContent=profile.actions[1].freq||'';
+    }
+  }
+
+  var conclusions=[
+    "Ton profil présente une cohérence rare entre tes aspirations profondes et tes comportements visibles. Cette clarté est une force — apprends à lui faire confiance.",
+    "Tes dimensions sont fortement alignées, ce qui explique ton sentiment de certitude dans certaines décisions importantes. Fais confiance à cette boussole intérieure.",
+    "Ce que tu portes n\u2019est pas un fardeau \u2014 c\u2019est une profondeur que peu de personnes atteignent. Tu n\u2019es pas fait\u00b7e pour les chemins d\u00e9j\u00e0 trac\u00e9s.",
+    "Ton profil n\u2019est pas fait pour suivre les chemins d\u00e9j\u00e0 trac\u00e9s. Il est fait pour en ouvrir de nouveaux \u2014 et tu le sais d\u00e9j\u00e0.",
+    "Lorsque tu cesses de chercher \u00e0 \u00eatre compris\u00b7e par tous, tu d\u00e9couvres enfin la place qui t\u2019\u00e9tait destin\u00e9e depuis le d\u00e9but."
+  ];
+  if(profile.dims){
+    var idx=Math.floor((profile.dims.cosmique[0]+profile.dims.cognitif[0])%conclusions.length);
+    document.getElementById('pdf-conclusion').textContent='\u201c'+conclusions[idx]+'\u201d';
+  }
+}
+
+loadProfile();
+
+async function generatePDF(){
+  var btn=document.getElementById('btn-generate');
+  btn.textContent='⏳ Génération…';btn.disabled=true;
+  document.getElementById('status-text').textContent='Capture en cours…';
+  var ctrl=document.querySelector('.controls');
+  ctrl.style.display='none';
+  try{
+    var {jsPDF}=window.jspdf;
+    var pdf=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    var pages=['pdf-page1','pdf-page2'];
+    for(var i=0;i<pages.length;i++){
+      var canvas=await html2canvas(document.getElementById(pages[i]),{
+        scale:2,useCORS:true,backgroundColor:'#0d0b1a',logging:false
+      });
+      var img=canvas.toDataURL('image/jpeg',0.95);
+      if(i>0)pdf.addPage();
+      pdf.addImage(img,'JPEG',0,0,210,297);
+    }
+    var prenom='';
+    try{prenom=JSON.parse(localStorage.getItem('cosmos_profile')||'{}').profil.nom.split(' ')[0].toLowerCase();}catch(e){}
+    pdf.save('cosmos-'+(prenom||'profil')+'.pdf');
+    ctrl.style.display='flex';
+    btn.textContent='✅ Téléchargé !';
+    document.getElementById('status-text').textContent='Ton analyse est sauvegardée !';
+    setTimeout(function(){btn.textContent='⬇ Télécharger mon analyse PDF';btn.disabled=false;},3000);
+  }catch(err){
+    console.error(err);
+    ctrl.style.display='flex';
+    btn.textContent='⬇ Télécharger mon analyse PDF';btn.disabled=false;
+    document.getElementById('status-text').textContent='Erreur — réessaie !';
+  }
+}
+</script>
+</body>
+</html>
