@@ -247,7 +247,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       </div>
 
       <!-- BOUTON DISCRET -->
-      <div style="text-align:center;margin-bottom:1.25rem">
+      <div id="bouton-discret" style="text-align:center;margin-bottom:1.25rem;opacity:0;transition:opacity 0.5s ease">
         <button onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.65rem 1.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
           🔓 Révéler mon profil Cosmos complet — 7,90€
         </button>
@@ -687,7 +687,7 @@ function saveEmail(){
   registerBrevoContact(email,userData.prenom||'',3);
   var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(savedProfile&&savedProfile.profil){
-    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3').forEach(function(el){el.style.opacity='1';});
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='1';});
     var banner=document.getElementById('demo-banner');if(banner) banner.style.display='none';
     window.CosmosAPI.apply(savedProfile);populateBlocs(savedProfile);
     if(typeof animateRadar==='function'&&savedProfile.dims){animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});}
@@ -707,7 +707,7 @@ function leaveForGood(){
   document.getElementById('exit-message').style.display='none';
   var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(savedProfile&&savedProfile.profil){
-    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3').forEach(function(el){el.style.opacity='1';});
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='1';});
     var banner=document.getElementById('demo-banner');if(banner) banner.style.display='none';
     var stepsEl=document.getElementById('loading-steps');if(stepsEl) stepsEl.style.display='none';
     window.CosmosAPI.apply(savedProfile);populateBlocs(savedProfile);
@@ -758,7 +758,7 @@ if(isPaid||window.location.search.includes('success=true')){
     var cachedForUnlock=null;try{cachedForUnlock=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
     if(cachedForUnlock&&window.CosmosAPI){
       window.CosmosAPI.apply(cachedForUnlock);populateBlocs(cachedForUnlock);
-      document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3').forEach(function(el){el.style.opacity='1';});
+      document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='1';});
       var bannerEl=document.getElementById('demo-banner');if(bannerEl) bannerEl.style.display='none';
       var stepsEl2=document.getElementById('loading-steps');if(stepsEl2) stepsEl2.style.display='none';
       if(cachedForUnlock.dims){animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});}
@@ -780,7 +780,7 @@ setTimeout(function(){
   if(localProfile&&localProfile.profil&&window.CosmosAPI&&!freshQuiz){
     sessionStorage.setItem('cosmos_profile',JSON.stringify(localProfile));
     window.CosmosAPI.apply(localProfile);populateBlocs(localProfile);
-    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3').forEach(function(el){el.style.opacity='1';});
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='1';});
     var bannerEl=document.getElementById('demo-banner');if(bannerEl) bannerEl.style.display='none';
     var stepsEl=document.getElementById('loading-steps');if(stepsEl) stepsEl.style.display='none';
     if(localProfile.dims){animateRadar({top:localProfile.dims.cosmique[0],right:localProfile.dims.cognitif[0],bottom:localProfile.dims.emotionnel[0],left:localProfile.dims.relationnel[0]});}
@@ -794,7 +794,7 @@ setTimeout(function(){
   }
   if(window.CosmosAPI){
     try{sessionStorage.removeItem('cosmos_profile');localStorage.removeItem('cosmos_profile');}catch(e){}
-    document.querySelectorAll('.card,.radar-wrap,#wheel-144').forEach(function(el){el.style.opacity='0';});
+    document.querySelectorAll('.card,.radar-wrap,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='0';});
     document.getElementById('profile-name').textContent='✨ Cosmos analyse tes réponses…';
     document.getElementById('profile-code').textContent='· · ·';
     var steps=['Lecture de tes 9 réponses projectives…','Analyse de tes patterns émotionnels…','Détection de tes dimensions dominantes…','Identification de tes blocages inconscients…','Calcul de ton archétype parmi 144…','Connexion à ton monde intérieur…','Génération de ton portrait unique…','Connexion à ton ciel natal…','Calcul de ton âme miroir…','Finalisation de ton analyse complète…'];
