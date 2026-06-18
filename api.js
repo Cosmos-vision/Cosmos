@@ -416,8 +416,6 @@ function cosmosHashEmail(email) {
 /* ── Sauvegarder profil dans Brevo (attribut PROFIL_JSON) ── */
 async function saveProfileToBrevo(email, prenom, profile) {
   try {
-    var profileJson = JSON.stringify(profile);
-    /* Brevo limite les attributs à 2000 chars — on stocke l'essentiel */
     var profileLight = {
       profil: profile.profil,
       portrait: profile.portrait,
@@ -429,20 +427,21 @@ async function saveProfileToBrevo(email, prenom, profile) {
       actions: profile.actions,
       astro: profile.astro
     };
-    await fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(email), {
-      method: 'PUT',
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'api-key': b1 + b2
       },
       body: JSON.stringify({
+        email: email,
         attributes: {
           FIRSTNAME: prenom,
           PROFIL_JSON: JSON.stringify(profileLight),
           PROFIL_NOM: (profile.profil||{}).nom || '',
           PROFIL_CODE: (profile.profil||{}).code || ''
         },
-        listIds: [4], /* liste payants */
+        listIds: [4],
         updateEnabled: true
       })
     });
