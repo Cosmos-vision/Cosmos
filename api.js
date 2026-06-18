@@ -459,14 +459,27 @@ async function saveProfileToBrevo(email, prenom, profile) {
 /* ── Récupérer profil depuis Brevo via email ── */
 async function loadProfileFromBrevo(email) {
   try {
-    var res = await fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(email), {
+    /* Chercher le contact par email via l'endpoint dédié */
+    var res = await fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(email.toLowerCase().trim()), {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
         'api-key': b1 + b2
       }
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      /* Essai avec identifierType */
+      var res2 = await fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(email.toLowerCase().trim()) + '?identifierType=email_id', {
+        method: 'GET',
+        headers: {
+          'api-key': b1 + b2
+        }
+      });
+      if (!res2.ok) return null;
+      var data2 = await res2.json();
+      var pj2 = (data2.attributes||{}).PROFIL_JSON;
+      if (!pj2) return null;
+      return JSON.parse(pj2);
+    }
     var data = await res.json();
     var profileJson = (data.attributes||{}).PROFIL_JSON;
     if (!profileJson) return null;
