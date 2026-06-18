@@ -275,46 +275,53 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.7">Construites à partir de tes 9 réponses — et de rien d'autre.</p>
         </div>
 
-        <!-- Tags animés en grille dynamique -->
-        <div style="margin-bottom:1.5rem;position:relative;min-height:180px" id="tags-cosmos-wrap">
-          <style>
-            .cosmos-tag {
-              position:absolute;
-              border-radius:100px;
-              padding:0.45rem 1rem;
-              font-size:0.72rem;
-              font-weight:500;
-              letter-spacing:0.02em;
-              white-space:nowrap;
-              opacity:0;
-              animation: tagFloat 3s ease-in-out infinite;
-            }
-            @keyframes tagFloat {
-              0%   { opacity:0; transform:translateY(6px) scale(0.95); }
-              15%  { opacity:1; transform:translateY(0) scale(1); }
-              85%  { opacity:1; transform:translateY(0) scale(1); }
-              100% { opacity:0; transform:translateY(-6px) scale(0.95); }
-            }
-          </style>
-        </div>
-
-        <!-- Ce que tu vas recevoir -->
+        <!-- Révélations — liste verticale premium -->
         <div style="background:rgba(127,119,221,0.05);border:1px solid rgba(127,119,221,0.18);border-radius:18px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden">
           <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)"></div>
-          <p style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--purple-light);margin-bottom:0.9rem">Ce que tu reçois</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1rem">
-            <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--purple-light);font-size:0.8rem">✦</span><p style="font-size:0.75rem;color:#C8C4E8">Ton blocage principal</p></div>
-            <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--rose);font-size:0.8rem">✦</span><p style="font-size:0.75rem;color:#C8C4E8">Ton âme miroir</p></div>
-            <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--teal);font-size:0.8rem">✦</span><p style="font-size:0.75rem;color:#C8C4E8">Ton schéma amoureux</p></div>
-            <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--amber);font-size:0.8rem">✦</span><p style="font-size:0.75rem;color:#C8C4E8">Ta force cachée</p></div>
-            <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--purple-light);font-size:0.8rem">✦</span><p style="font-size:0.75rem;color:#C8C4E8">Ce qui te vide</p></div>
-            <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--rose);font-size:0.8rem">✦</span><p style="font-size:0.75rem;color:#C8C4E8">Tes erreurs répétées</p></div>
-            <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--teal);font-size:0.8rem">✦</span><p style="font-size:0.75rem;color:#C8C4E8">La clé qui te libère</p></div>
-            <div style="display:flex;align-items:center;gap:6px"><span style="color:var(--amber);font-size:0.8rem">✦</span><p style="font-size:0.75rem;color:#C8C4E8">2 actions pour toi</p></div>
+
+          <div style="display:flex;flex-direction:column;gap:0.55rem">
+            <div style="display:flex;align-items:center;gap:10px;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              <span style="font-size:1rem;flex-shrink:0">🔒</span>
+              <p style="font-size:0.82rem;color:#E8E6F5;line-height:1.4">Le frein invisible qui te retient</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              <span style="font-size:1rem;flex-shrink:0">⭐</span>
+              <p style="font-size:0.82rem;color:#E8E6F5;line-height:1.4">La qualité rare qui te distingue</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              <span style="font-size:1rem;flex-shrink:0">❤️</span>
+              <p style="font-size:0.82rem;color:#E8E6F5;line-height:1.4">Le type de personne qui te correspond profondément</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              <span style="font-size:1rem;flex-shrink:0">💞</span>
+              <p style="font-size:0.82rem;color:#E8E6F5;line-height:1.4">Le schéma amoureux que tu répètes sans t'en rendre compte</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              <span style="font-size:1rem;flex-shrink:0">⚡</span>
+              <p style="font-size:0.82rem;color:#E8E6F5;line-height:1.4">Ce qui te vide de ton énergie au quotidien</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              <span style="font-size:1rem;flex-shrink:0">🔄</span>
+              <p style="font-size:0.82rem;color:#E8E6F5;line-height:1.4">L'erreur relationnelle qui revient le plus souvent</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              <span style="font-size:1rem;flex-shrink:0">🗝️</span>
+              <p style="font-size:0.82rem;color:#E8E6F5;line-height:1.4">Le déclic qui pourrait tout changer pour toi</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.55rem 0">
+              <span style="font-size:1rem;flex-shrink:0">🚀</span>
+              <p style="font-size:0.82rem;color:#E8E6F5;line-height:1.4">Le potentiel que tu n'exploites pas encore</p>
+            </div>
           </div>
-          <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:0.85rem;display:flex;align-items:center;gap:8px">
-            <span style="font-size:1rem">📄</span>
-            <p style="font-size:0.75rem;color:#AFA9EC;line-height:1.5"><strong style="color:var(--text)">Rapport PDF personnel</strong> — généré sur mesure, disponible immédiatement après paiement.</p>
+
+          <div style="border-top:1px solid rgba(127,119,221,0.2);padding-top:0.9rem;margin-top:0.9rem;display:flex;align-items:flex-start;gap:8px">
+            <span style="font-size:1rem;flex-shrink:0">✨</span>
+            <p style="font-size:0.8rem;color:var(--purple-light);line-height:1.5"><strong style="color:var(--text)">+ 2 actions concrètes</strong> à appliquer dès aujourd'hui, adaptées à ton profil unique.</p>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:0.85rem;margin-top:0.85rem;display:flex;align-items:center;gap:8px">
+            <span style="font-size:1rem;flex-shrink:0">📄</span>
+            <p style="font-size:0.75rem;color:#AFA9EC;line-height:1.5"><strong style="color:var(--text)">Rapport PDF personnel</strong> — généré sur mesure, disponible immédiatement.</p>
           </div>
         </div>
 
@@ -329,30 +336,26 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         <!-- Compteur + bouton + timer groupés -->
         <div style="background:linear-gradient(135deg,rgba(127,119,221,0.08),rgba(212,83,126,0.05));border:1px solid rgba(127,119,221,0.2);border-radius:18px;padding:1.5rem;text-align:center">
 
-          <!-- Compteur -->
           <div style="margin-bottom:1.1rem">
             <p style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--purple-light);line-height:1;margin-bottom:0.2rem" id="paywall-counter">3 247</p>
             <p style="font-size:0.7rem;color:var(--text-muted);letter-spacing:0.05em">âmes ont déjà révélé leur profil complet</p>
           </div>
 
-          <!-- Bouton principal -->
           <button id="paywall-bloc2" onclick="dataLayer=window.dataLayer||[];dataLayer.push({'event':'payment_click','button':'main'});checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')"
             style="width:100%;background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:1.1rem;color:white;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;letter-spacing:0.02em;box-shadow:0 0 28px rgba(127,119,221,0.35);margin-bottom:0.75rem;animation:heroGlow 3s ease-in-out infinite">
             🔓 Révéler mon profil Cosmos — 7,90€
           </button>
 
-          <!-- Timer -->
           <div class="profil-timer" style="margin-bottom:0.6rem">
             <span class="timer-dot"></span>
             <span style="font-size:0.72rem;color:#BA7517">Profil sauvegardé encore <strong id="timer-countdown">24:00:00</strong></span>
           </div>
 
-          <!-- Réassurance lisible -->
           <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
-            <span style="font-size:0.7rem;color:var(--text-muted);display:flex;align-items:center;gap:4px">🔒 Paiement sécurisé</span>
-            <span style="font-size:0.7rem;color:var(--text-muted)">·</span>
-            <span style="font-size:0.7rem;color:var(--text-muted);display:flex;align-items:center;gap:4px"> Apple Pay</span>
-            <span style="font-size:0.7rem;color:var(--text-muted)">·</span>
+            <span style="font-size:0.7rem;color:var(--text-muted)">🔒 Paiement sécurisé</span>
+            <span style="font-size:0.7rem;color:var(--text-faint)">·</span>
+            <span style="font-size:0.7rem;color:var(--text-muted)"> Apple Pay</span>
+            <span style="font-size:0.7rem;color:var(--text-faint)">·</span>
             <span style="font-size:0.7rem;color:var(--text-muted)">Paiement unique</span>
           </div>
         </div>
@@ -570,48 +573,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
 <script src="api.js?v=3"></script>
 <script>
-/* ── TAGS ANIMÉS COSMOS ── */
-(function(){
-  var wrap = document.getElementById('tags-cosmos-wrap');
-  if(!wrap) return;
-  var tags = [
-    {t:'Ton blocage invisible',c:'#7F77DD'},
-    {t:'Ton âme miroir',c:'#D4537E'},
-    {t:'Ce qui te vide',c:'#1D9E75'},
-    {t:'Ta force cachée ⚡',c:'#BA7517'},
-    {t:'Ton schéma amoureux',c:'#AFA9EC'},
-    {t:'Tes erreurs répétées',c:'#D4537E'},
-    {t:'La clé qui te libère',c:'#1D9E75'},
-    {t:'2 actions pour toi ☀️',c:'#7F77DD'}
-  ];
-  /* Positions fixes sur une grille naturelle */
-  var positions = [
-    {top:'8%',left:'5%'},{top:'8%',left:'52%'},
-    {top:'30%',left:'18%'},{top:'30%',left:'55%'},
-    {top:'52%',left:'2%'},{top:'52%',left:'48%'},
-    {top:'74%',left:'12%'},{top:'74%',left:'50%'}
-  ];
-  tags.forEach(function(tag, i){
-    var el = document.createElement('div');
-    el.className = 'cosmos-tag';
-    el.textContent = tag.t;
-    el.style.background = 'rgba(' + hexToRgb(tag.c) + ',0.12)';
-    el.style.border = '1px solid rgba(' + hexToRgb(tag.c) + ',0.35)';
-    el.style.color = tag.c;
-    el.style.top = positions[i].top;
-    el.style.left = positions[i].left;
-    el.style.animationDelay = (i * 0.4) + 's';
-    el.style.animationDuration = (3 + i * 0.3) + 's';
-    wrap.appendChild(el);
-  });
-  function hexToRgb(hex){
-    var r=parseInt(hex.slice(1,3),16);
-    var g=parseInt(hex.slice(3,5),16);
-    var b=parseInt(hex.slice(5,7),16);
-    return r+','+g+','+b;
-  }
-})();
-
 /* ── CAROUSEL TÉMOIGNAGES PAYWALL ── */
 (function(){
   var TESTI_PAYWALL = [
