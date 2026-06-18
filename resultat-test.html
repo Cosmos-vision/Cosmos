@@ -248,7 +248,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
       <!-- BOUTON DISCRET -->
       <div id="bouton-discret" style="text-align:center;margin-bottom:1.25rem;opacity:0;transition:opacity 0.5s ease">
-        <button onclick="if(typeof gtag==='function'){gtag('event','payment_click',{button:'discret'});}checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.65rem 1.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
+        <button onclick="dataLayer=window.dataLayer||[];dataLayer.push({'event':'payment_click','button':'discret'});checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.65rem 1.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
           🔓 Révéler mon profil Cosmos complet — 7,90€
         </button>
         <p style="font-size:0.62rem;color:#8B87B0;margin-top:0.5rem;text-align:center;letter-spacing:0.04em">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
@@ -315,7 +315,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <p style="font-size:0.78rem;color:#C8C4E8">☀️ 2 actions personnalisées</p>
           </div>
           <p style="font-size:0.7rem;color:#8B87B0;font-style:italic;line-height:1.6;margin-bottom:1.25rem">📄 Rapport PDF disponible immédiatement. Une analyse concise, personnelle et pensée pour t'aider à mieux comprendre ce qui te rend unique.</p>
-          <button class="pay-bloc-btn btn-purple" onclick="if(typeof gtag==='function'){gtag('event','payment_click',{button:'bloc_rapport'});}checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="font-size:1rem;padding:1.1rem;margin-bottom:0.5rem">
+          <button class="pay-bloc-btn btn-purple" onclick="dataLayer=window.dataLayer||[];dataLayer.push({'event':'payment_click','button':'bloc_rapport'});checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="font-size:1rem;padding:1.1rem;margin-bottom:0.5rem">
             Révéler mon profil Cosmos complet — 7,90€
           </button>
           <p style="font-size:0.65rem;color:#AFA9EC;letter-spacing:0.04em;text-align:center">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
@@ -562,6 +562,41 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 })();
 
 var userData={},quizData={answers:[]};
+
+/* Intercepter l'affichage du popup email pour attendre le vrai profil */
+(function(){
+  var _observer=new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      if(m.target.id==='email-capture'&&m.target.style.display==='flex'){
+        var _p=null;try{_p=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+        if(!_p||!_p.profil||_p.profil.nom==="L'Architecte Lunaire"){
+          /* Profil pas prêt — masquer et attendre */
+          m.target.style.display='none';
+          var _w=setInterval(function(){
+            var _pp=null;try{_pp=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+            if(_pp&&_pp.profil&&_pp.profil.nom&&_pp.profil.nom!=="L'Architecte Lunaire"){
+              clearInterval(_w);
+              populateEmailPopup(_pp);
+              m.target.style.display='flex';
+              dataLayer=window.dataLayer||[];dataLayer.push({'event':'email_popup_view'});
+            }
+          },300);
+          setTimeout(function(){clearInterval(_w);},120000);
+        } else {
+          populateEmailPopup(_p);
+          dataLayer=window.dataLayer||[];dataLayer.push({'event':'email_popup_view'});
+        }
+      }
+    });
+  });
+  _observer.observe(document.getElementById('email-capture')||document.body,{attributes:true,attributeFilter:['style']});
+  /* Re-observe once DOM ready */
+  document.addEventListener('DOMContentLoaded',function(){
+    var _ec=document.getElementById('email-capture');
+    if(_ec) _observer.observe(_ec,{attributes:true,attributeFilter:['style']});
+  });
+})();
+
 try{userData=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}')}catch(e){}
 try{quizData=JSON.parse(sessionStorage.getItem('cosmos_quiz')||'{}')}catch(e){}
 if(userData.prenom){document.getElementById('nav-name').textContent=userData.prenom;}
@@ -721,7 +756,7 @@ function populateEmailPopup(profile){
 }
 
 function saveEmail(){
-  if(typeof gtag==='function'){gtag('event','email_submit');}
+  dataLayer=window.dataLayer||[];dataLayer.push({'event':'email_submit'});
   var email=document.getElementById('email-input').value.trim();
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('email-input').style.border='1px solid #D4537E';return;}
   try{var user=JSON.parse(sessionStorage.getItem('cosmos_user'))||{};user.email=email;sessionStorage.setItem('cosmos_user',JSON.stringify(user));}catch(e){}
@@ -739,13 +774,13 @@ function saveEmail(){
 }
 
 function showExitMessage(){
-  if(typeof gtag==='function'){gtag('event','email_popup_close');}
+  dataLayer=window.dataLayer||[];dataLayer.push({'event':'email_popup_close'});
   document.getElementById('email-capture').style.display='none';
   document.getElementById('exit-message').style.display='flex';
 }
 function returnToEmail(){document.getElementById('exit-message').style.display='none';document.getElementById('email-capture').style.display='flex';}
 function leaveForGood(){
-  if(typeof gtag==='function'){gtag('event','email_popup_abandon');}
+  dataLayer=window.dataLayer||[];dataLayer.push({'event':'email_popup_abandon'});
   document.getElementById('exit-message').style.display='none';
   var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(savedProfile&&savedProfile.profil){
@@ -830,7 +865,7 @@ setTimeout(function(){
     if(!cosmosUser.email){
       populateEmailPopup(localProfile);
       document.getElementById('email-capture').style.display='flex';
-      if(typeof gtag==='function'){gtag('event','email_popup_view');}
+      dataLayer=window.dataLayer||[];dataLayer.push({'event':'email_popup_view'});
     }
     return;
   }
@@ -845,15 +880,21 @@ setTimeout(function(){
     var isGiftReceived=false;try{isGiftReceived=!!sessionStorage.getItem('cosmos_gift_received');}catch(e){}
     if(isGiftReceived){try{sessionStorage.removeItem('cosmos_profile');sessionStorage.removeItem('cosmos_paid');}catch(e){}}
     window.CosmosAPI.init();
-    /* Patch: update popup once profile is ready */
+    /* Patch: update popup once real profile is ready */
     var _popupCheck=setInterval(function(){
       var _p=null;try{_p=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
       if(_p&&_p.profil&&_p.profil.nom&&_p.profil.nom!=="L'Architecte Lunaire"){
         clearInterval(_popupCheck);
         populateEmailPopup(_p);
+        /* Also hide popup until profile ready, then show */
+        var _emailCapture=document.getElementById('email-capture');
+        if(_emailCapture&&_emailCapture.style.display==='none'){
+          _emailCapture.style.display='flex';
+          dataLayer=window.dataLayer||[];dataLayer.push({'event':'email_popup_view'});
+        }
       }
-    },500);
-    setTimeout(function(){clearInterval(_popupCheck);},60000);
+    },300);
+    setTimeout(function(){clearInterval(_popupCheck);},120000);
     if(isGiftReceived){
       var giftCheck=setInterval(function(){var profile=null;try{profile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}if(profile&&profile.profil&&profile.profil.code!=='LUN-SYS-PRO'){clearInterval(giftCheck);unlockPaidContent(true);try{sessionStorage.removeItem('cosmos_gift_received');}catch(e){}}},500);
       setTimeout(function(){clearInterval(giftCheck);},60000);
