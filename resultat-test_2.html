@@ -564,7 +564,7 @@ var isPaid=false;
 try{isPaid=sessionStorage.getItem('cosmos_paid')==='true';}catch(e){}
 
 function handlePayment(){
-  var STRIPE_LINK='https://buy.stripe.com/dRmdR2bW8eTBfDUgepdUY01';
+  var STRIPE_LINK='https://buy.stripe.com/bJecMY1huaDlezQ5zLdUY02';
   var email='';try{email=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}'). email||'';}catch(e){}
   window.location.href=STRIPE_LINK+'?client_reference_id='+encodeURIComponent(email||'user');
 }
