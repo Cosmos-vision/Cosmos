@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NPKSNPDJ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmos — Ton exploration intérieure</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="cosmos-logo-512.png">
+<meta property="og:title" content="Cosmos — Pas un quiz. Un miroir de toi-même.">
+<meta property="og:description" content="9 scènes immersives. Un profil unique parmi 144 archétypes — construit à partir de vraies techniques psychologiques projectives.">
+<meta property="og:image" content="https://cosmos-vision.com/og-image.png">
+<meta property="og:url" content="https://cosmos-vision.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #07060f;
+    --deep: #0d0b1a;
+    --surface: #131128;
+    --muted: #1e1b35;
+    --border: rgba(255,255,255,0.07);
+    --border-sel: rgba(127,119,221,0.6);
+    --purple: #7F77DD;
+    --purple-light: #AFA9EC;
+    --purple-glow: rgba(127,119,221,0.15);
+    --rose: #D4537E;
+    --teal: #1D9E75;
+    --text: #F0EEF8;
+    --text-muted: #8B87B0;
+    --text-faint: #4A4870;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* CANVAS */
+  #cosmos-canvas {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  }
+
+  /* LAYOUT */
+  .page {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+
+  /* NAV */
+  nav {
+    padding: 1rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    background: rgba(7,6,15,0.6);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo {
+    font-family: 'DM Sans', sans-serif; font-weight: 300;
+    font-size: 1rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text); text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .logo-dot {
+    width: 5px; height: 5px; border-radius: 50%; background: var(--purple);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)}
+  }
+  .nav-right {
+    font-size: 0.7rem; color: #AFA9EC;
+    letter-spacing: 0.08em;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    padding: 0 1.5rem;
+    background: rgba(7,6,15,0.4);
+    backdrop-filter: blur(8px);
+  }
+  .progress-inner {
+    max-width: 580px; margin: 0 auto;
+    padding: 0.75rem 0;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .progress-track {
+    flex: 1; height: 2px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; background: var(--purple);
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+  .progress-label {
+    font-size: 0.65rem; color: var(--text-faint);
+    letter-spacing: 0.1em; white-space: nowrap;
+    min-width: 48px; text-align: right;
+  }
+
+  /* SCENE DOTS */
+  .dots-wrap {
+    display: flex; gap: 5px; justify-content: center;
+    padding: 0.6rem 0;
+  }
+  .scene-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    transition: all 0.3s ease;
+  }
+  .scene-dot.done { background: var(--purple); }
+  .scene-dot.active { background: var(--purple-light); width: 16px; border-radius: 2px; }
+
+  /* MAIN CONTENT */
+  .main {
+    flex: 1; display: flex; align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1.5rem 5rem;
+  }
+  .scene-card {
+    width: 100%; max-width: 580px;
+    animation: sceneIn 0.45s cubic-bezier(0.4,0,0.2,1) both;
+  }
+  @keyframes sceneIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* DIMENSION TAGS */
+  .dim-row {
+    display: flex; gap: 6px; margin-bottom: 1.25rem; flex-wrap: wrap;
+  }
+  .dim-tag {
+    font-size: 0.62rem; padding: 3px 10px; border-radius: 20px;
+    font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* SCENE TITLE */
+  .scene-num {
+    font-size: 0.62rem; color: #AFA9EC;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .scene-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 300; line-height: 1.25;
+    color: var(--text); margin-bottom: 0.9rem;
+  }
+  .scene-desc {
+    font-size: 0.88rem; color: var(--text-muted);
+    line-height: 1.8; margin-bottom: 1.75rem;
+    border-left: 1.5px solid rgba(127,119,221,0.2);
+    padding-left: 1rem;
+  }
+
+  /* OPTIONS */
+  .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem; }
+
+  .opt-btn {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    display: flex; align-items: center; gap: 12px;
+    cursor: pointer; text-align: left;
+    transition: background 0.18s, border-color 0.18s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+    position: relative; overflow: hidden;
+  }
+  .opt-btn:hover {
+    background: rgba(127,119,221,0.08);
+    border-color: rgba(127,119,221,0.3);
+  }
+  .opt-btn:active { transform: scale(0.99); }
+
+  /* SELECTED STATE */
+  .opt-btn.selected {
+    background: rgba(127,119,221,0.14);
+    border-color: var(--purple);
+  }
+  .opt-btn.selected .opt-check {
+    background: var(--purple);
+    border-color: var(--purple);
+  }
+  .opt-btn.selected .opt-check svg { opacity: 1; }
+  .opt-btn.selected .opt-text { color: var(--text); }
+
+  .opt-check {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.18);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.18s;
+    background: transparent;
+  }
+  .opt-check svg {
+    width: 10px; height: 8px; opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .opt-text {
+    font-size: 0.85rem; color: #C8C4E8;
+    line-height: 1.5; transition: color 0.18s;
+  }
+
+  /* NAVIGATION */
+  .nav-btns {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px;
+  }
+  .btn-back {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px; padding: 0.65rem 1.25rem;
+    color: #AFA9EC; font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem; cursor: pointer;
+    transition: all 0.18s;
+  }
+  .btn-back:hover { border-color: rgba(255,255,255,0.25); color: var(--text-muted); }
+
+  .btn-next {
+    background: var(--purple);
+    border: none; border-radius: 100px;
+    padding: 0.75rem 2rem;
+    color: white; font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 500; cursor: pointer;
+    transition: all 0.18s;
+    opacity: 0.35; pointer-events: none;
+  }
+  .btn-next.ready { opacity: 1; pointer-events: auto; }
+  .btn-next.ready:hover { background: #6B62CC; transform: translateY(-1px); }
+  .btn-next.ready:active { transform: translateY(0); }
+
+  /* LOADING STATE */
+  .loading-screen {
+    display: none; flex-direction: column;
+    align-items: center; justify-content: center;
+    min-height: 60vh; text-align: center;
+    padding: 2rem;
+  }
+  .loading-screen.visible { display: flex; }
+  .loading-orb {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--muted);
+    border: 1.5px solid var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem; position: relative;
+    animation: float 3s ease-in-out infinite;
+  }
+  .loading-orb::before {
+    content:''; position:absolute;
+    width: 100px; height: 100px; border-radius: 50%;
+    border: 1px solid rgba(127,119,221,0.2);
+    animation: spin 8s linear infinite;
+  }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  @keyframes float {
+    0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)}
+  }
+  .loading-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+  .loading-sub {
+    font-size: 0.8rem; color: #AFA9EC;
+    letter-spacing: 0.05em;
+  }
+  .loading-dots {
+    display: flex; gap: 6px; justify-content: center;
+    margin-top: 1rem;
+  }
+  .loading-dots span {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--purple); opacity: 0.3;
+    animation: dotPulse 1.4s ease-in-out infinite;
+  }
+  .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dotPulse {
+    0%,80%,100%{opacity:0.3;transform:scale(0.8)}
+    40%{opacity:1;transform:scale(1)}
+  }
+
+  @media(max-width:480px){
+    .main{ padding: 1.5rem 1rem 5rem; }
+    nav { padding: 0.9rem 1rem; }
+  }
+</style>
+</head>
+<body>
+<canvas id="cosmos-canvas"></canvas>
+
+<div class="page">
+
+  <nav>
+    <a href="index.html" class="logo">COSMOS<span class="logo-dot"></span></a>
+    <span class="nav-right" id="nav-label">Exploration</span>
+  </nav>
+
+  <div class="progress-wrap">
+    <div class="progress-inner">
+      <div class="progress-track">
+        <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+      </div>
+      <span class="progress-label" id="prog-label">1 / 9</span>
+    </div>
+  </div>
+
+  <div class="dots-wrap" id="dots-wrap"></div>
+
+  <div class="main">
+    <div class="scene-card" id="scene-card"></div>
+    <div class="loading-screen" id="loading-screen">
+      <div class="loading-orb">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+             stroke="#AFA9EC" stroke-width="1.2" stroke-linecap="round"
+             aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 3c-2.5 3-4 5.5-4 9s1.5 6 4 9"/>
+          <path d="M12 3c2.5 3 4 5.5 4 9s-1.5 6-4 9"/>
+          <path d="M3 12h18"/>
+        </svg>
+      </div>
+      <h2 class="loading-title">Cosmos analyse ton univers…</h2>
+      <div id="loading-steps" style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.6rem;text-align:left;max-width:280px"></div>
+      <div class="loading-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   ÉTOILES
+══════════════════════════════════════════ */
+(function(){
+  var c=document.getElementById('cosmos-canvas'),
+      ctx=c.getContext('2d'),stars=[],W,H;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  function make(n){
+    stars=[];
+    for(var i=0;i<n;i++) stars.push({
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*1.1+0.2,
+      a:Math.random()*0.7+0.1,
+      sp:Math.random()*0.003+0.001,
+      ph:Math.random()*Math.PI*2,
+      col:Math.random()>0.93?'rose':Math.random()>0.87?'purple':'white'
+    });
+  }
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(function(s){
+      var al=(Math.sin(t*s.sp+s.ph)+1)/2*s.a;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      if(s.col==='rose') ctx.fillStyle='rgba(212,83,126,'+al+')';
+      else if(s.col==='purple') ctx.fillStyle='rgba(175,169,236,'+al+')';
+      else ctx.fillStyle='rgba(255,255,255,'+al+')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  resize(); make(180);
+  window.addEventListener('resize',function(){resize();make(180);});
+  requestAnimationFrame(draw);
+})();
+
+/* ══════════════════════════════════════════
+   DONNÉES DES SCÈNES
+══════════════════════════════════════════ */
+var SCENES = [
+  {
+    dims: [{l:'Cosmique',bg:'rgba(127,119,221,.2)',tc:'#AFA9EC'},
+           {l:'Émotionnel',bg:'rgba(212,83,126,.18)',tc:'#F4C0D1'}],
+    title: 'Il est tard. Une lumière sous une porte.',
+    desc: 'Tu rentres chez toi après une longue journée. Dans le couloir, tu remarques une lumière qui filtre sous la porte d\'un voisin que tu ne connais pas. Une musique douce, à peine audible. Que se passe-t-il en toi dans les secondes qui suivent ?',
+    opts: [
+      'Tu passes en imaginant ce que cette personne vit en ce moment',
+      'Tu remarques la scène, tu souris, et tu l\'oublies aussitôt',
+      'Une légère mélancolie te traverse — une solitude douce',
+      'Tu te demandes si tu devrais frapper, juste pour voir'
+    ]
+  },
+  {
+    dims: [{l:'Cognitif',bg:'rgba(29,158,117,.18)',tc:'#9FE1CB'},
+           {l:'Cosmique',bg:'rgba(127,119,221,.2)',tc:'#AFA9EC'}],
+    title: 'Une décision. 60 secondes.',
+    desc: 'On t\'offre une opportunité incroyable — mais tu dois répondre maintenant, sans consulter personne, sans réfléchir plus d\'une minute. Ton téléphone est à plat. Quelle est ta première réaction physique, dans ton corps ?',
+    opts: [
+      'Une clarté soudaine — tu sais déjà, dans tes tripes',
+      'Ton ventre se serre, tu cherches un moyen de gagner du temps',
+      'Une excitation que tu essaies de calmer pour raisonner',
+      'Tu analyses les risques visibles en quelques secondes'
+    ]
+  },
+  {
+    dims: [{l:'Émotionnel',bg:'rgba(212,83,126,.18)',tc:'#F4C0D1'},
+           {l:'Relationnel',bg:'rgba(186,117,23,.18)',tc:'#FAC775'}],
+    title: 'L\'objet que tu emporterais.',
+    desc: 'Ta maison brûle. Tout le monde est en sécurité. Tu as 30 secondes pour prendre un seul objet. Tu n\'as pas le temps de réfléchir — tu tends la main vers quelque chose. Qu\'est-ce que c\'est ?',
+    opts: [
+      'Une photo ou un souvenir lié à quelqu\'un que tu aimes',
+      'Un carnet où tu as écrit des choses importantes',
+      'Quelque chose de pratique qui te servira demain',
+      'Rien — les objets ne valent pas qu\'on y attache de l\'importance'
+    ]
+  },
+  {
+    dims: [{l:'Relationnel',bg:'rgba(186,117,23,.18)',tc:'#FAC775'},
+           {l:'Émotionnel',bg:'rgba(212,83,126,.18)',tc:'#F4C0D1'}],
+    title: 'Dans un café. Quelqu\'un te regarde.',
+    desc: 'Tu es seul dans un café. Une personne que tu ne connais pas te regarde depuis quelques secondes avec un sourire discret — ni intrusif, ni timide. Juste présent. Que fais-tu dans les trois secondes qui suivent ?',
+    opts: [
+      'Tu souris en retour, curieux de ce qui pourrait se passer',
+      'Tu regardes ailleurs, mais quelque chose reste en toi',
+      'Tu te demandes ce qu\'elle ou il a vu en toi',
+      'Tu ressens une légère chaleur, inexplicable, et tu continues'
+    ]
+  },
+  {
+    dims: [{l:'Cognitif',bg:'rgba(29,158,117,.18)',tc:'#9FE1CB'},
+           {l:'Cosmique',bg:'rgba(127,119,221,.2)',tc:'#AFA9EC'}],
+    title: 'Une forêt. Ce que tu vois en premier.',
+    desc: 'On te montre une photographie : une forêt dense au coucher du soleil. Pas de question. Pas de contexte. Juste cette image. Qu\'est-ce qui attire ton regard en premier, et quelle pensée traverse ton esprit dans les trois premières secondes ?',
+    opts: [
+      'La lumière qui filtre entre les arbres — tu cherches la source',
+      'Le chemin qui disparaît au loin — où mène-t-il ?',
+      'L\'obscurité entre les troncs — ce qu\'on ne voit pas',
+      'Le mouvement invisible du vent — tu sens presque l\'air'
+    ]
+  },
+  {
+    dims: [{l:'Émotionnel',bg:'rgba(212,83,126,.18)',tc:'#F4C0D1'},
+           {l:'Relationnel',bg:'rgba(186,117,23,.18)',tc:'#FAC775'}],
+    title: 'Un silence de trois secondes.',
+    desc: 'Tu parles avec quelqu\'un depuis des heures. Il est tard. Cette personne vient de dire quelque chose qui t\'a touché au point que tu ne trouves pas les mots pour répondre. Un silence s\'installe. Trois secondes. Que se passe-t-il en toi ?',
+    opts: [
+      'Une vulnérabilité rare — tu as envie de partager quelque chose que tu ne dis jamais',
+      'Une reconnaissance — enfin quelqu\'un qui comprend quelque chose de toi',
+      'Une légère panique — cette intimité soudaine te surprend',
+      'Une certitude calme — cette personne compte'
+    ]
+  },
+  {
+    dims: [{l:'Émotionnel',bg:'rgba(212,83,126,.18)',tc:'#F4C0D1'},
+           {l:'Cognitif',bg:'rgba(29,158,117,.18)',tc:'#9FE1CB'}],
+    title: 'Ce que tu fais avec une douleur.',
+    desc: 'Quelqu\'un que tu aimes t\'a blessé — pas par méchanceté, mais par maladresse. La douleur est réelle. Quelques heures passent. Comment cette douleur prend-elle place en toi ?',
+    opts: [
+      'Tu l\'analyses pour comprendre ce qu\'elle révèle de toi',
+      'Tu la ressens pleinement, tu la laisses traverser',
+      'Tu la ranges quelque part et tu continues à avancer',
+      'Tu en parles à quelqu\'un pour ne pas la porter seul'
+    ]
+  },
+  {
+    dims: [{l:'Cosmique',bg:'rgba(127,119,221,.2)',tc:'#AFA9EC'},
+           {l:'Cognitif',bg:'rgba(29,158,117,.18)',tc:'#9FE1CB'}],
+    title: 'La nuit et les étoiles.',
+    desc: 'Tu es dehors, seul, la nuit. Le ciel est clair. Tu lèves les yeux. Il n\'y a aucune pensée que tu dois avoir — tu es libre d\'aller où ton esprit veut aller. Où va-t-il ?',
+    opts: [
+      'Vers quelqu\'un — tu penses à une personne précise',
+      'Vers une question sur ce qui t\'attend, ce que tu vas devenir',
+      'Vers un sentiment de vastitude, de paix sans objet',
+      'Vers rien — tu es juste là, présent, sans pensée'
+    ]
+  },
+  {
+    dims: [{l:'Relationnel',bg:'rgba(186,117,23,.18)',tc:'#FAC775'},
+           {l:'Cosmique',bg:'rgba(127,119,221,.2)',tc:'#AFA9EC'}],
+    title: 'Deux chaises. Une lumière de fin de journée.',
+    desc: 'Dernière image. Deux chaises face à face, vides, dans une lumière de fin de journée. Pas de question. Pas de contexte. Qu\'est-ce que cette image te fait ressentir, là, maintenant, sincèrement ?',
+    opts: [
+      'Une douce mélancolie — l\'attente de quelqu\'un qui n\'est pas encore là',
+      'Une plénitude — la beauté d\'une connexion possible',
+      'Une légèreté — ces chaises pourraient accueillir n\'importe qui',
+      'Un désir précis — tu sais exactement qui tu voudrais en face de toi'
+    ]
+  }
+];
+
+/* ══════════════════════════════════════════
+   ÉTAT DE L'APPLICATION
+══════════════════════════════════════════ */
+var currentScene = 0;
+var answers = new Array(9).fill(null);
+var userData = {};
+var introStep = 0; /* 0=prénom/genre, 1=date de naissance, 2=quiz */
+
+/* Récupérer les données utilisateur de la landing page */
+try {
+  var stored = sessionStorage.getItem('cosmos_user');
+  if (stored) userData = JSON.parse(stored);
+} catch(e) {}
+
+/* Si on a déjà prénom+genre+dob → skip intro */
+function hasFullData() {
+  return userData.prenom && userData.genre && userData.dateNaissance;
+}
+
+/* ══════════════════════════════════════════
+   RENDU INTRO — Questions d'accueil
+══════════════════════════════════════════ */
+function renderIntro() {
+  document.getElementById('prog-fill').style.width = '0%';
+  document.getElementById('prog-label').textContent = 'Préparation';
+  document.getElementById('dots-wrap').innerHTML = '';
+
+  var card = document.getElementById('scene-card');
+
+  if (introStep === 0) {
+    /* Étape 1 : Prénom + Genre */
+    var prenomVal = userData.prenom || '';
+    card.innerHTML =
+      '<div class="dim-row"><span class="dim-tag" style="background:rgba(127,119,221,.2);color:#AFA9EC">Personnalisation</span></div>' +
+      '<p class="scene-num">Avant de commencer</p>' +
+      '<h2 class="scene-title">Comment t\'appelles-tu ?</h2>' +
+      '<p class="scene-desc">Ces informations personnalisent ton profil et ton analyse.</p>' +
+      '<div style="display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0">' +
+        '<div>' +
+          '<label style="display:block;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#8B87B0;margin-bottom:0.5rem">Prénom · <span style="color:#7F77DD">requis</span></label>' +
+          '<input id="intro-prenom" type="text" placeholder="ex. Sophie" autocomplete="given-name" style="width:100%;background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem 1rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;" value="' + prenomVal + '" />' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#8B87B0;margin-bottom:0.5rem">Genre · <span style="color:#7F77DD">requis</span></label>' +
+          '<select id="intro-genre" style="width:100%;background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem 1rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;-webkit-appearance:none;appearance:none;">' +
+            '<option value="" disabled ' + (!userData.genre ? 'selected' : '') + '>Sélectionne ton genre</option>' +
+            '<option value="femme" ' + (userData.genre==='femme'?'selected':'') + '>Femme</option>' +
+            '<option value="homme" ' + (userData.genre==='homme'?'selected':'') + '>Homme</option>' +
+            '<option value="neutre" ' + (userData.genre==='neutre'?'selected':'') + '>Neutre</option>' +
+          '</select>' +
+        '</div>' +
+      '</div>' +
+      '<div class="nav-btns"><span></span>' +
+        '<button class="btn-next" id="btn-intro-next" type="button">Suivant →</button>' +
+      '</div>';
+
+    /* Focus auto */
+    setTimeout(function(){ var el = document.getElementById('intro-prenom'); if(el && !el.value) el.focus(); }, 100);
+
+    /* Activer le bouton si déjà rempli */
+    function checkIntro0() {
+      var p = document.getElementById('intro-prenom');
+      var g = document.getElementById('intro-genre');
+      var btn = document.getElementById('btn-intro-next');
+      if (!p || !g || !btn) return;
+      var ok = p.value.trim().length >= 2 && g.value;
+      btn.classList.toggle('ready', ok);
+    }
+    setTimeout(function(){
+      var p = document.getElementById('intro-prenom');
+      var g = document.getElementById('intro-genre');
+      if(p){ p.addEventListener('input', checkIntro0); checkIntro0(); }
+      if(g){ g.addEventListener('change', checkIntro0); }
+      var btn = document.getElementById('btn-intro-next');
+      if(btn){ btn.addEventListener('click', function(){
+        var pv = document.getElementById('intro-prenom').value.trim();
+        var gv = document.getElementById('intro-genre').value;
+        if(!pv || pv.length < 2 || !gv) return;
+        userData.prenom = pv;
+        userData.genre = gv;
+        introStep = 1;
+        renderIntro();
+        window.scrollTo({top:0,behavior:'smooth'});
+      }); }
+    }, 50);
+
+  } else if (introStep === 1) {
+    /* Étape 2 : Date de naissance */
+    var dob = userData.dateNaissance || {};
+    card.innerHTML =
+      '<div class="dim-row"><span class="dim-tag" style="background:rgba(127,119,221,.2);color:#AFA9EC">Essence cosmique</span></div>' +
+      '<p class="scene-num">Avant de commencer</p>' +
+      '<h2 class="scene-title">Ta date de naissance</h2>' +
+      '<p class="scene-desc">Elle détermine ton <strong style="color:#AFA9EC">essence cosmique</strong> — l\'une des 12 composantes de ton archétype — et permet la lecture astrologique de ton profil (signe solaire, planète dominante).</p>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:1.5rem 0">' +
+        '<input id="intro-day" type="number" placeholder="Jour" min="1" max="31" value="' + (dob.jour||'') + '" style="background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;text-align:center" />' +
+        '<input id="intro-month" type="number" placeholder="Mois" min="1" max="12" value="' + (dob.mois||'') + '" style="background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;text-align:center" />' +
+        '<input id="intro-year" type="number" placeholder="Année" min="1920" max="2010" value="' + (dob.annee||'') + '" style="background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;text-align:center" />' +
+      '</div>' +
+      '<p style="font-size:0.68rem;color:#4A4870;margin-bottom:1.5rem">Utilisée uniquement pour personnaliser ton profil cosmique. Jamais partagée.</p>' +
+      '<div class="nav-btns">' +
+        '<button class="btn-back" id="btn-intro-back" type="button">← Précédent</button>' +
+        '<button class="btn-next" id="btn-intro-next2" type="button">Commencer →</button>' +
+      '</div>';
+
+    function checkIntro1() {
+      var d = document.getElementById('intro-day');
+      var m = document.getElementById('intro-month');
+      var y = document.getElementById('intro-year');
+      var btn = document.getElementById('btn-intro-next2');
+      if(!d||!m||!y||!btn) return;
+      var ok = d.value && m.value && y.value && parseInt(y.value) >= 1920 && parseInt(y.value) <= 2010;
+      btn.classList.toggle('ready', !!ok);
+    }
+    setTimeout(function(){
+      ['intro-day','intro-month','intro-year'].forEach(function(id){
+        var el = document.getElementById(id);
+        if(el){ el.addEventListener('input', checkIntro1); }
+      });
+      checkIntro1();
+      var back = document.getElementById('btn-intro-back');
+      if(back){ back.addEventListener('click', function(){ introStep=0; renderIntro(); window.scrollTo({top:0,behavior:'smooth'}); }); }
+      var next = document.getElementById('btn-intro-next2');
+      if(next){ next.addEventListener('click', function(){
+        var d = parseInt(document.getElementById('intro-day').value);
+        var m = parseInt(document.getElementById('intro-month').value);
+        var y = parseInt(document.getElementById('intro-year').value);
+        if(!d||!m||!y||y<1920||y>2010) return;
+        userData.dateNaissance = { jour: d, mois: m, annee: y };
+        try { sessionStorage.setItem('cosmos_user', JSON.stringify(userData)); } catch(e){}
+        introStep = 2;
+        startQuiz();
+        window.scrollTo({top:0,behavior:'smooth'});
+      }); }
+    }, 50);
+  }
+}
+
+function startQuiz() {
+  renderScene(0);
+}
+
+/* ══════════════════════════════════════════
+   RENDU DES POINTS DE PROGRESSION
+══════════════════════════════════════════ */
+function renderDots() {
+  var wrap = document.getElementById('dots-wrap');
+  wrap.innerHTML = '';
+  for (var i = 0; i < 9; i++) {
+    var d = document.createElement('div');
+    d.className = 'scene-dot' +
+      (i < currentScene ? ' done' : i === currentScene ? ' active' : '');
+    wrap.appendChild(d);
+  }
+}
+
+/* ══════════════════════════════════════════
+   RENDU D'UNE SCÈNE
+══════════════════════════════════════════ */
+function renderScene(index) {
+  var s = SCENES[index];
+  var selected = answers[index];
+  var isLast = index === 8;
+
+  /* Progression */
+  var pct = Math.round((index / 9) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = (index + 1) + ' / 9';
+  document.getElementById('nav-label').textContent =
+    userData.prenom ? 'Bonjour ' + userData.prenom : 'Exploration';
+
+  renderDots();
+
+  /* HTML de la scène */
+  var dimsHTML = s.dims.map(function(d) {
+    return '<span class="dim-tag" style="background:' + d.bg +
+           ';color:' + d.tc + '">' + d.l + '</span>';
+  }).join('');
+
+  var optsHTML = s.opts.map(function(opt, i) {
+    var isSel = selected === i;
+    return '<button class="opt-btn' + (isSel ? ' selected' : '') +
+           '" data-idx="' + i + '" type="button">' +
+      '<span class="opt-check">' +
+        '<svg viewBox="0 0 10 8" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          '<path d="M1 4L3.5 6.5L9 1"/>' +
+        '</svg>' +
+      '</span>' +
+      '<span class="opt-text">' + opt + '</span>' +
+    '</button>';
+  }).join('');
+
+  var backHTML = index > 0
+    ? '<button class="btn-back" id="btn-back" type="button">← Précédent</button>'
+    : '<span></span>';
+
+  var nextLabel = isLast ? 'Voir mon profil →' : 'Suivant →';
+  var nextReady = selected !== null ? ' ready' : '';
+
+  var html =
+    '<div class="dim-row">' + dimsHTML + '</div>' +
+    '<p class="scene-num">Scène ' + (index + 1) + ' sur 9</p>' +
+    '<h2 class="scene-title">' + s.title + '</h2>' +
+    '<p class="scene-desc">' + s.desc + '</p>' +
+    '<div class="options">' + optsHTML + '</div>' +
+    '<div class="nav-btns">' +
+      backHTML +
+      '<button class="btn-next' + nextReady + '" id="btn-next" type="button">' +
+        nextLabel +
+      '</button>' +
+    '</div>';
+
+  var card = document.getElementById('scene-card');
+  card.style.animation = 'none';
+  card.offsetHeight; /* reflow */
+  card.style.animation = '';
+  card.innerHTML = html;
+
+  /* ÉVÉNEMENTS OPTIONS */
+  card.querySelectorAll('.opt-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var idx = parseInt(this.getAttribute('data-idx'));
+      answers[currentScene] = idx;
+
+      /* Mise à jour visuelle */
+      card.querySelectorAll('.opt-btn').forEach(function(b) {
+        b.classList.remove('selected');
+      });
+      this.classList.add('selected');
+
+      /* Activer le bouton suivant */
+      var nextBtn = document.getElementById('btn-next');
+      if (nextBtn) nextBtn.classList.add('ready');
+    });
+  });
+
+  /* ÉVÉNEMENT SUIVANT */
+  var nextBtn = document.getElementById('btn-next');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      if (answers[currentScene] === null) return;
+
+if (typeof gtag === 'function') {
+  gtag('event', 'quiz_question_complete', {
+    question: currentScene + 1
+    });
+  }
+      if (currentScene < 8) {
+        currentScene++;
+        renderScene(currentScene);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        finishQuiz();
+      }
+    });
+  }
+
+  /* ÉVÉNEMENT PRÉCÉDENT */
+  var backBtn = document.getElementById('btn-back');
+  if (backBtn) {
+    backBtn.addEventListener('click', function() {
+      if (currentScene > 0) {
+        currentScene--;
+        renderScene(currentScene);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+}
+
+/* ══════════════════════════════════════════
+   FIN DU QUIZ
+══════════════════════════════════════════ */
+  function finishQuiz() {
+    if (typeof gtag === 'function') {
+    gtag('event', 'quiz_complete');
+    }
+    
+    /* Cacher la scène, montrer le loading */
+  document.getElementById('scene-card').style.display = 'none';
+  document.getElementById('loading-screen').classList.add('visible');
+  document.getElementById('prog-fill').style.width = '100%';
+  document.getElementById('prog-label').textContent = 'Analyse…';
+
+  /* Sauvegarder les réponses */
+  var quizData = {
+    user: userData,
+    answers: answers,
+    completedAt: new Date().toISOString()
+  };
+  try {
+    sessionStorage.setItem('cosmos_quiz', JSON.stringify(quizData));
+  } catch(e) {}
+
+  /* Redirection vers la page résultat après 2.5s */
+    setTimeout(function() {
+    window.location.href = 'approfondissement.html';
+  }, 5000);
+}
+
+/* ══════════════════════════════════════════
+   INITIALISATION
+══════════════════════════════════════════ */
+if (hasFullData()) {
+  startQuiz();
+} else {
+  renderIntro();
+}
+
+if (typeof gtag === 'function') {
+  gtag('event', 'quiz_start');
+}
+</script>
+</body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPKSNPDJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+</html>
