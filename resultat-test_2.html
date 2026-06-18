@@ -47,7 +47,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .dim-pills{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:0}
 .dim-pill{font-size:0.62rem;padding:3px 10px;border-radius:20px;font-weight:400;letter-spacing:0.04em}
 .card{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
-.card,.radar-wrap,#wheel-144,.paywall-bloc,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3{opacity:0;transition:opacity 0.5s ease}
+.card,.radar-wrap,#wheel-144,.paywall-bloc,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bloc-partage-gratuit,#bouton-discret{opacity:0;transition:opacity 0.5s ease}
 .card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
 .portrait-line{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:#C8C4E8;line-height:1.85;font-style:italic}
 .portrait-line+.portrait-line{margin-top:0.65rem}
@@ -319,6 +319,33 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             Révéler mon profil Cosmos complet — 7,90€
           </button>
           <p style="font-size:0.65rem;color:#AFA9EC;letter-spacing:0.04em;text-align:center">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
+        </div>
+      </div>
+
+      <!-- PARTAGE GRATUIT -->
+      <div style="margin-bottom:1.25rem" id="bloc-partage-gratuit">
+        <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
+        <div class="share-card-visual" id="share-card">
+          <div style="position:relative;z-index:2">
+            <p class="share-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
+            <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
+            <svg viewBox="0 0 100 100" width="65" height="65" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+              <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+              <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
+              <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
+              <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
+              <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
+              <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
+            </svg>
+            <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:6px" id="share-pills"></div>
+            <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
+          </div>
+        </div>
+        <div class="share-btns">
+          <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
+          <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
+          <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" onclick="copyCode()">Copier mon code</button>
         </div>
       </div>
 
@@ -651,6 +678,21 @@ function populateBlocs(profile){
     var spn=document.getElementById('share-profile-name-paid');var sc=document.getElementById('share-code-paid');
     if(spn) spn.textContent=profile.profil.nom||'';
     if(sc) sc.textContent=(profile.profil.code||'').replace(/-/g,' · ')+' · cosmos-vision.com';
+    var spng=document.getElementById('share-profile-name');var scg=document.getElementById('share-code');
+    if(spng) spng.textContent=profile.profil.nom||'';
+    if(scg) scg.textContent=(profile.profil.code||'').replace(/-/g,' · ')+' · cosmos-vision.com';
+  }
+  /* Pills partage gratuit */
+  if(profile.dims&&profile.profil){
+    var pills=document.getElementById('share-pills');
+    if(pills){
+      var pts=(profile.profil.sous_titre||'').split('·').map(function(s){return s.trim();});
+      var colors=[['rgba(127,119,221,0.2)','#AFA9EC'],['rgba(29,158,117,0.18)','#9FE1CB'],['rgba(212,83,126,0.18)','#F4C0D1']];
+      var vals=[profile.dims.cosmique[0],profile.dims.cognitif[0],profile.dims.emotionnel[0]];
+      pills.innerHTML=pts.slice(0,3).map(function(p,i){return '<span style="font-size:0.55rem;padding:2px 7px;border-radius:20px;background:'+colors[i][0]+';color:'+colors[i][1]+'">'+p+' '+vals[i]+'%</span>';}).join('');
+    }
+    /* Radar partage gratuit */
+    if(typeof animateShareRadar==='function'){animateShareRadar({top:profile.dims.cosmique[0],right:profile.dims.cognitif[0],bottom:profile.dims.emotionnel[0],left:profile.dims.relationnel[0]});}
   }
   var conclusions=[
     "Ton profil présente une cohérence rare entre tes aspirations profondes et tes comportements visibles. Cette clarté est une force — apprends à lui faire confiance.",
@@ -687,7 +729,7 @@ function saveEmail(){
   registerBrevoContact(email,userData.prenom||'',3);
   var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(savedProfile&&savedProfile.profil){
-    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='1';});
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret,#bloc-partage-gratuit').forEach(function(el){el.style.opacity='1';});
     var banner=document.getElementById('demo-banner');if(banner) banner.style.display='none';
     window.CosmosAPI.apply(savedProfile);populateBlocs(savedProfile);
     if(typeof animateRadar==='function'&&savedProfile.dims){animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});}
@@ -707,7 +749,7 @@ function leaveForGood(){
   document.getElementById('exit-message').style.display='none';
   var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(savedProfile&&savedProfile.profil){
-    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='1';});
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret,#bloc-partage-gratuit').forEach(function(el){el.style.opacity='1';});
     var banner=document.getElementById('demo-banner');if(banner) banner.style.display='none';
     var stepsEl=document.getElementById('loading-steps');if(stepsEl) stepsEl.style.display='none';
     window.CosmosAPI.apply(savedProfile);populateBlocs(savedProfile);
@@ -758,7 +800,7 @@ if(isPaid||window.location.search.includes('success=true')){
     var cachedForUnlock=null;try{cachedForUnlock=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
     if(cachedForUnlock&&window.CosmosAPI){
       window.CosmosAPI.apply(cachedForUnlock);populateBlocs(cachedForUnlock);
-      document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='1';});
+      document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret,#bloc-partage-gratuit').forEach(function(el){el.style.opacity='1';});
       var bannerEl=document.getElementById('demo-banner');if(bannerEl) bannerEl.style.display='none';
       var stepsEl2=document.getElementById('loading-steps');if(stepsEl2) stepsEl2.style.display='none';
       if(cachedForUnlock.dims){animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});}
@@ -780,7 +822,7 @@ setTimeout(function(){
   if(localProfile&&localProfile.profil&&window.CosmosAPI&&!freshQuiz){
     sessionStorage.setItem('cosmos_profile',JSON.stringify(localProfile));
     window.CosmosAPI.apply(localProfile);populateBlocs(localProfile);
-    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='1';});
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret,#bloc-partage-gratuit').forEach(function(el){el.style.opacity='1';});
     var bannerEl=document.getElementById('demo-banner');if(bannerEl) bannerEl.style.display='none';
     var stepsEl=document.getElementById('loading-steps');if(stepsEl) stepsEl.style.display='none';
     if(localProfile.dims){animateRadar({top:localProfile.dims.cosmique[0],right:localProfile.dims.cognitif[0],bottom:localProfile.dims.emotionnel[0],left:localProfile.dims.relationnel[0]});}
@@ -794,7 +836,7 @@ setTimeout(function(){
   }
   if(window.CosmosAPI){
     try{sessionStorage.removeItem('cosmos_profile');localStorage.removeItem('cosmos_profile');}catch(e){}
-    document.querySelectorAll('.card,.radar-wrap,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret').forEach(function(el){el.style.opacity='0';});
+    document.querySelectorAll('.card,.radar-wrap,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret,#bloc-partage-gratuit').forEach(function(el){el.style.opacity='0';});
     document.getElementById('profile-name').textContent='✨ Cosmos analyse tes réponses…';
     document.getElementById('profile-code').textContent='· · ·';
     var steps=['Lecture de tes 9 réponses projectives…','Analyse de tes patterns émotionnels…','Détection de tes dimensions dominantes…','Identification de tes blocages inconscients…','Calcul de ton archétype parmi 144…','Connexion à ton monde intérieur…','Génération de ton portrait unique…','Connexion à ton ciel natal…','Calcul de ton âme miroir…','Finalisation de ton analyse complète…'];
