@@ -104,7 +104,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .love-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;margin-bottom:0.65rem}
 .love-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.7;margin-bottom:0.9rem}
 .love-row{display:flex;gap:8px;margin-bottom:5px;align-items:flex-start}
-.love-row-label{font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);min-width:85px;flex-shrink:0;padding-top:1px}
+.love-row-label{font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--purple-light);min-width:85px;flex-shrink:0;padding-top:1px}
 .love-row-val{font-size:0.76rem;color:var(--text-muted);line-height:1.5}
 .action-item{background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
 .action-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px}
@@ -121,6 +121,23 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .demo-banner{background:rgba(127,119,221,0.1);border:1px solid rgba(127,119,221,0.25);border-radius:10px;padding:0.7rem 1rem;margin-bottom:1.25rem;font-size:0.73rem;color:var(--purple-light);line-height:1.5;text-align:center}
 .next-chapter{background:var(--deep);border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;display:flex;align-items:center;gap:12px;margin-bottom:2rem}
 .nc-icon{width:34px;height:34px;border-radius:50%;background:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ── CAROUSEL TÉMOIGNAGES RÉSULTAT ── */
+.testi-result-wrap{overflow:hidden;margin-bottom:1.25rem;position:relative}
+.testi-result-wrap::before,.testi-result-wrap::after{content:'';position:absolute;top:0;bottom:0;width:40px;z-index:2;pointer-events:none}
+.testi-result-wrap::before{left:0;background:linear-gradient(to right,var(--void),transparent)}
+.testi-result-wrap::after{right:0;background:linear-gradient(to left,var(--void),transparent)}
+.testi-result-track{display:flex;gap:10px;width:max-content;animation:testiScroll 60s linear infinite}
+.testi-result-track:hover{animation-play-state:paused}
+@keyframes testiScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.testi-result-card{background:var(--deep);border:1px solid rgba(127,119,221,0.15);border-radius:12px;padding:0.9rem 1.1rem;width:240px;flex-shrink:0}
+.testi-result-stars{color:#BA7517;font-size:0.65rem;letter-spacing:2px;margin-bottom:0.4rem}
+.testi-result-text{font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-style:italic;color:#C8C4E8;line-height:1.6;margin-bottom:0.5rem}
+.testi-result-author{font-size:0.6rem;color:var(--text-faint);letter-spacing:0.06em;text-transform:uppercase}
+
+/* ── TIMER 24H ── */
+.profil-timer{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:0.6rem;margin-bottom:0.25rem;font-size:0.68rem;color:#BA7517;letter-spacing:0.04em}
+.timer-dot{width:5px;height:5px;border-radius:50%;background:#BA7517;animation:pulse 2s ease-in-out infinite;flex-shrink:0}
 @media(max-width:480px){.main{padding:1.5rem 1rem 5rem}nav{padding:0.9rem 1rem}}
 </style>
 </head>
@@ -247,107 +264,92 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       </div>
 
       <!-- BOUTON DISCRET -->
-      <div id="bouton-discret" style="text-align:center;margin-bottom:1.25rem;opacity:0;transition:opacity 0.5s ease">
-        <button onclick="dataLayer=window.dataLayer||[];dataLayer.push({'event':'payment_click','button':'discret'});checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.65rem 1.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
+      <!-- BLOC UNIQUE TEASER FUSIONNÉ -->
+      <div id="paywall-bloc1" class="paywall-bloc" style="padding:0;background:none;border:none">
+
+        <!-- Accroche -->
+        <div style="text-align:center;margin-bottom:1.5rem">
+          <p style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--purple-light);margin-bottom:0.5rem">Ce que Cosmos a détecté</p>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--text);line-height:1.2;margin-bottom:0.4rem">
+            Il y a des choses sur toi<br><em style="color:var(--purple-light)">que tu n'as jamais nommées.</em>
+          </h2>
+          <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.7;max-width:380px;margin:0 auto">Cosmos les a identifiées à travers tes 9 réponses. Elles t'attendent.</p>
+        </div>
+
+        <!-- Liste des révélations -->
+        <div style="background:linear-gradient(135deg,rgba(127,119,221,0.06),rgba(212,83,126,0.03));border:1px solid rgba(127,119,221,0.2);border-radius:18px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:180px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)"></div>
+          <div style="display:flex;flex-direction:column;gap:0.7rem">
+            <div style="display:flex;align-items:center;gap:10px;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.03);border-radius:10px">
+              <span style="font-size:1rem">🧱</span>
+              <div><p style="font-size:0.82rem;color:var(--text);font-weight:500;margin-bottom:1px">Ton blocage principal</p><p style="font-size:0.68rem;color:var(--text-muted)">Ce qui te retient sans que tu le voies</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.03);border-radius:10px">
+              <span style="font-size:1rem">🪞</span>
+              <div><p style="font-size:0.82rem;color:var(--text);font-weight:500;margin-bottom:1px">Ton âme miroir</p><p style="font-size:0.68rem;color:var(--text-muted)">La personne qui résonne avec ton énergie</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.03);border-radius:10px">
+              <span style="font-size:1rem">💞</span>
+              <div><p style="font-size:0.82rem;color:var(--text);font-weight:500;margin-bottom:1px">Ton schéma amoureux</p><p style="font-size:0.68rem;color:var(--text-muted)">Pourquoi certaines histoires se répètent</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.03);border-radius:10px">
+              <span style="font-size:1rem">⚡</span>
+              <div><p style="font-size:0.82rem;color:var(--text);font-weight:500;margin-bottom:1px">Ta force cachée</p><p style="font-size:0.68rem;color:var(--text-muted)">Celle que personne ne t'a encore nommée</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.03);border-radius:10px">
+              <span style="font-size:1rem">🌀</span>
+              <div><p style="font-size:0.82rem;color:var(--text);font-weight:500;margin-bottom:1px">Ce qui te vide mentalement</p><p style="font-size:0.68rem;color:var(--text-muted)">La source invisible qui épuise ton énergie</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.03);border-radius:10px">
+              <span style="font-size:1rem">🔁</span>
+              <div><p style="font-size:0.82rem;color:var(--text);font-weight:500;margin-bottom:1px">Tes erreurs relationnelles</p><p style="font-size:0.68rem;color:var(--text-muted)">Le pattern qui se rejoue malgré toi</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.03);border-radius:10px">
+              <span style="font-size:1rem">🧠</span>
+              <div><p style="font-size:0.82rem;color:var(--text);font-weight:500;margin-bottom:1px">La clé qui te libère</p><p style="font-size:0.68rem;color:var(--text-muted)">Un levier précis, ancré dans tes réponses</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.03);border-radius:10px">
+              <span style="font-size:1rem">☀️</span>
+              <div><p style="font-size:0.82rem;color:var(--text);font-weight:500;margin-bottom:1px">2 actions personnalisées</p><p style="font-size:0.68rem;color:var(--text-muted)">Applicables dès aujourd'hui, faites pour toi</p></div>
+            </div>
+          </div>
+          <div style="margin-top:1rem;padding-top:0.85rem;border-top:1px solid rgba(255,255,255,0.05);text-align:center">
+            <p style="font-size:0.68rem;color:var(--text-faint);font-style:italic">📄 + Rapport PDF personnel disponible immédiatement</p>
+          </div>
+        </div>
+
+        <!-- Carousel témoignages -->
+        <div style="margin-bottom:1.25rem">
+          <p style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-faint);text-align:center;margin-bottom:0.75rem">Ce qu'ils ont ressenti</p>
+          <div class="testi-result-wrap">
+            <div class="testi-result-track" id="testi-result-track"></div>
+          </div>
+        </div>
+
+        <!-- Compteur -->
+        <div style="text-align:center;margin-bottom:1.25rem">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--purple-light);line-height:1" id="paywall-counter">3 247</p>
+          <p style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-faint);margin-top:0.3rem">âmes ont déjà révélé leur profil complet</p>
+        </div>
+
+        <!-- Bouton principal -->
+        <button class="pay-bloc-btn btn-purple" id="paywall-bloc2" onclick="dataLayer=window.dataLayer||[];dataLayer.push({'event':'payment_click','button':'main'});checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="font-size:1rem;padding:1.15rem;margin-bottom:0.6rem;width:100%;border-radius:100px;background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;color:white;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;letter-spacing:0.02em;box-shadow:0 0 30px rgba(127,119,221,0.3)">
           🔓 Révéler mon profil Cosmos complet — 7,90€
         </button>
-        <p style="font-size:0.62rem;color:#8B87B0;margin-top:0.5rem;text-align:center;letter-spacing:0.04em">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
+
+        <!-- Timer 24h -->
+        <div class="profil-timer">
+          <span class="timer-dot"></span>
+          <span id="timer-label">Ton profil est sauvegardé encore <strong id="timer-countdown">24:00:00</strong></span>
+        </div>
+
+        <!-- Réassurance -->
+        <p style="font-size:0.62rem;color:var(--text-faint);text-align:center;letter-spacing:0.04em;margin-top:0.5rem;margin-bottom:1.25rem">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
+
       </div>
 
-      <!-- BLOC 1 -->
-      <div class="paywall-bloc bloc1" id="paywall-bloc1">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--purple-light);margin-bottom:0.25rem;letter-spacing:0.04em"> Cosmos a détecté </p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.35rem">4 révélations sur toi*</h2>
-        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1.25rem;font-style:italic">Ce que tu portes sans pouvoir le nommer.</p>
-        <div class="bloc-items" style="margin-bottom:1rem">
-          <div class="bloc-item" style="flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:8px"><span class="bloc-item-icon">🧱</span><p style="font-size:0.85rem;color:#F0EEF8;font-weight:500">Ton blocage principal</p></div>
-            <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">Ce qui te retient alors même que tu possèdes les ressources pour avancer.</p>
-          </div>
-          <div class="bloc-item" style="flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:8px"><span class="bloc-item-icon">🪞</span><p style="font-size:0.85rem;color:#F0EEF8;font-weight:500">Ton âme miroir</p></div>
-            <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">La personne qui résonne profondément avec ton énergie.</p>
-          </div>
-          <div class="bloc-item" style="flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:8px"><span class="bloc-item-icon">💞</span><p style="font-size:0.85rem;color:#F0EEF8;font-weight:500">Ton schéma amoureux</p></div>
-            <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">Pourquoi certaines histoires semblent se répéter malgré toi.</p>
-          </div>
-          <div class="bloc-item" style="flex-direction:column;gap:4px">
-            <div style="display:flex;align-items:center;gap:8px"><span class="bloc-item-icon">🌀</span><p style="font-size:0.85rem;color:#F0EEF8;font-weight:500">Ce qui te vide mentalement</p></div>
-            <p style="font-size:0.73rem;color:var(--text-muted);padding-left:28px;line-height:1.5">La source invisible qui épuise ton énergie au quotidien.</p>
-          </div>
-        </div>
-        <p style="font-size:0.68rem;color:#8B87B0;font-style:italic;margin-bottom:0">* Détail du contenu visible uniquement une fois ton profil entièrement révélé.</p>
-      </div>
-
-      <!-- BLOC 2 -->
-      <div class="paywall-bloc bloc2" id="paywall-bloc2">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--rose);margin-bottom:0.25rem;letter-spacing:0.04em">✦ Tes patterns profonds ✦</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:1.25rem">Pourquoi tu te retrouves toujours au même endroit ?*</h2>
-        <div class="bloc-items" style="margin-bottom:1rem">
-          <div class="bloc-item"><span class="bloc-item-icon">🔁</span><p style="font-size:0.85rem;color:#F0EEF8">Tes erreurs relationnelles répétées</p></div>
-          <div class="bloc-item"><span class="bloc-item-icon">🧠</span><p style="font-size:0.85rem;color:#F0EEF8">La clé qui te libère</p></div>
-          <div class="bloc-item"><span class="bloc-item-icon">✨</span><p style="font-size:0.85rem;color:#F0EEF8">Les 3 signaux qui ne trompent pas</p></div>
-          <div class="bloc-item"><span class="bloc-item-icon">⚡</span><p style="font-size:0.85rem;color:#F0EEF8">Ta force cachée</p></div>
-        </div>
-        <p style="font-size:0.68rem;color:#8B87B0;font-style:italic;margin-bottom:0">* Détail du contenu visible uniquement une fois ton profil entièrement révélé.</p>
-      </div>
-
-      <!-- BLOC 3 -->
-      <div class="paywall-bloc bloc3" id="paywall-bloc3">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--teal);margin-bottom:0.25rem;letter-spacing:0.04em">✦ Actions personnalisées ✦</p>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.75rem">Cosmos a préparé deux actions pour toi*</h2>
-        <p style="font-size:0.85rem;color:#C8C4E8;line-height:1.7;margin-bottom:1.25rem;padding:0.85rem 1rem;background:rgba(29,158,117,0.06);border-radius:10px;border-left:2px solid var(--teal);text-align:left">Découvre tes 2 actions personnalisées que tu pourras appliquer immédiatement afin de t'aider à avancer dès aujourd'hui.</p>
-        <p style="font-size:0.68rem;color:#8B87B0;font-style:italic;margin-bottom:1.5rem">* Détail du contenu visible uniquement une fois ton profil entièrement révélé.</p>
-        <div style="background:linear-gradient(135deg,rgba(127,119,221,0.06),rgba(212,83,126,0.04));border:1px solid rgba(127,119,221,0.25);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;text-align:left;position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,#7F77DD,transparent)"></div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:#AFA9EC;margin-bottom:0.25rem;letter-spacing:0.04em">🔓 Ton rapport Cosmos complet</p>
-          <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:0.5rem">Ce que Cosmos sait de toi :</h2>
-          <p style="font-size:0.82rem;color:var(--text-muted);font-style:italic;margin-bottom:1.1rem;line-height:1.6">Les réponses que Cosmos n'a pas encore révélées…</p>
-          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:1.1rem">
-            <p style="font-size:0.78rem;color:#C8C4E8">✅ Ton essence profonde complète</p>
-            <p style="font-size:0.78rem;color:#C8C4E8">🚀 Ta force dominante et son paradoxe</p>
-            <p style="font-size:0.78rem;color:#C8C4E8">🧱 Les 4 révélations sur toi</p>
-            <p style="font-size:0.78rem;color:#C8C4E8">🔁 Tes erreurs relationnelles répétées</p>
-            <p style="font-size:0.78rem;color:#C8C4E8">🧠 La clé qui te libère</p>
-            <p style="font-size:0.78rem;color:#C8C4E8">✨ Les 3 signaux qui ne trompent pas</p>
-            <p style="font-size:0.78rem;color:#C8C4E8">⚡ Ta force cachée</p>
-            <p style="font-size:0.78rem;color:#C8C4E8">☀️ 2 actions personnalisées</p>
-          </div>
-          <p style="font-size:0.7rem;color:#8B87B0;font-style:italic;line-height:1.6;margin-bottom:1.25rem">📄 Rapport PDF disponible immédiatement. Une analyse concise, personnelle et pensée pour t'aider à mieux comprendre ce qui te rend unique.</p>
-          <button class="pay-bloc-btn btn-purple" onclick="dataLayer=window.dataLayer||[];dataLayer.push({'event':'payment_click','button':'bloc_rapport'});checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="font-size:1rem;padding:1.1rem;margin-bottom:0.5rem">
-            Révéler mon profil Cosmos complet — 7,90€
-          </button>
-          <p style="font-size:0.65rem;color:#AFA9EC;letter-spacing:0.04em;text-align:center">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
-        </div>
-      </div>
-
-      <!-- PARTAGE GRATUIT -->
-      <div style="margin-bottom:1.25rem" id="bloc-partage-gratuit">
-        <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
-        <div class="share-card-visual" id="share-card">
-          <div style="position:relative;z-index:2">
-            <p class="share-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
-            <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
-            <svg viewBox="0 0 100 100" width="65" height="65" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-              <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-              <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
-              <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
-              <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
-              <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
-              <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
-            </svg>
-            <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:6px" id="share-pills"></div>
-            <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
-          </div>
-        </div>
-        <div class="share-btns">
-          <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
-          <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
-          <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" onclick="copyCode()">Copier mon code</button>
-        </div>
-      </div>
+      <!-- BLOC 3 caché — garde l'id pour le JS -->
+      <div id="paywall-bloc3" style="display:none"></div>
 
       <!-- SECTION PAYANTE -->
       <div class="paid-section" id="paid-section">
@@ -512,41 +514,160 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
           <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.6rem 1.5rem;color:#AFA9EC;font-family:'DM Sans',sans-serif;font-size:0.8rem;cursor:pointer;width:100%">↑ Revenir en haut</button>
         </div>
 
-        <!-- PARTAGE -->
-        <div style="margin-bottom:1.25rem">
-          <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
-          <div class="share-card-visual" id="share-card-paid">
-            <div style="position:relative;z-index:2">
-              <p class="share-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
-              <p class="share-profile-name" id="share-profile-name-paid">L'Architecte Lunaire</p>
-              <p class="share-code" id="share-code-paid">LUN · SYS · PRO · cosmos-vision.com</p>
-            </div>
-          </div>
-          <div class="share-btns">
-            <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
-            <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
-            <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" id="copy-btn" onclick="copyCode()">Copier mon code</button>
-          </div>
-        </div>
-
-        <!-- CHAPITRE SUIVANT -->
-        <div class="next-chapter">
-          <div class="nc-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <div>
-            <p style="font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:2px">Chapitre II — Tes patterns amoureux</p>
-            <p style="font-size:0.68rem;color:var(--text-faint)">Bientôt disponible · cosmos-vision.com</p>
-          </div>
-        </div>
-
       </div><!-- /paid-section -->
+
+      <!-- PARTAGE — avec radar et dimensions -->
+      <div style="margin-bottom:1.25rem;margin-top:1.25rem" id="bloc-partage-gratuit">
+        <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
+        <div class="share-card-visual" id="share-card">
+          <div style="position:relative;z-index:2">
+            <p class="share-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
+            <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
+            <svg viewBox="0 0 100 100" width="65" height="65" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+              <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+              <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
+              <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
+              <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
+              <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
+              <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
+            </svg>
+            <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:6px" id="share-pills"></div>
+            <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
+          </div>
+        </div>
+        <div class="share-btns">
+          <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
+          <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
+          <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" onclick="copyCode()">Copier mon code</button>
+        </div>
+      </div>
+
+      <!-- CHAPITRE SUIVANT — tout en bas -->
+      <div class="next-chapter">
+        <div class="nc-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div>
+          <p style="font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:2px">Chapitre II — Tes patterns amoureux</p>
+          <p style="font-size:0.68rem;color:var(--text-faint)">Bientôt disponible · cosmos-vision.com</p>
+        </div>
+      </div>
     </div><!-- /content -->
   </div><!-- /main -->
 </div><!-- /page -->
 
 <script src="api.js?v=3"></script>
 <script>
+/* ── CAROUSEL TÉMOIGNAGES PAYWALL ── */
+(function(){
+  var TESTI_PAYWALL = [
+    {t:"J'ai relu mon portrait trois fois. Il décrit exactement ce que je n'arrivais pas à mettre en mots.",a:"Camille · Paris · 28 ans"},
+    {t:"Mon blocage principal m'a mis les larmes aux yeux. C'est précis à un niveau que je n'attendais pas.",a:"Romain · Lyon · 34 ans"},
+    {t:"L'âme miroir — troublant. Cette description correspond à quelqu'un que je connais vraiment.",a:"Léa · Bordeaux · 26 ans"},
+    {t:"En 4 minutes, Cosmos a cerné ce que des années de thérapie n'avaient pas nommé aussi clairement.",a:"Inès · Genève · 31 ans"},
+    {t:"Le schéma amoureux. Une phrase. Et soudain tout s'explique.",a:"Antoine · Rennes · 37 ans"},
+    {t:"J'ai partagé mon profil à ma meilleure amie. Elle a dit 'c'est exactement toi'.",a:"Clara · Nantes · 25 ans"},
+    {t:"La force cachée que personne ne m'avait nommée. Je ne l'oublierai pas.",a:"Hugo · Bruxelles · 29 ans"},
+    {t:"Ce qui me vide mentalement — j'avais toujours su que quelque chose clochait. Maintenant j'ai le mot.",a:"Sophie · Toulouse · 32 ans"},
+    {t:"Les actions du mois sont devenues mon rituel. Simples, précises, vraiment pour moi.",a:"Maxime · Marseille · 38 ans"},
+    {t:"Jamais un test ne m'avait donné l'impression d'être vraiment vu.",a:"Élise · Strasbourg · 30 ans"},
+    {t:"Mon code céleste — SOL-INT-EXP. Je le connais par cœur maintenant.",a:"Thomas · Nice · 27 ans"},
+    {t:"La lecture amoureuse est d'une justesse rare. Ça m'a aidée à comprendre mes choix passés.",a:"Marie · Annecy · 35 ans"},
+    {t:"J'ai offert l'analyse à mon frère. On a passé la soirée à comparer nos profils.",a:"Julien · Lille · 33 ans"},
+    {t:"Les 3 signaux qui ne trompent pas — j'ai reconnu quelqu'un immédiatement.",a:"Chloé · Montpellier · 24 ans"},
+    {t:"Le paradoxe de ma force dominante. C'est exactement ça. Tout y est.",a:"Karim · Montréal · 41 ans"},
+    {t:"Ce test ne range pas dans une case. Mon profil me ressemble vraiment.",a:"Laure · Dijon · 29 ans"},
+    {t:"J'étais sceptique. Puis j'ai lu le portrait. Impossible de ne pas se reconnaître.",a:"Nicolas · Tours · 36 ans"},
+    {t:"La clé qui me libère — une phrase, mais une phrase qui change quelque chose.",a:"Émilie · Lausanne · 28 ans"},
+    {t:"Mon miroir intérieur décrit exactement le fossé entre ce que je montre et ce que je vis.",a:"Mehdi · Casablanca · 44 ans"},
+    {t:"Les erreurs relationnelles. Je les vois maintenant. C'est inconfortable et libérateur à la fois.",a:"Sarah · Grenoble · 31 ans"},
+    {t:"4 minutes et un portrait que je relirai longtemps. Le prix d'un café pour ça.",a:"Paul · Liège · 39 ans"},
+    {t:"Ce que je porte sans pouvoir le nommer — cette phrase dans le portrait m'a arrêtée net.",a:"Manon · Rennes · 27 ans"},
+    {t:"L'astrologie connectée à mes vraies réponses. C'est une première. C'est juste.",a:"Valérie · Paris · 46 ans"},
+    {t:"Mon archétype porte un nom qui me ressemble même dans sa sonorité.",a:"Alexandre · Bordeaux · 33 ans"},
+    {t:"Le radar des 4 dimensions m'a montré où j'étais fort sans le savoir.",a:"Lucas · Nantes · 25 ans"},
+    {t:"J'ai pleuré en lisant la section amour. Rarement quelque chose m'a touchée aussi directement.",a:"Amélie · Lyon · 30 ans"},
+    {t:"Le PDF est beau et dense. Je l'ai imprimé pour le garder.",a:"Thierry · Marseille · 48 ans"},
+    {t:"Pas de phrases génériques. Chaque ligne parle de moi, pas d'un type.",a:"Julie · Strasbourg · 26 ans"},
+    {t:"Ce qui m'a marqué : aucune question directe. Juste des situations. Et pourtant, tout y est.",a:"David · Toulouse · 35 ans"},
+    {t:"Ma force cachée — je savais qu'elle existait. Cosmos l'a nommée mieux que moi.",a:"Céline · Nice · 29 ans"},
+    {t:"J'ai refait le test 6 mois plus tard. Le profil avait légèrement évolué. Comme moi.",a:"François · Genève · 42 ans"},
+    {t:"La précision du blocage principal m'a déstabilisé. Dans le bon sens.",a:"Marion · Lille · 28 ans"},
+    {t:"Le schéma amoureux explique enfin pourquoi mes relations suivent le même chemin.",a:"Pierre · Annecy · 37 ans"},
+    {t:"J'ai offert l'analyse à 4 personnes. C'est devenu mon cadeau signature.",a:"Nathalie · Lausanne · 51 ans"},
+    {t:"Le portrait est poétique sans être flou. Précis sans être clinique. Rare.",a:"Sébastien · Bruxelles · 34 ans"},
+    {t:"Les actions du mois : concrètes, adaptées, pas génériques. Je les ai toutes faites.",a:"Lucie · Montpellier · 31 ans"},
+    {t:"Mon code céleste affiché dans mon bureau. Pour me rappeler qui je suis vraiment.",a:"Vincent · Paris · 38 ans"},
+    {t:"Ce test m'a donné un vocabulaire pour me comprendre. Ça n'a pas de prix.",a:"Isabelle · Bordeaux · 43 ans"},
+    {t:"La section miroir intérieur — ce que je montre vs ce que je vis. Bouleversant.",a:"Adrien · Lyon · 29 ans"},
+    {t:"7,90€. Le prix d'un kebab pour quelque chose que je relirai des années.",a:"Pauline · Toulouse · 27 ans"}
+  ];
+  var track = document.getElementById('testi-result-track');
+  if(!track) return;
+  var html = '';
+  var list = TESTI_PAYWALL.concat(TESTI_PAYWALL);
+  list.forEach(function(x){
+    html += '<div class="testi-result-card">'
+      + '<div class="testi-result-stars">★★★★★</div>'
+      + '<p class="testi-result-text">"' + x.t + '"</p>'
+      + '<p class="testi-result-author">' + x.a + '</p>'
+      + '</div>';
+  });
+  track.innerHTML = html;
+})();
+
+/* ── COMPTEUR PAYWALL (synchronisé accueil) ── */
+(function(){
+  var target = 2847;
+  var start = new Date('2026-06-01').getTime();
+  var days = Math.floor((Date.now() - start) / 86400000);
+  target += days * 23;
+  var el = document.getElementById('paywall-counter');
+  if(!el) return;
+  var started = false;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !started){
+        started = true;
+        var current = 0;
+        var step = Math.ceil(target / 80);
+        var t = setInterval(function(){
+          current += step;
+          if(current >= target){ current = target; clearInterval(t); }
+          el.textContent = current.toLocaleString('fr-FR');
+        }, 20);
+      }
+    });
+  }, {threshold: 0.4});
+  obs.observe(el);
+})();
+
+/* ── TIMER 24H ── */
+(function(){
+  var el = document.getElementById('timer-countdown');
+  if(!el) return;
+  var KEY = 'cosmos_profile_expiry';
+  var expiry;
+  try {
+    expiry = parseInt(localStorage.getItem(KEY));
+    if(!expiry || isNaN(expiry)){
+      expiry = Date.now() + 24 * 60 * 60 * 1000;
+      localStorage.setItem(KEY, expiry);
+    }
+  } catch(e) { expiry = Date.now() + 24 * 60 * 60 * 1000; }
+  function update(){
+    var diff = expiry - Date.now();
+    if(diff <= 0){ el.textContent = '00:00:00'; return; }
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    el.textContent = (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+    setTimeout(update, 1000);
+  }
+  update();
+})();
+
 (function(){
   var c=document.getElementById('cosmos-canvas'),ctx=c.getContext('2d'),stars=[],W,H;
   function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
@@ -676,7 +797,7 @@ function populateBlocs(profile){
     if(lbf) lbf.textContent=profile.amour.besoin||'';
     if(lpf) lpf.textContent=profile.amour.pattern||'';
     var lpff=document.getElementById('love-pattern-full');
-    if(lpff) lpff.textContent=profile.amour.pattern||'';
+    if(lpff) lpff.textContent=(profile.amour.erreurs||profile.amour.pattern)||'';
   }
   if(profile.miroir){
     var mn=document.getElementById('mirror-name');var ms=document.getElementById('mirror-sub');
