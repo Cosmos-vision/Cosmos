@@ -509,12 +509,141 @@ var SCENES = [
 var currentScene = 0;
 var answers = new Array(9).fill(null);
 var userData = {};
+var introStep = 0; /* 0=prénom/genre, 1=date de naissance, 2=quiz */
 
 /* Récupérer les données utilisateur de la landing page */
 try {
   var stored = sessionStorage.getItem('cosmos_user');
   if (stored) userData = JSON.parse(stored);
 } catch(e) {}
+
+/* Si on a déjà prénom+genre+dob → skip intro */
+function hasFullData() {
+  return userData.prenom && userData.genre && userData.dateNaissance;
+}
+
+/* ══════════════════════════════════════════
+   RENDU INTRO — Questions d'accueil
+══════════════════════════════════════════ */
+function renderIntro() {
+  document.getElementById('prog-fill').style.width = '0%';
+  document.getElementById('prog-label').textContent = 'Préparation';
+  document.getElementById('dots-wrap').innerHTML = '';
+
+  var card = document.getElementById('scene-card');
+
+  if (introStep === 0) {
+    /* Étape 1 : Prénom + Genre */
+    var prenomVal = userData.prenom || '';
+    card.innerHTML =
+      '<div class="dim-row"><span class="dim-tag" style="background:rgba(127,119,221,.2);color:#AFA9EC">Personnalisation</span></div>' +
+      '<p class="scene-num">Avant de commencer</p>' +
+      '<h2 class="scene-title">Comment t\'appelles-tu ?</h2>' +
+      '<p class="scene-desc">Ces informations personnalisent ton profil et ton analyse.</p>' +
+      '<div style="display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0">' +
+        '<div>' +
+          '<label style="display:block;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#8B87B0;margin-bottom:0.5rem">Prénom · <span style="color:#7F77DD">requis</span></label>' +
+          '<input id="intro-prenom" type="text" placeholder="ex. Sophie" autocomplete="given-name" style="width:100%;background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem 1rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;" value="' + prenomVal + '" />' +
+        '</div>' +
+        '<div>' +
+          '<label style="display:block;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#8B87B0;margin-bottom:0.5rem">Genre · <span style="color:#7F77DD">requis</span></label>' +
+          '<select id="intro-genre" style="width:100%;background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem 1rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;-webkit-appearance:none;appearance:none;">' +
+            '<option value="" disabled ' + (!userData.genre ? 'selected' : '') + '>Sélectionne ton genre</option>' +
+            '<option value="femme" ' + (userData.genre==='femme'?'selected':'') + '>Femme</option>' +
+            '<option value="homme" ' + (userData.genre==='homme'?'selected':'') + '>Homme</option>' +
+            '<option value="neutre" ' + (userData.genre==='neutre'?'selected':'') + '>Neutre</option>' +
+          '</select>' +
+        '</div>' +
+      '</div>' +
+      '<div class="nav-btns"><span></span>' +
+        '<button class="btn-next" id="btn-intro-next" type="button">Suivant →</button>' +
+      '</div>';
+
+    /* Focus auto */
+    setTimeout(function(){ var el = document.getElementById('intro-prenom'); if(el && !el.value) el.focus(); }, 100);
+
+    /* Activer le bouton si déjà rempli */
+    function checkIntro0() {
+      var p = document.getElementById('intro-prenom');
+      var g = document.getElementById('intro-genre');
+      var btn = document.getElementById('btn-intro-next');
+      if (!p || !g || !btn) return;
+      var ok = p.value.trim().length >= 2 && g.value;
+      btn.classList.toggle('ready', ok);
+    }
+    setTimeout(function(){
+      var p = document.getElementById('intro-prenom');
+      var g = document.getElementById('intro-genre');
+      if(p){ p.addEventListener('input', checkIntro0); checkIntro0(); }
+      if(g){ g.addEventListener('change', checkIntro0); }
+      var btn = document.getElementById('btn-intro-next');
+      if(btn){ btn.addEventListener('click', function(){
+        var pv = document.getElementById('intro-prenom').value.trim();
+        var gv = document.getElementById('intro-genre').value;
+        if(!pv || pv.length < 2 || !gv) return;
+        userData.prenom = pv;
+        userData.genre = gv;
+        introStep = 1;
+        renderIntro();
+        window.scrollTo({top:0,behavior:'smooth'});
+      }); }
+    }, 50);
+
+  } else if (introStep === 1) {
+    /* Étape 2 : Date de naissance */
+    var dob = userData.dateNaissance || {};
+    card.innerHTML =
+      '<div class="dim-row"><span class="dim-tag" style="background:rgba(127,119,221,.2);color:#AFA9EC">Essence cosmique</span></div>' +
+      '<p class="scene-num">Avant de commencer</p>' +
+      '<h2 class="scene-title">Ta date de naissance</h2>' +
+      '<p class="scene-desc">Elle détermine ton <strong style="color:#AFA9EC">essence cosmique</strong> — l\'une des 12 composantes de ton archétype — et permet la lecture astrologique de ton profil (signe solaire, planète dominante).</p>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:1.5rem 0">' +
+        '<input id="intro-day" type="number" placeholder="Jour" min="1" max="31" value="' + (dob.jour||'') + '" style="background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;text-align:center" />' +
+        '<input id="intro-month" type="number" placeholder="Mois" min="1" max="12" value="' + (dob.mois||'') + '" style="background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;text-align:center" />' +
+        '<input id="intro-year" type="number" placeholder="Année" min="1920" max="2010" value="' + (dob.annee||'') + '" style="background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;text-align:center" />' +
+      '</div>' +
+      '<p style="font-size:0.68rem;color:#4A4870;margin-bottom:1.5rem">Utilisée uniquement pour personnaliser ton profil cosmique. Jamais partagée.</p>' +
+      '<div class="nav-btns">' +
+        '<button class="btn-back" id="btn-intro-back" type="button">← Précédent</button>' +
+        '<button class="btn-next" id="btn-intro-next2" type="button">Commencer →</button>' +
+      '</div>';
+
+    function checkIntro1() {
+      var d = document.getElementById('intro-day');
+      var m = document.getElementById('intro-month');
+      var y = document.getElementById('intro-year');
+      var btn = document.getElementById('btn-intro-next2');
+      if(!d||!m||!y||!btn) return;
+      var ok = d.value && m.value && y.value && parseInt(y.value) >= 1920 && parseInt(y.value) <= 2010;
+      btn.classList.toggle('ready', !!ok);
+    }
+    setTimeout(function(){
+      ['intro-day','intro-month','intro-year'].forEach(function(id){
+        var el = document.getElementById(id);
+        if(el){ el.addEventListener('input', checkIntro1); }
+      });
+      checkIntro1();
+      var back = document.getElementById('btn-intro-back');
+      if(back){ back.addEventListener('click', function(){ introStep=0; renderIntro(); window.scrollTo({top:0,behavior:'smooth'}); }); }
+      var next = document.getElementById('btn-intro-next2');
+      if(next){ next.addEventListener('click', function(){
+        var d = parseInt(document.getElementById('intro-day').value);
+        var m = parseInt(document.getElementById('intro-month').value);
+        var y = parseInt(document.getElementById('intro-year').value);
+        if(!d||!m||!y||y<1920||y>2010) return;
+        userData.dateNaissance = { jour: d, mois: m, annee: y };
+        try { sessionStorage.setItem('cosmos_user', JSON.stringify(userData)); } catch(e){}
+        introStep = 2;
+        startQuiz();
+        window.scrollTo({top:0,behavior:'smooth'});
+      }); }
+    }, 50);
+  }
+}
+
+function startQuiz() {
+  renderScene(0);
+}
 
 /* ══════════════════════════════════════════
    RENDU DES POINTS DE PROGRESSION
@@ -677,7 +806,11 @@ if (typeof gtag === 'function') {
 /* ══════════════════════════════════════════
    INITIALISATION
 ══════════════════════════════════════════ */
-renderScene(0);
+if (hasFullData()) {
+  startQuiz();
+} else {
+  renderIntro();
+}
 
 if (typeof gtag === 'function') {
   gtag('event', 'quiz_start');
