@@ -47,7 +47,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .dim-pills{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:0}
 .dim-pill{font-size:0.62rem;padding:3px 10px;border-radius:20px;font-weight:400;letter-spacing:0.04em}
 .card{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
-.card,.radar-wrap,#wheel-144{opacity:0;transition:opacity 0.5s ease}
+.card,.radar-wrap,#wheel-144,.paywall-bloc,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3{opacity:0;transition:opacity 0.5s ease}
 .card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
 .portrait-line{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:#C8C4E8;line-height:1.85;font-style:italic}
 .portrait-line+.portrait-line{margin-top:0.65rem}
@@ -564,7 +564,7 @@ var isPaid=false;
 try{isPaid=sessionStorage.getItem('cosmos_paid')==='true';}catch(e){}
 
 function handlePayment(){
-  var STRIPE_LINK='https://buy.stripe.com/bJecMY1huaDlezQ5zLdUY02';
+  var STRIPE_LINK='https://buy.stripe.com/dRmdR2bW8eTBfDUgepdUY01';
   var email='';try{email=JSON.parse(sessionStorage.getItem('cosmos_user')||'{}'). email||'';}catch(e){}
   window.location.href=STRIPE_LINK+'?client_reference_id='+encodeURIComponent(email||'user');
 }
@@ -687,7 +687,7 @@ function saveEmail(){
   registerBrevoContact(email,userData.prenom||'',3);
   var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(savedProfile&&savedProfile.profil){
-    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144').forEach(function(el){el.style.opacity='1';});
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3').forEach(function(el){el.style.opacity='1';});
     var banner=document.getElementById('demo-banner');if(banner) banner.style.display='none';
     window.CosmosAPI.apply(savedProfile);populateBlocs(savedProfile);
     if(typeof animateRadar==='function'&&savedProfile.dims){animateRadar({top:savedProfile.dims.cosmique[0],right:savedProfile.dims.cognitif[0],bottom:savedProfile.dims.emotionnel[0],left:savedProfile.dims.relationnel[0]});}
@@ -707,7 +707,7 @@ function leaveForGood(){
   document.getElementById('exit-message').style.display='none';
   var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
   if(savedProfile&&savedProfile.profil){
-    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144').forEach(function(el){el.style.opacity='1';});
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3').forEach(function(el){el.style.opacity='1';});
     var banner=document.getElementById('demo-banner');if(banner) banner.style.display='none';
     var stepsEl=document.getElementById('loading-steps');if(stepsEl) stepsEl.style.display='none';
     window.CosmosAPI.apply(savedProfile);populateBlocs(savedProfile);
@@ -758,7 +758,7 @@ if(isPaid||window.location.search.includes('success=true')){
     var cachedForUnlock=null;try{cachedForUnlock=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
     if(cachedForUnlock&&window.CosmosAPI){
       window.CosmosAPI.apply(cachedForUnlock);populateBlocs(cachedForUnlock);
-      document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144').forEach(function(el){el.style.opacity='1';});
+      document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3').forEach(function(el){el.style.opacity='1';});
       var bannerEl=document.getElementById('demo-banner');if(bannerEl) bannerEl.style.display='none';
       var stepsEl2=document.getElementById('loading-steps');if(stepsEl2) stepsEl2.style.display='none';
       if(cachedForUnlock.dims){animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});}
@@ -780,7 +780,7 @@ setTimeout(function(){
   if(localProfile&&localProfile.profil&&window.CosmosAPI&&!freshQuiz){
     sessionStorage.setItem('cosmos_profile',JSON.stringify(localProfile));
     window.CosmosAPI.apply(localProfile);populateBlocs(localProfile);
-    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144').forEach(function(el){el.style.opacity='1';});
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3').forEach(function(el){el.style.opacity='1';});
     var bannerEl=document.getElementById('demo-banner');if(bannerEl) bannerEl.style.display='none';
     var stepsEl=document.getElementById('loading-steps');if(stepsEl) stepsEl.style.display='none';
     if(localProfile.dims){animateRadar({top:localProfile.dims.cosmique[0],right:localProfile.dims.cognitif[0],bottom:localProfile.dims.emotionnel[0],left:localProfile.dims.relationnel[0]});}
@@ -803,6 +803,15 @@ setTimeout(function(){
     var isGiftReceived=false;try{isGiftReceived=!!sessionStorage.getItem('cosmos_gift_received');}catch(e){}
     if(isGiftReceived){try{sessionStorage.removeItem('cosmos_profile');sessionStorage.removeItem('cosmos_paid');}catch(e){}}
     window.CosmosAPI.init();
+    /* Patch: update popup once profile is ready */
+    var _popupCheck=setInterval(function(){
+      var _p=null;try{_p=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
+      if(_p&&_p.profil&&_p.profil.nom&&_p.profil.nom!=="L'Architecte Lunaire"){
+        clearInterval(_popupCheck);
+        populateEmailPopup(_p);
+      }
+    },500);
+    setTimeout(function(){clearInterval(_popupCheck);},60000);
     if(isGiftReceived){
       var giftCheck=setInterval(function(){var profile=null;try{profile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}if(profile&&profile.profil&&profile.profil.code!=='LUN-SYS-PRO'){clearInterval(giftCheck);unlockPaidContent(true);try{sessionStorage.removeItem('cosmos_gift_received');}catch(e){}}},500);
       setTimeout(function(){clearInterval(giftCheck);},60000);
