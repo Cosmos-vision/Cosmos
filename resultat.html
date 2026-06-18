@@ -248,7 +248,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 
       <!-- BOUTON DISCRET -->
       <div id="bouton-discret" style="text-align:center;margin-bottom:1.25rem;opacity:0;transition:opacity 0.5s ease">
-        <button onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.65rem 1.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
+        <button onclick="if(typeof gtag==='function'){gtag('event','payment_click',{button:'discret'});}checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.65rem 1.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
           🔓 Révéler mon profil Cosmos complet — 7,90€
         </button>
         <p style="font-size:0.62rem;color:#8B87B0;margin-top:0.5rem;text-align:center;letter-spacing:0.04em">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
@@ -315,7 +315,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             <p style="font-size:0.78rem;color:#C8C4E8">☀️ 2 actions personnalisées</p>
           </div>
           <p style="font-size:0.7rem;color:#8B87B0;font-style:italic;line-height:1.6;margin-bottom:1.25rem">📄 Rapport PDF disponible immédiatement. Une analyse concise, personnelle et pensée pour t'aider à mieux comprendre ce qui te rend unique.</p>
-          <button class="pay-bloc-btn btn-purple" onclick="checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="font-size:1rem;padding:1.1rem;margin-bottom:0.5rem">
+          <button class="pay-bloc-btn btn-purple" onclick="if(typeof gtag==='function'){gtag('event','payment_click',{button:'bloc_rapport'});}checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="font-size:1rem;padding:1.1rem;margin-bottom:0.5rem">
             Révéler mon profil Cosmos complet — 7,90€
           </button>
           <p style="font-size:0.65rem;color:#AFA9EC;letter-spacing:0.04em;text-align:center">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
