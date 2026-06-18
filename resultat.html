@@ -104,7 +104,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .love-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;margin-bottom:0.65rem}
 .love-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.7;margin-bottom:0.9rem}
 .love-row{display:flex;gap:8px;margin-bottom:5px;align-items:flex-start}
-.love-row-label{font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);min-width:85px;flex-shrink:0;padding-top:1px}
+.love-row-label{font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--purple-light);min-width:85px;flex-shrink:0;padding-top:1px}
 .love-row-val{font-size:0.76rem;color:var(--text-muted);line-height:1.5}
 .action-item{background:var(--deep);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
 .action-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px}
@@ -247,13 +247,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       </div>
 
       <!-- BOUTON DISCRET -->
-      <div id="bouton-discret" style="text-align:center;margin-bottom:1.25rem;opacity:0;transition:opacity 0.5s ease">
-        <button onclick="dataLayer=window.dataLayer||[];dataLayer.push({'event':'payment_click','button':'discret'});checkEmailBeforeAction(function(){ handlePayment(); }, 'payment')" style="background:linear-gradient(135deg,#7F77DD,#D4537E);border:none;border-radius:100px;padding:0.65rem 1.75rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.78rem;cursor:pointer;letter-spacing:0.02em">
-          🔓 Révéler mon profil Cosmos complet — 7,90€
-        </button>
-        <p style="font-size:0.62rem;color:#8B87B0;margin-top:0.5rem;text-align:center;letter-spacing:0.04em">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
-      </div>
-
       <!-- BLOC 1 -->
       <div class="paywall-bloc bloc1" id="paywall-bloc1">
         <p style="font-family:'Cormorant Garamond',serif;font-size:2.0rem;color:var(--purple-light);margin-bottom:0.25rem;letter-spacing:0.04em"> Cosmos a détecté </p>
@@ -319,33 +312,6 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
             Révéler mon profil Cosmos complet — 7,90€
           </button>
           <p style="font-size:0.65rem;color:#AFA9EC;letter-spacing:0.04em;text-align:center">Paiement unique · Apple Pay / Google Pay · Stripe sécurisé</p>
-        </div>
-      </div>
-
-      <!-- PARTAGE GRATUIT -->
-      <div style="margin-bottom:1.25rem" id="bloc-partage-gratuit">
-        <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
-        <div class="share-card-visual" id="share-card">
-          <div style="position:relative;z-index:2">
-            <p class="share-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
-            <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
-            <svg viewBox="0 0 100 100" width="65" height="65" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-              <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-              <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
-              <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
-              <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
-              <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
-              <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
-            </svg>
-            <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:6px" id="share-pills"></div>
-            <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
-          </div>
-        </div>
-        <div class="share-btns">
-          <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
-          <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
-          <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" onclick="copyCode()">Copier mon code</button>
         </div>
       </div>
 
@@ -541,6 +507,33 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
         </div>
 
       </div><!-- /paid-section -->
+
+      <!-- PARTAGE GRATUIT — tout en bas -->
+      <div style="margin-bottom:1.25rem;margin-top:1.25rem" id="bloc-partage-gratuit">
+        <p class="sec-label" style="margin-bottom:0.75rem">Partage ton profil</p>
+        <div class="share-card-visual" id="share-card">
+          <div style="position:relative;z-index:2">
+            <p class="share-logo">COSMOS<span style="display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--purple);margin-left:3px;vertical-align:middle"></span></p>
+            <p class="share-profile-name" id="share-profile-name">L'Architecte Lunaire</p>
+            <svg viewBox="0 0 100 100" width="65" height="65" style="margin:0 auto 8px;display:block" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+              <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+              <polygon id="share-radar" points="50,50 50,50 50,50 50,50" fill="rgba(127,119,221,0.25)" stroke="#7F77DD" stroke-width="1"/>
+              <circle id="sr-top" cx="50" cy="50" r="2.5" fill="#AFA9EC"/>
+              <circle id="sr-right" cx="50" cy="50" r="2.5" fill="#9FE1CB"/>
+              <circle id="sr-bottom" cx="50" cy="50" r="2.5" fill="#F4C0D1"/>
+              <circle id="sr-left" cx="50" cy="50" r="2.5" fill="#FAC775"/>
+            </svg>
+            <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:6px" id="share-pills"></div>
+            <p class="share-code" id="share-code">LUN · SYS · PRO · cosmos-vision.com</p>
+          </div>
+        </div>
+        <div class="share-btns">
+          <button class="share-btn" style="background:var(--purple);color:white" onclick="shareIG()">Partager sur Instagram Stories</button>
+          <button class="share-btn" style="background:#1877F2;color:white" onclick="shareFB()">Partager sur Facebook</button>
+          <button class="share-btn" style="background:transparent;color:var(--text-muted);border:1px solid var(--border)" onclick="copyCode()">Copier mon code</button>
+        </div>
+      </div>
     </div><!-- /content -->
   </div><!-- /main -->
 </div><!-- /page -->
@@ -676,7 +669,7 @@ function populateBlocs(profile){
     if(lbf) lbf.textContent=profile.amour.besoin||'';
     if(lpf) lpf.textContent=profile.amour.pattern||'';
     var lpff=document.getElementById('love-pattern-full');
-    if(lpff) lpff.textContent=profile.amour.pattern||'';
+    if(lpff) lpff.textContent=(profile.amour.erreurs||profile.amour.pattern)||'';
   }
   if(profile.miroir){
     var mn=document.getElementById('mirror-name');var ms=document.getElementById('mirror-sub');
