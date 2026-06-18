@@ -830,7 +830,11 @@ function unlockPaidContent(fromGift){
   setTimeout(function(){document.getElementById('paid-section').scrollIntoView({behavior:'smooth',block:'start'});},400);
 }
 
-if(isPaid||window.location.search.includes('success=true')){
+if(isPaid||window.location.search.includes('success=true')||window.location.search.includes('paid=true')){
+  /* Masquer le popup email immédiatement si paid=true dans l'URL */
+  var emailCaptureEl = document.getElementById('email-capture');
+  if(emailCaptureEl) emailCaptureEl.style.display = 'none';
+
   setTimeout(function(){
     var cachedForUnlock=null;try{cachedForUnlock=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
     if(cachedForUnlock&&window.CosmosAPI){
@@ -839,8 +843,11 @@ if(isPaid||window.location.search.includes('success=true')){
       var bannerEl=document.getElementById('demo-banner');if(bannerEl) bannerEl.style.display='none';
       var stepsEl2=document.getElementById('loading-steps');if(stepsEl2) stepsEl2.style.display='none';
       if(cachedForUnlock.dims){animateRadar({top:cachedForUnlock.dims.cosmique[0],right:cachedForUnlock.dims.cognitif[0],bottom:cachedForUnlock.dims.emotionnel[0],left:cachedForUnlock.dims.relationnel[0]});}
+      unlockPaidContent();
+    } else {
+      /* Pas de profil en cache — on laisse initCosmosResult le charger depuis Brevo */
+      unlockPaidContent();
     }
-    unlockPaidContent();
   },200);
 }
 
@@ -851,7 +858,7 @@ if(window.location.search.includes('gift=')){
 }
 
 setTimeout(function(){
-  if(window.location.search.includes('success=true')||sessionStorage.getItem('cosmos_paid')==='true'){return;}
+  if(window.location.search.includes('success=true')||window.location.search.includes('paid=true')||sessionStorage.getItem('cosmos_paid')==='true'){return;}
   var localProfile=null;try{localProfile=JSON.parse(localStorage.getItem('cosmos_profile'));}catch(e){}
   var freshQuiz=null;try{freshQuiz=JSON.parse(sessionStorage.getItem('cosmos_quiz'));}catch(e){}
   if(localProfile&&localProfile.profil&&window.CosmosAPI&&!freshQuiz){
