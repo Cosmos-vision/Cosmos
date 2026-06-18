@@ -303,6 +303,52 @@ async function initCosmosResult() {
     quizAnswers=qData.answers||[];
   }catch(e){}
 
+  /* ── CAS 1 : Utilisateur arrive via lien mail (email + token dans URL) ── */
+  var urlParams = new URLSearchParams(window.location.search);
+  var urlEmail = urlParams.get('email');
+  var urlToken = urlParams.get('token');
+  var urlPaid  = urlParams.get('paid');
+
+  if (urlEmail && urlToken && urlPaid === 'true') {
+    /* Vérifier le token */
+    var expectedToken = cosmosHashEmail(urlEmail);
+    if (urlToken === expectedToken) {
+      /* Token valide — chercher le profil dans Brevo */
+      var loadingEl = document.getElementById('loading-steps');
+      if (loadingEl) loadingEl.style.display = 'block';
+
+      var brevoProfile = await loadProfileFromBrevo(urlEmail);
+
+      if (brevoProfile) {
+        /* Profil trouvé — afficher directement en mode payé */
+        if (!userData.email) {
+          userData.email = urlEmail;
+          try{ sessionStorage.setItem('cosmos_user', JSON.stringify(userData)); }catch(e){}
+        }
+        try{
+          sessionStorage.setItem('cosmos_profile', JSON.stringify(brevoProfile));
+          localStorage.setItem('cosmos_profile', JSON.stringify(brevoProfile));
+        }catch(e){}
+
+        document.querySelectorAll('.portrait-block,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section').forEach(function(el){
+          el.style.opacity='1';
+          el.style.transition='opacity 0.5s ease';
+        });
+        applyProfileToPage(brevoProfile);
+        if(typeof animateRadar === 'function' && brevoProfile.dims){
+          animateRadar({ top:brevoProfile.dims.cosmique[0], right:brevoProfile.dims.cognitif[0], bottom:brevoProfile.dims.emotionnel[0], left:brevoProfile.dims.relationnel[0] });
+        }
+        if(typeof animateShareRadar === 'function' && brevoProfile.dims){
+          animateShareRadar({ top:brevoProfile.dims.cosmique[0], right:brevoProfile.dims.cognitif[0], bottom:brevoProfile.dims.emotionnel[0], left:brevoProfile.dims.relationnel[0] });
+        }
+        /* Déverrouiller le contenu payant directement */
+        if(typeof unlockPaidContent === 'function') unlockPaidContent(brevoProfile);
+        return;
+      }
+    }
+  }
+
+  /* ── CAS 2 : Flux normal (quiz vient d'être terminé) ── */
   var result=await generateCosmosProfile(userData, quizAnswers);
   var banner=document.getElementById('demo-banner');
   if(result.demo){
@@ -355,10 +401,97 @@ if (typeof gtag === 'function') {
   }
 }
 
+/* ── HASH simple pour token URL ── */
+function cosmosHashEmail(email) {
+  var str = email.toLowerCase().trim() + 'cosmos2026';
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    var c = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + c;
+    hash = hash & hash;
+  }
+  return Math.abs(hash).toString(36);
+}
+
+/* ── Sauvegarder profil dans Brevo (attribut PROFIL_JSON) ── */
+async function saveProfileToBrevo(email, prenom, profile) {
+  try {
+    var profileLight = {
+      profil: profile.profil,
+      portrait: profile.portrait,
+      dims: profile.dims,
+      forces: profile.forces,
+      blocages: profile.blocages,
+      amour: profile.amour,
+      miroir: profile.miroir,
+      actions: profile.actions,
+      astro: profile.astro
+    };
+    /* Générer le lien personnalisé */
+    var token = cosmosHashEmail(email);
+    var lienPersonnel = 'https://cosmos-vision.com/resultat.html?email='
+      + encodeURIComponent(email) + '&token=' + token + '&paid=true';
+
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': b1 + b2
+      },
+      body: JSON.stringify({
+        email: email,
+        attributes: {
+          FIRSTNAME: prenom,
+          PROFIL_JSON: JSON.stringify(profileLight),
+          PROFIL_NOM: (profile.profil||{}).nom || '',
+          PROFIL_CODE: (profile.profil||{}).code || '',
+          LIEN_PROFIL: lienPersonnel
+        },
+        listIds: [4],
+        updateEnabled: true
+      })
+    });
+  } catch(e) {
+    console.error('Brevo saveProfile error:', e);
+  }
+}
+
+/* ── Récupérer profil depuis Brevo via email ── */
+async function loadProfileFromBrevo(email) {
+  try {
+    var res = await fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(email), {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': b1 + b2
+      }
+    });
+    if (!res.ok) return null;
+    var data = await res.json();
+    var profileJson = (data.attributes||{}).PROFIL_JSON;
+    if (!profileJson) return null;
+    return JSON.parse(profileJson);
+  } catch(e) {
+    console.error('Brevo loadProfile error:', e);
+    return null;
+  }
+}
+
+/* ── Envoyer le mail post-paiement avec lien personnalisé ── */
 async function sendBrevoEmail(email, prenom) {
   try {
     var profile = {};
     try{ profile = JSON.parse(sessionStorage.getItem('cosmos_profile')||'{}'); }catch(e){}
+
+    /* 1. Sauvegarder le profil dans Brevo */
+    await saveProfileToBrevo(email, prenom, profile);
+
+    /* 2. Générer le lien personnalisé */
+    var token = cosmosHashEmail(email);
+    var lienPersonnel = 'https://cosmos-vision.com/resultat.html?email='
+      + encodeURIComponent(email) + '&token=' + token + '&paid=true';
+
+    /* 3. Envoyer le mail avec le lien personnel */
     await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
@@ -371,7 +504,8 @@ async function sendBrevoEmail(email, prenom) {
         params: {
           profil_nom: (profile.profil||{}).nom || 'Ton profil Cosmos',
           profil_code: (profile.profil||{}).code || '',
-          prenom: prenom
+          prenom: prenom,
+          lien_profil: lienPersonnel
         },
         tags: ['payant']
       })
