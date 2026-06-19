@@ -1030,8 +1030,12 @@ setTimeout(function(){
     document.getElementById('profile-name').textContent='✨ Cosmos analyse tes réponses…';
     document.getElementById('profile-code').textContent='· · ·';
     var steps=['Lecture de tes 9 réponses projectives…','Analyse de tes patterns émotionnels…','Détection de tes dimensions dominantes…','Identification de tes blocages inconscients…','Calcul de ton archétype parmi 144…','Connexion à ton monde intérieur…','Génération de ton portrait unique…','Connexion à ton ciel natal…','Calcul de ton âme miroir…','Finalisation de ton analyse complète…'];
-    var stepsEl=document.getElementById('loading-steps'),si=0;
-    var stepTimer=setInterval(function(){if(si<steps.length){var line=document.createElement('div');line.style.cssText='font-size:0.75rem;color:#AFA9EC;display:flex;align-items:center;gap:8px;margin-top:0.4rem';line.innerHTML='<span style="color:#1D9E75;font-size:0.65rem">✓</span>'+steps[si];stepsEl.appendChild(line);si++;}else{clearInterval(stepTimer);}},4000);
+    var stepsEl=document.getElementById('loading-steps');
+    if(stepsEl && !stepsEl.dataset.started) {
+      stepsEl.dataset.started = '1';
+      var si=0;
+      var stepTimer=setInterval(function(){if(si<steps.length){var line=document.createElement('div');line.style.cssText='font-size:0.75rem;color:#AFA9EC;display:flex;align-items:center;gap:8px;margin-top:0.4rem';line.innerHTML='<span style="color:#1D9E75;font-size:0.65rem">✓</span>'+steps[si];stepsEl.appendChild(line);si++;}else{clearInterval(stepTimer);}},4000);
+    }
     var isGiftReceived=false;try{isGiftReceived=!!sessionStorage.getItem('cosmos_gift_received');}catch(e){}
     if(isGiftReceived){try{sessionStorage.removeItem('cosmos_profile');sessionStorage.removeItem('cosmos_paid');}catch(e){}}
     window.CosmosAPI.init();
@@ -1081,7 +1085,7 @@ function closeGiftPopup(){document.getElementById('gift-popup').style.display='n
 </div>
 
 <!-- EMAIL CAPTURE -->
-<div id="email-capture" style="display:none;position:fixed;inset:0;background:rgba(7,6,15,0.95);z-index:500;align-items:center;justify-content:center;padding:1.5rem;overflow-y:auto">
+<div id="email-capture" style="display:none;position:fixed;inset:0;background:rgba(7,6,15,1);z-index:500;align-items:center;justify-content:center;padding:1.5rem;overflow-y:auto">
   <div style="background:linear-gradient(135deg,rgba(127,119,221,0.08),rgba(212,83,126,0.06));border:1px solid rgba(127,119,221,0.3);border-radius:20px;padding:2rem;width:100%;max-width:420px;text-align:center;position:relative">
     <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(to right,transparent,#7F77DD,#D4537E,transparent)"></div>
     <p style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#AFA9EC;margin-bottom:0.75rem">✦ Ton profil est prêt</p>
