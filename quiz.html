@@ -511,6 +511,22 @@ var answers = new Array(9).fill(null);
 var userData = {};
 var introStep = 0; /* 0=prénom/genre, 1=date de naissance, 2=quiz */
 
+/* Nettoyer les données de la session précédente */
+try {
+  localStorage.removeItem('cosmos_profile');
+  localStorage.removeItem('cosmos_profile_expiry');
+  sessionStorage.removeItem('cosmos_profile');
+  sessionStorage.removeItem('cosmos_quiz');
+  sessionStorage.removeItem('cosmos_paid');
+  /* Garder cosmos_user uniquement si vient de index.html (a un prénom mais pas d'email) */
+  var existingUser = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}');
+  if(existingUser.email) {
+    /* Utilisateur précédent — on repart de zéro */
+    sessionStorage.removeItem('cosmos_user');
+    existingUser = {};
+  }
+} catch(e) {}
+
 /* Récupérer les données utilisateur de la landing page */
 try {
   var stored = sessionStorage.getItem('cosmos_user');
