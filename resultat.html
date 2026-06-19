@@ -1062,6 +1062,7 @@ setTimeout(function(){
         var _urlP2 = new URLSearchParams(window.location.search);
         var _fromEmail2 = _urlP2.get('from') === 'email';
         var _hasPaid2 = _urlP2.get('paid') === 'true';
+        var _emailCapture = document.getElementById('email-capture');
         if(_emailCapture && _emailCapture.style.display==='none' && !_fromEmail2 && !_hasPaid2){
           _emailCapture.style.display='flex';
           dataLayer=window.dataLayer||[];dataLayer.push({'event':'email_popup_view'});
