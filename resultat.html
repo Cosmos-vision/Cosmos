@@ -907,17 +907,22 @@ function saveEmail(){
   dataLayer=window.dataLayer||[];dataLayer.push({'event':'email_submit'});
   var email=document.getElementById('email-input').value.trim();
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('email-input').style.border='1px solid #D4537E';return;}
+
+  /* Récupérer le prénom AVANT de modifier cosmos_user */
+  var prenom = '';
+  try{ prenom = (JSON.parse(sessionStorage.getItem('cosmos_user'))||{}).prenom || ''; }catch(e){}
+
   try{var user=JSON.parse(sessionStorage.getItem('cosmos_user'))||{};user.email=email;sessionStorage.setItem('cosmos_user',JSON.stringify(user));}catch(e){}
   document.getElementById('email-capture').style.display='none';
 
   /* Récupérer le profil et sauvegarder dans Brevo + envoyer mail J+0 */
   var savedProfile=null;try{savedProfile=JSON.parse(sessionStorage.getItem('cosmos_profile'));}catch(e){}
-  var prenom = '';
-  try{ prenom = (JSON.parse(sessionStorage.getItem('cosmos_user'))||{}).prenom || ''; }catch(e){}
 
   if(savedProfile && savedProfile.profil){
+    /* Utiliser le prénom saisi par l'utilisateur, pas celui généré par Claude */
+    var prenomFinal = prenom || (savedProfile.profil && savedProfile.profil.prenom) || '';
     /* Sauvegarde complète + mail de bienvenue */
-    saveProfileForFreeUser(email, prenom, savedProfile);
+    saveProfileForFreeUser(email, prenomFinal, savedProfile);
 
     document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bouton-discret,#bloc-partage-gratuit').forEach(function(el){el.style.opacity='1';});
     var banner=document.getElementById('demo-banner');if(banner) banner.style.display='none';
