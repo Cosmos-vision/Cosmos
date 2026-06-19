@@ -316,10 +316,12 @@ async function initCosmosResult() {
     if (urlToken === expectedTokenG) {
       var brevoProfileG = await loadProfileFromBrevo(urlEmail);
       if (brevoProfileG) {
-        if (!userData.email) {
-          userData.email = urlEmail;
-          try{ sessionStorage.setItem('cosmos_user', JSON.stringify(userData)); }catch(e){}
-        }
+        /* Sauvegarder email dans sessionStorage immédiatement */
+        try{
+          var userDataG = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}');
+          userDataG.email = urlEmail;
+          sessionStorage.setItem('cosmos_user', JSON.stringify(userDataG));
+        }catch(e){}
         try{
           sessionStorage.setItem('cosmos_profile', JSON.stringify(brevoProfileG));
           localStorage.setItem('cosmos_profile', JSON.stringify(brevoProfileG));
