@@ -511,6 +511,22 @@ var answers = new Array(9).fill(null);
 var userData = {};
 var introStep = 0; /* 0=prénom/genre, 1=date de naissance, 2=quiz */
 
+/* Nettoyer les données de la session précédente */
+try {
+  localStorage.removeItem('cosmos_profile');
+  localStorage.removeItem('cosmos_profile_expiry');
+  sessionStorage.removeItem('cosmos_profile');
+  sessionStorage.removeItem('cosmos_quiz');
+  sessionStorage.removeItem('cosmos_paid');
+  /* Garder cosmos_user uniquement si vient de index.html (a un prénom mais pas d'email) */
+  var existingUser = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}');
+  if(existingUser.email) {
+    /* Utilisateur précédent — on repart de zéro */
+    sessionStorage.removeItem('cosmos_user');
+    existingUser = {};
+  }
+} catch(e) {}
+
 /* Récupérer les données utilisateur de la landing page */
 try {
   var stored = sessionStorage.getItem('cosmos_user');
@@ -602,7 +618,7 @@ function renderIntro() {
         '<input id="intro-month" type="number" placeholder="Mois" min="1" max="12" value="' + (dob.mois||'') + '" style="background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;text-align:center" />' +
         '<input id="intro-year" type="number" placeholder="Année" min="1920" max="2010" value="' + (dob.annee||'') + '" style="background:#131128;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:0.75rem;color:#F0EEF8;font-family:DM Sans,sans-serif;font-size:0.9rem;outline:none;text-align:center" />' +
       '</div>' +
-      '<p style="font-size:0.68rem;color:#4A4870;margin-bottom:1.5rem">Utilisée uniquement pour personnaliser ton profil cosmique. Jamais partagée.</p>' +
+      '<p style="font-size:0.68rem;color:#8B87B0;margin-bottom:1.5rem">Utilisée uniquement pour personnaliser ton profil cosmique. Jamais partagée.</p>' +
       '<div class="nav-btns">' +
         '<button class="btn-back" id="btn-intro-back" type="button">← Précédent</button>' +
         '<button class="btn-next" id="btn-intro-next2" type="button">Commencer →</button>' +
