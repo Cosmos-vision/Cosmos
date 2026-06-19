@@ -309,8 +309,9 @@ async function initCosmosResult() {
   var urlToken = urlParams.get('token');
   var urlPaid  = urlParams.get('paid');
 
-  /* ── CAS 1b : Lien gratuit (email + token SANS paid=true) ── */
-  if (urlEmail && urlToken && !urlPaid) {
+  /* ── CAS 1b : Lien gratuit (email + token + from=email) ── */
+  var urlFromEmail = urlParams.get('from');
+  if (urlEmail && urlToken && urlFromEmail === 'email') {
     var expectedTokenG = cosmosHashEmail(urlEmail);
     if (urlToken === expectedTokenG) {
       var brevoProfileG = await loadProfileFromBrevo(urlEmail);
@@ -607,11 +608,11 @@ async function saveProfileForFreeUser(email, prenom, profile) {
 
     /* Lien vers la partie GRATUITE (sans paid=true) */
     var lienGratuit = 'https://cosmos-vision.com/resultat.html?email='
-      + encodeURIComponent(email) + '&token=' + token;
+      + encodeURIComponent(email) + '&token=' + token + '&from=email';
 
-    /* Lien vers la partie PAYANTE */
-    var lienPayant = 'https://cosmos-vision.com/resultat.html?email='
-      + encodeURIComponent(email) + '&token=' + token + '&paid=true';
+    /* Lien vers Stripe pour le paiement */
+    var lienPayant = 'https://buy.stripe.com/bJecMY1huaDlezQ5zLdUY02?prefilled_email='
+      + encodeURIComponent(email);
 
     var profileLight = {
       profil: profile.profil,
