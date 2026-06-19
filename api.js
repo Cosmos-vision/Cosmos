@@ -355,12 +355,15 @@ async function initCosmosResult() {
     if (urlToken === expectedTokenG) {
       var brevoProfileG = await loadProfileFromBrevo(urlEmail);
       if (brevoProfileG) {
-        /* Sauvegarder email ET prénom dans sessionStorage immédiatement */
+        /* Sauvegarder email IMMÉDIATEMENT dans sessionStorage (synchrone) */
         try{
           var userDataG = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}');
           userDataG.email = urlEmail;
-          /* Récupérer le prénom depuis le contact Brevo */
-          fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(urlEmail.toLowerCase().trim()), {
+          sessionStorage.setItem('cosmos_user', JSON.stringify(userDataG));
+        }catch(e){}
+
+        /* Récupérer le prénom depuis Brevo (asynchrone) */
+        fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(urlEmail.toLowerCase().trim()), {
             method: 'GET',
             headers: { 'api-key': b1 + b2 }
           }).then(function(r){ return r.json(); }).then(function(d){
@@ -370,13 +373,10 @@ async function initCosmosResult() {
               try{ u = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}'); }catch(e){}
               u.prenom = fn;
               try{ sessionStorage.setItem('cosmos_user', JSON.stringify(u)); }catch(e){}
-              /* Mettre à jour le prénom affiché dans la navbar */
               var navName = document.getElementById('user-prenom');
               if(navName) navName.textContent = fn;
             }
           }).catch(function(){});
-          sessionStorage.setItem('cosmos_user', JSON.stringify(userDataG));
-        }catch(e){}
         try{
           sessionStorage.setItem('cosmos_profile', JSON.stringify(brevoProfileG));
           localStorage.setItem('cosmos_profile', JSON.stringify(brevoProfileG));
