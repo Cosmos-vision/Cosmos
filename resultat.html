@@ -47,7 +47,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 .dim-pills{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:0}
 .dim-pill{font-size:0.62rem;padding:3px 10px;border-radius:20px;font-weight:400;letter-spacing:0.04em}
 .card{background:var(--deep);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
-.card,.radar-wrap,#wheel-144,.paywall-bloc,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bloc-partage-gratuit,#bouton-discret{opacity:0;transition:opacity 0.5s ease}
+.card,.radar-wrap,#wheel-144,.paywall-bloc,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bloc-partage-gratuit,#bouton-discret,#next-chapter-bloc{opacity:0;transition:opacity 0.5s ease}
 .card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:linear-gradient(to right,transparent,var(--purple),transparent)}
 .portrait-line{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:#C8C4E8;line-height:1.85;font-style:italic}
 .portrait-line+.portrait-line{margin-top:0.65rem}
@@ -146,7 +146,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
 <div class="page">
   <nav>
     <a href="index.html" class="logo">COSMOS<span class="logo-dot"></span></a>
-    <span style="font-size:0.68rem;color:var(--text-faint);letter-spacing:0.06em" id="nav-name"></span>
+    <span style="font-size:0.68rem;color:var(--text-muted);letter-spacing:0.06em" id="nav-name"></span>
   </nav>
   <div class="main">
     <div class="content">
@@ -571,7 +571,7 @@ nav{padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-be
       </div>
 
       <!-- CHAPITRE SUIVANT — tout en bas -->
-      <div class="next-chapter">
+      <div class="next-chapter" id="next-chapter-bloc" style="opacity:0;transition:opacity 0.5s ease">
         <div class="nc-icon">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
