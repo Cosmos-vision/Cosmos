@@ -303,11 +303,104 @@ async function initCosmosResult() {
     quizAnswers=qData.answers||[];
   }catch(e){}
 
-  /* ── CAS 1 : Utilisateur arrive via lien mail (email + token dans URL) ── */
+  /* ── CAS 0 : Profil déjà en cache (retour de Stripe ou rechargement) ── */
+  var cachedProfile = null;
+  try{ cachedProfile = JSON.parse(localStorage.getItem('cosmos_profile')); }catch(e){}
+  if(!cachedProfile) try{ cachedProfile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+
   var urlParams = new URLSearchParams(window.location.search);
+  var hasUrlParams = urlParams.get('email') || urlParams.get('paid') || urlParams.get('from');
+
+  if(cachedProfile && cachedProfile.profil && cachedProfile.profil.nom !== "L'Architecte Lunaire" && !hasUrlParams) {
+    /* Profil réel déjà chargé — afficher directement sans relancer l'analyse */
+    var stepsEl0 = document.getElementById('loading-steps');
+    if(stepsEl0) stepsEl0.style.display = 'none';
+    var bannerEl0 = document.getElementById('demo-banner');
+    if(bannerEl0) bannerEl0.style.display = 'none';
+
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bloc-partage-gratuit').forEach(function(el){
+      el.style.opacity='1';
+    });
+
+    applyProfileToPage(cachedProfile);
+    if(typeof populateBlocs === 'function') populateBlocs(cachedProfile);
+    if(typeof animateRadar === 'function' && cachedProfile.dims){
+      animateRadar({top:cachedProfile.dims.cosmique[0],right:cachedProfile.dims.cognitif[0],bottom:cachedProfile.dims.emotionnel[0],left:cachedProfile.dims.relationnel[0]});
+    }
+    if(typeof animateShareRadar === 'function' && cachedProfile.dims){
+      animateShareRadar({top:cachedProfile.dims.cosmique[0],right:cachedProfile.dims.cognitif[0],bottom:cachedProfile.dims.emotionnel[0],left:cachedProfile.dims.relationnel[0]});
+    }
+
+    /* Vérifier si déjà payé */
+    if(sessionStorage.getItem('cosmos_paid')==='true'){
+      if(typeof unlockPaidContent === 'function') unlockPaidContent(cachedProfile);
+    } else if(!userData.email) {
+      /* Pas encore d'email — afficher popup */
+      if(typeof populateEmailPopup === 'function') populateEmailPopup(cachedProfile);
+      var ec = document.getElementById('email-capture');
+      if(ec) ec.style.display = 'flex';
+    }
+    return;
+  }
+
+  /* ── CAS 1 : Utilisateur arrive via lien mail (email + token dans URL) ── */
   var urlEmail = urlParams.get('email');
   var urlToken = urlParams.get('token');
   var urlPaid  = urlParams.get('paid');
+
+  /* ── CAS 1b : Lien gratuit (email + token + from=email) ── */
+  var urlFromEmail = urlParams.get('from');
+  if (urlEmail && urlToken && urlFromEmail === 'email') {
+    var expectedTokenG = cosmosHashEmail(urlEmail);
+    if (urlToken === expectedTokenG) {
+      var brevoProfileG = await loadProfileFromBrevo(urlEmail);
+      if (brevoProfileG) {
+        /* Sauvegarder email IMMÉDIATEMENT dans sessionStorage (synchrone) */
+        try{
+          var userDataG = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}');
+          userDataG.email = urlEmail;
+          sessionStorage.setItem('cosmos_user', JSON.stringify(userDataG));
+        }catch(e){}
+
+        /* Récupérer le prénom depuis Brevo (asynchrone) */
+        fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(urlEmail.toLowerCase().trim()), {
+            method: 'GET',
+            headers: { 'api-key': b1 + b2 }
+          }).then(function(r){ return r.json(); }).then(function(d){
+            var fn = (d.attributes||{}).FIRSTNAME || '';
+            if(fn){
+              var u = {};
+              try{ u = JSON.parse(sessionStorage.getItem('cosmos_user')||'{}'); }catch(e){}
+              u.prenom = fn;
+              try{ sessionStorage.setItem('cosmos_user', JSON.stringify(u)); }catch(e){}
+              var navName = document.getElementById('user-prenom');
+              if(navName) navName.textContent = fn;
+            }
+          }).catch(function(){});
+        try{
+          sessionStorage.setItem('cosmos_profile', JSON.stringify(brevoProfileG));
+          localStorage.setItem('cosmos_profile', JSON.stringify(brevoProfileG));
+        }catch(e){}
+        var stepsElG = document.getElementById('loading-steps');
+        if(stepsElG) stepsElG.style.display='none';
+        var bannerElG = document.getElementById('demo-banner');
+        if(bannerElG) bannerElG.style.display='none';
+        document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bloc-partage-gratuit').forEach(function(el){el.style.opacity='1';});
+        applyProfileToPage(brevoProfileG);
+        if(typeof populateBlocs === 'function') populateBlocs(brevoProfileG);
+        if(typeof animateRadar === 'function' && brevoProfileG.dims){
+          animateRadar({ top:brevoProfileG.dims.cosmique[0], right:brevoProfileG.dims.cognitif[0], bottom:brevoProfileG.dims.emotionnel[0], left:brevoProfileG.dims.relationnel[0] });
+        }
+        if(typeof animateShareRadar === 'function' && brevoProfileG.dims){
+          animateShareRadar({ top:brevoProfileG.dims.cosmique[0], right:brevoProfileG.dims.cognitif[0], bottom:brevoProfileG.dims.emotionnel[0], left:brevoProfileG.dims.relationnel[0] });
+        }
+        /* Masquer le popup email car déjà capturé */
+        var emailCaptureEl = document.getElementById('email-capture');
+        if(emailCaptureEl) emailCaptureEl.style.display = 'none';
+        return;
+      }
+    }
+  }
 
   if (urlEmail && urlToken && urlPaid === 'true') {
     /* Vérifier le token */
@@ -563,4 +656,89 @@ async function registerBrevoContact(email, prenom, listId, commentaire) {
   }
 }
 
+/* ══════════════════════════════════════════
+   SAUVEGARDE PROFIL GRATUIT + MAIL J+0
+══════════════════════════════════════════ */
+async function saveProfileForFreeUser(email, prenom, profile) {
+  try {
+    var token = cosmosHashEmail(email);
+
+    /* Lien vers la partie GRATUITE (sans paid=true) */
+    var lienGratuit = 'https://cosmos-vision.com/resultat.html?email='
+      + encodeURIComponent(email) + '&token=' + token + '&from=email';
+
+    /* Lien vers Stripe pour le paiement */
+    var lienPayant = 'https://buy.stripe.com/bJecMY1huaDlezQ5zLdUY02?prefilled_email='
+      + encodeURIComponent(email);
+
+    var profileLight = {
+      profil: profile.profil,
+      portrait: profile.portrait,
+      dims: profile.dims,
+      forces: profile.forces,
+      blocages: profile.blocages,
+      amour: profile.amour,
+      miroir: profile.miroir,
+      actions: profile.actions,
+      astro: profile.astro
+    };
+
+    /* Sauvegarder dans Brevo avec tous les attributs */
+    await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': b1 + b2
+      },
+      body: JSON.stringify({
+        email: email,
+        attributes: {
+          FIRSTNAME: prenom,
+          PROFIL_JSON: JSON.stringify(profileLight),
+          PROFIL_NOM: (profile.profil||{}).nom || '',
+          PROFIL_CODE: (profile.profil||{}).code || '',
+          LIEN_PROFIL: lienPayant,
+          LIEN_GRATUIT: lienGratuit
+        },
+        listIds: [3], /* liste non-payants */
+        updateEnabled: true
+      })
+    });
+
+    /* Envoyer le mail J+0 de bienvenue */
+    await sendWelcomeEmail(email, prenom, profile, lienGratuit, lienPayant);
+
+  } catch(e) {
+    console.error('saveProfileForFreeUser error:', e);
+  }
+}
+
+async function sendWelcomeEmail(email, prenom, profile, lienGratuit, lienPayant) {
+  try {
+    var nomArchetype = (profile.profil||{}).nom || 'ton archétype';
+    var portrait1 = (profile.portrait||[])[0] || '';
+
+    await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': b1 + b2
+      },
+      body: JSON.stringify({
+        templateId: 3, /* Template J+0 bienvenue */
+        to: [{ email: email, name: prenom }],
+        params: {
+          prenom: prenom,
+          profil_nom: nomArchetype,
+          portrait_extrait: portrait1,
+          lien_gratuit: lienGratuit,
+          lien_payant: lienPayant
+        },
+        tags: ['gratuit', 'bienvenue']
+      })
+    });
+  } catch(e) {
+    console.error('sendWelcomeEmail error:', e);
+  }
+}
 window.CosmosAPI={init:initCosmosResult, apply:applyProfileToPage, getDemo:getDemoProfile};
