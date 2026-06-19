@@ -303,6 +303,46 @@ async function initCosmosResult() {
     quizAnswers=qData.answers||[];
   }catch(e){}
 
+  /* ── CAS 0 : Profil déjà en cache (retour de Stripe ou rechargement) ── */
+  var cachedProfile = null;
+  try{ cachedProfile = JSON.parse(localStorage.getItem('cosmos_profile')); }catch(e){}
+  if(!cachedProfile) try{ cachedProfile = JSON.parse(sessionStorage.getItem('cosmos_profile')); }catch(e){}
+
+  var urlParams = new URLSearchParams(window.location.search);
+  var hasUrlParams = urlParams.get('email') || urlParams.get('paid') || urlParams.get('from');
+
+  if(cachedProfile && cachedProfile.profil && cachedProfile.profil.nom !== "L'Architecte Lunaire" && !hasUrlParams) {
+    /* Profil réel déjà chargé — afficher directement sans relancer l'analyse */
+    var stepsEl0 = document.getElementById('loading-steps');
+    if(stepsEl0) stepsEl0.style.display = 'none';
+    var bannerEl0 = document.getElementById('demo-banner');
+    if(bannerEl0) bannerEl0.style.display = 'none';
+
+    document.querySelectorAll('.card,.radar-wrap,#dim-pills,#wheel-144,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bloc-partage-gratuit').forEach(function(el){
+      el.style.opacity='1';
+    });
+
+    applyProfileToPage(cachedProfile);
+    if(typeof populateBlocs === 'function') populateBlocs(cachedProfile);
+    if(typeof animateRadar === 'function' && cachedProfile.dims){
+      animateRadar({top:cachedProfile.dims.cosmique[0],right:cachedProfile.dims.cognitif[0],bottom:cachedProfile.dims.emotionnel[0],left:cachedProfile.dims.relationnel[0]});
+    }
+    if(typeof animateShareRadar === 'function' && cachedProfile.dims){
+      animateShareRadar({top:cachedProfile.dims.cosmique[0],right:cachedProfile.dims.cognitif[0],bottom:cachedProfile.dims.emotionnel[0],left:cachedProfile.dims.relationnel[0]});
+    }
+
+    /* Vérifier si déjà payé */
+    if(sessionStorage.getItem('cosmos_paid')==='true'){
+      if(typeof unlockPaidContent === 'function') unlockPaidContent(cachedProfile);
+    } else if(!userData.email) {
+      /* Pas encore d'email — afficher popup */
+      if(typeof populateEmailPopup === 'function') populateEmailPopup(cachedProfile);
+      var ec = document.getElementById('email-capture');
+      if(ec) ec.style.display = 'flex';
+    }
+    return;
+  }
+
   /* ── CAS 1 : Utilisateur arrive via lien mail (email + token dans URL) ── */
   var urlParams = new URLSearchParams(window.location.search);
   var urlEmail = urlParams.get('email');
