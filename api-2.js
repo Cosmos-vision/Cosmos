@@ -330,11 +330,23 @@ async function initCosmosResult() {
           localStorage.setItem('cosmos_profile', JSON.stringify(brevoProfile));
         }catch(e){}
 
-        document.querySelectorAll('.portrait-block,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section').forEach(function(el){
+        /* Rendre tous les éléments visibles */
+        document.querySelectorAll('.card,.radar-wrap,.actions-free,.paywall,.force-card,#dim-pills,.forces-section,#paywall-bloc1,#paywall-bloc2,#paywall-bloc3,#bloc-partage-gratuit,#bouton-discret').forEach(function(el){
           el.style.opacity='1';
           el.style.transition='opacity 0.5s ease';
         });
+
+        /* Masquer banner démo */
+        var bannerEl = document.getElementById('demo-banner');
+        if(bannerEl) bannerEl.style.display='none';
+        var stepsEl = document.getElementById('loading-steps');
+        if(stepsEl) stepsEl.style.display='none';
+
         applyProfileToPage(brevoProfile);
+
+        /* populateBlocs pour l'essence, forces, partage etc */
+        if(typeof populateBlocs === 'function') populateBlocs(brevoProfile);
+
         if(typeof animateRadar === 'function' && brevoProfile.dims){
           animateRadar({ top:brevoProfile.dims.cosmique[0], right:brevoProfile.dims.cognitif[0], bottom:brevoProfile.dims.emotionnel[0], left:brevoProfile.dims.relationnel[0] });
         }
