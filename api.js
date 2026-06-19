@@ -667,7 +667,7 @@ async function sendWelcomeEmail(email, prenom, profile, lienGratuit, lienPayant)
         'api-key': b1 + b2
       },
       body: JSON.stringify({
-        templateId: 2, /* Template J+0 bienvenue */
+        templateId: 3, /* Template J+0 bienvenue */
         to: [{ email: email, name: prenom }],
         params: {
           prenom: prenom,
