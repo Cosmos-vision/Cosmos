@@ -344,7 +344,6 @@ async function initCosmosResult() {
   }
 
   /* ── CAS 1 : Utilisateur arrive via lien mail (email + token dans URL) ── */
-  var urlParams = new URLSearchParams(window.location.search);
   var urlEmail = urlParams.get('email');
   var urlToken = urlParams.get('token');
   var urlPaid  = urlParams.get('paid');
